@@ -96,8 +96,8 @@ const App = () => {
           }}
         >
           {selectedMenuKey === '1' && 'Beau Lazear'}
-          {selectedMenuKey === '2' && 'WebDev'}
-          {selectedMenuKey === '3' && 'Animal Care'}
+          {selectedMenuKey === '2' && 'WebDev 🖥️'}
+          {selectedMenuKey === '3' && 'Animal Care 🦮'}
           {selectedMenuKey === '4' && 'Resume'}
           {selectedMenuKey === '5' && 'Contact Me'}
         </Header>
