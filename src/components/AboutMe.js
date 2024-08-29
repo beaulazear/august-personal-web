@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import BeauAndRu from '../images/BeauAndRu.JPG';
 import CroppedBeau from '../images/CroppedBeau.jpeg';
-import BeauReykaMangoRu from '../images/BeauReykaMangoRu.jpeg';
 import BeauWithHornbill from '../images/BeauAndHornbill.jpeg';
 
 const ContentWrapper = styled.div`
@@ -38,6 +37,8 @@ const StyledIntroduction = styled.div`
   text-align: center;
   margin-bottom: 40px;
   padding: 0 20px;
+    line-height: 1.6;
+    font-size: 18px;
 
   @media (max-width: 768px) {
     margin-bottom: 30px;
@@ -102,9 +103,6 @@ const AboutMe = () => {
           Whether you're looking for reliable pet care or want to discuss a coding project, I'm here to help. Let's connect and create something amazing together!
         </Paragraph>
       </StyledIntroduction>
-      <ImageWrapper>
-        <Image src={BeauReykaMangoRu} alt="Beau with a mango cocktail" />
-      </ImageWrapper>
     </ContentWrapper>
   );
 }

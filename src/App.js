@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import {
   AuditOutlined,
   CloudOutlined,
-  UploadOutlined,
+  HeartOutlined,
   UserOutlined,
-  VideoCameraOutlined,
+  JavaScriptOutlined,
 } from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
 import AboutMe from './components/AboutMe.js';
-import AnimalCare from './components/AnimalCare.js'
+import AnimalCare from './components/AnimalCare.js';
+import Software from './components/Software.js'
+import Resume from './components/Resume.js'
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -31,12 +33,12 @@ const items = [
   },
   {
     key: '2',
-    icon: <VideoCameraOutlined />,
+    icon: <JavaScriptOutlined />,
     label: 'WebDev',
   },
   {
     key: '3',
-    icon: <UploadOutlined />,
+    icon: <HeartOutlined />,
     label: 'Animal Care',
   },
   {
@@ -44,11 +46,11 @@ const items = [
     icon: <AuditOutlined />,
     label: 'Resume',
   },
-  {
-    key: '5',
-    icon: <CloudOutlined />,
-    label: 'Contact Me',
-  },
+  // {
+  //   key: '5',
+  //   icon: <CloudOutlined />,
+  //   label: 'Contact Me',
+  // },
 ];
 
 const App = () => {
@@ -113,9 +115,9 @@ const App = () => {
             }}
           >
             {selectedMenuKey === '1' && <AboutMe />}
-            {selectedMenuKey === '2' && <div>Video Library Content</div>}
+            {selectedMenuKey === '2' && <Software />}
             {selectedMenuKey === '3' && <AnimalCare />}
-            {selectedMenuKey === '4' && <div>Analytics Content</div>}
+            {selectedMenuKey === '4' && <Resume />}
             {selectedMenuKey === '5' && <div>Cloud Storage Content</div>}
           </div>
         </Content>

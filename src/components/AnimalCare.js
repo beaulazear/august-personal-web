@@ -5,6 +5,7 @@ import BeauAndRalph from "../images/BeauAndRalph.JPG";
 import JavaLookinCute from "../images/JavaLookinCute.jpeg";
 import RiverWithBrick from "../images/RiverWithBrick.jpeg";
 import MooseOnVerandah from "../images/MooseOnVerandah.jpeg";
+import BeauReykaMangoRu from '../images/BeauReykaMangoRu.jpeg';
 
 const StyledContainer = styled.div`
   display: flex;
@@ -28,7 +29,6 @@ const StyledContainer = styled.div`
 `;
 
 const StyledServiceCardTesti = styled.div`
-  background-color: #fffbf3;
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -45,7 +45,6 @@ const StyledServiceCardTesti = styled.div`
 `;
 
 const StyledWelcomeMessage = styled.div`
-  background-color: #fff2eb;
   font-family: Helvetica, sans-serif;
   margin: 0 auto;
   padding: 25px;
@@ -117,7 +116,7 @@ const StyledIntroduction = styled.div`
 `;
 
 const Paragraph = styled.p`
-  font-size: 1.2em;
+  font-size: 18px;
   color: #777;
   line-height: 1.6;
   text-align: left;
@@ -132,6 +131,7 @@ const ImageContainer = styled.div`
   height: 240px;
   margin: 0 auto;
   margin-bottom: 18px;
+  margin-top: 10px;
   overflow: hidden;
   border-radius: 15px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -157,6 +157,9 @@ const AnimalCareInfo = () => {
 
     return (
         <StyledWelcomeMessage ref={topElement}>
+            <ImageContainer>
+                <Image src={BeauReykaMangoRu} />
+            </ImageContainer>
             <StyledIntroduction>
                 <Paragraph>
                     Hello! I am an animal caretaker with over eight years of professional caretaking experience. Experience includes zookeeping (Prospect Park Zoo, Wildlife Conservation Society), veterinary assisting, rescue rehabilitation (ASPCA), general pet care & enrichment. You can find my offered services, pricing, & client testimonials below.
