@@ -8,6 +8,7 @@ import {
 } from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
 import AboutMe from './components/AboutMe.js';
+import AnimalCare from './components/AnimalCare.js'
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -113,7 +114,7 @@ const App = () => {
           >
             {selectedMenuKey === '1' && <AboutMe />}
             {selectedMenuKey === '2' && <div>Video Library Content</div>}
-            {selectedMenuKey === '3' && <div>Upload Files Content</div>}
+            {selectedMenuKey === '3' && <AnimalCare />}
             {selectedMenuKey === '4' && <div>Analytics Content</div>}
             {selectedMenuKey === '5' && <div>Cloud Storage Content</div>}
           </div>

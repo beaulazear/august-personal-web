@@ -9,6 +9,8 @@ const ContentWrapper = styled.div`
   max-width: 900px;
   width: 100%;
   overflow-y: auto;
+  text-align: center;
+  margin: 0 auto; /* Center content horizontally */
 
   @media (max-width: 768px) {
     padding: 15px;
@@ -26,6 +28,10 @@ const Image = styled.img`
   height: auto;
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+  @media (min-width: 768px) { /* Apply styles when the screen is larger than 1024px */
+    max-width: 70%; /* Reduce image size to 70% of its original width */
+  }
 `;
 
 const StyledIntroduction = styled.div`
