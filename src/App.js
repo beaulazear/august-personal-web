@@ -55,36 +55,45 @@ const App = () => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
-  const [selectedMenuKey, setSelectedMenuKey] = useState('1'); // Initialize as string
+  const [collapsed, setCollapsed] = useState(false);
+  const [selectedMenuKey, setSelectedMenuKey] = useState('1');
 
-  // Function to handle menu item click
   const handleMenuClick = (e) => {
-    setSelectedMenuKey(e.key); // `e.key` is already a string
+    setSelectedMenuKey(e.key);
     console.log(`Selected menu item key: ${e.key}`);
   };
 
   return (
     <Layout hasSider>
-      <Sider style={siderStyle}>
+      <Sider
+        style={siderStyle}
+        collapsible
+        collapsed={collapsed}
+        onCollapse={setCollapsed}
+        collapsedWidth={80} // Sidebar will not disappear completely, just shrink to 80px width
+        breakpoint="md" // Collapse on medium screens and smaller
+      >
         <div className="demo-logo-vertical" />
         <Menu
           theme="dark"
           mode="inline"
           selectedKeys={[selectedMenuKey]}
           items={items}
-          onClick={handleMenuClick} // Add the onClick handler
+          onClick={handleMenuClick}
         />
       </Sider>
-      <Layout style={{ marginInlineStart: 200 }}>
+      <Layout style={{ marginInlineStart: collapsed ? 80 : 200 }}>
         <Header
           style={{
-            fontSize: '30px',  // Increased font size
+            fontSize: '30px', // Increased font size for larger screens
             fontWeight: 'bold', // Added font weight for stronger text
             background: colorBgContainer,
+            textAlign: 'center', // Center text
+            padding: '5px 5px', // Padding for spacing
           }}
         >
           {selectedMenuKey === '1' && 'Christian Beau Lazear'}
-          {selectedMenuKey === '2' && 'Software Development'}
+          {selectedMenuKey === '2' && 'WebDev'}
           {selectedMenuKey === '3' && 'Animal Care'}
           {selectedMenuKey === '4' && 'Resume'}
           {selectedMenuKey === '5' && 'Contact Me'}
@@ -104,7 +113,6 @@ const App = () => {
             }}
           >
             {selectedMenuKey === '1' && <AboutMe />}
-            {/* Add content/components for other keys as needed */}
             {selectedMenuKey === '2' && <div>Video Library Content</div>}
             {selectedMenuKey === '3' && <div>Upload Files Content</div>}
             {selectedMenuKey === '4' && <div>Analytics Content</div>}
