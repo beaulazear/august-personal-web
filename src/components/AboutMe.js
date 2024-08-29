@@ -7,8 +7,6 @@ import BeauWithHornbill from '../images/BeauAndHornbill.jpeg';
 
 const ContentWrapper = styled.div`
   max-width: 900px;
-  margin: 20px auto;
-  padding: 20px;
   width: 100%;
   overflow-y: auto;
 
@@ -37,7 +35,7 @@ const StyledIntroduction = styled.div`
 
   @media (max-width: 768px) {
     margin-bottom: 30px;
-    padding: 0 10px;
+    padding: 0 5px;
   }
 `;
 
@@ -48,7 +46,7 @@ const SubHeading = styled.h3`
   font-weight: 700;
 
   @media (max-width: 768px) {
-    font-size: 2.2em;
+    font-size: 2em;
   }
 `;
 
@@ -59,7 +57,7 @@ const Paragraph = styled.p`
   font-size: 1.3em;
 
   @media (max-width: 768px) {
-    font-size: 1.1em;
+    font-size: 1em;
   }
 `;
 
@@ -76,7 +74,7 @@ const AboutMe = () => {
         <Image src={BeauWithHornbill} alt="Beau with a hornbill" />
       </ImageWrapper>
       <StyledIntroduction>
-        <SubHeading>🖥️ Software Development 🖥️</SubHeading>
+        <SubHeading>Software Development</SubHeading>
         <Paragraph>
           Hello! 👋 I'm a self-taught developer who completed a bootcamp and holds an AWS certification. Proficient in JavaScript, React, Ruby on Rails, HTML, CSS, and more. Always open to new projects and continuously expanding my skills. Let's collaborate on something great!
         </Paragraph>
@@ -85,7 +83,7 @@ const AboutMe = () => {
         <Image src={CroppedBeau} alt="headshot of Beau" />
       </ImageWrapper>
       <StyledIntroduction>
-        <SubHeading>🐈 Animal Care 🐕</SubHeading>
+        <SubHeading>Animal Care</SubHeading>
         <Paragraph>
           Delivering top-notch animal care services in Cobble Hill, Gowanus, Carroll Gardens, and surrounding areas for weekday walks. As an insured professional with a background as a zookeeper and experience from ASPCA and vet clinics, I offer pet sitting services across the city. Your furry pals are in caring and experienced hands, whether it's a walk or pet sitting!
         </Paragraph>

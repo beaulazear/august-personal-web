@@ -92,7 +92,7 @@ const App = () => {
             padding: '5px 5px', // Padding for spacing
           }}
         >
-          {selectedMenuKey === '1' && 'Christian Beau Lazear'}
+          {selectedMenuKey === '1' && 'Beau Lazear'}
           {selectedMenuKey === '2' && 'WebDev'}
           {selectedMenuKey === '3' && 'Animal Care'}
           {selectedMenuKey === '4' && 'Resume'}
@@ -100,13 +100,12 @@ const App = () => {
         </Header>
         <Content
           style={{
-            margin: '24px 16px 0',
+            margin: '20px 12px 0',
             overflow: 'initial',
           }}
         >
           <div
             style={{
-              padding: 10,
               textAlign: 'center',
               background: colorBgContainer,
               borderRadius: borderRadiusLG,
