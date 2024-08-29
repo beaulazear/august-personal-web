@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Ruth from "../images/Ruth.jpeg";
 import BeauAndRalph from "../images/BeauAndRalph.JPG";
@@ -145,18 +145,9 @@ const Image = styled.img`
 `;
 
 const AnimalCareInfo = () => {
-    const topElement = useRef(null);
-
-    function scrollToTop() {
-        topElement?.current?.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    useEffect(() => {
-        scrollToTop();
-    }, []);
 
     return (
-        <StyledWelcomeMessage ref={topElement}>
+        <StyledWelcomeMessage>
             <ImageContainer>
                 <Image src={BeauReykaMangoRu} />
             </ImageContainer>

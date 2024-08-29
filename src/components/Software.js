@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const WelcomeContainer = styled.div`
@@ -133,19 +133,10 @@ const IntroContent = styled.p`
 `;
 
 const Programming = () => {
-    const topElement = useRef(null);
-
-    function scrollToTop() {
-        topElement?.current?.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    useEffect(() => {
-        scrollToTop();
-    }, []);
 
     return (
         <div>
-            <WelcomeContainer ref={topElement}>
+            <WelcomeContainer>
                 <h1>Software Development</h1>
                 <IntroContainer>
                     <IntroContent>
