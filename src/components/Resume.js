@@ -12,6 +12,7 @@ const Container = styled.div`
   overflow-y: auto;
     margin-top: 8px;
   margin-bottom: 8px;
+    text-align: left;
 
   @media (max-width: 768px) {
     padding: 15px;
@@ -26,6 +27,7 @@ const SectionTitle = styled.h2`
   color: #007BFF;
   border-bottom: 2px solid #007BFF;
   padding-bottom: 5px;
+    text-align: left;
 
   @media (max-width: 768px) {
     font-size: 18px;
@@ -39,6 +41,7 @@ const JobTitle = styled.h3`
   margin-top: 15px;
   margin-bottom: 10px;
   color: #333;
+    text-align: left;
 
   @media (max-width: 768px) {
     font-size: 18px;
@@ -61,11 +64,13 @@ const JobDescription = styled.ul`
 
 const JobDetail = styled.li`
   margin-bottom: 10px;
+    text-align: left;
 `;
 
 const StyledLink = styled.a`
   color: #007BFF;
   text-decoration: none;
+    text-align: left;
 
   &:hover {
     text-decoration: underline;
@@ -75,7 +80,7 @@ const StyledLink = styled.a`
 const Resume = () => {
     return (
         <Container>
-            <h1 style={{ fontSize: '28px', marginBottom: '20px', color: '#007BFF', textAlign: 'center' }}>Beau Lazear</h1>
+            <h1 style={{ fontSize: '28px', marginBottom: '20px', color: '#007BFF', textAlign: 'left' }}>Beau Lazear</h1>
             <StyledLink target="_blank" href={ResumePDF}>Download PDF Version</StyledLink>
             <SectionTitle>Professional Summary</SectionTitle>
             <JobDescription>

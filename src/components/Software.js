@@ -7,9 +7,13 @@ const WelcomeContainer = styled.div`
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+  margin-left: 15px;
+  margin-right: 15px;
 
   @media (max-width: 768px) {
     padding: 15px;
+      margin-left: 2px;
+  margin-right: 2px;
   }
 `;
 
@@ -116,6 +120,8 @@ const IntroContainer = styled.div`
   background-color: #f9f9f9;
   text-align: left;
   margin-top: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
 
   @media (max-width: 768px) {
     margin-top: 10px;
