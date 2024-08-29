@@ -130,7 +130,7 @@ const ImageContainer = styled.div`
   width: 240px;
   height: 240px;
   margin: 0 auto;
-  margin-bottom: 18px;
+  margin-bottom: 10px;
   margin-top: 10px;
   overflow: hidden;
   border-radius: 15px;
@@ -161,6 +161,9 @@ const AnimalCareInfo = () => {
                 <Image src={BeauReykaMangoRu} />
             </ImageContainer>
             <StyledIntroduction>
+                <StyledHeading>
+                    My Background
+                </StyledHeading>
                 <Paragraph>
                     Hello! I am an animal caretaker with over eight years of professional caretaking experience. Experience includes zookeeping (Prospect Park Zoo, Wildlife Conservation Society), veterinary assisting, rescue rehabilitation (ASPCA), general pet care & enrichment. You can find my offered services, pricing, & client testimonials below.
                 </Paragraph>
@@ -230,7 +233,7 @@ const AnimalCareInfo = () => {
                 </StyledServiceCardTesti>
                 <StyledServiceCardTesti>
                     <StyledHeading>Euthanasia support</StyledHeading>
-                    <StyledSubHeading>Free of charge :)</StyledSubHeading>
+                    <StyledPrice>Free of charge :)</StyledPrice>
                     <StyledParagraph>
                         With my animal rescue / veterinary experience, I have been there for a lot of euthanasia. I know this can be
                         a very tough moment for an animal lover! I would like to offer my company free of charge... To be with you

@@ -38,7 +38,7 @@ const StyledIntroduction = styled.div`
   margin-bottom: 40px;
   padding: 0 20px;
     line-height: 1.6;
-    font-size: 18px;
+    font-size: 16px;
 
   @media (max-width: 768px) {
     margin-bottom: 30px;
@@ -53,7 +53,7 @@ const SubHeading = styled.h3`
   font-weight: 700;
 
   @media (max-width: 768px) {
-    font-size: 2em;
+    font-size: 28px;
   }
 `;
 

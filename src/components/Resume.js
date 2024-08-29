@@ -10,6 +10,8 @@ const Container = styled.div`
   max-width: 80%;
   margin: 20px auto;
   overflow-y: auto;
+    margin-top: 8px;
+  margin-bottom: 8px;
 
   @media (max-width: 768px) {
     padding: 15px;
