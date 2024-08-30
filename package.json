@@ -2,7 +2,7 @@
   "name": "aug-personal-web",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://beaulazear.github.io/august-personal-web/",
+  "homepage": "http://beaulazear.github.io/",
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@testing-library/jest-dom": "^5.17.0",
