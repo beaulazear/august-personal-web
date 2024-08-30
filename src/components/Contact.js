@@ -114,7 +114,7 @@ const Paragraph = styled.p`
   margin-bottom: 20px;
 `;
 
-export default function Contact({ closeModal }) {
+export default function Contact() {
     const form = useRef();
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
@@ -157,7 +157,6 @@ export default function Contact({ closeModal }) {
                 <StyledLabel htmlFor="message">Message</StyledLabel>
                 <StyledTextarea placeholder="Tell me about yourself / desired services!" name="message" id="message" />
                 <StyledButtonContainer>
-                    <StyledButton type="button" onClick={closeModal}>Return Home</StyledButton>
                     <StyledButton type="submit">Send</StyledButton>
                 </StyledButtonContainer>
                 {error && <ErrorMessage>{error}</ErrorMessage>}
