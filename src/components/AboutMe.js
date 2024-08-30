@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import BeauAndRu from '../images/BeauAndRu.JPG';
 import CroppedBeau from '../images/CroppedBeau.jpeg';
 import BeauWithHornbill from '../images/BeauAndHornbill.jpeg';
+import Linkedin from '../images/Linkedin.jpg'; // Fixed import name
+import Github from '../images/Github.jpg';
 
 const ContentWrapper = styled.div`
   max-width: 1200px;
@@ -35,16 +37,16 @@ const Image = styled.img`
   height: auto;
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 768px) {
+    max-width: 200px; /* Adjusted size for smaller devices */
+        border-radius: 50%; /* Makes the image circular */
+  }
 `;
 
 const TextWrapper = styled.div`
   flex: 2;
-  padding: 10px;
   text-align: left;
-
-  @media (max-width: 768px) {
-    text-align: center;
-  }
 `;
 
 const SubHeading = styled.h3`
@@ -61,10 +63,40 @@ const SubHeading = styled.h3`
 const Paragraph = styled.p`
   line-height: 1.6;
   color: #555;
-  font-size: 1.2em;
+  font-size: 1.6em;
 
   @media (max-width: 768px) {
-    font-size: 1em;
+    font-size: 1.2em;
+  }
+`;
+
+const SocialIcons = styled.div`
+  margin-top: 10px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+`;
+
+const Icon = styled.a`
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &:hover {
+    opacity: 0.8;
   }
 `;
 
@@ -76,10 +108,18 @@ const AboutMe = () => {
           <Image src={BeauWithHornbill} alt="Beau with a hornbill" />
         </ImageWrapper>
         <TextWrapper>
-          <SubHeading>🌟 What I Do 🌟</SubHeading>
+          <SubHeading>About Me</SubHeading>
           <Paragraph>
             Hi, I'm Beau, an animal lover based in Brooklyn, NYC. I'm passionate about providing excellent care for pets and equally enthusiastic about coding. I have worked as a zookeeper, in animal rescues, vet clinics, and more. I was initially self-taught in basic programming, then I completed a coding bootcamp at the Flatiron school and obtained an AWS certification.
           </Paragraph>
+          <SocialIcons>
+            <Icon href="https://www.linkedin.com/in/beaulazear" target="_blank" rel="noopener noreferrer">
+              <img src={Linkedin} alt="LinkedIn" />
+            </Icon>
+            <Icon href="https://github.com/beaulazear" target="_blank" rel="noopener noreferrer">
+              <img src={Github} alt="GitHub" />
+            </Icon>
+          </SocialIcons>
         </TextWrapper>
       </Section>
 
@@ -92,6 +132,14 @@ const AboutMe = () => {
           <Paragraph>
             Hello! 👋 I'm a self-taught developer who completed a bootcamp and holds an AWS certification. Proficient in JavaScript, React, Ruby on Rails, HTML, CSS, and more. Always open to new projects and continuously expanding my skills. Let's collaborate on something great!
           </Paragraph>
+          <SocialIcons>
+            <Icon href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer">
+              <img src={Linkedin} alt="LinkedIn" />
+            </Icon>
+            <Icon href="https://github.com/your-username" target="_blank" rel="noopener noreferrer">
+              <img src={Github} alt="GitHub" />
+            </Icon>
+          </SocialIcons>
         </TextWrapper>
       </Section>
 
@@ -104,6 +152,14 @@ const AboutMe = () => {
           <Paragraph>
             Delivering top-notch animal care services in Cobble Hill, Gowanus, Carroll Gardens, and surrounding areas for weekday walks. As an insured professional with a background as a zookeeper and experience from ASPCA and vet clinics, I offer pet sitting services across the city. Your furry pals are in caring and experienced hands, whether it's a walk or pet sitting!
           </Paragraph>
+          <SocialIcons>
+            <Icon href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer">
+              <img src={Linkedin} alt="LinkedIn" />
+            </Icon>
+            <Icon href="https://github.com/your-username" target="_blank" rel="noopener noreferrer">
+              <img src={Github} alt="GitHub" />
+            </Icon>
+          </SocialIcons>
         </TextWrapper>
       </Section>
     </ContentWrapper>
