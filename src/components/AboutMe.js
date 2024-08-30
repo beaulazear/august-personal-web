@@ -113,7 +113,7 @@ const AboutMe = () => {
             Hi, I'm Beau, an animal lover based in Brooklyn, NYC. I'm passionate about providing excellent care for pets and equally enthusiastic about coding. I have worked as a zookeeper, in animal rescues, vet clinics, and more. I was initially self-taught in basic programming, then I completed a coding bootcamp at the Flatiron school and obtained an AWS certification.
           </Paragraph>
           <SocialIcons>
-            <Icon href="https://www.linkedin.com/in/beaulazear" target="_blank" rel="noopener noreferrer">
+            <Icon href="https://www.linkedin.com/in/beau-lazear" target="_blank" rel="noopener noreferrer">
               <img src={Linkedin} alt="LinkedIn" />
             </Icon>
             <Icon href="https://github.com/beaulazear" target="_blank" rel="noopener noreferrer">
@@ -133,7 +133,7 @@ const AboutMe = () => {
             Hello! 👋 I'm a self-taught developer who completed a bootcamp and holds an AWS certification. Proficient in JavaScript, React, Ruby on Rails, HTML, CSS, and more. Always open to new projects and continuously expanding my skills. Let's collaborate on something great!
           </Paragraph>
           <SocialIcons>
-            <Icon href="https://www.linkedin.com/in/beaulazear" target="_blank" rel="noopener noreferrer">
+            <Icon href="https://www.linkedin.com/in/beau-lazear" target="_blank" rel="noopener noreferrer">
               <img src={Linkedin} alt="LinkedIn" />
             </Icon>
             <Icon href="https://github.com/beaulazear" target="_blank" rel="noopener noreferrer">
@@ -153,7 +153,7 @@ const AboutMe = () => {
             Delivering top-notch animal care services in Cobble Hill, Gowanus, Carroll Gardens, and surrounding areas for weekday walks. As an insured professional with a background as a zookeeper and experience from ASPCA and vet clinics, I offer pet sitting services across the city. Your furry pals are in caring and experienced hands, whether it's a walk or pet sitting!
           </Paragraph>
           <SocialIcons>
-            <Icon href="https://www.linkedin.com/in/beaulazear" target="_blank" rel="noopener noreferrer">
+            <Icon href="https://www.linkedin.com/in/beau-lazear" target="_blank" rel="noopener noreferrer">
               <img src={Linkedin} alt="LinkedIn" />
             </Icon>
             <Icon href="https://github.com/beaulazear" target="_blank" rel="noopener noreferrer">
