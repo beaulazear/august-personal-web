@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Ruth from "../images/Ruth.jpeg";
 import BeauAndRalph from "../images/BeauAndRalph.JPG";
 import JavaLookinCute from "../images/JavaLookinCute.jpeg";
 import RiverWithBrick from "../images/RiverWithBrick.jpeg";
 import MooseOnVerandah from "../images/MooseOnVerandah.jpeg";
-import BeauReykaMangoRu from '../images/BeauReykaMangoRu.jpeg';
 
 const StyledContainer = styled.div`
   display: flex;
@@ -19,7 +18,8 @@ const StyledContainer = styled.div`
 
   @media (max-width: 800px) {
     flex-direction: column;
-    align-items: center;
+    align-items: left;
+    text-align: left;
     width: 100%;
   }
 `;
@@ -34,8 +34,9 @@ const StyledCard = styled.div`
   flex-direction: column;
   overflow: hidden;
 
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     margin: 5px;
+    text-align: left;
   }
 `;
 
@@ -61,6 +62,7 @@ const StyledHeading = styled.h2`
   @media (max-width: 800px) {
     font-size: 24px;
     margin-bottom: 10px;
+    padding-left: 13px;
   }
 `;
 
@@ -95,6 +97,7 @@ const StyledIntroduction = styled.div`
 
   @media (max-width: 800px) {
     max-width: 600px;
+    text-align: left;
   }
 `;
 
@@ -118,11 +121,13 @@ const Image = styled.img`
 `;
 
 const AnimalCareInfo = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+      
     return (
         <StyledWelcomeMessage>
-            <ImageContainer>
-                <Image src={BeauReykaMangoRu} alt="Beau with Reyka and Mango" />
-            </ImageContainer>
             <StyledIntroduction>
                 <StyledHeading>Background</StyledHeading>
                 <StyledParagraph>

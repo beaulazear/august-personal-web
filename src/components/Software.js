@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect} from 'react';
 import styled from 'styled-components';
 
 const ContentWrapper = styled.div`
@@ -10,6 +10,7 @@ const ContentWrapper = styled.div`
 
   @media (max-width: 768px) {
     padding: 15px;
+    text-align: left;
   }
 `;
 
@@ -130,10 +131,16 @@ const StyledHeading = styled.h2`
   @media (max-width: 800px) {
     font-size: 24px;
     margin-bottom: 10px;
+    padding-left: 13px;
   }
 `;
 
 const Programming = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   return (
     <ContentWrapper>
       <StyledHeading>Soft Skills</StyledHeading>

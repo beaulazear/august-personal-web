@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ResumePDF from "../images/ResumePDF.pdf";
 import styled from 'styled-components';
 
@@ -77,6 +77,11 @@ const StyledLink = styled.a`
 `;
 
 const Resume = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
     return (
         <Container>
             <h1 style={{ fontSize: '28px', marginBottom: '20px', color: '#007BFF', textAlign: 'left' }}>Beau Lazear</h1>

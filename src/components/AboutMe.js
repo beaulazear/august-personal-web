@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import BeauAndRu from '../images/BeauAndRu.JPG';
 import CroppedBeau from '../images/CroppedBeau.jpeg';
-import BeauWithHornbill from '../images/BeauAndHornbill.jpeg';
 import Linkedin from '../images/Linkedin.jpg'; // Fixed import name
 import Github from '../images/Github.jpg';
 
@@ -101,12 +100,14 @@ const Icon = styled.a`
 `;
 
 const AboutMe = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   return (
     <ContentWrapper>
       <Section>
-        <ImageWrapper>
-          <Image src={BeauWithHornbill} alt="Beau with a hornbill" />
-        </ImageWrapper>
         <TextWrapper>
           <SubHeading>About Me</SubHeading>
           <Paragraph>
