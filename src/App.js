@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
   AuditOutlined,
-  CloudOutlined,
+  MailOutlined,
   HeartOutlined,
   UserOutlined,
   JavaScriptOutlined,
@@ -9,8 +9,9 @@ import {
 import { Layout, Menu, theme } from 'antd';
 import AboutMe from './components/AboutMe.js';
 import AnimalCare from './components/AnimalCare.js';
-import Software from './components/Software.js'
-import Resume from './components/Resume.js'
+import Software from './components/Software.js';
+import Resume from './components/Resume.js';
+import Contact from './components/Contact.js';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -46,11 +47,11 @@ const items = [
     icon: <AuditOutlined />,
     label: 'Resume',
   },
-  // {
-  //   key: '5',
-  //   icon: <CloudOutlined />,
-  //   label: 'Contact Me',
-  // },
+  {
+    key: '5',
+    icon: <MailOutlined />,
+    label: 'Contact Me',
+  },
 ];
 
 const App = () => {
@@ -88,11 +89,13 @@ const App = () => {
       <Layout style={{ marginInlineStart: collapsed ? 80 : 200 }}>
         <Header
           style={{
-            fontSize: '30px', // Increased font size for larger screens
-            fontWeight: 'bold', // Added font weight for stronger text
-            background: colorBgContainer,
+            fontSize: '24px', // Adjusted font size for consistency
+            fontWeight: '600', // Consistent font weight
+            background: '#001529', // Dark background to match menu
+            color: '#fff', // White text for contrast
             textAlign: 'center', // Center text
-            padding: '5px 5px', // Padding for spacing
+            borderBottom: '1px solid #f0f0f0', // Subtle bottom border
+            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)', // Light shadow for depth
           }}
         >
           {selectedMenuKey === '1' && 'Beau Lazear'}
@@ -118,7 +121,7 @@ const App = () => {
             {selectedMenuKey === '2' && <Software />}
             {selectedMenuKey === '3' && <AnimalCare />}
             {selectedMenuKey === '4' && <Resume />}
-            {selectedMenuKey === '5' && <div>Cloud Storage Content</div>}
+            {selectedMenuKey === '5' && <Contact />}
           </div>
         </Content>
         <Footer

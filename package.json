@@ -4,10 +4,12 @@
   "private": true,
   "homepage": "http://beaulazear.github.io/august-personal-web/",
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "antd": "^5.20.3",
+    "emailjs": "^4.0.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "^5.0.1",
