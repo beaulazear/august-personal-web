@@ -130,7 +130,7 @@ const AboutMe = () => {
         <TextWrapper>
           <SubHeading>Software Development</SubHeading>
           <Paragraph>
-            Hello! 👋 I'm a self-taught developer who completed a bootcamp and holds an AWS certification. Proficient in JavaScript, React, Ruby on Rails, HTML, CSS, and more. Always open to new projects and continuously expanding my skills. Let's collaborate on something great!
+            I'm a self-taught developer who completed a bootcamp and holds an AWS certification. Proficient in JavaScript, React, Ruby on Rails, HTML, CSS, and more. Always open to new projects and continuously expanding my skills. Let's collaborate on something great!
           </Paragraph>
           <SocialIcons>
             <Icon href="https://www.linkedin.com/in/beau-lazear" target="_blank" rel="noopener noreferrer">
