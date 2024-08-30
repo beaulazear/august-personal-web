@@ -6,7 +6,7 @@ import {
   UserOutlined,
   JavaScriptOutlined,
 } from '@ant-design/icons';
-import { Layout, Menu, theme } from 'antd';
+import { Layout, Menu, theme, Tooltip } from 'antd';
 import AboutMe from './components/AboutMe.js';
 import AnimalCare from './components/AnimalCare.js';
 import Software from './components/Software.js';
@@ -61,9 +61,19 @@ const App = () => {
 
   const [collapsed, setCollapsed] = useState(false);
   const [selectedMenuKey, setSelectedMenuKey] = useState('1');
+  const [tooltipVisible, setTooltipVisible] = useState(false);
+  const [currentLabel, setCurrentLabel] = useState('');
 
   const handleMenuClick = (e) => {
     setSelectedMenuKey(e.key);
+    setCurrentLabel(items.find(item => item.key === e.key).label);
+    setTooltipVisible(true);
+
+    // Hide the tooltip after 2 seconds
+    setTimeout(() => {
+      setTooltipVisible(false);
+    }, 2000);
+
     console.log(`Selected menu item key: ${e.key}`);
   };
 
@@ -85,6 +95,11 @@ const App = () => {
           items={items}
           onClick={handleMenuClick}
         />
+        {tooltipVisible && (
+          <Tooltip title={currentLabel} placement="right">
+            <span style={{ visibility: 'hidden' }}>Tooltip</span>
+          </Tooltip>
+        )}
       </Sider>
       <Layout style={{ marginInlineStart: collapsed ? 80 : 200 }}>
         <Header
