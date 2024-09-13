@@ -161,7 +161,7 @@ const Programming = () => {
           </CardDescription>
           <ButtonContainer>
             <ActionButton target="_blank" href="https://youtu.be/vGsZPkvNa5Y">Video</ActionButton>
-            <ActionButton target="_blank" href="https://dog-walking-app.onrender.com">Deployed</ActionButton>
+            <ActionButton target="_blank" href="www.pocket-walks.com">Deployed</ActionButton>
             <ActionButton target="_blank" href="https://github.com/beaulazear/dog-walking-app.git">Repo</ActionButton>
           </ButtonContainer>
         </ServiceCard>
