@@ -193,7 +193,7 @@ const Programming = () => {
             An interactive single-page application crafted using React, with styling handled efficiently through Styled Components and Bootstrap, designed specifically for marketing needs.
           </CardDescription>
           <ButtonContainer>
-            <ActionButton target="_blank" href="https://beaulazear.github.io/michael-personal-site/">Deployed</ActionButton>
+            <ActionButton target="_blank" href="wwww.ariadesignconsultants.com">Deployed</ActionButton>
             <ActionButton target="_blank" href="https://github.com/beaulazear/michael-personal-site.git">Repo</ActionButton>
           </ButtonContainer>
         </ServiceCard>
