@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 const ContentWrapper = styled.div`
@@ -140,7 +140,7 @@ const Programming = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
+
   return (
     <ContentWrapper>
       <StyledHeading>Soft Skills</StyledHeading>
@@ -161,8 +161,28 @@ const Programming = () => {
           </CardDescription>
           <ButtonContainer>
             <ActionButton target="_blank" href="https://youtu.be/vGsZPkvNa5Y">Video</ActionButton>
-            <ActionButton target="_blank" href="www.pocket-walks.com">Deployed</ActionButton>
+            <ActionButton target="_blank" href="https://www.pocket-walks.com/">Deployed</ActionButton>
             <ActionButton target="_blank" href="https://github.com/beaulazear/dog-walking-app.git">Repo</ActionButton>
+          </ButtonContainer>
+        </ServiceCard>
+        <ServiceCard>
+          <CardTitle>Aria Design Consultants</CardTitle>
+          <CardDescription>
+            An interactive single-page application developed as a professional contract project, built using React with efficient styling through Styled Components and Bootstrap, tailored to meet marketing needs.
+          </CardDescription>
+          <ButtonContainer>
+            <ActionButton target="_blank" href="https://www.ariadesignconsultants.com/#/">Deployed</ActionButton>
+            <ActionButton target="_blank" href="https://github.com/beaulazear/michael-personal-site.git">Repo</ActionButton>
+          </ButtonContainer>
+        </ServiceCard>
+        <ServiceCard>
+          <CardTitle>www.beaulazear.com</CardTitle>
+          <CardDescription>
+            A single page application made with React for marketing my business and providing information to new clients.
+          </CardDescription>
+          <ButtonContainer>
+            <ActionButton target="_blank" href="https://beaulazear.com/">Deployed</ActionButton>
+            <ActionButton target="_blank" href="https://github.com/beaulazear/beaus-website">Repo</ActionButton>
           </ButtonContainer>
         </ServiceCard>
         <ServiceCard>
@@ -176,28 +196,6 @@ const Programming = () => {
             <ActionButton target="_blank" href="https://github.com/beaulazear/pokemon">Repo</ActionButton>
           </ButtonContainer>
         </ServiceCard>
-
-        <ServiceCard>
-          <CardTitle>www.beaulazear.com</CardTitle>
-          <CardDescription>
-            A single page application made with React for marketing my business and providing information to new clients.
-          </CardDescription>
-          <ButtonContainer>
-            <ActionButton target="_blank" href="https://beaulazear.com/">Deployed</ActionButton>
-            <ActionButton target="_blank" href="https://github.com/beaulazear/beaus-website">Repo</ActionButton>
-          </ButtonContainer>
-        </ServiceCard>
-        <ServiceCard>
-          <CardTitle>Aria Design Consultants</CardTitle>
-          <CardDescription>
-            An interactive single-page application crafted using React, with styling handled efficiently through Styled Components and Bootstrap, designed specifically for marketing needs.
-          </CardDescription>
-          <ButtonContainer>
-            <ActionButton target="_blank" href="wwww.ariadesignconsultants.com">Deployed</ActionButton>
-            <ActionButton target="_blank" href="https://github.com/beaulazear/michael-personal-site.git">Repo</ActionButton>
-          </ButtonContainer>
-        </ServiceCard>
-
         <ServiceCard>
           <CardTitle>Personal Marketing Website</CardTitle>
           <CardDescription>

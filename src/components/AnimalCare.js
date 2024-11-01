@@ -5,6 +5,7 @@ import BeauAndRalph from "../images/BeauAndRalph.JPG";
 import JavaLookinCute from "../images/JavaLookinCute.jpeg";
 import RiverWithBrick from "../images/RiverWithBrick.jpeg";
 import MooseOnVerandah from "../images/MooseOnVerandah.jpeg";
+import Graphic from '../images/Graphic.JPEG'
 
 const StyledContainer = styled.div`
   display: flex;
@@ -120,16 +121,32 @@ const Image = styled.img`
   border-radius: 15px;
 `;
 
+const StyledGraphic = styled.div`
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+`;
+
 const AnimalCareInfo = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-      }, []);
-      
+    }, []);
+
     return (
         <StyledWelcomeMessage>
             <StyledIntroduction>
-                <StyledHeading>Background</StyledHeading>
+                <StyledGraphic>
+                    <img src={Graphic} alt="Promotional graphic" />
+                </StyledGraphic>
                 <StyledParagraph>
                     Hello! I am an animal caretaker with over eight years of professional experience. My background includes zookeeping (Prospect Park Zoo, Wildlife Conservation Society), veterinary assisting, rescue rehabilitation (ASPCA), and general pet care & enrichment. You can find my offered services, pricing, & client testimonials below.
                 </StyledParagraph>
