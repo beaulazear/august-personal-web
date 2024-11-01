@@ -4,6 +4,7 @@ import BeauAndRu from '../images/BeauAndRu.JPG';
 import CroppedBeau from '../images/CroppedBeau.jpeg';
 import Linkedin from '../images/Linkedin.jpg'; // Fixed import name
 import Github from '../images/Github.jpg';
+import Graphic from '../images/Graphic.JPEG';
 
 const ContentWrapper = styled.div`
   max-width: 1200px;
@@ -146,7 +147,7 @@ const AboutMe = () => {
 
       <Section>
         <ImageWrapper>
-          <Image src={BeauAndRu} alt="Beau with a dog named Ru" />
+          <Image src={Graphic} alt="Beau with a dog named Ru" />
         </ImageWrapper>
         <TextWrapper>
           <SubHeading>Animal Care</SubHeading>
