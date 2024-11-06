@@ -212,7 +212,7 @@ const AnimalCareInfo = () => {
                 </StyledCard>
                 <StyledCard>
                     <StyledHeading>Euthanasia Support</StyledHeading>
-                    <StyledPrice>Free of charge :)</StyledPrice>
+                    <StyledPrice>Free of charge 💖</StyledPrice>
                     <StyledParagraph>
                         With my animal rescue and veterinary experience, I understand how tough euthanasia can be for an animal lover. I offer my support free of charge to be with you during this difficult time. I am also available to spend some time with you afterward. It can be helpful to have someone to talk to.<br />
                         <br />
