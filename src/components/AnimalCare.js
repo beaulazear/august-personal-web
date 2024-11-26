@@ -6,7 +6,7 @@ import JavaLookinCute from "../images/JavaLookinCute.jpeg";
 import RiverWithBrick from "../images/RiverWithBrick.jpeg";
 import MooseOnVerandah from "../images/MooseOnVerandah.jpeg";
 import Graphic from '../images/Graphic.JPEG'
-import InstagramEmbed from './InstagramEmbed';
+// import InstagramEmbed from './InstagramEmbed';
 
 const StyledContainer = styled.div`
   display: flex;
@@ -152,7 +152,7 @@ const AnimalCareInfo = () => {
                     Hello! I am an animal caretaker with over eight years of professional experience. My background includes zookeeping (Prospect Park Zoo, Wildlife Conservation Society), veterinary assisting, rescue rehabilitation (ASPCA), and general pet care & enrichment. You can find my offered services, pricing, instagram, & client testimonials below.
                 </StyledParagraph>
             </StyledIntroduction>
-            <InstagramEmbed />
+            {/* <InstagramEmbed /> */}
             <StyledHeading>Services and Pricing</StyledHeading>
             <StyledContainer>
                 <StyledCard>
