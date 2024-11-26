@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import BeauAndRu from '../images/BeauAndRu.JPG';
 import CroppedBeau from '../images/CroppedBeau.jpeg';
 import Linkedin from '../images/Linkedin.jpg'; // Fixed import name
 import Github from '../images/Github.jpg';
@@ -105,7 +104,7 @@ const AboutMe = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
+
   return (
     <ContentWrapper>
       <Section>
@@ -134,14 +133,6 @@ const AboutMe = () => {
           <Paragraph>
             I'm a self-taught developer who completed a bootcamp and holds an AWS certification. Proficient in JavaScript, React, Ruby on Rails, HTML, CSS, and more. Always open to new projects and continuously expanding my skills. Let's collaborate on something great!
           </Paragraph>
-          <SocialIcons>
-            <Icon href="https://www.linkedin.com/in/beau-lazear" target="_blank" rel="noopener noreferrer">
-              <img src={Linkedin} alt="LinkedIn" />
-            </Icon>
-            <Icon href="https://github.com/beaulazear" target="_blank" rel="noopener noreferrer">
-              <img src={Github} alt="GitHub" />
-            </Icon>
-          </SocialIcons>
         </TextWrapper>
       </Section>
 
@@ -154,14 +145,6 @@ const AboutMe = () => {
           <Paragraph>
             Delivering top-notch animal care services in Cobble Hill, Gowanus, Carroll Gardens, and surrounding areas for weekday walks. As an insured professional with a background as a zookeeper and experience from ASPCA and vet clinics, I offer pet sitting services across the city. Your furry pals are in caring and experienced hands, whether it's a walk or pet sitting!
           </Paragraph>
-          <SocialIcons>
-            <Icon href="https://www.linkedin.com/in/beau-lazear" target="_blank" rel="noopener noreferrer">
-              <img src={Linkedin} alt="LinkedIn" />
-            </Icon>
-            <Icon href="https://github.com/beaulazear" target="_blank" rel="noopener noreferrer">
-              <img src={Github} alt="GitHub" />
-            </Icon>
-          </SocialIcons>
         </TextWrapper>
       </Section>
     </ContentWrapper>

@@ -146,9 +146,7 @@ const Programming = () => {
       <StyledHeading>Soft Skills</StyledHeading>
       <WelcomeContainer>
         <IntroContent>
-          I am proficient in JavaScript, React, HTML, CSS, Ruby on Rails, SQL, and more. I am self-taught to start,
-          and then I got a certificate from a coding bootcamp from Flatiron School for software development.
-          Additionally, I hold one AWS certification.
+          I am proficient in JavaScript, React, HTML, CSS, Ruby on Rails, SQL, Git, and more. I began as a self-taught developer and later earned a Software Development Certificate from Flatiron School. Additionally, I hold an AWS Certification, showcasing my commitment to expanding my technical expertise.
         </IntroContent>
       </WelcomeContainer>
       <StyledHeading>Projects</StyledHeading>
@@ -157,12 +155,22 @@ const Programming = () => {
           <CardTitle>Dog Walking Application</CardTitle>
           <CardDescription>
             A full-stack application developed using React for the front end, leveraging Ruby on Rails for the API backend,
-            and employing a PostgreSQL database for data management. The application is deployed on the Render platform.
+            and employing a PostgreSQL database for data management. The application is deployed on the Render platform. I currently use this application daily for my pet care business to simplify day to day tasks such as scheduling, invoicing, financial records, and more.
           </CardDescription>
           <ButtonContainer>
-            <ActionButton target="_blank" href="https://youtu.be/vGsZPkvNa5Y">Video</ActionButton>
+            {/* <ActionButton target="_blank" href="https://youtu.be/vGsZPkvNa5Y">Video</ActionButton> */}
             <ActionButton target="_blank" href="https://www.pocket-walks.com/">Deployed</ActionButton>
-            <ActionButton target="_blank" href="https://github.com/beaulazear/dog-walking-app.git">Repo</ActionButton>
+            <ActionButton target="_blank" href="https://github.com/beaulazear/voxxy-rails-react">Repo</ActionButton>
+          </ButtonContainer>
+        </ServiceCard>
+        <ServiceCard>
+          <CardTitle>Voxxy</CardTitle>
+          <CardDescription>
+            Voxxy is a full-stack application designed for seamless voice interaction, currently in its demo phase. Built with React, Ruby on Rails, and Vapi AI, Voxxy delivers an intuitive and dynamic customer feedback experience, leveraging advanced voice capabilities to enhance user engagement.
+          </CardDescription>
+          <ButtonContainer>
+            <ActionButton target="_blank" href="https://www.voxxyai.com/#/">Deployed</ActionButton>
+            <ActionButton target="_blank" href="https://github.com/beaulazear/michael-personal-site.git">Repo</ActionButton>
           </ButtonContainer>
         </ServiceCard>
         <ServiceCard>
@@ -196,7 +204,7 @@ const Programming = () => {
             <ActionButton target="_blank" href="https://github.com/beaulazear/pokemon">Repo</ActionButton>
           </ButtonContainer>
         </ServiceCard>
-        <ServiceCard>
+        {/* <ServiceCard>
           <CardTitle>Personal Marketing Website</CardTitle>
           <CardDescription>
             A single page application made with React for information/resume sharing & personal marketing.
@@ -205,20 +213,17 @@ const Programming = () => {
             <ActionButton target="_blank" href="https://beaulazear.github.io/nadine/#/">Deployed</ActionButton>
             <ActionButton target="_blank" href="https://github.com/beaulazear/nadine">Repo</ActionButton>
           </ButtonContainer>
-        </ServiceCard>
-
-        <ServiceCard>
+        </ServiceCard> */}
+        {/* <ServiceCard>
           <CardTitle>Pet Sitting Application</CardTitle>
           <CardDescription>
-            A comprehensive application developed using Ruby on Rails to serve as an API for PostgreSQL database, seamlessly integrated with React for efficient management of pet sitting services.
           </CardDescription>
           <ButtonContainer>
             <ActionButton target="_blank" href="https://github.com/beaulazear/pet-sitting-app.git">Repo</ActionButton>
             <ActionButton target="_blank" href="https://www.youtube.com/watch?v=n1pzEzciu1E&feature=youtu.be">Video</ActionButton>
           </ButtonContainer>
-        </ServiceCard>
-
-        <ServiceCard>
+        </ServiceCard> */}
+        {/* <ServiceCard>
           <CardTitle>Exercise/Workout Log</CardTitle>
           <CardDescription>
             A single page application made with Ruby, React, Active Record, and Sinatra for tracking workout data.
@@ -227,7 +232,8 @@ const Programming = () => {
             <ActionButton target="_blank" href="https://github.com/beaulazear/react-sinatra-project">FrontRepo</ActionButton>
             <ActionButton target="_blank" href="https://github.com/beaulazear/phase-3-sinatra-react-project">BackRepo</ActionButton>
           </ButtonContainer>
-        </ServiceCard>      </SectionContainer>
+        </ServiceCard> */}
+      </SectionContainer>
     </ContentWrapper>
   );
 };
