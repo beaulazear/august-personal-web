@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import CroppedBeau from '../images/CroppedBeau.jpeg';
 import Linkedin from '../images/Linkedin.jpg'; // Fixed import name
 import Github from '../images/Github.jpg';
-import Graphic from '../images/Graphic.JPEG';
+import GraphicTwo from '../images/GraphicTwo.png';
 
 const ContentWrapper = styled.div`
   max-width: 1200px;
@@ -27,7 +27,7 @@ const Section = styled.div`
 const ImageWrapper = styled.div`
   flex: 1;
   text-align: center;
-  padding: 10px;
+  padding: 25px;
 `;
 
 const Image = styled.img`
@@ -38,8 +38,8 @@ const Image = styled.img`
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 768px) {
-    max-width: 200px; /* Adjusted size for smaller devices */
-        border-radius: 50%; /* Makes the image circular */
+    max-width: 250px; /* Adjusted size for smaller devices */
+    border-radius: 50%; /* Makes the image circular */
   }
 `;
 
@@ -138,7 +138,7 @@ const AboutMe = () => {
 
       <Section>
         <ImageWrapper>
-          <Image src={Graphic} alt="Beau with a dog named Ru" />
+          <Image src={GraphicTwo} alt="Beau with a dog named Ru" />
         </ImageWrapper>
         <TextWrapper>
           <SubHeading>Animal Care</SubHeading>

@@ -5,8 +5,8 @@ import BeauAndRalph from "../images/BeauAndRalph.JPG";
 import JavaLookinCute from "../images/JavaLookinCute.jpeg";
 import RiverWithBrick from "../images/RiverWithBrick.jpeg";
 import MooseOnVerandah from "../images/MooseOnVerandah.jpeg";
-import Graphic from '../images/Graphic.JPEG'
-// import InstagramEmbed from './InstagramEmbed';
+import GraphicTwo from '../images/GraphicTwo.png'
+import InstagramEmbed from './InstagramEmbed';
 
 const StyledContainer = styled.div`
   display: flex;
@@ -130,7 +130,7 @@ const StyledGraphic = styled.div`
 
   img {
     width: 100%;
-    max-width: 800px;
+    max-width: 600px;
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
@@ -146,13 +146,13 @@ const AnimalCareInfo = () => {
         <StyledWelcomeMessage>
             <StyledIntroduction>
                 <StyledGraphic>
-                    <img src={Graphic} alt="Promotional graphic" />
+                    <img src={GraphicTwo} alt="Promotional graphic" />
                 </StyledGraphic>
                 <StyledParagraph>
                     Hello! I am an animal caretaker with over eight years of professional experience. My background includes zookeeping (Prospect Park Zoo, Wildlife Conservation Society), veterinary assisting, rescue rehabilitation (ASPCA), and general pet care & enrichment. You can find my offered services, pricing, instagram, & client testimonials below.
                 </StyledParagraph>
             </StyledIntroduction>
-            {/* <InstagramEmbed /> */}
+            <InstagramEmbed />
             <StyledHeading>Services and Pricing</StyledHeading>
             <StyledContainer>
                 <StyledCard>

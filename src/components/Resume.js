@@ -6,16 +6,16 @@ const Container = styled.div`
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  max-width: 80%;
+  max-width: 100%;
   margin: 20px auto;
   overflow-y: auto;
-    margin-top: 8px;
+  margin-top: 8px;
   margin-bottom: 8px;
-    text-align: left;
+  text-align: left;
 
   @media (max-width: 768px) {
     padding: 15px;
-    max-width: 90%;
+    max-width: 100%;
   }
 `;
 

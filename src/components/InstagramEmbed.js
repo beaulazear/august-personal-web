@@ -1,32 +1,30 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 
-// Styled Component for the Embed Container
+// Styled Component for Instagram Embed
 const InstagramEmbedContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 16px;
-  background-color: #f9f9f9;
-  border: 1px solid #e6e6e6;
-  border-radius: 8px;
-  max-width: 540px;
-  margin: 0 auto;
+  margin: 20px auto;
+  max-width: 100%;
+  overflow: hidden;
 
-  @media (max-width: 768px) {
-    padding: 12px;
-    max-width: 100%;
+  blockquote {
+    width: 100%;
+    max-width: 600px;
+    border: none;
   }
 
-  iframe {
-    width: 100%;
-    border: none;
+  @media (max-width: 768px) {
+    blockquote {
+      max-width: 100%; /* Fully responsive width for smaller screens */
+    }
   }
 `;
 
 const InstagramEmbed = () => {
     useEffect(() => {
-        // Load the Instagram embed script dynamically
         const script = document.createElement("script");
         script.async = true;
         script.src = "//www.instagram.com/embed.js";
@@ -38,7 +36,6 @@ const InstagramEmbed = () => {
         document.body.appendChild(script);
 
         return () => {
-            // Cleanup the script if the component is unmounted
             document.body.removeChild(script);
         };
     }, []);
@@ -51,11 +48,11 @@ const InstagramEmbed = () => {
                 data-instgrm-version="14"
                 style={{
                     background: "#FFF",
-                    border: "0",
-                    borderRadius: "3px",
-                    boxShadow: "0 0 1px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.15)",
+                    border: 0,
                     margin: "1px",
-                    padding: "0",
+                    padding: 0,
+                    maxWidth: "600px",
+                    width: "100%",
                 }}
             >
                 <a

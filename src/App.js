@@ -69,12 +69,10 @@ const App = () => {
     setCurrentLabel(items.find(item => item.key === e.key).label);
     setTooltipVisible(true);
 
-    // Hide the tooltip after 2 seconds
     setTimeout(() => {
       setTooltipVisible(false);
     }, 2000);
 
-    console.log(`Selected menu item key: ${e.key}`);
   };
 
   return (
@@ -144,7 +142,7 @@ const App = () => {
             textAlign: 'center',
           }}
         >
-          Ant Design ©{new Date().getFullYear()} Created by Ant UED
+          © {new Date().getFullYear()} Beau Lazear
         </Footer>
       </Layout>
     </Layout>
