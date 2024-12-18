@@ -111,7 +111,7 @@ const AboutMe = () => {
         <TextWrapper>
           <SubHeading>About Me</SubHeading>
           <Paragraph>
-            Hi, I'm Beau, an animal lover based in Brooklyn, NYC. I'm passionate about providing excellent care for pets and equally enthusiastic about coding. I have worked as a zookeeper, in animal rescues, vet clinics, and more. I was initially self-taught in basic programming, then I completed a coding bootcamp at the Flatiron school and obtained an AWS certification.
+            Hi, I’m Beau, an animal lover and web developer based in Brooklyn, NYC. I’ve built my own animal care business, combining my lifelong passion for animals with years of hands-on experience. I’m also a problem-solver at heart, which led me to coding—a creative outlet that’s helping me grow my business and bring ideas to life for others. Now, I’m enjoying the journey of building meaningful projects while continuing to learn and grow.
           </Paragraph>
           <SocialIcons>
             <Icon href="https://www.linkedin.com/in/beau-lazear" target="_blank" rel="noopener noreferrer">
@@ -131,7 +131,7 @@ const AboutMe = () => {
         <TextWrapper>
           <SubHeading>Software Development</SubHeading>
           <Paragraph>
-            I'm a self-taught developer who completed a bootcamp and holds an AWS certification. Proficient in JavaScript, React, Ruby on Rails, HTML, CSS, and more. Always open to new projects and continuously expanding my skills. Let's collaborate on something great!
+            I started as a self-taught developer and have since earned a bootcamp certificate in software development and an AWS certification. I enjoy building applications to simplify daily tasks for my business and bringing my friends’ and clients’ ideas to life through custom projects. I work with React on the front end, Ruby on Rails on the back end, and PostgreSQL for database management. I integrate third-party software solutions, such as AWS for file storage and VAPI AI for advanced functionality, and leverage styling libraries to create visually appealing designs. I’m always open to new projects and committed to continuous learning—let’s build something great together!
           </Paragraph>
         </TextWrapper>
       </Section>
@@ -143,7 +143,7 @@ const AboutMe = () => {
         <TextWrapper>
           <SubHeading>Animal Care</SubHeading>
           <Paragraph>
-            Delivering top-notch animal care services in Cobble Hill, Gowanus, Carroll Gardens, and surrounding areas for weekday walks. As an insured professional with a background as a zookeeper and experience from ASPCA and vet clinics, I offer pet sitting services across the city. Your furry pals are in caring and experienced hands, whether it's a walk or pet sitting!
+            I’ve dedicated my life to caring for animals in every way possible. I started as a zookeeper and worked at the ASPCA, vet clinics, dog walking companies, and dog daycares, gaining experience with animals of all kinds. Now, I’ve built my own independent animal care business, providing personalized care to my clients and their pets. This isn’t just a job for me—it’s a passion. With my unique background, I offer a level of expertise and dedication that sets me apart. Whether it’s daily walks or pet sitting, your furry companions are in the hands of someone who truly cares.
           </Paragraph>
         </TextWrapper>
       </Section>
