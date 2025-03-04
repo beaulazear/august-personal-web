@@ -111,7 +111,7 @@ const AboutMe = () => {
         <TextWrapper>
           <SubHeading>About Me</SubHeading>
           <Paragraph>
-            Hi, I’m Beau, an animal lover and web developer based in Brooklyn, NYC. I’ve built my own animal care business, combining my lifelong passion for animals with years of hands-on experience. I’m also a problem-solver at heart, which led me to coding—a creative outlet that’s helping me grow my business and bring ideas to life for others. Now, I’m enjoying the journey of building meaningful projects while continuing to learn and grow.
+            Hi, I’m Beau :) an animal lover and web developer based in Brooklyn, NYC. I’ve built my own animal care business, combining my lifelong passion for animals with years of hands-on experience. I’m also a problem-solver at heart, which led me to coding—a creative outlet that’s helping me grow my business and bring ideas to life for others. Now, I’m enjoying the journey of building meaningful projects while continuing to learn and grow.
           </Paragraph>
           <SocialIcons>
             <Icon href="https://www.linkedin.com/in/beau-lazear" target="_blank" rel="noopener noreferrer">

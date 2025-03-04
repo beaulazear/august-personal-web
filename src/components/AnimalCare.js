@@ -158,11 +158,11 @@ const AnimalCareInfo = () => {
                 <StyledCard>
                     <StyledHeading>Dog Walks</StyledHeading>
                     <StyledPrice>
-                        $22 - 30 minute walk<br />
-                        $28 - 45 minute walk<br />
-                        $33 - 60 minute walk<br />
-                        $42 - 90 minute walk<br />
-                        $50 - 120 minute walk<br />
+                        $25 - 30 minute walk<br />
+                        $30 - 45 minute walk<br />
+                        $35 - 60 minute walk<br />
+                        $45 - 90 minute walk<br />
+                        $55 - 120 minute walk<br />
                     </StyledPrice>
                     <StyledParagraph>
                         - Add $10 for additional dog (same household)<br />
