@@ -1,21 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/dog.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/biggerdog.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/dog.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+
+  <!-- SEO Meta Tags -->
+  <title>Beau Lazear - Software Developer & Animal Care Professional | Brooklyn NYC</title>
+  <meta name="description"
+    content="Beau Lazear offers professional software development and trusted animal care services in Brooklyn, NYC. Expert React developer and founder of Beau's Animal Care. Quality pet sitting, dog walking, and custom web development solutions." />
+  <meta name="keywords"
+    content="software developer Brooklyn, animal care NYC, pet sitting Brooklyn, dog walking NYC, React developer, web development Brooklyn, Beau's Animal Care, pet care services, custom software development" />
+  <meta name="author" content="Beau Lazear" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title"
+    content="Beau Lazear - Freelance Software Developer & Animal Care Services | Brooklyn NYC" />
+  <meta property="og:description"
+    content="Professional freelance software development and trusted animal care services in Brooklyn, NYC. Expert React developer and founder of Beau's Animal Care." />
+  <meta property="og:image" content="%PUBLIC_URL%/biggerdog.png" />
+  <meta property="og:url" content="https://beaulazear.com" />
+  <meta property="og:site_name" content="Beau Lazear" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title"
+    content="Beau Lazear - Freelance Software Developer & Animal Care Services | Brooklyn NYC" />
+  <meta name="twitter:description"
+    content="Professional freelance software development and trusted animal care services in Brooklyn, NYC. Expert React developer and founder of Beau's Animal Care." />
+  <meta name="twitter:image" content="%PUBLIC_URL%/biggerdog.png" />
+
+  <!-- Local Business Schema -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://beaulazear.com/#person",
+          "name": "Beau Lazear",
+          "url": "https://beaulazear.com",
+          "jobTitle": ["Freelance Software Developer", "Animal Care Professional"],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Brooklyn",
+            "addressRegion": "NY",
+            "addressCountry": "US"
+          },
+          "knowsAbout": ["React Development", "Web Development", "Pet Care", "Animal Care", "Dog Walking", "Pet Sitting"],
+          "owns": {
+            "@type": "LocalBusiness",
+            "@id": "https://beaulazear.com/#business"
+          }
+        },
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://beaulazear.com/#business",
+          "name": "Beau's Animal Care",
+          "founder": {
+            "@id": "https://beaulazear.com/#person"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Brooklyn",
+            "addressRegion": "NY",
+            "addressCountry": "US"
+          },
+          "areaServed": ["Brooklyn", "NYC", "New York City"],
+          "serviceType": ["Pet Sitting", "Dog Walking", "Animal Care", "Pet Care"],
+          "url": "https://beaulazear.com"
+        },
+        {
+          "@type": "ProfessionalService",
+          "name": "Beau Lazear Software Development",
+          "provider": {
+            "@id": "https://beaulazear.com/#person"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Brooklyn",
+            "addressRegion": "NY",
+            "addressCountry": "US"
+          },
+          "areaServed": ["Brooklyn", "NYC", "New York City", "Remote"],
+          "serviceType": ["Web Development", "React Development", "Custom Software Development", "Freelance Development"],
+          "url": "https://beaulazear.com"
+        }
+      ]
+    }
+    </script>
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://beaulazear.com" />
+
+  <!-- Apple Touch Icons -->
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/biggerdog.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/biggerdog.png" />
+
+  <!-- Manifest -->
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -24,12 +116,12 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Beau Lazear</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -39,5 +131,6 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+</body>
+
 </html>
