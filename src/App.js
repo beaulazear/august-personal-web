@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Dog, Cat, Home, Bird, Linkedin, Github, Instagram, FileText, Mail, ArrowLeft, Monitor, Heart } from 'lucide-react';
 import AnimalCareCarousel from './components/AnimalCareCarousel';
 import CroppedBeau from './images/CroppedBeau.jpeg';
-import GraphicTwo from './images/GraphicTwo.png'
+import GraphicTwo from './images/GraphicTwo.png';
+import Resume from './components/Resume.js';
+import Contact from './components/Contact.js';
 
 const globalStyles = `
   @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
@@ -197,19 +199,19 @@ const ModernPortfolioLanding = ({ onNavigate }) => {
   const data = {
     projects: [
       {
+        title: "Voxxy AI",
+        description: "AI-powered event planning platform built with React, React Native, and Ruby on Rails. Features include API integrations with OpenAI and Google Places, Mixpanel analytics, and mobile support via Expo. Designed for seamless coordination, user feedback, and collaborative decision-making.",
+        links: [
+          { label: "Live Site", url: "https://www.voxxyai.com/#/" },
+          { label: "GitHub", url: "https://github.com/beaulazear/michael-personal-site.git" }
+        ]
+      },
+      {
         title: "Pocket Walks",
         description: "A full-stack dog walking application built with React and Ruby on Rails. Features scheduling, invoicing, and financial management for pet care businesses.",
         links: [
           { label: "Live Site", url: "https://www.pocket-walks.com/" },
           { label: "GitHub", url: "https://github.com/beaulazear/voxxy-rails-react" }
-        ]
-      },
-      {
-        title: "Voxxy AI",
-        description: "Voice interaction platform using React, Ruby on Rails, and Vapi AI for seamless customer feedback experiences.",
-        links: [
-          { label: "Live Site", url: "https://www.voxxyai.com/#/" },
-          { label: "GitHub", url: "https://github.com/beaulazear/michael-personal-site.git" }
         ]
       },
       {
@@ -372,7 +374,6 @@ const ModernPortfolioLanding = ({ onNavigate }) => {
                   objectFit: 'cover'
                 }}
               />
-              {/* Optional glow effect overlay */}
               <div style={{
                 position: 'absolute',
                 inset: 0,
@@ -406,10 +407,10 @@ const ModernPortfolioLanding = ({ onNavigate }) => {
           }} className="responsive-social">
             {[
               { icon: Linkedin, href: "https://www.linkedin.com/in/beau-lazear", external: true },
-              { icon: Github, href: "https://github.com/beaulazear", external: true },
+              { icon: Github, href: "https://github.com/beaus.animal.care", external: true },
               { icon: Instagram, href: "https://www.instagram.com", external: true },
               { icon: FileText, action: () => onNavigate('resume') },
-              { icon: Mail, action: () => onNavigate('contact') }
+              { icon: Mail, action: () => onNavigate('YourContact') }
             ].map((item, i) => (
               <button
                 key={i}
@@ -497,7 +498,6 @@ const ModernPortfolioLanding = ({ onNavigate }) => {
         </div>
       </div>
 
-      {/* Footer */}
       <footer style={{
         position: 'relative',
         zIndex: 10,
@@ -526,7 +526,7 @@ const ModernPortfolioLanding = ({ onNavigate }) => {
             margin: 0
           }}>
             <a
-              href="mailto:beau@example.com"
+              href="mailto:beaulazear@gmail.com"
               style={{
                 color: '#bfdbfe',
                 textDecoration: 'none',
@@ -535,7 +535,7 @@ const ModernPortfolioLanding = ({ onNavigate }) => {
               onMouseOver={(e) => e.target.style.color = '#dbeafe'}
               onMouseOut={(e) => e.target.style.color = '#bfdbfe'}
             >
-              beau@example.com
+              beaulazear@gmail.com
             </a>
           </p>
         </div>
@@ -547,7 +547,7 @@ const ModernPortfolioLanding = ({ onNavigate }) => {
 const SoftwareSection = ({ data, baseStyles }) => (
   <>
     <AboutCard
-      text="Passionate full-stack developer with expertise in React, Ruby on Rails, and modern web technologies. I create elegant solutions that solve real-world problems, from business applications to interactive experiences. Certified in AWS and committed to continuous learning and innovation."
+      text="Software developer with strong experience in JavaScript (React), React Native, and Ruby on Rails. Skilled in integrating tools like Mixpanel, OpenAI API, Google Places API, and AWS S3 to build scalable, user-friendly applications across web and mobile platforms."
       baseStyles={baseStyles}
     />
 
@@ -561,15 +561,7 @@ const SoftwareSection = ({ data, baseStyles }) => (
       ))}
     </div>
 
-    <AboutCard
-      text={
-        <div>
-          <strong>Technical Skills:</strong> JavaScript, React, Ruby on Rails, PostgreSQL, HTML/CSS, Git, AWS,
-          API Integration, Responsive Design, and more. Always exploring new technologies and best practices.
-        </div>
-      }
-      baseStyles={baseStyles}
-    />
+
   </>
 );
 
@@ -761,20 +753,21 @@ const TestimonialCard = ({ testimonial, baseStyles }) => (
   </div>
 );
 
-const Resume = ({ onNavigate }) => (
+const YourContact = ({ onNavigate }) => (
   <div style={{
     minHeight: '100vh',
     background: 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 35%, #1e40af 100%)',
-    padding: '20px'
   }}>
     <div style={{
       maxWidth: '1000px',
-      margin: '0 auto'
+      margin: '0 auto',
+      paddingTop: '20px'
     }}>
       <button
         onClick={() => onNavigate('home')}
         style={{
           marginBottom: '20px',
+          marginLeft: '20px',
           display: 'flex',
           alignItems: 'center',
           gap: '8px',
@@ -792,7 +785,7 @@ const Resume = ({ onNavigate }) => (
         <ArrowLeft size={20} />
         Back to Home
       </button>
-      <YourResume />
+      <Contact />
     </div>
 
     <footer style={{
@@ -821,7 +814,7 @@ const Resume = ({ onNavigate }) => (
           margin: 0
         }}>
           <a
-            href="mailto:beau@example.com"
+            href="mailto:beaulazear@gmail.com"
             style={{
               color: '#bfdbfe',
               textDecoration: 'none',
@@ -830,7 +823,7 @@ const Resume = ({ onNavigate }) => (
             onMouseOver={(e) => e.target.style.color = '#dbeafe'}
             onMouseOut={(e) => e.target.style.color = '#bfdbfe'}
           >
-            beau@example.com
+            beaulazear@gmail.com
           </a>
         </p>
       </div>
@@ -838,20 +831,21 @@ const Resume = ({ onNavigate }) => (
   </div>
 );
 
-const Contact = ({ onNavigate }) => (
+const ResumeWrapper = ({ onNavigate }) => (
   <div style={{
     minHeight: '100vh',
     background: 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 35%, #1e40af 100%)',
-    padding: '20px'
   }}>
     <div style={{
       maxWidth: '1000px',
-      margin: '0 auto'
+      margin: '0 auto',
+      paddingTop: '20px'
     }}>
       <button
         onClick={() => onNavigate('home')}
         style={{
           marginBottom: '20px',
+          marginLeft: '20px',
           display: 'flex',
           alignItems: 'center',
           gap: '8px',
@@ -869,7 +863,9 @@ const Contact = ({ onNavigate }) => (
         <ArrowLeft size={20} />
         Back to Home
       </button>
-      <YourContact />
+
+      {/* Render your actual Resume component here */}
+      <Resume onNavigate={onNavigate} />
     </div>
 
     <footer style={{
@@ -898,7 +894,7 @@ const Contact = ({ onNavigate }) => (
           margin: 0
         }}>
           <a
-            href="mailto:beau@example.com"
+            href="mailto:beaulazear@gmail.com"
             style={{
               color: '#bfdbfe',
               textDecoration: 'none',
@@ -907,695 +903,13 @@ const Contact = ({ onNavigate }) => (
             onMouseOver={(e) => e.target.style.color = '#dbeafe'}
             onMouseOut={(e) => e.target.style.color = '#bfdbfe'}
           >
-            beau@example.com
+            beaulazear@gmail.com
           </a>
         </p>
       </div>
-    </footer>
-  </div>
+    </footer >
+  </div >
 );
-
-const YourResume = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  const Container = {
-    ...baseStyles.glassCardOpaque,
-    padding: '0',
-    maxWidth: '1100px',
-    margin: '0 auto',
-    fontFamily: 'Inter, sans-serif',
-    textAlign: 'left',
-    color: '#1f2937',
-    background: 'rgba(255, 255, 255, 0.95)',
-    backdropFilter: 'blur(30px)',
-    border: '2px solid rgba(255, 255, 255, 0.8)',
-    overflow: 'hidden'
-  };
-
-  const Header = {
-    padding: '48px',
-    background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1e40af 100%)',
-    color: 'white',
-    textAlign: 'center',
-    position: 'relative',
-    overflow: 'hidden'
-  };
-
-  const HeaderBackground = {
-    position: 'absolute',
-    inset: 0,
-    background: 'linear-gradient(45deg, rgba(147, 197, 253, 0.2) 0%, transparent 50%, rgba(30, 64, 175, 0.3) 100%)',
-    animation: 'wave 8s ease-in-out infinite'
-  };
-
-  const Name = {
-    fontSize: '3.5rem',
-    fontWeight: '700',
-    margin: '0 0 16px 0',
-    color: 'white',
-    textShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-    fontFamily: 'Fredoka, Inter, sans-serif',
-    position: 'relative',
-    zIndex: 2
-  };
-
-  const Subtitle = {
-    fontSize: '24px',
-    color: '#dbeafe',
-    margin: '0 0 24px 0',
-    fontWeight: '500',
-    position: 'relative',
-    zIndex: 2
-  };
-
-  const ContactGrid = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-    gap: '16px',
-    marginBottom: '32px',
-    position: 'relative',
-    zIndex: 2
-  };
-
-  const ContactItem = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '8px',
-    padding: '12px 20px',
-    background: 'rgba(255, 255, 255, 0.2)',
-    backdropFilter: 'blur(20px)',
-    borderRadius: '25px',
-    border: '1px solid rgba(255, 255, 255, 0.3)',
-    fontSize: '16px',
-    fontWeight: '500'
-  };
-
-  const DownloadButton = {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '12px',
-    padding: '16px 32px',
-    background: 'rgba(255, 255, 255, 0.9)',
-    color: '#1e40af',
-    borderRadius: '50px',
-    border: '2px solid rgba(255, 255, 255, 0.5)',
-    fontWeight: '700',
-    fontSize: '18px',
-    textDecoration: 'none',
-    transition: 'all 0.3s ease',
-    position: 'relative',
-    zIndex: 2,
-    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)'
-  };
-
-  const ContentSection = {
-    padding: '48px'
-  };
-
-  const SectionTitle = {
-    fontSize: '32px',
-    fontWeight: '700',
-    color: '#1e40af',
-    marginBottom: '32px',
-    paddingBottom: '16px',
-    borderBottom: '3px solid #3b82f6',
-    fontFamily: 'Fredoka, Inter, sans-serif',
-    position: 'relative'
-  };
-
-  const SummaryCard = {
-    ...baseStyles.glassCard,
-    padding: '32px',
-    marginBottom: '48px',
-    background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.05))',
-    border: '2px solid rgba(59, 130, 246, 0.3)'
-  };
-
-  const SummaryText = {
-    fontSize: '20px',
-    lineHeight: '1.7',
-    color: '#374151',
-    fontWeight: '500',
-    margin: 0
-  };
-
-  const ExperienceCard = {
-    ...baseStyles.glassCard,
-    padding: '32px',
-    marginBottom: '24px',
-    background: 'rgba(255, 255, 255, 0.7)',
-    border: '2px solid rgba(59, 130, 246, 0.2)',
-    transition: 'all 0.3s ease'
-  };
-
-  const JobHeader = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    marginBottom: '20px',
-    flexWrap: 'wrap',
-    gap: '12px'
-  };
-
-  const JobTitle = {
-    fontSize: '24px',
-    fontWeight: '700',
-    color: '#1f2937',
-    margin: 0,
-    fontFamily: 'Fredoka, Inter, sans-serif'
-  };
-
-  const CompanyDate = {
-    fontSize: '18px',
-    fontWeight: '600',
-    color: '#3b82f6',
-    padding: '8px 20px',
-    background: 'rgba(59, 130, 246, 0.1)',
-    borderRadius: '20px',
-    border: '1px solid rgba(59, 130, 246, 0.3)'
-  };
-
-  const BulletPoint = {
-    display: 'flex',
-    alignItems: 'flex-start',
-    gap: '12px',
-    marginBottom: '12px',
-    fontSize: '16px',
-    lineHeight: '1.6',
-    color: '#374151'
-  };
-
-  const Bullet = {
-    width: '8px',
-    height: '8px',
-    borderRadius: '50%',
-    background: 'linear-gradient(135deg, #3b82f6, #2563eb)',
-    marginTop: '8px',
-    flexShrink: 0
-  };
-
-  const SkillsGrid = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-    gap: '20px',
-    marginBottom: '48px'
-  };
-
-  const SkillCard = {
-    ...baseStyles.glassCard,
-    padding: '24px',
-    background: 'rgba(255, 255, 255, 0.6)',
-    border: '2px solid rgba(59, 130, 246, 0.2)'
-  };
-
-  const SkillTitle = {
-    fontSize: '18px',
-    fontWeight: '700',
-    color: '#1e40af',
-    marginBottom: '12px',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px'
-  };
-
-  const SkillList = {
-    fontSize: '15px',
-    color: '#374151',
-    lineHeight: '1.6'
-  };
-
-  const EducationCard = {
-    ...baseStyles.glassCard,
-    padding: '24px',
-    marginBottom: '16px',
-    background: 'rgba(255, 255, 255, 0.6)',
-    border: '2px solid rgba(59, 130, 246, 0.2)'
-  };
-
-  return (
-    <div style={Container} className="hover-glow-soft">
-      <div style={Header}>
-        <div style={HeaderBackground}></div>
-        <h1 style={Name}>Beau Lazear</h1>
-        <p style={Subtitle}>Full-Stack Developer & Technical Entrepreneur</p>
-
-        <div style={ContactGrid}>
-          <div style={ContactItem}>
-            <Mail size={16} />
-            beau@example.com
-          </div>
-          <div style={ContactItem}>
-            <Github size={16} />
-            github.com/beaulazear
-          </div>
-          <div style={ContactItem}>
-            <Linkedin size={16} />
-            linkedin.com/in/beau-lazear
-          </div>
-          <div style={ContactItem}>
-            <Home size={16} />
-            Brooklyn, NY
-          </div>
-        </div>
-
-        <a
-          style={DownloadButton}
-          href="/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover-button"
-        >
-          <FileText size={20} />
-          Download PDF Resume
-        </a>
-      </div>
-
-      <div style={ContentSection}>
-        <h2 style={SectionTitle}>Professional Summary</h2>
-        <div style={SummaryCard} className="hover-glow-soft">
-          <p style={SummaryText}>
-            Versatile full-stack developer and entrepreneur with 5+ years of experience building scalable web applications and managing successful businesses. Proven track record in React/Rails development, team leadership, and product strategy. Combines technical expertise with strong business acumen and a passion for creating meaningful user experiences.
-          </p>
-        </div>
-
-        <h2 style={SectionTitle}>Professional Experience</h2>
-
-        <div style={ExperienceCard} className="hover-glow-soft">
-          <div style={JobHeader}>
-            <h3 style={JobTitle}>Co-Founder & Lead Developer</h3>
-            <div style={CompanyDate}>Voxxy AI | 2024–Present</div>
-          </div>
-          <div style={BulletPoint}>
-            <div style={Bullet}></div>
-            <span>Architected and developed a full-stack React/Rails platform for AI-powered group planning and activity recommendations</span>
-          </div>
-          <div style={BulletPoint}>
-            <div style={Bullet}></div>
-            <span>Implemented comprehensive analytics using Mixpanel to track user engagement and optimize conversion funnels</span>
-          </div>
-          <div style={BulletPoint}>
-            <div style={Bullet}></div>
-            <span>Built cross-platform mobile application using React Native + Expo with secure Rails API backend</span>
-          </div>
-          <div style={BulletPoint}>
-            <div style={Bullet}></div>
-            <span>Led technical strategy, product roadmap, and deployment processes for a growing user base</span>
-          </div>
-        </div>
-
-        <div style={ExperienceCard} className="hover-glow-soft">
-          <div style={JobHeader}>
-            <h3 style={JobTitle}>Digital Contractor & Social Media Manager</h3>
-            <div style={CompanyDate}>Aria Design Co. | 2023–Present</div>
-          </div>
-          <div style={BulletPoint}>
-            <div style={Bullet}></div>
-            <span>Designed and developed responsive company website and portfolio showcasing design projects</span>
-          </div>
-          <div style={BulletPoint}>
-            <div style={Bullet}></div>
-            <span>Implemented social media strategy resulting in 200% increase in brand engagement</span>
-          </div>
-          <div style={BulletPoint}>
-            <div style={Bullet}></div>
-            <span>Collaborate directly with leadership to optimize digital presence and user experience</span>
-          </div>
-        </div>
-
-        <div style={ExperienceCard} className="hover-glow-soft">
-          <div style={JobHeader}>
-            <h3 style={JobTitle}>Founder & CEO</h3>
-            <div style={CompanyDate}>Beau's Animal Care | 2019–Present</div>
-          </div>
-          <div style={BulletPoint}>
-            <div style={Bullet}></div>
-            <span>Founded and scaled successful pet care business serving 100+ clients across Brooklyn</span>
-          </div>
-          <div style={BulletPoint}>
-            <div style={Bullet}></div>
-            <span>Recruited, trained, and manage team of independent contractors while maintaining personal client relationships</span>
-          </div>
-          <div style={BulletPoint}>
-            <div style={Bullet}></div>
-            <span>Developed custom React/Rails application for scheduling, invoicing, and client management</span>
-          </div>
-          <div style={BulletPoint}>
-            <div style={Bullet}></div>
-            <span>Manage all business operations including marketing, finance, and customer service</span>
-          </div>
-        </div>
-
-        <div style={ExperienceCard} className="hover-glow-soft">
-          <div style={JobHeader}>
-            <h3 style={JobTitle}>Veterinary Assistant</h3>
-            <div style={CompanyDate}>ASPCA Animal Recovery Center | 2019</div>
-          </div>
-          <div style={BulletPoint}>
-            <div style={Bullet}></div>
-            <span>Provided critical medical care and rehabilitation support for animals in protective custody</span>
-          </div>
-          <div style={BulletPoint}>
-            <div style={Bullet}></div>
-            <span>Promoted to lead assistant role during organizational transition due to leadership and technical skills</span>
-          </div>
-        </div>
-
-        <div style={ExperienceCard} className="hover-glow-soft">
-          <div style={JobHeader}>
-            <h3 style={JobTitle}>Zookeeper</h3>
-            <div style={CompanyDate}>Prospect Park Zoo, WCS | 2017–2019</div>
-          </div>
-          <div style={BulletPoint}>
-            <div style={Bullet}></div>
-            <span>Advanced from internship to full-time zookeeper position at prestigious wildlife conservation organization</span>
-          </div>
-          <div style={BulletPoint}>
-            <div style={Bullet}></div>
-            <span>Managed daily care, enrichment programs, and detailed record-keeping for diverse exotic species</span>
-          </div>
-        </div>
-
-        <h2 style={SectionTitle}>Technical Skills</h2>
-        <div style={SkillsGrid}>
-          <div style={SkillCard} className="hover-glow-soft">
-            <div style={SkillTitle}>
-              <Monitor size={20} />
-              Frontend Development
-            </div>
-            <div style={SkillList}>React, React Native, JavaScript (ES6+), HTML5, CSS3, Styled Components, Responsive Design</div>
-          </div>
-          <div style={SkillCard} className="hover-glow-soft">
-            <div style={SkillTitle}>
-              <Github size={20} />
-              Backend Development
-            </div>
-            <div style={SkillList}>Ruby on Rails, PostgreSQL, REST APIs, Database Design, Authentication & Authorization</div>
-          </div>
-          <div style={SkillCard} className="hover-glow-soft">
-            <div style={SkillTitle}>
-              <FileText size={20} />
-              Development Tools
-            </div>
-            <div style={SkillList}>Git, GitHub, Expo, Mixpanel, SendGrid, Render, Netlify, VS Monitor</div>
-          </div>
-          <div style={SkillCard} className="hover-glow-soft">
-            <div style={SkillTitle}>
-              <Heart size={20} />
-              Business & Leadership
-            </div>
-            <div style={SkillList}>Team Management, Project Planning, Client Relations, Digital Marketing, Strategic Planning</div>
-          </div>
-        </div>
-
-        <h2 style={SectionTitle}>Education & Certifications</h2>
-        <div style={EducationCard} className="hover-glow-soft">
-          <div style={JobHeader}>
-            <h3 style={JobTitle}>Full Stack Software Development</h3>
-            <div style={CompanyDate}>Flatiron School | 2023</div>
-          </div>
-        </div>
-        <div style={EducationCard} className="hover-glow-soft">
-          <div style={JobHeader}>
-            <h3 style={JobTitle}>AWS Certified Cloud Practitioner</h3>
-            <div style={CompanyDate}>Amazon Web Services | 2024</div>
-          </div>
-        </div>
-        <div style={EducationCard} className="hover-glow-soft">
-          <div style={JobHeader}>
-            <h3 style={JobTitle}>New York Real Estate License</h3>
-            <div style={CompanyDate}>NYREI</div>
-          </div>
-        </div>
-        <div style={EducationCard} className="hover-glow-soft">
-          <div style={JobHeader}>
-            <h3 style={JobTitle}>Wildlife Conservation Continuing Education</h3>
-            <div style={CompanyDate}>Prospect Park Zoo, WCS</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const YourContact = () => {
-  const [formData, setFormData] = useState({
-    from_name: '',
-    from_email: '',
-    message: ''
-  });
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!formData.from_name || !formData.from_email || !formData.message) {
-      setError('Please fill out all fields.');
-      return;
-    }
-
-    setTimeout(() => {
-      setSuccess('Form submitted successfully!');
-      setError('');
-      setFormData({ from_name: '', from_email: '', message: '' });
-    }, 1000);
-  };
-
-  const handleInputChange = (field, value) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-  };
-
-  const Container = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    minHeight: '80vh',
-    padding: '40px 20px'
-  };
-
-  const FormCard = {
-    ...baseStyles.glassCardOpaque,
-    width: '100%',
-    maxWidth: '600px',
-    padding: '0',
-    background: 'rgba(255, 255, 255, 0.95)',
-    backdropFilter: 'blur(30px)',
-    border: '2px solid rgba(255, 255, 255, 0.8)',
-    overflow: 'hidden'
-  };
-
-  const FormHeader = {
-    padding: '40px',
-    background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1e40af 100%)',
-    color: 'white',
-    textAlign: 'center',
-    position: 'relative',
-    overflow: 'hidden'
-  };
-
-  const HeaderBackground = {
-    position: 'absolute',
-    inset: 0,
-    background: 'linear-gradient(45deg, rgba(147, 197, 253, 0.2) 0%, transparent 50%, rgba(30, 64, 175, 0.3) 100%)',
-    animation: 'wave 8s ease-in-out infinite'
-  };
-
-  const FormTitle = {
-    fontSize: '32px',
-    fontWeight: '700',
-    margin: '0 0 16px 0',
-    color: 'white',
-    textShadow: '0 4px 16px rgba(0, 0, 0, 0.3)',
-    fontFamily: 'Fredoka, Inter, sans-serif',
-    position: 'relative',
-    zIndex: 2
-  };
-
-  const FormSubtitle = {
-    fontSize: '18px',
-    color: '#dbeafe',
-    margin: 0,
-    lineHeight: '1.6',
-    position: 'relative',
-    zIndex: 2
-  };
-
-  const FormContent = {
-    padding: '40px'
-  };
-
-  const InputGroup = {
-    marginBottom: '24px'
-  };
-
-  const Label = {
-    display: 'block',
-    fontSize: '16px',
-    fontWeight: '600',
-    color: '#1f2937',
-    marginBottom: '8px',
-    fontFamily: 'Inter, sans-serif'
-  };
-
-  const Input = {
-    width: '100%',
-    padding: '16px 20px',
-    border: '2px solid rgba(59, 130, 246, 0.2)',
-    borderRadius: '12px',
-    fontSize: '16px',
-    fontFamily: 'Inter, sans-serif',
-    background: 'rgba(255, 255, 255, 0.8)',
-    backdropFilter: 'blur(10px)',
-    color: '#1f2937',
-    transition: 'all 0.3s ease',
-    boxSizing: 'border-box',
-    outline: 'none'
-  };
-
-  const TextArea = {
-    ...Input,
-    minHeight: '120px',
-    resize: 'vertical',
-    fontFamily: 'Inter, sans-serif'
-  };
-
-  const SubmitButton = {
-    width: '100%',
-    padding: '16px 24px',
-    background: 'linear-gradient(135deg, #3b82f6, #2563eb)',
-    color: 'white',
-    border: 'none',
-    borderRadius: '12px',
-    fontSize: '18px',
-    fontWeight: '700',
-    cursor: 'pointer',
-    transition: 'all 0.3s ease',
-    boxShadow: '0 10px 30px rgba(59, 130, 246, 0.3)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '8px',
-    fontFamily: 'Inter, sans-serif'
-  };
-
-  const Message = {
-    padding: '12px 20px',
-    borderRadius: '8px',
-    marginTop: '16px',
-    fontSize: '16px',
-    fontWeight: '500',
-    textAlign: 'center'
-  };
-
-  const ErrorMessage = {
-    ...Message,
-    background: 'rgba(239, 68, 68, 0.1)',
-    color: '#dc2626',
-    border: '1px solid rgba(239, 68, 68, 0.3)'
-  };
-
-  const SuccessMessage = {
-    ...Message,
-    background: 'rgba(34, 197, 94, 0.1)',
-    color: '#16a34a',
-    border: '1px solid rgba(34, 197, 94, 0.3)'
-  };
-
-  return (
-    <div style={Container}>
-      <div style={FormCard} className="hover-glow-soft">
-        <div style={FormHeader}>
-          <div style={HeaderBackground}></div>
-          <h1 style={FormTitle}>Get In Touch</h1>
-          <p style={FormSubtitle}>
-            Let's discuss your project or opportunity. I'll get back to you within 24 hours!
-          </p>
-        </div>
-
-        <div style={FormContent}>
-          <div style={InputGroup}>
-            <label style={Label}>Your Name</label>
-            <input
-              style={Input}
-              type="text"
-              placeholder="Enter your full name"
-              value={formData.from_name}
-              onChange={(e) => handleInputChange('from_name', e.target.value)}
-              onFocus={(e) => {
-                e.target.style.border = '2px solid #3b82f6';
-                e.target.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
-              }}
-              onBlur={(e) => {
-                e.target.style.border = '2px solid rgba(59, 130, 246, 0.2)';
-                e.target.style.boxShadow = 'none';
-              }}
-            />
-          </div>
-
-          <div style={InputGroup}>
-            <label style={Label}>Email Address</label>
-            <input
-              style={Input}
-              type="email"
-              placeholder="your.email@example.com"
-              value={formData.from_email}
-              onChange={(e) => handleInputChange('from_email', e.target.value)}
-              onFocus={(e) => {
-                e.target.style.border = '2px solid #3b82f6';
-                e.target.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
-              }}
-              onBlur={(e) => {
-                e.target.style.border = '2px solid rgba(59, 130, 246, 0.2)';
-                e.target.style.boxShadow = 'none';
-              }}
-            />
-          </div>
-
-          <div style={InputGroup}>
-            <label style={Label}>Message</label>
-            <textarea
-              style={TextArea}
-              placeholder="Tell me about your project, timeline, and how I can help..."
-              value={formData.message}
-              onChange={(e) => handleInputChange('message', e.target.value)}
-              onFocus={(e) => {
-                e.target.style.border = '2px solid #3b82f6';
-                e.target.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
-              }}
-              onBlur={(e) => {
-                e.target.style.border = '2px solid rgba(59, 130, 246, 0.2)';
-                e.target.style.boxShadow = 'none';
-              }}
-            />
-          </div>
-
-          <button
-            style={SubmitButton}
-            onClick={handleSubmit}
-            className="hover-button"
-            onMouseOver={(e) => {
-              e.target.style.transform = 'translateY(-2px)';
-              e.target.style.boxShadow = '0 15px 40px rgba(59, 130, 246, 0.4)';
-            }}
-            onMouseOut={(e) => {
-              e.target.style.transform = 'translateY(0)';
-              e.target.style.boxShadow = '0 10px 30px rgba(59, 130, 246, 0.3)';
-            }}
-          >
-            <Mail size={20} />
-            Send Message
-          </button>
-
-          {error && <div style={ErrorMessage}>{error}</div>}
-          {success && <div style={SuccessMessage}>{success}</div>}
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
@@ -1603,8 +917,8 @@ const App = () => {
   return (
     <div style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif' }}>
       {currentPage === 'home' && <ModernPortfolioLanding onNavigate={setCurrentPage} />}
-      {currentPage === 'resume' && <Resume onNavigate={setCurrentPage} />}
-      {currentPage === 'contact' && <Contact onNavigate={setCurrentPage} />}
+      {currentPage === 'resume' && <ResumeWrapper onNavigate={setCurrentPage} />}
+      {currentPage === 'YourContact' && <YourContact onNavigate={setCurrentPage} />}
     </div>
   );
 };

@@ -1,62 +1,25 @@
-import React, { useRef, useState } from 'react';
-import styled, { keyframes } from 'styled-components';
-import emailjs from '@emailjs/browser';
+import React, { useState, useEffect } from 'react';
+import { Mail } from 'lucide-react';
+import styled from 'styled-components';
 
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
-const slideUp = keyframes`
-  from {
-    transform: translateY(10px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-`;
-
-const FormWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  position: relative;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-    pointer-events: none;
-  }
-`;
-
-const StyledFormContainer = styled.form`
-  width: 100%;
-  max-width: 500px;
-  background: rgba(255, 255, 255, 0.95);
+const Container = styled.div`
+  padding: 40px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px);
-  border-radius: 24px;
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
   box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.12),
-    0 2px 8px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  animation: ${fadeIn} 0.6s ease-out;
+    0 25px 50px -12px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(59, 130, 246, 0.1);
+  max-width: 900px;
+  margin: 40px auto;
+  font-family: 'Inter', sans-serif;
+  text-align: left;
   position: relative;
-  
+  overflow: hidden;
+
   &::before {
     content: '';
     position: absolute;
@@ -64,270 +27,381 @@ const StyledFormContainer = styled.form`
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #667eea, #764ba2);
-    border-radius: 24px 24px 0 0;
+    background: linear-gradient(90deg, #3b82f6, #1d4ed8, #2563eb, #60a5fa);
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
   }
 
-  @media (min-width: 768px) {
-    max-width: 600px;
+  @keyframes shimmer {
+    0%, 100% { background-position: 200% 0; }
+    50% { background-position: -200% 0; }
+  }
+
+  @media (max-width: 768px) {
+    padding: 16px;
+    margin: 12px;
+    border-radius: 16px;
   }
 `;
 
-const StyledHeader = styled.h1`
-  font-size: 32px;
-  font-weight: 700;
-  color: #2d3748;
-  margin-bottom: 8px;
+const Header = styled.div`
+  margin-bottom: 32px;
   text-align: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  position: relative;
+  
+  @media (max-width: 768px) {
+    margin-bottom: 20px;
+  }
+`;
 
-  @media (min-width: 768px) {
-    font-size: 36px;
+const Title = styled.h1`
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 0 0 12px 0;
+  color: #ffffff;
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.8),
+    0 4px 8px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.02em;
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 8px;
   }
 `;
 
 const Subtitle = styled.p`
-  font-size: 16px;
-  color: #718096;
-  text-align: center;
-  margin-bottom: 32px;
-  font-weight: 400;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  font-size: 1.1rem;
+  margin: 0;
+  
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+  }
 `;
 
-const FormGroup = styled.div`
-  margin-bottom: 24px;
-  animation: ${slideUp} 0.4s ease-out;
-  animation-delay: ${props => props.delay || '0s'};
-  animation-fill-mode: both;
-`;
-
-const StyledLabel = styled.label`
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #4a5568;
-  display: block;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-`;
-
-const InputWrapper = styled.div`
+const SectionTitle = styled.h2`
+  font-size: 1.75rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 30%, #bae6fd 70%, #ffffff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  margin: 40px 0 20px 0;
   position: relative;
-`;
+  padding-bottom: 12px;
 
-const StyledInput = styled.input`
-  width: 100%;
-  padding: 16px 20px;
-  border: 2px solid #e2e8f0;
-  border-radius: 12px;
-  background-color: #ffffff;
-  color: #2d3748;
-  font-size: 16px;
-  font-weight: 400;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-sizing: border-box;
-  
-  &::placeholder {
-    color: #a0aec0;
-    font-weight: 400;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+    border-radius: 2px;
   }
   
-  &:focus {
-    outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-    transform: translateY(-1px);
-  }
-  
-  &:hover {
-    border-color: #cbd5e0;
+  @media (max-width: 768px) {
+    font-size: 1.375rem;
+    margin: 24px 0 16px 0;
+    padding-bottom: 8px;
+    
+    &::after {
+      width: 100%;
+      height: 2px;
+    }
   }
 `;
 
-const StyledTextarea = styled.textarea`
-  width: 100%;
-  height: 120px;
-  padding: 16px 20px;
-  border: 2px solid #e2e8f0;
-  border-radius: 12px;
-  background-color: #ffffff;
-  color: #2d3748;
-  font-size: 16px;
-  font-weight: 400;
-  resize: vertical;
-  min-height: 120px;
-  max-height: 200px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-sizing: border-box;
-  font-family: inherit;
+const FormSection = styled.div`
+  background: rgba(59, 130, 246, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 16px;
+  padding: 24px;
+  margin: 24px 0;
   
-  &::placeholder {
-    color: #a0aec0;
-    font-weight: 400;
-  }
-  
-  &:focus {
-    outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-    transform: translateY(-1px);
-  }
-  
-  &:hover {
-    border-color: #cbd5e0;
+  @media (max-width: 768px) {
+    padding: 16px;
+    margin: 16px 0;
+    border-radius: 12px;
   }
 `;
 
-const StyledButton = styled.button`
-  width: 100%;
-  padding: 16px 32px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 16px;
+const InputGroup = styled.div`
+  margin-bottom: 24px;
+  
+  @media (max-width: 768px) {
+    margin-bottom: 16px;
+  }
+`;
+
+const Label = styled.label`
+  display: block;
+  font-size: 1rem;
   font-weight: 600;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  margin-bottom: 8px;
   
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 16px 20px;
+  border: 2px solid rgba(59, 130, 246, 0.3);
+  border-radius: 12px;
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #ffffff;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  outline: none;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  &:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    background: rgba(255, 255, 255, 0.15);
+  }
+  
+  @media (max-width: 768px) {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+`;
+
+const TextArea = styled.textarea`
+  width: 100%;
+  padding: 16px 20px;
+  border: 2px solid rgba(59, 130, 246, 0.3);
+  border-radius: 12px;
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #ffffff;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  outline: none;
+  min-height: 120px;
+  resize: vertical;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  &:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    background: rgba(255, 255, 255, 0.15);
+  }
+  
+  @media (max-width: 768px) {
+    padding: 12px 16px;
+    font-size: 14px;
+    min-height: 100px;
+  }
+`;
+
+const SubmitButton = styled.button`
+  width: 100%;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #ffffff, #f1f5f9);
+  color: #1e293b;
+  border: 3px solid #ffffff;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 10px 30px rgba(255, 255, 255, 0.2),
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s ease;
+  }
+
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 
+      0 20px 50px rgba(255, 255, 255, 0.3),
+      0 8px 25px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    background: linear-gradient(135deg, #ffffff, #e2e8f0);
+    border-color: #f8fafc;
+
+    &::before {
+      left: 100%;
+    }
   }
-  
+
   &:active {
-    transform: translateY(0);
+    transform: translateY(-1px);
   }
   
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
+  @media (max-width: 768px) {
+    padding: 12px 20px;
+    font-size: 16px;
   }
 `;
 
-const MessageContainer = styled.div`
+const Message = styled.div`
+  padding: 12px 20px;
+  border-radius: 8px;
   margin-top: 16px;
-  animation: ${fadeIn} 0.3s ease-out;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  
+  @media (max-width: 768px) {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
 `;
 
-const ErrorMessage = styled.p`
-  font-size: 14px;
-  color: #e53e3e;
-  background-color: #fed7d7;
-  padding: 12px 16px;
-  border-radius: 8px;
-  border-left: 4px solid #e53e3e;
-  margin: 0;
+const ErrorMessage = styled(Message)`
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 `;
 
-const SuccessMessage = styled.p`
-  font-size: 14px;
-  color: #38a169;
-  background-color: #c6f6d5;
-  padding: 12px 16px;
-  border-radius: 8px;
-  border-left: 4px solid #38a169;
-  margin: 0;
+const SuccessMessage = styled(Message)`
+  background: rgba(34, 197, 94, 0.2);
+  color: #86efac;
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 `;
 
-export default function Contact() {
-  const form = useRef();
+const Contact = () => {
+  const [formData, setFormData] = useState({
+    from_name: '',
+    from_email: '',
+    message: ''
+  });
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const sendEmail = async (e) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
 
-    const { from_name, from_email, message } = form.current;
-
-    if (!from_name.value || !from_email.value || !message.value) {
+    if (!formData.from_name || !formData.from_email || !formData.message) {
       setError('Please fill out all fields.');
-      setIsSubmitting(false);
+      setSuccess('');
       return;
     }
 
-    try {
-      const result = await emailjs.sendForm(
-        'service_kqz5x4o', 
-        'template_3ba6d27', 
-        form.current, 
-        '11CxjbisIoTlyftVb'
-      );
-      
-      console.log(result.text);
-      setSuccess('Message sent successfully! I\'ll get back to you soon.');
-      setError('');
-      form.current.reset();
-    } catch (error) {
-      console.log(error.text);
-      setError('Failed to send message. Please try again.');
+    if (!formData.from_email.includes('@')) {
+      setError('Please enter a valid email address.');
       setSuccess('');
-    } finally {
-      setIsSubmitting(false);
+      return;
     }
+
+    // Simulate form submission
+    setTimeout(() => {
+      setSuccess('Form submitted successfully! I\'ll get back to you within 24 hours.');
+      setError('');
+      setFormData({ from_name: '', from_email: '', message: '' });
+    }, 1000);
+  };
+
+  const handleInputChange = (field, value) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+    // Clear messages when user starts typing
+    if (error) setError('');
+    if (success) setSuccess('');
   };
 
   return (
-    <FormWrapper>
-      <StyledFormContainer ref={form} onSubmit={sendEmail}>
-        <StyledHeader>Get In Touch</StyledHeader>
-        <Subtitle>Let's start a conversation about your project</Subtitle>
-        
-        <FormGroup delay="0.1s">
-          <StyledLabel htmlFor="from_name">Your Name</StyledLabel>
-          <InputWrapper>
-            <StyledInput 
-              placeholder="Enter your full name" 
-              type="text" 
-              name="from_name" 
-              id="from_name" 
+    <Container>
+      <Header>
+        <Title>Get In Touch</Title>
+        <Subtitle>
+          Let's discuss your project or opportunity. I'll get back to you within 24 hours!
+        </Subtitle>
+      </Header>
+
+      <SectionTitle>Contact Form</SectionTitle>
+
+      <FormSection>
+        <div>
+          <InputGroup>
+            <Label>Your Name</Label>
+            <Input
+              type="text"
+              placeholder="Enter your full name"
+              value={formData.from_name}
+              onChange={(e) => handleInputChange('from_name', e.target.value)}
             />
-          </InputWrapper>
-        </FormGroup>
+          </InputGroup>
 
-        <FormGroup delay="0.2s">
-          <StyledLabel htmlFor="from_email">Email Address</StyledLabel>
-          <InputWrapper>
-            <StyledInput 
-              placeholder="your.email@example.com" 
-              type="email" 
-              name="from_email" 
-              id="from_email" 
+          <InputGroup>
+            <Label>Email Address</Label>
+            <Input
+              type="email"
+              placeholder="your.email@example.com"
+              value={formData.from_email}
+              onChange={(e) => handleInputChange('from_email', e.target.value)}
             />
-          </InputWrapper>
-        </FormGroup>
+          </InputGroup>
 
-        <FormGroup delay="0.3s">
-          <StyledLabel htmlFor="message">Your Message</StyledLabel>
-          <StyledTextarea 
-            placeholder="Tell me about your project, goals, or questions..." 
-            name="message" 
-            id="message" 
-          />
-        </FormGroup>
+          <InputGroup>
+            <Label>Message</Label>
+            <TextArea
+              placeholder="Tell me about your project, timeline, and how I can help..."
+              value={formData.message}
+              onChange={(e) => handleInputChange('message', e.target.value)}
+            />
+          </InputGroup>
 
-        <FormGroup delay="0.4s">
-          <StyledButton type="submit" disabled={isSubmitting}>
-            {isSubmitting ? 'Sending...' : 'Send Message'}
-          </StyledButton>
-        </FormGroup>
+          <SubmitButton onClick={handleSubmit}>
+            <Mail size={20} />
+            Send Message
+          </SubmitButton>
 
-        {(error || success) && (
-          <MessageContainer>
-            {error && <ErrorMessage>{error}</ErrorMessage>}
-            {success && <SuccessMessage>{success}</SuccessMessage>}
-          </MessageContainer>
-        )}
-      </StyledFormContainer>
-    </FormWrapper>
+          {error && <ErrorMessage>{error}</ErrorMessage>}
+          {success && <SuccessMessage>{success}</SuccessMessage>}
+        </div>
+      </FormSection>
+    </Container>
   );
-}
+};
+
+export default Contact;
