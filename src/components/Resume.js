@@ -3,130 +3,140 @@ import ResumePDF from "../images/ResumePDF.pdf";
 import styled from 'styled-components';
 
 const Container = styled.div`
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  max-width: 100%;
-  margin: 20px auto;
-  overflow-y: auto;
-  margin-top: 8px;
-  margin-bottom: 8px;
+  padding: 32px;
+  border-radius: 16px;
+  background: #1e1e2f;
+  color: #f0f0f5;
+  box-shadow: 0 0 30px rgba(0,0,0,0.4);
+  max-width: 900px;
+  margin: 40px auto;
+  font-family: 'Inter', sans-serif;
   text-align: left;
 
   @media (max-width: 768px) {
-    padding: 15px;
-    max-width: 100%;
+    padding: 24px;
+    margin: 16px;
   }
 `;
 
-const SectionTitle = styled.h2`
-  font-size: 22px;
-  margin-top: 20px;
-  margin-bottom: 15px;
-  color: #007BFF;
-  border-bottom: 2px solid #007BFF;
-  padding-bottom: 5px;
-    text-align: left;
-
-  @media (max-width: 768px) {
-    font-size: 18px;
-    margin-top: 15px;
-    margin-bottom: 10px;
-  }
+const Header = styled.div`
+  margin-bottom: 24px;
 `;
 
-const JobTitle = styled.h3`
-  font-size: 20px;
-  margin-top: 15px;
-  margin-bottom: 10px;
-  color: #333;
-    text-align: left;
-
-  @media (max-width: 768px) {
-    font-size: 18px;
-    margin-top: 10px;
-    margin-bottom: 8px;
-  }
-`;
-
-const JobDescription = styled.ul`
-  font-size: 16px;
-  line-height: 1.6;
-  color: #555;
-  padding-left: 20px;
-  text-align: left;
-
-  @media (max-width: 768px) {
-    font-size: 14px;
-  }
-`;
-
-const JobDetail = styled.li`
-  margin-bottom: 10px;
-    text-align: left;
+const Name = styled.h1`
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: #cf38dd;
 `;
 
 const StyledLink = styled.a`
-  color: #007BFF;
-  text-decoration: none;
-    text-align: left;
+  color: #d394f5;
+  margin-top: 8px;
+  font-weight: 500;
+  display: inline-block;
 
   &:hover {
     text-decoration: underline;
   }
 `;
 
-const Resume = () => {
+const SectionTitle = styled.h2`
+  font-size: 1.5rem;
+  color: #b954ec;
+  margin-top: 32px;
+  border-bottom: 1px solid #b954ec;
+  padding-bottom: 6px;
+`;
 
+const JobTitle = styled.h3`
+  font-size: 1.25rem;
+  margin: 20px 0 8px;
+  color: #ffffff;
+`;
+
+const JobDescription = styled.ul`
+  list-style: disc;
+  padding-left: 20px;
+`;
+
+const JobDetail = styled.li`
+  margin-bottom: 8px;
+  line-height: 1.6;
+  color: #ccc;
+`;
+
+const Resume = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
-    return (
-        <Container>
-            <h1 style={{ fontSize: '28px', marginBottom: '20px', color: '#007BFF', textAlign: 'left' }}>Beau Lazear</h1>
-            <StyledLink target="_blank" href={ResumePDF}>Download PDF Version</StyledLink>
-            <SectionTitle>Professional Summary</SectionTitle>
-            <JobDescription>
-                <JobDetail>Animal Care Professional & Software Developer with a strong background in veterinary assistance, zookeeping, and web development.</JobDetail>
-            </JobDescription>
-            <SectionTitle>Experience</SectionTitle>
-            <JobTitle>Freelance Animal Care, Self-Employed (2019-Present)</JobTitle>
-            <JobDescription>
-                <JobDetail>Developed and maintained an informational website using React, CSS, & more.</JobDetail>
-                <JobDetail>Created an application for scheduling, invoicing, pet data management, and finance tracking.</JobDetail>
-                <JobDetail>Expanded client base through effective networking and social media marketing.</JobDetail>
-                <JobDetail>Managed scheduling, invoicing, and client communications.</JobDetail>
-            </JobDescription>
-            <JobTitle>Veterinary Assistant, ASPCA-ARC (Apr. 2019-Nov. 2019)</JobTitle>
-            <JobDescription>
-                <JobDetail>Provided daily animal husbandry and medical support.</JobDetail>
-                <JobDetail>Assisted veterinarians during procedures and managed medical paperwork.</JobDetail>
-                <JobDetail>Promoted to lead vet assistant for proactive leadership during high employee turnover.</JobDetail>
-            </JobDescription>
-            <JobTitle>Zookeeper, Wildlife Conservation Society - Prospect Park Zoo (Sept. 2017-Feb. 2019)</JobTitle>
-            <JobDescription>
-                <JobDetail>Completed internships and advanced to full-time zookeeper role.</JobDetail>
-                <JobDetail>Executed animal husbandry, enrichment activities, and data recording.</JobDetail>
-                <JobDetail>Collaborated with team members to optimize workflow and efficiency.</JobDetail>
-            </JobDescription>
-            <SectionTitle>Skills</SectionTitle>
-            <JobDescription>
-                <JobDetail>Proficient in HTML, CSS, JavaScript, React, Ruby on Rails, & more.</JobDetail>
-                <JobDetail>Strong communication and interpersonal skills.</JobDetail>
-                <JobDetail>Detail-oriented with excellent organizational abilities.</JobDetail>
-                <JobDetail>Adaptable and quick learner.</JobDetail>
-                <JobDetail>Passionate about environmental and social causes.</JobDetail>
-            </JobDescription>
-            <SectionTitle>Education</SectionTitle>
-            <JobDescription>
-                <JobDetail>Flatiron School Software Development Program, 2023 Graduate.</JobDetail>
-                <JobDetail>AWS Cloud Practitioner Certificate, January 2024.</JobDetail>
-                <JobDetail>Real Estate License, New York Real Estate Institute.</JobDetail>
-                <JobDetail>Continuing Education Credits, Prospect Park Zoo (Wildlife Conservation Society).</JobDetail>
-            </JobDescription>
-        </Container>
-    );
+
+  return (
+    <Container>
+      <Header>
+        <Name>Beau Lazear</Name>
+        <StyledLink target="_blank" href={ResumePDF}>Download PDF Version</StyledLink>
+      </Header>
+
+      <SectionTitle>Professional Summary</SectionTitle>
+      <JobDescription>
+        <JobDetail>Multifaceted professional with a background spanning animal care, web development, entrepreneurship, and digital strategy. Currently co-founder at Voxxy AI, founder of Beau’s Animal Care, and a contract digital lead for Aria Design Company.</JobDetail>
+      </JobDescription>
+
+      <SectionTitle>Experience</SectionTitle>
+
+      <JobTitle>Co-Founder & Lead Developer — Voxxy AI (2024–Present)</JobTitle>
+      <JobDescription>
+        <JobDetail>Built a React/Rails platform for AI-powered group planning and smart activity recommendations.</JobDetail>
+        <JobDetail>Integrated Mixpanel to track engagement and user flows across web and mobile apps.</JobDetail>
+        <JobDetail>Developed mobile app using React Native + Expo, connected to secure Rails backend.</JobDetail>
+        <JobDetail>Managed technical direction, deployment, and ethical product strategy.</JobDetail>
+      </JobDescription>
+
+      <JobTitle>Digital Contractor & Social Media Manager — Aria Design Co. (2023–Present)</JobTitle>
+      <JobDescription>
+        <JobDetail>Contract role building and maintaining the company’s website and online portfolio.</JobDetail>
+        <JobDetail>Recently added social media strategy and scheduling to support brand growth.</JobDetail>
+        <JobDetail>Coordinate directly with founder to shape digital presence and user experience.</JobDetail>
+      </JobDescription>
+
+      <JobTitle>Founder — Beau’s Animal Care (2019–Present)</JobTitle>
+      <JobDescription>
+        <JobDetail>Founded and run a successful dog walking and pet care company in Brooklyn.</JobDetail>
+        <JobDetail>Hire and oversee independent contractors while maintaining my own client base.</JobDetail>
+        <JobDetail>Built custom web tools for scheduling, invoicing, and client/pet management using React and Rails.</JobDetail>
+        <JobDetail>Handle all social media, communications, operations, and client relations.</JobDetail>
+      </JobDescription>
+
+      <JobTitle>Veterinary Assistant — ASPCA ARC (2019)</JobTitle>
+      <JobDescription>
+        <JobDetail>Provided daily care and medical support to animals under protective custody.</JobDetail>
+        <JobDetail>Promoted to lead assistant during team transition due to proactive leadership and training.</JobDetail>
+      </JobDescription>
+
+      <JobTitle>Zookeeper — Prospect Park Zoo, WCS (2017–2019)</JobTitle>
+      <JobDescription>
+        <JobDetail>Completed internships and advanced to full-time keeper.</JobDetail>
+        <JobDetail>Handled daily husbandry, enrichment, and record keeping for exotic animal species.</JobDetail>
+      </JobDescription>
+
+      <SectionTitle>Skills</SectionTitle>
+      <JobDescription>
+        <JobDetail><strong>Frontend:</strong> React, React Native, HTML, CSS, JavaScript, Styled Components</JobDetail>
+        <JobDetail><strong>Backend:</strong> Ruby on Rails, PostgreSQL, REST APIs</JobDetail>
+        <JobDetail><strong>Tools:</strong> Mixpanel, SendGrid, Expo, Git, Render, Netlify</JobDetail>
+        <JobDetail><strong>Other:</strong> Client Communication, Project Management, Creative Direction, Content Strategy</JobDetail>
+      </JobDescription>
+
+      <SectionTitle>Education & Certifications</SectionTitle>
+      <JobDescription>
+        <JobDetail>Flatiron School — Full Stack Software Development, Graduate 2023</JobDetail>
+        <JobDetail>AWS Certified Cloud Practitioner — 2024</JobDetail>
+        <JobDetail>New York Real Estate License — NYREI</JobDetail>
+        <JobDetail>Continuing Ed & Credits — Prospect Park Zoo, Wildlife Conservation Society</JobDetail>
+      </JobDescription>
+    </Container>
+  );
 };
 
 export default Resume;
