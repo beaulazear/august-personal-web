@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Mail } from 'lucide-react';
 import styled from 'styled-components';
+import emailjs from '@emailjs/browser';
 
 const Container = styled.div`
   padding: 40px;
@@ -254,7 +255,7 @@ const SubmitButton = styled.button`
     transition: left 0.5s ease;
   }
 
-  &:hover {
+  &:hover:not(:disabled) {
     transform: translateY(-3px);
     box-shadow: 
       0 20px 50px rgba(255, 255, 255, 0.3),
@@ -268,8 +269,14 @@ const SubmitButton = styled.button`
     }
   }
 
-  &:active {
+  &:active:not(:disabled) {
     transform: translateY(-1px);
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
   }
   
   @media (max-width: 768px) {
@@ -314,12 +321,19 @@ const Contact = () => {
   });
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const SERVICE_ID = 'service_kqz5x4o';
+  const TEMPLATE_ID = 'template_3ba6d27';
+  const PUBLIC_KEY = '11CxjbisIoTlyftVb';
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    emailjs.init(PUBLIC_KEY);
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!formData.from_name || !formData.from_email || !formData.message) {
@@ -334,17 +348,36 @@ const Contact = () => {
       return;
     }
 
-    // Simulate form submission
-    setTimeout(() => {
-      setSuccess('Form submitted successfully! I\'ll get back to you within 24 hours.');
-      setError('');
+    setIsSubmitting(true);
+    setError('');
+    setSuccess('');
+
+    try {
+      const result = await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          from_name: formData.from_name,
+          from_email: formData.from_email,
+          message: formData.message,
+          to_email: 'beaulazear@gmail.com',
+        }
+      );
+
+      console.log('Email sent successfully:', result);
+      setSuccess('Message sent successfully! I\'ll get back to you within 24 hours.');
       setFormData({ from_name: '', from_email: '', message: '' });
-    }, 1000);
+
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      setError('Failed to send message. Please try again or contact me directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
-    // Clear messages when user starts typing
     if (error) setError('');
     if (success) setSuccess('');
   };
@@ -369,6 +402,7 @@ const Contact = () => {
               placeholder="Enter your full name"
               value={formData.from_name}
               onChange={(e) => handleInputChange('from_name', e.target.value)}
+              disabled={isSubmitting}
             />
           </InputGroup>
 
@@ -379,6 +413,7 @@ const Contact = () => {
               placeholder="your.email@example.com"
               value={formData.from_email}
               onChange={(e) => handleInputChange('from_email', e.target.value)}
+              disabled={isSubmitting}
             />
           </InputGroup>
 
@@ -388,12 +423,13 @@ const Contact = () => {
               placeholder="Tell me about your project, timeline, and how I can help..."
               value={formData.message}
               onChange={(e) => handleInputChange('message', e.target.value)}
+              disabled={isSubmitting}
             />
           </InputGroup>
 
-          <SubmitButton onClick={handleSubmit}>
+          <SubmitButton onClick={handleSubmit} disabled={isSubmitting}>
             <Mail size={20} />
-            Send Message
+            {isSubmitting ? 'Sending...' : 'Send Message'}
           </SubmitButton>
 
           {error && <ErrorMessage>{error}</ErrorMessage>}
