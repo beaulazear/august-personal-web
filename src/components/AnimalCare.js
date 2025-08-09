@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Heart, MapPin, Phone, Mail, Clock, Shield, Star, CheckCircle, Calendar, Users, Award, ArrowRight, Menu, X, PawPrint, Dog, Cat, Home, ChevronLeft, ChevronRight, Bird } from 'lucide-react';
-import Contact from './Contact';
 
 // Import images
 import BeauAndRalph from '../images/BeauAndRalph.JPG';
@@ -17,9 +17,9 @@ import GraphicTwo from '../images/GraphicTwo.png';
 import CroppedBeau from '../images/CroppedBeau.jpeg';
 
 const AnimalCare = ({ onNavigate }) => {
+  const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [showContactForm, setShowContactForm] = useState(false);
 
   const galleryImages = [
     { src: BeauReykaMangoRu, caption: "Fun group walks with furry friends" },
@@ -44,11 +44,8 @@ const AnimalCare = ({ onNavigate }) => {
       title: "Dog Walks",
       description: "Daily walks tailored to your dog's energy level and needs.",
       pricing: [
-        "$25 - 30 minute walk",
-        "$30 - 45 minute walk",
-        "$35 - 60 minute walk",
-        "$45 - 90 minute walk",
-        "$55 - 120 minute walk"
+        "$25 - 20-30 minute walk",
+        "$35 - 50-60 minute walk"
       ],
       extras: [
         "Add $10 for additional dog (same household)",
@@ -159,72 +156,117 @@ const AnimalCare = ({ onNavigate }) => {
     { icon: Heart, text: "Former Zookeeper & Vet Assistant" }
   ];
 
+  const globalStyles = `
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Bubblegum+Sans&display=swap');
+    
+    * { box-sizing: border-box; }
+    
+    .animal-care-container {
+      width: 100%;
+      overflow-x: hidden;
+    }
+    
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .grid-responsive {
+      display: grid;
+      gap: 32px;
+    }
+    
+    @media (min-width: 768px) {
+      .grid-2-cols { grid-template-columns: repeat(2, 1fr); }
+    }
+    
+    @media (min-width: 1024px) {
+      .grid-3-cols { grid-template-columns: repeat(3, 1fr); }
+    }
+    
+    @media (max-width: 767px) {
+      .grid-2-cols, .grid-3-cols { grid-template-columns: 1fr; }
+      .hero-content { text-align: center; }
+      .hero-grid { grid-template-columns: 1fr !important; }
+      
+      /* Mobile hero section adjustments */
+      .hero-image {
+        width: 140px !important;
+        height: 140px !important;
+      }
+      
+      .hero-title {
+        font-size: 2rem !important;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem !important;
+      }
+      
+      .hero-buttons {
+        flex-direction: column !important;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+      
+      .hero-buttons button {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .trust-grid {
+        grid-template-columns: 1fr !important;
+        max-width: 250px;
+        margin: 0 auto;
+      }
+      
+      /* Reduce services section padding on mobile */
+      .services-section {
+        padding: 60px 0 60px !important;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero-image {
+        width: 120px !important;
+        height: 120px !important;
+      }
+      
+      .hero-title {
+        font-size: 1.75rem !important;
+      }
+      
+      .hero-subtitle {
+        font-size: 1rem !important;
+      }
+      
+      .hero-description {
+        font-size: 0.9rem !important;
+      }
+    }
+    
+    .hover-card {
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .hover-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(251, 191, 36, 0.15);
+    }
+  `;
+
   return (
     <>
-      {/* Contact Form Modal */}
-      {showContactForm && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'rgba(0, 0, 0, 0.5)',
-          zIndex: 2000,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '20px'
-        }}
-        onClick={() => setShowContactForm(false)}
-        >
-          <div 
-            style={{
-              background: 'white',
-              borderRadius: '24px',
-              maxWidth: '600px',
-              width: '100%',
-              maxHeight: '90vh',
-              overflow: 'auto',
-              position: 'relative'
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setShowContactForm(false)}
-              style={{
-                position: 'absolute',
-                top: '20px',
-                right: '20px',
-                background: 'transparent',
-                border: 'none',
-                cursor: 'pointer',
-                zIndex: 1
-              }}
-            >
-              <X size={24} color="#6b7280" />
-            </button>
-            <div style={{ padding: '20px' }}>
-              <h2 style={{
-                fontSize: '1.5rem',
-                fontWeight: '700',
-                marginBottom: '20px',
-                color: '#1f2937',
-                textAlign: 'center'
-              }}>
-                Contact Beau's Animal Care
-              </h2>
-              <Contact />
-            </div>
-          </div>
-        </div>
-      )}
-
-      <div style={{
+      <style>{globalStyles}</style>
+      
+      <div className="animal-care-container" style={{
         minHeight: '100vh',
         background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)',
         fontFamily: 'Inter, sans-serif'
       }}>
+        
       {/* Navigation */}
       <nav style={{
         background: 'rgba(255, 255, 255, 0.98)',
@@ -236,10 +278,7 @@ const AnimalCare = ({ onNavigate }) => {
         padding: '16px 0',
         boxShadow: '0 4px 20px rgba(251, 191, 36, 0.1)'
       }}>
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: '0 20px',
+        <div className="section-container" style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center'
@@ -369,9 +408,10 @@ const AnimalCare = ({ onNavigate }) => {
         )}
       </nav>
 
-      {/* Hero Section with Image */}
+      {/* Hero Section - Matching Home Page Style */}
       <section style={{
-        padding: '60px 20px 80px',
+        padding: '80px 20px 60px',
+        textAlign: 'center',
         background: 'linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)',
         position: 'relative',
         overflow: 'hidden'
@@ -379,303 +419,433 @@ const AnimalCare = ({ onNavigate }) => {
         <div style={{
           maxWidth: '1200px',
           margin: '0 auto',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-          gap: '60px',
-          alignItems: 'center'
+          position: 'relative',
+          zIndex: 2
         }}>
-          <div>
-            <div style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              background: 'rgba(245, 158, 11, 0.1)',
-              padding: '8px 16px',
-              borderRadius: '24px',
-              marginBottom: '24px'
-            }}>
-              <Star size={16} color="#f59e0b" />
-              <span style={{ color: '#f59e0b', fontWeight: '600', fontSize: '14px' }}>
-                Trusted Since 2019
-              </span>
-            </div>
-
-            <h1 style={{
-              fontSize: '3rem',
-              fontWeight: '800',
-              margin: '0 0 24px 0',
-              background: 'linear-gradient(135deg, #f59e0b 0%, #dc2626 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              lineHeight: '1.2'
-            }}>
-              Professional Pet Care with a Personal Touch
-            </h1>
-
-            <p style={{
-              fontSize: '1.25rem',
-              color: '#6b7280',
-              margin: '0 0 32px 0',
-              lineHeight: '1.6'
-            }}>
-              Hello! I'm Beau, an animal caretaker with over 8 years of professional experience. 
-              My background includes zookeeping at Prospect Park Zoo, veterinary assisting at ASPCA, 
-              and now running my own pet care business serving Brooklyn & NYC.
-            </p>
-
-            <div style={{
-              display: 'flex',
-              gap: '16px',
-              flexWrap: 'wrap',
-              marginBottom: '32px',
-              justifyContent: 'center'
-            }}>
-              <button
-                onClick={() => setShowContactForm(true)}
-                style={{
-                  background: 'linear-gradient(135deg, #f59e0b 0%, #dc2626 100%)',
-                  color: 'white',
-                  padding: '16px 32px',
-                  borderRadius: '12px',
-                  border: 'none',
-                  fontWeight: '600',
-                  fontSize: '16px',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  transition: 'transform 0.3s ease',
-                  boxShadow: '0 4px 15px rgba(245, 158, 11, 0.3)',
-                  cursor: 'pointer'
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
-                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
-              >
-                <Mail size={20} />
-                Contact Me
-              </button>
-            </div>
-
-            {/* Trust Indicators */}
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: '16px',
-              maxWidth: '400px'
-            }}>
-              {features.slice(0, 4).map((feature, index) => (
-                <div key={index} style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px'
-                }}>
-                  <feature.icon size={20} color="#f59e0b" />
-                  <span style={{
-                    color: '#4b5563',
-                    fontSize: '14px',
-                    fontWeight: '500'
-                  }}>
-                    {feature.text}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Hero Image */}
-          <div style={{
-            position: 'relative',
-            borderRadius: '24px',
+          {/* Main Graphic Image at Top */}
+          <div className="hero-image" style={{
+            width: '150px',
+            height: '150px',
+            borderRadius: '50%',
             overflow: 'hidden',
-            boxShadow: '0 20px 60px rgba(0, 0, 0, 0.15)'
+            margin: '0 auto 32px',
+            border: '4px solid white',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+            background: 'white',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
           }}>
             <img
               src={GraphicTwo}
-              alt="Beau's Animal Care"
+              alt="Beau's Animal Care - Professional Pet Care"
               style={{
-                width: '100%',
-                height: 'auto',
-                display: 'block'
+                width: '90%',
+                height: '90%',
+                objectFit: 'contain'
               }}
             />
           </div>
-        </div>
-      </section>
 
-      {/* Image Gallery Section */}
-      <section id="gallery" style={{
-        padding: '80px 20px',
-        background: 'linear-gradient(135deg, rgba(254, 243, 199, 0.3) 0%, rgba(253, 230, 138, 0.3) 100%)'
-      }}>
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto'
-        }}>
-          <div style={{
-            textAlign: 'center',
-            marginBottom: '64px'
+          <h1 className="hero-title" style={{
+            fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
+            fontWeight: '700',
+            margin: '0 0 16px 0',
+            background: 'linear-gradient(135deg, #f59e0b 0%, #dc2626 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            lineHeight: '1.2',
+            fontFamily: 'Fredoka, cursive',
+            letterSpacing: '-0.5px'
           }}>
-            <h2 style={{
-              fontSize: '2.5rem',
-              fontWeight: '700',
-              margin: '0 0 16px 0',
-              color: '#1f2937'
-            }}>
-              My Furry Friends
-            </h2>
-            <p style={{
-              fontSize: '1.125rem',
-              color: '#6b7280'
-            }}>
-              A glimpse into the wonderful animals I've had the privilege to care for
-            </p>
-          </div>
+            Beau's Animal Care
+          </h1>
 
+          <p className="hero-subtitle" style={{
+            fontSize: 'clamp(1.25rem, 3vw, 1.5rem)',
+            color: '#4a5568',
+            margin: '0 0 24px 0',
+            fontWeight: '500'
+          }}>
+            Professional Pet Care with a Personal Touch
+          </p>
+
+          <p className="hero-description" style={{
+            fontSize: 'clamp(1rem, 2.5vw, 1.125rem)',
+            color: '#6b7280',
+            maxWidth: '700px',
+            margin: '0 auto 32px',
+            lineHeight: '1.7'
+          }}>
+            With over 8 years of professional experience including zookeeping at Prospect Park Zoo 
+            and veterinary assisting at ASPCA, I provide trusted pet care for 50+ families in Brooklyn & NYC.
+          </p>
+
+          {/* Trusted Since Badge */}
           <div style={{
-            position: 'relative',
-            maxWidth: '800px',
-            margin: '0 auto',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            background: 'rgba(245, 158, 11, 0.1)',
+            padding: '8px 16px',
             borderRadius: '24px',
-            overflow: 'hidden',
-            boxShadow: '0 20px 60px rgba(0, 0, 0, 0.15)'
+            marginBottom: '32px'
           }}>
-            <img
-              src={galleryImages[currentImageIndex].src}
-              alt={galleryImages[currentImageIndex].caption}
+            <Star size={16} color="#f59e0b" />
+            <span style={{ color: '#f59e0b', fontWeight: '600', fontSize: '14px' }}>
+              Trusted Since 2019
+            </span>
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="hero-buttons" style={{
+            display: 'flex',
+            gap: '16px',
+            justifyContent: 'center',
+            flexWrap: 'wrap',
+            marginBottom: '48px'
+          }}>
+            <button
+              onClick={() => navigate('/contact')}
               style={{
-                width: '100%',
-                height: '500px',
-                objectFit: 'cover'
-              }}
-            />
-            
-            {/* Gallery Caption */}
-            <div style={{
-              position: 'absolute',
-              bottom: 0,
-              left: 0,
-              right: 0,
-              background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)',
-              padding: '40px 20px 20px',
-              color: 'white'
-            }}>
-              <p style={{
-                fontSize: '1.25rem',
+                background: 'linear-gradient(135deg, #f59e0b 0%, #dc2626 100%)',
+                color: 'white',
+                padding: '16px 32px',
+                borderRadius: '12px',
+                border: 'none',
                 fontWeight: '600',
-                margin: 0,
-                textAlign: 'center'
-              }}>
-                {galleryImages[currentImageIndex].caption}
-              </p>
-            </div>
-
-            {/* Gallery Navigation */}
-            <button
-              onClick={() => setCurrentImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length)}
-              style={{
-                position: 'absolute',
-                left: '20px',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                background: 'rgba(255, 255, 255, 0.9)',
-                border: 'none',
-                borderRadius: '50%',
-                width: '48px',
-                height: '48px',
-                display: 'flex',
+                fontSize: '16px',
+                display: 'inline-flex',
                 alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)'
+                gap: '8px',
+                transition: 'transform 0.3s ease',
+                boxShadow: '0 4px 15px rgba(245, 158, 11, 0.3)',
+                cursor: 'pointer'
               }}
-              onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-50%) scale(1.1)'}
-              onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(-50%) scale(1)'}
+              onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+              onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
             >
-              <ChevronLeft size={24} color="#1f2937" />
+              <Mail size={20} />
+              Contact Me
             </button>
-
+            
             <button
-              onClick={() => setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length)}
+              onClick={() => document.getElementById('services').scrollIntoView({ behavior: 'smooth' })}
               style={{
-                position: 'absolute',
-                right: '20px',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                background: 'rgba(255, 255, 255, 0.9)',
-                border: 'none',
-                borderRadius: '50%',
-                width: '48px',
-                height: '48px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+                background: 'transparent',
+                border: '2px solid #f59e0b',
+                borderRadius: '12px',
+                color: '#f59e0b',
+                fontWeight: '600',
+                padding: '14px 30px',
+                fontSize: '16px',
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
-                boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)'
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px'
               }}
-              onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-50%) scale(1.1)'}
-              onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(-50%) scale(1)'}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = '#f59e0b';
+                e.currentTarget.style.color = 'white';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'transparent';
+                e.currentTarget.style.color = '#f59e0b';
+              }}
             >
-              <ChevronRight size={24} color="#1f2937" />
+              <PawPrint size={20} />
+              View Services
             </button>
           </div>
 
-          {/* Gallery Thumbnails */}
-          <div style={{
-            display: 'flex',
-            gap: '12px',
-            justifyContent: 'center',
-            marginTop: '24px',
-            flexWrap: 'wrap'
+          {/* Trust Indicators Grid */}
+          <div className="trust-grid" style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '24px',
+            maxWidth: '800px',
+            margin: '0 auto'
           }}>
-            {galleryImages.map((image, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentImageIndex(index)}
-                style={{
-                  border: currentImageIndex === index ? '3px solid #f59e0b' : '3px solid transparent',
-                  borderRadius: '12px',
-                  overflow: 'hidden',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                  padding: 0,
-                  background: 'none'
-                }}
-              >
-                <img
-                  src={image.src}
-                  alt=""
-                  style={{
-                    width: '80px',
-                    height: '80px',
-                    objectFit: 'cover',
-                    display: 'block'
-                  }}
-                />
-              </button>
+            {features.slice(0, 6).map((feature, index) => (
+              <div key={index} style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px'
+              }}>
+                <feature.icon size={20} color="#f59e0b" />
+                <span style={{
+                  color: '#4b5563',
+                  fontSize: '14px',
+                  fontWeight: '500'
+                }}>
+                  {feature.text}
+                </span>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Image Gallery Section - Modern Compact Design */}
+      <section id="gallery" style={{
+        padding: '80px 0',
+        background: 'linear-gradient(135deg, rgba(254, 243, 199, 0.2) 0%, rgba(253, 230, 138, 0.2) 100%)'
+      }}>
+        <div className="section-container">
+          <div style={{
+            textAlign: 'center',
+            marginBottom: '40px'
+          }}>
+            <h2 style={{
+              fontSize: 'clamp(1.75rem, 3.5vw, 2.25rem)',
+              fontWeight: '600',
+              margin: '0 0 12px 0',
+              color: '#1f2937',
+              fontFamily: 'Fredoka, cursive'
+            }}>
+              My Furry Friends
+            </h2>
+            <p style={{
+              fontSize: '1rem',
+              color: '#6b7280',
+              fontFamily: 'Inter, sans-serif'
+            }}>
+              Professional care for every personality
+            </p>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '2fr 1fr',
+            gap: '20px',
+            maxWidth: '1000px',
+            margin: '0 auto',
+            height: '400px'
+          }}>
+            {/* Main Image */}
+            <div style={{
+              position: 'relative',
+              borderRadius: '20px',
+              overflow: 'hidden',
+              boxShadow: '0 10px 40px rgba(0, 0, 0, 0.12)'
+            }}>
+              <img
+                src={galleryImages[currentImageIndex].src}
+                alt={galleryImages[currentImageIndex].caption}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover'
+                }}
+              />
+              
+              {/* Overlay Caption */}
+              <div style={{
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)',
+                padding: '30px 20px 20px',
+                color: 'white'
+              }}>
+                <p style={{
+                  fontSize: '1.125rem',
+                  fontWeight: '600',
+                  margin: 0,
+                  fontFamily: 'Inter, sans-serif'
+                }}>
+                  {galleryImages[currentImageIndex].caption}
+                </p>
+              </div>
+
+              {/* Sleek Navigation Buttons */}
+              <button
+                onClick={() => setCurrentImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length)}
+                style={{
+                  position: 'absolute',
+                  left: '16px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'rgba(255, 255, 255, 0.95)',
+                  border: 'none',
+                  borderRadius: '12px',
+                  width: '40px',
+                  height: '40px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 2px 10px rgba(0, 0, 0, 0.15)',
+                  opacity: 0.8
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.opacity = '1';
+                  e.currentTarget.style.transform = 'translateY(-50%) scale(1.05)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.opacity = '0.8';
+                  e.currentTarget.style.transform = 'translateY(-50%) scale(1)';
+                }}
+              >
+                <ChevronLeft size={20} color="#1f2937" />
+              </button>
+
+              <button
+                onClick={() => setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length)}
+                style={{
+                  position: 'absolute',
+                  right: '16px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'rgba(255, 255, 255, 0.95)',
+                  border: 'none',
+                  borderRadius: '12px',
+                  width: '40px',
+                  height: '40px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 2px 10px rgba(0, 0, 0, 0.15)',
+                  opacity: 0.8
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.opacity = '1';
+                  e.currentTarget.style.transform = 'translateY(-50%) scale(1.05)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.opacity = '0.8';
+                  e.currentTarget.style.transform = 'translateY(-50%) scale(1)';
+                }}
+              >
+                <ChevronRight size={20} color="#1f2937" />
+              </button>
+            </div>
+
+            {/* Thumbnail Grid */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gridTemplateRows: 'repeat(3, 1fr)',
+              gap: '10px',
+              height: '100%'
+            }}>
+              {galleryImages.slice(0, 6).map((image, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentImageIndex(index)}
+                  style={{
+                    position: 'relative',
+                    borderRadius: '12px',
+                    overflow: 'hidden',
+                    cursor: 'pointer',
+                    border: currentImageIndex === index ? '3px solid #f59e0b' : '3px solid transparent',
+                    transition: 'all 0.3s ease',
+                    padding: 0,
+                    background: 'none'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (currentImageIndex !== index) {
+                      e.currentTarget.style.transform = 'scale(1.05)';
+                      e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.2)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'scale(1)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
+                >
+                  <img
+                    src={image.src}
+                    alt=""
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      display: 'block',
+                      filter: currentImageIndex === index ? 'none' : 'brightness(0.9)'
+                    }}
+                  />
+                  {currentImageIndex === index && (
+                    <div style={{
+                      position: 'absolute',
+                      inset: 0,
+                      background: 'rgba(245, 158, 11, 0.2)',
+                      pointerEvents: 'none'
+                    }} />
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Progress Dots */}
+          <div style={{
+            display: 'flex',
+            gap: '8px',
+            justifyContent: 'center',
+            marginTop: '24px',
+            marginBottom: '40px'
+          }}>
+            {galleryImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentImageIndex(index)}
+                style={{
+                  width: currentImageIndex === index ? '24px' : '8px',
+                  height: '8px',
+                  borderRadius: '4px',
+                  border: 'none',
+                  background: currentImageIndex === index ? '#f59e0b' : '#e5e7eb',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  padding: 0
+                }}
+              />
+            ))}
+          </div>
+        </div>
+
+        <style>{`
+          @media (max-width: 768px) {
+            #gallery .section-container > div:nth-child(2) {
+              grid-template-columns: 1fr !important;
+              height: auto !important;
+            }
+            #gallery .section-container > div:nth-child(2) > div:first-child {
+              height: 300px;
+            }
+            #gallery .section-container > div:nth-child(2) > div:last-child {
+              grid-template-columns: repeat(3, 1fr) !important;
+              grid-template-rows: repeat(2, 1fr) !important;
+              height: 150px;
+              margin-top: 10px;
+            }
+          }
+        `}</style>
+      </section>
+
       {/* Services Section with Detailed Pricing */}
-      <section id="services" style={{
-        padding: '80px 20px',
+      <section id="services" className="services-section" style={{
+        padding: '120px 0 80px',
         background: 'linear-gradient(135deg, rgba(254, 243, 199, 0.5) 0%, rgba(253, 230, 138, 0.5) 100%)'
       }}>
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto'
-        }}>
+        <div className="section-container">
           <div style={{
             textAlign: 'center',
             marginBottom: '64px'
           }}>
             <h2 style={{
-              fontSize: '2.5rem',
-              fontWeight: '700',
+              fontSize: 'clamp(2rem, 4vw, 2.5rem)',
+              fontWeight: '600',
               margin: '0 0 16px 0',
-              color: '#1f2937'
+              color: '#1f2937',
+              fontFamily: 'Fredoka, cursive'
             }}>
               Services and Pricing
             </h2>
@@ -687,30 +857,20 @@ const AnimalCare = ({ onNavigate }) => {
             </p>
           </div>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-            gap: '32px'
-          }}>
+          <div className="grid-responsive grid-3-cols">
             {services.map((service, index) => (
-              <div key={index} style={{
+              <div key={index} className="hover-card" style={{
                 background: 'white',
                 borderRadius: '20px',
                 padding: '32px',
                 boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-                transition: 'transform 0.3s ease',
-                cursor: 'pointer',
                 border: '2px solid transparent'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-8px)';
                 e.currentTarget.style.borderColor = '#fbbf24';
-                e.currentTarget.style.boxShadow = '0 12px 40px rgba(251, 191, 36, 0.15)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
                 e.currentTarget.style.borderColor = 'transparent';
-                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
               }}
               >
                 <div style={{
@@ -790,22 +950,20 @@ const AnimalCare = ({ onNavigate }) => {
 
       {/* Testimonials Section */}
       <section id="testimonials" style={{
-        padding: '80px 20px',
+        padding: '80px 0',
         background: 'linear-gradient(135deg, rgba(254, 243, 199, 0.3) 0%, rgba(253, 230, 138, 0.3) 100%)'
       }}>
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto'
-        }}>
+        <div className="section-container">
           <div style={{
             textAlign: 'center',
             marginBottom: '64px'
           }}>
             <h2 style={{
-              fontSize: '2.5rem',
-              fontWeight: '700',
+              fontSize: 'clamp(2rem, 4vw, 2.5rem)',
+              fontWeight: '600',
               margin: '0 0 16px 0',
-              color: '#1f2937'
+              color: '#1f2937',
+              fontFamily: 'Fredoka, cursive'
             }}>
               Client Testimonials
             </h2>
@@ -817,11 +975,7 @@ const AnimalCare = ({ onNavigate }) => {
             </p>
           </div>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-            gap: '32px'
-          }}>
+          <div className="grid-responsive grid-3-cols">
             {testimonials.map((testimonial, index) => (
               <div key={index} style={{
                 background: 'linear-gradient(135deg, #fff 0%, #fef3c7 100%)',
@@ -902,136 +1056,135 @@ const AnimalCare = ({ onNavigate }) => {
 
       {/* About Section */}
       <section style={{
-        padding: '80px 20px',
+        padding: '80px 0',
         background: 'linear-gradient(135deg, rgba(254, 243, 199, 0.3) 0%, rgba(253, 230, 138, 0.3) 100%)'
       }}>
-        <div style={{
-          maxWidth: '1000px',
-          margin: '0 auto',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-          gap: '64px',
-          alignItems: 'center'
-        }}>
-          <div>
-            <h2 style={{
-              fontSize: '2.5rem',
-              fontWeight: '700',
-              margin: '0 0 24px 0',
-              color: '#1f2937'
-            }}>
-              Why Choose Beau's Animal Care?
-            </h2>
-
-            <p style={{
-              color: '#6b7280',
-              fontSize: '1.125rem',
-              lineHeight: '1.7',
-              marginBottom: '32px'
-            }}>
-              With my background as a zookeeper at Prospect Park Zoo and veterinary assistant at ASPCA, 
-              I bring professional animal care expertise to every visit. Your pets aren't just clients - 
-              they're family to me.
-            </p>
-
-            <div style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '16px'
-            }}>
-              {[
-                "Former Zookeeper at Prospect Park Zoo (WCS)",
-                "Veterinary Assistant at ASPCA",
-                "8+ years of professional animal care",
-                "Trusted by over 50 families in Brooklyn",
-                "Available for emergencies and last-minute needs",
-                "Regular photo updates during every visit",
-                "Fully insured and bonded"
-              ].map((item, index) => (
-                <div key={index} style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '12px'
-                }}>
-                  <CheckCircle size={20} color="#10b981" />
-                  <span style={{ color: '#4b5563', fontWeight: '500' }}>{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div style={{
-            background: 'white',
-            borderRadius: '20px',
-            padding: '40px',
-            boxShadow: '0 8px 30px rgba(0, 0, 0, 0.1)',
-            border: '2px solid #fde68a'
+        <div className="section-container">
+          <div className="grid-responsive grid-2-cols" style={{
+            gap: '64px',
+            alignItems: 'center'
           }}>
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '16px',
-              marginBottom: '32px'
-            }}>
-              <div style={{
-                width: '80px',
-                height: '80px',
-                borderRadius: '50%',
-                overflow: 'hidden',
-                boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
+            <div>
+              <h2 style={{
+                fontSize: 'clamp(2rem, 4vw, 2.5rem)',
+                fontWeight: '600',
+                margin: '0 0 24px 0',
+                color: '#1f2937',
+                fontFamily: 'Fredoka, cursive'
               }}>
-                <img
-                  src={CroppedBeau}
-                  alt="Beau Lazear"
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover'
-                  }}
-                />
-              </div>
-              <div>
-                <h3 style={{
-                  fontSize: '1.5rem',
-                  fontWeight: '700',
-                  margin: '0 0 4px 0',
-                  color: '#1f2937'
-                }}>
-                  Beau Lazear
-                </h3>
-                <p style={{
-                  color: '#6b7280',
-                  margin: 0
-                }}>
-                  Founder & Lead Pet Care Specialist
-                </p>
+                Why Choose Beau's Animal Care?
+              </h2>
+
+              <p style={{
+                color: '#6b7280',
+                fontSize: '1.125rem',
+                lineHeight: '1.7',
+                marginBottom: '32px'
+              }}>
+                With my background as a zookeeper at Prospect Park Zoo and veterinary assistant at ASPCA, 
+                I bring professional animal care expertise to every visit. Your pets aren't just clients - 
+                they're family to me.
+              </p>
+
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '16px'
+              }}>
+                {[
+                  "Former Zookeeper at Prospect Park Zoo (WCS)",
+                  "Veterinary Assistant at ASPCA",
+                  "8+ years of professional animal care",
+                  "Trusted by over 50 families in Brooklyn",
+                  "Available for emergencies and last-minute needs",
+                  "Regular photo updates during every visit",
+                  "Fully insured and bonded"
+                ].map((item, index) => (
+                  <div key={index} style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px'
+                  }}>
+                    <CheckCircle size={20} color="#10b981" />
+                    <span style={{ color: '#4b5563', fontWeight: '500' }}>{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
             <div style={{
-              borderTop: '1px solid #e5e7eb',
-              paddingTop: '24px'
+              background: 'white',
+              borderRadius: '20px',
+              padding: '40px',
+              boxShadow: '0 8px 30px rgba(0, 0, 0, 0.1)',
+              border: '2px solid #fde68a'
             }}>
               <div style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: '24px'
+                display: 'flex',
+                alignItems: 'center',
+                gap: '16px',
+                marginBottom: '32px'
               }}>
-                <div>
-                  <p style={{ color: '#6b7280', fontSize: '14px', marginBottom: '4px' }}>Experience</p>
-                  <p style={{ color: '#1f2937', fontWeight: '600', margin: 0 }}>8+ Years</p>
+                <div style={{
+                  width: '80px',
+                  height: '80px',
+                  borderRadius: '50%',
+                  overflow: 'hidden',
+                  boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
+                }}>
+                  <img
+                    src={CroppedBeau}
+                    alt="Beau Lazear"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover'
+                    }}
+                  />
                 </div>
                 <div>
-                  <p style={{ color: '#6b7280', fontSize: '14px', marginBottom: '4px' }}>Pets Cared For</p>
-                  <p style={{ color: '#1f2937', fontWeight: '600', margin: 0 }}>200+</p>
+                  <h3 style={{
+                    fontSize: '1.5rem',
+                    fontWeight: '700',
+                    margin: '0 0 4px 0',
+                    color: '#1f2937'
+                  }}>
+                    Beau Lazear
+                  </h3>
+                  <p style={{
+                    color: '#6b7280',
+                    margin: 0
+                  }}>
+                    Founder & Lead Pet Care Specialist
+                  </p>
                 </div>
-                <div>
-                  <p style={{ color: '#6b7280', fontSize: '14px', marginBottom: '4px' }}>Service Area</p>
-                  <p style={{ color: '#1f2937', fontWeight: '600', margin: 0 }}>Brooklyn & NYC</p>
-                </div>
-                <div>
-                  <p style={{ color: '#6b7280', fontSize: '14px', marginBottom: '4px' }}>Availability</p>
-                  <p style={{ color: '#1f2937', fontWeight: '600', margin: 0 }}>7 Days/Week</p>
+              </div>
+
+              <div style={{
+                borderTop: '1px solid #e5e7eb',
+                paddingTop: '24px'
+              }}>
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1fr',
+                  gap: '24px'
+                }}>
+                  <div>
+                    <p style={{ color: '#6b7280', fontSize: '14px', marginBottom: '4px' }}>Experience</p>
+                    <p style={{ color: '#1f2937', fontWeight: '600', margin: 0 }}>8+ Years</p>
+                  </div>
+                  <div>
+                    <p style={{ color: '#6b7280', fontSize: '14px', marginBottom: '4px' }}>Pets Cared For</p>
+                    <p style={{ color: '#1f2937', fontWeight: '600', margin: 0 }}>200+</p>
+                  </div>
+                  <div>
+                    <p style={{ color: '#6b7280', fontSize: '14px', marginBottom: '4px' }}>Service Area</p>
+                    <p style={{ color: '#1f2937', fontWeight: '600', margin: 0 }}>Brooklyn & NYC</p>
+                  </div>
+                  <div>
+                    <p style={{ color: '#6b7280', fontSize: '14px', marginBottom: '4px' }}>Availability</p>
+                    <p style={{ color: '#1f2937', fontWeight: '600', margin: 0 }}>7 Days/Week</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1041,19 +1194,21 @@ const AnimalCare = ({ onNavigate }) => {
 
       {/* Contact Section */}
       <section id="contact" style={{
-        padding: '80px 20px',
+        padding: '80px 0',
         background: 'linear-gradient(135deg, #f59e0b 0%, #dc2626 100%)'
       }}>
         <div style={{
           maxWidth: '600px',
           margin: '0 auto',
+          padding: '0 20px',
           textAlign: 'center'
         }}>
           <h2 style={{
-            fontSize: '2.5rem',
-            fontWeight: '700',
+            fontSize: 'clamp(2rem, 4vw, 2.5rem)',
+            fontWeight: '600',
             margin: '0 0 24px 0',
-            color: 'white'
+            color: 'white',
+            fontFamily: 'Fredoka, cursive'
           }}>
             Ready to Get Started?
           </h2>
@@ -1144,7 +1299,7 @@ const AnimalCare = ({ onNavigate }) => {
               borderTop: '1px solid #e5e7eb'
             }}>
               <button
-                onClick={() => setShowContactForm(true)}
+                onClick={() => navigate('/contact')}
                 style={{
                   width: '100%',
                   background: 'linear-gradient(135deg, #f59e0b 0%, #dc2626 100%)',

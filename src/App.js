@@ -120,13 +120,75 @@ const globalStyles = `
     .timeline-mobile { display: none !important; }
   }
 
+  /* Mobile-first responsive styles */
+  @media (max-width: 480px) {
+    .hero-title { 
+      font-size: 2rem !important; 
+      line-height: 1.2 !important;
+    }
+    .hero-subtitle { 
+      font-size: 1.1rem !important; 
+    }
+    .section-title { 
+      font-size: 1.75rem !important; 
+    }
+    .hero-description {
+      font-size: 1rem !important;
+      padding: 0 10px;
+    }
+    .primary-button, .secondary-button { 
+      padding: 14px 24px !important;
+      font-size: 15px !important;
+      width: 100%;
+      justify-content: center;
+    }
+  }
+  
   @media (max-width: 768px) {
-    .hero-title { font-size: 2.5rem !important; }
-    .hero-subtitle { font-size: 1.25rem !important; }
-    .section-title { font-size: 2rem !important; }
-    .card-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
-    .hero-buttons { flex-direction: column !important; align-items: stretch !important; gap: 12px !important; }
-    .primary-button, .secondary-button { justify-content: center; }
+    .hero-title { 
+      font-size: 2.5rem !important; 
+    }
+    .hero-subtitle { 
+      font-size: 1.25rem !important; 
+    }
+    .section-title { 
+      font-size: 2rem !important; 
+    }
+    .card-grid { 
+      grid-template-columns: 1fr !important; 
+      gap: 24px !important; 
+    }
+    .skills-grid {
+      grid-template-columns: 1fr !important;
+    }
+    .project-grid {
+      grid-template-columns: 1fr !important;
+      padding: 0 10px;
+    }
+    .hero-buttons { 
+      flex-direction: column !important; 
+      align-items: stretch !important; 
+      gap: 12px !important; 
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+    .primary-button, .secondary-button { 
+      justify-content: center; 
+    }
+    .glass-card {
+      border-radius: 16px !important;
+    }
+    .hover-lift:hover {
+      transform: none !important;
+    }
+    .section-padding {
+      padding: 60px 16px !important;
+    }
+    .hero-image {
+      width: 120px !important;
+      height: 120px !important;
+    }
   }
 `;
 
@@ -137,17 +199,17 @@ const ModernPortfolio = () => {
     {
       year: '2016-2017',
       title: 'Early Foundation',
-      subtitle: 'Three Jobs in High School → NYC Move at 18',
-      description: 'Developed strong work ethic through multiple part-time jobs while in high school. At 18, moved to NYC with determination to build something meaningful.',
+      subtitle: 'Talented & Gifted → NYC at 18',
+      description: 'TAG program, FCCLA, basketball, three jobs. Moved to NYC alone at 18 to pursue bigger opportunities.',
       image: null,
       icon: MapPin,
       side: 'left'
     },
     {
       year: '2017-2018',
-      title: 'Strategic Planning',
-      subtitle: 'Real Estate License + Zoo Internship',
-      description: 'Earned NY Real Estate License to financially support myself while pursuing unpaid zoo internship at Prospect Park. Strategic thinking to enable learning opportunity.',
+      title: 'Strategic Thinking',
+      subtitle: 'Real Estate + Zoo Internships',
+      description: 'Real estate until first unpaid internship. Dog walking during second unpaid internship - strategic persistence.',
       image: null,
       icon: Building,
       side: 'right'
@@ -155,44 +217,44 @@ const ModernPortfolio = () => {
     {
       year: '2017-2019',
       title: 'Prospect Park Zoo',
-      subtitle: 'Intern → Full-Time Zookeeper',
-      description: 'Advanced from internship to full-time zookeeper role. Mastered daily husbandry, enrichment programs, and detailed record keeping for exotic animal species.',
+      subtitle: 'Internships → Part-Time → Full Zookeeper',
+      description: 'After two internships, got part-time zoo role. Managed dog daycare for extra income until full-time promotion.',
       image: null,
       icon: Heart,
       side: 'left'
     },
     {
       year: '2019',
-      title: 'ASPCA Emergency Care',
-      subtitle: 'Veterinary Assistant → Lead Assistant',
-      description: 'Provided critical medical support for animals under protective custody. Promoted to lead assistant during team transition due to proactive leadership and training abilities.',
+      title: 'ASPCA Leadership',
+      subtitle: 'Assistant → Lead Role',
+      description: 'Emergency animal care. Promoted to lead during transition for training abilities and proactive leadership.',
       image: null,
       icon: Heart,
       side: 'right'
     },
     {
       year: '2019-Present',
-      title: 'Beau\'s Animal Care',
-      subtitle: 'Founded & Scaled Service Business',
-      description: 'Founded pet care company, grew to manage independent contractors while maintaining personal client relationships. Built custom React/Rails tools for operations, scheduling, and invoicing.',
+      title: 'Business Owner',
+      subtitle: 'Founded & Scaled Pet Care',
+      description: 'Built company serving 50+ families. Self-taught HTML/CSS/JS to build website - sparked love for coding.',
       image: null,
       icon: Briefcase,
       side: 'left'
     },
     {
       year: '2023',
-      title: 'Full-Stack Development',
-      subtitle: 'Flatiron School Graduate + Aria Design Contract',
-      description: 'Completed intensive full-stack bootcamp while immediately applying skills. Started contract work with Aria Design Co for web development and digital strategy.',
+      title: 'Tech Transition',
+      subtitle: 'Flatiron + AWS + First Client',
+      description: 'Bootcamp grad, AWS certified. Built full-stack app for my business, websites for friends, landed Aria contract.',
       image: null,
       icon: GraduationCap,
       side: 'right'
     },
     {
       year: '2024',
-      title: 'Technical Leadership',
-      subtitle: 'Voxxy AI Co-Founder + AWS Certification',
-      description: 'Co-founded AI startup, managing technical direction and product strategy. Earned AWS Cloud Practitioner certification. Building platforms that help groups collaborate better.',
+      title: 'Tech Leadership',
+      subtitle: 'Co-Founder & CTO',
+      description: 'Voxxy AI CTO. Architecting scalable system for multiple products. Managing full technical stack and roadmap.',
       image: null,
       icon: Zap,
       side: 'left'
@@ -209,7 +271,7 @@ const ModernPortfolio = () => {
         { label: "Live Site", url: "https://www.voxxyai.com/#/" },
         { label: "GitHub", url: "https://github.com/beaulazear/michael-personal-site.git" }
       ],
-      highlight: "🤝 Collaborative Project"
+      highlight: "🚀 Co-Founded"
     },
     {
       title: "Beau's Animal Care",
@@ -220,7 +282,7 @@ const ModernPortfolio = () => {
         { label: "View Site", url: "/animal-care", isInternal: true },
         { label: "GitHub", url: "https://github.com/beaulazear/voxvy-rails-react" }
       ],
-      highlight: "🐕 My Business"
+      highlight: "🐕 Founder"
     },
     {
       title: "Aria Design Co",
@@ -230,7 +292,7 @@ const ModernPortfolio = () => {
       links: [
         { label: "Live Site", url: "https://www.ariadesignconsultants.com/#/" }
       ],
-      highlight: "🤝 Client Work"
+      highlight: "💼 Client"
     }
   ];
 
@@ -262,8 +324,8 @@ const ModernPortfolio = () => {
       <style>{globalStyles}</style>
 
       {/* Hero Section */}
-      <section style={{ 
-        padding: '100px 20px 80px',
+      <section className="section-padding" style={{ 
+        padding: '80px 20px 60px',
         textAlign: 'center',
         position: 'relative',
         overflow: 'hidden'
@@ -283,7 +345,7 @@ const ModernPortfolio = () => {
               margin: '0 auto 32px',
               border: '4px solid white',
               boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)'
-            }} className="animate-float">
+            }} className="animate-float hero-image">
               <img
                 src={CroppedBeau}
                 alt="Beau Lazear"
@@ -313,7 +375,7 @@ const ModernPortfolio = () => {
               Full-Stack Developer & Community Builder
             </p>
             
-            <p style={{
+            <p className="hero-description" style={{
               fontSize: '1.125rem',
               color: '#6b7280',
               maxWidth: '700px',
@@ -335,11 +397,11 @@ const ModernPortfolio = () => {
                   background: 'linear-gradient(135deg, #f59e0b 0%, #dc2626 100%)',
                   color: 'white',
                   border: 'none',
-                  padding: '14px 28px',
+                  padding: 'clamp(12px, 2vw, 14px) clamp(20px, 4vw, 28px)',
                   borderRadius: '12px',
                   cursor: 'pointer',
                   fontWeight: '600',
-                  fontSize: '16px',
+                  fontSize: 'clamp(14px, 2vw, 16px)',
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '10px',
@@ -400,7 +462,7 @@ const ModernPortfolio = () => {
       </section>
 
       {/* My Story Section */}
-      <section style={{ 
+      <section className="section-padding" style={{ 
         padding: '80px 20px',
         background: 'rgba(255, 255, 255, 0.5)'
       }}>
@@ -457,8 +519,9 @@ const ModernPortfolio = () => {
             maxWidth: '600px',
             margin: '0 auto',
             flexDirection: 'column',
-            gap: '24px',
-            display: 'none'
+            gap: '20px',
+            display: 'none',
+            padding: '0 10px'
           }}>
             {timelineData.map((item, index) => (
               <MobileTimelineItem key={index} item={item} />
@@ -466,14 +529,14 @@ const ModernPortfolio = () => {
           </div>
           
           <div className="glass-card" style={{ 
-            padding: '32px',
+            padding: 'clamp(20px, 4vw, 32px)',
             textAlign: 'center',
             marginTop: '48px',
             maxWidth: '600px',
             margin: '48px auto 0'
           }}>
             <p style={{
-              fontSize: '1.25rem',
+              fontSize: 'clamp(1rem, 3vw, 1.25rem)',
               lineHeight: '1.7',
               color: '#4a5568',
               margin: '0',
@@ -487,7 +550,7 @@ const ModernPortfolio = () => {
       </section>
 
       {/* Featured Projects */}
-      <section id="projects-section" style={{ 
+      <section id="projects-section" className="section-padding" style={{ 
         padding: '80px 20px'
       }}>
         <div style={{ 
@@ -518,9 +581,9 @@ const ModernPortfolio = () => {
           
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
             gap: '32px'
-          }} className="card-grid">
+          }} className="card-grid project-grid">
             {projects.map((project, index) => (
               <ProjectCard key={index} project={project} />
             ))}
@@ -529,7 +592,7 @@ const ModernPortfolio = () => {
       </section>
 
       {/* Skills Section */}
-      <section style={{ 
+      <section className="section-padding" style={{ 
         padding: '80px 20px',
         background: 'rgba(255, 255, 255, 0.5)'
       }}>
@@ -549,9 +612,9 @@ const ModernPortfolio = () => {
           
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
             gap: '24px'
-          }} className="card-grid">
+          }} className="card-grid skills-grid">
             {skills.map((skillGroup, index) => (
               <SkillCard key={index} skillGroup={skillGroup} />
             ))}
@@ -560,7 +623,7 @@ const ModernPortfolio = () => {
       </section>
 
       {/* CTA Section */}
-      <section style={{ 
+      <section className="section-padding" style={{ 
         padding: '80px 20px',
         textAlign: 'center'
       }}>
@@ -569,19 +632,21 @@ const ModernPortfolio = () => {
           margin: '0 auto'
         }}>
           <h2 style={{
-            fontSize: '2.5rem',
+            fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
             fontWeight: '700',
             margin: '0 0 24px 0',
-            color: '#2d3748'
+            color: '#2d3748',
+            lineHeight: '1.3'
           }}>
             Let's Build Something Meaningful
           </h2>
           
           <p style={{
-            fontSize: '1.125rem',
+            fontSize: 'clamp(1rem, 2.5vw, 1.125rem)',
             color: '#6b7280',
             margin: '0 0 48px 0',
-            lineHeight: '1.7'
+            lineHeight: '1.7',
+            padding: '0 10px'
           }}>
             I'd love to collaborate on projects that make a positive impact. 
             Whether it's supporting a cause you believe in or bringing a helpful idea to life, let's explore how we can work together.
@@ -616,14 +681,14 @@ const ModernPortfolio = () => {
 
       {/* Social Links */}
       <section style={{ 
-        padding: '40px 20px',
+        padding: 'clamp(30px, 5vw, 40px) 20px',
         borderTop: '1px solid rgba(0, 0, 0, 0.1)',
         textAlign: 'center'
       }}>
         <div style={{
           display: 'flex',
           justifyContent: 'center',
-          gap: '24px',
+          gap: 'clamp(16px, 3vw, 24px)',
           marginBottom: '24px'
         }}>
           {[
@@ -635,8 +700,8 @@ const ModernPortfolio = () => {
               key={i}
               onClick={item.action || (() => window.open(item.href, '_blank'))}
               style={{
-                width: '48px',
-                height: '48px',
+                width: 'clamp(40px, 5vw, 48px)',
+                height: 'clamp(40px, 5vw, 48px)',
                 borderRadius: '12px',
                 border: '2px solid #667eea',
                 background: 'transparent',
@@ -657,7 +722,7 @@ const ModernPortfolio = () => {
                 e.target.style.color = '#667eea';
               }}
             >
-              <item.icon size={24} />
+              <item.icon size={20} />
             </button>
           ))}
         </div>
@@ -678,7 +743,7 @@ const ProjectCard = ({ project }) => {
   const navigate = useNavigate();
   return (
     <div className="glass-card hover-lift" style={{
-      padding: '32px',
+      padding: 'clamp(20px, 3vw, 32px)',
       transition: 'all 0.3s ease',
       position: 'relative',
       overflow: 'hidden'
@@ -700,7 +765,7 @@ const ProjectCard = ({ project }) => {
       )}
       
       <h3 style={{
-        fontSize: '1.5rem',
+        fontSize: 'clamp(1.2rem, 3vw, 1.5rem)',
         fontWeight: '700',
         margin: '0 0 8px 0',
         color: '#2d3748'
@@ -904,7 +969,7 @@ const DesktopTimelineItem = ({ item, index }) => (
 const MobileTimelineItem = ({ item }) => (
   <div style={{
     display: 'flex',
-    gap: '16px',
+    gap: '12px',
     alignItems: 'flex-start'
   }}>
     {/* Timeline Dot */}
@@ -915,8 +980,8 @@ const MobileTimelineItem = ({ item }) => (
       flexShrink: 0
     }}>
       <div style={{
-        width: '40px',
-        height: '40px',
+        width: '36px',
+        height: '36px',
         borderRadius: '50%',
         background: 'linear-gradient(135deg, #667eea, #764ba2)',
         border: '3px solid white',
@@ -926,13 +991,13 @@ const MobileTimelineItem = ({ item }) => (
         justifyContent: 'center',
         marginBottom: '8px'
       }}>
-        <item.icon size={16} color="white" />
+        <item.icon size={14} color="white" />
       </div>
     </div>
     
     {/* Content */}
     <div className="glass-card" style={{
-      padding: '20px',
+      padding: '16px',
       flex: 1
     }}>
       <TimelineContent item={item} />
@@ -953,23 +1018,25 @@ const TimelineContent = ({ item }) => (
       {item.year}
     </div>
     <h3 style={{
-      fontSize: '1.25rem',
+      fontSize: 'clamp(1rem, 3vw, 1.25rem)',
       fontWeight: '700',
       color: '#2d3748',
-      margin: '0 0 6px 0'
+      margin: '0 0 6px 0',
+      lineHeight: '1.3'
     }}>
       {item.title}
     </h3>
     <p style={{
-      fontSize: '0.9rem',
+      fontSize: 'clamp(0.8rem, 2.5vw, 0.9rem)',
       fontWeight: '600',
       color: '#667eea',
-      margin: '0 0 12px 0'
+      margin: '0 0 12px 0',
+      lineHeight: '1.3'
     }}>
       {item.subtitle}
     </p>
     <p style={{
-      fontSize: '0.875rem',
+      fontSize: 'clamp(0.8rem, 2vw, 0.875rem)',
       lineHeight: '1.5',
       color: '#4a5568',
       margin: '0'
@@ -981,11 +1048,11 @@ const TimelineContent = ({ item }) => (
 
 const SkillCard = ({ skillGroup }) => (
   <div className="glass-card" style={{
-    padding: '24px',
+    padding: 'clamp(16px, 3vw, 24px)',
     textAlign: 'center'
   }}>
     <h3 style={{
-      fontSize: '1.25rem',
+      fontSize: 'clamp(1rem, 3vw, 1.25rem)',
       fontWeight: '600',
       margin: '0 0 16px 0',
       color: '#2d3748'
