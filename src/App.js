@@ -199,32 +199,32 @@ const ModernPortfolioLanding = ({ onNavigate }) => {
   const data = {
     projects: [
       {
-        title: "Voxxy AI",
-        description: "AI-powered event planning platform built with React, React Native, and Ruby on Rails. Features include API integrations with OpenAI and Google Places, Mixpanel analytics, and mobile support via Expo. Designed for seamless coordination, user feedback, and collaborative decision-making.",
+        title: "Voxxy AI - Co-Founder & Lead Developer",
+        description: "AI-powered startup I co-founded that transforms group planning through smart recommendations. Built full-stack platform with React/Rails serving real users, integrated 5+ production APIs (OpenAI, Google Places, Mixpanel), and developed mobile app via React Native + Expo. Currently managing technical direction, deployment strategy, and product roadmap.",
         links: [
           { label: "Live Site", url: "https://www.voxxyai.com/#/" },
           { label: "GitHub", url: "https://github.com/beaulazear/michael-personal-site.git" }
         ]
       },
       {
-        title: "Pocket Walks",
-        description: "A full-stack dog walking application built with React and Ruby on Rails. Features scheduling, invoicing, and financial management for pet care businesses.",
+        title: "Pocket Walks - Business Management Platform",
+        description: "Custom-built business management system for my pet care company. Handles real-world operations including contractor management, client scheduling, payment processing, and automated invoicing. Built with React/Rails, this isn't a demo—it's the actual system running my business daily.",
         links: [
           { label: "Live Site", url: "https://www.pocket-walks.com/" },
           { label: "GitHub", url: "https://github.com/beaulazear/voxxy-rails-react" }
         ]
       },
       {
-        title: "Aria Design Consultants",
-        description: "Professional marketing website built with React and styled components for a design consulting firm.",
+        title: "Aria Design Consultants - Client Project",
+        description: "Professional portfolio and marketing site I built for a design consultancy as their digital contractor. Ongoing relationship includes website maintenance, social media strategy, and digital presence optimization. Demonstrates ability to work directly with founders and translate business needs into technical solutions.",
         links: [
           { label: "Live Site", url: "https://www.ariadesignconsultants.com/#/" },
           { label: "GitHub", url: "https://github.com/beaulazear/michael-personal-site.git" }
         ]
       },
       {
-        title: "Pokemon Guide",
-        description: "Interactive React application leveraging the PokeAPI for dynamic data sorting and presentation.",
+        title: "Pokemon Guide - API Integration Demo",
+        description: "Clean, responsive React application showcasing API integration and data management skills. Built during my transition into tech to demonstrate frontend capabilities with external APIs, dynamic filtering, and modern React patterns.",
         links: [
           { label: "Live Site", url: "https://beaulazear.github.io/pokemon/" },
           { label: "GitHub", url: "https://github.com/beaulazear/pokemon" }
@@ -393,7 +393,7 @@ const ModernPortfolioLanding = ({ onNavigate }) => {
                 fontWeight: '500',
                 textShadow: '0 2px 10px rgba(0, 0, 0, 0.2)'
               }} className="responsive-tagline">
-                Software Developer & Animal Care Specialist
+                Entrepreneurial Full-Stack Developer | 2x Founder | From Zookeeper to Tech Innovator
               </p>
             </div>
           </div>
@@ -407,7 +407,7 @@ const ModernPortfolioLanding = ({ onNavigate }) => {
           }} className="responsive-social">
             {[
               { icon: Linkedin, href: "https://www.linkedin.com/in/beau-lazear", external: true },
-              { icon: Github, href: "https://github.com/beaus.animal.care", external: true },
+              { icon: Github, href: "https://github.com/beaulazear", external: true },
               { icon: Instagram, href: "https://www.instagram.com", external: true },
               { icon: FileText, action: () => onNavigate('resume') },
               { icon: Mail, action: () => onNavigate('YourContact') }
@@ -547,12 +547,27 @@ const ModernPortfolioLanding = ({ onNavigate }) => {
 const SoftwareSection = ({ data, baseStyles }) => (
   <>
     <AboutCard
-      text="Software developer with strong experience in JavaScript (React), React Native, and Ruby on Rails. Skilled in integrating tools like Mixpanel, OpenAI API, Google Places API, and AWS S3 to build scalable, user-friendly applications across web and mobile platforms."
+      text="From caring for exotic animals at Prospect Park Zoo to building AI-powered platforms, I bring a rare perspective to software development. As a 2x founder (Voxxy AI & Beau's Animal Care), I don't just write code—I build businesses that solve real problems. My experience managing complex biological systems taught me to build robust, scalable technical systems. I understand business because I run two of them, and I build for real users, not GitHub stars."
       baseStyles={baseStyles}
     />
 
+    <WhatMakesMeDifferentSection baseStyles={baseStyles} />
+
     <h2 style={baseStyles.sectionTitle} className="responsive-section-title">
       Featured Projects
+      <div style={{
+        display: 'inline-block',
+        marginLeft: '20px',
+        padding: '8px 16px',
+        background: 'linear-gradient(135deg, #10b981, #059669)',
+        color: 'white',
+        borderRadius: '20px',
+        fontSize: '16px',
+        fontWeight: 'normal',
+        boxShadow: '0 4px 15px rgba(16, 185, 129, 0.3)'
+      }}>
+        🚀 Currently Building
+      </div>
     </h2>
 
     <div style={baseStyles.grid} className="responsive-grid">
@@ -568,7 +583,7 @@ const SoftwareSection = ({ data, baseStyles }) => (
 const AnimalCareSection = ({ data, baseStyles }) => (
   <>
     <AboutCard
-      text="Professional animal caretaker with over 8 years of experience including zookeeping at Prospect Park Zoo, veterinary assisting, and rescue rehabilitation at the ASPCA. Based in Brooklyn, NYC, I provide personalized, expert care for your beloved pets."
+      text="Founder of Beau's Animal Care, Brooklyn's trusted pet care company. My unique journey from Prospect Park Zoo zookeeper to ASPCA emergency veterinary assistant taught me to manage complex systems under pressure—skills that directly translate to building reliable software systems. Over 8 years of experience managing both live operations and now technical teams, serving clients with the same attention to detail I bring to code."
       baseStyles={baseStyles}
     />
 
@@ -752,6 +767,78 @@ const TestimonialCard = ({ testimonial, baseStyles }) => (
     </div>
   </div>
 );
+
+const WhatMakesMeDifferentSection = ({ baseStyles }) => {
+  const differentiators = [
+    {
+      icon: "🏢",
+      title: "Business Owner Mindset",
+      description: "I've managed both code deployments AND live animal deployments. Running two businesses taught me to think like a founder, not just a developer."
+    },
+    {
+      icon: "🔧",
+      title: "Real-World Problem Solver",
+      description: "My debugging skills were honed in life-or-death veterinary situations. I build for real users with real problems, not GitHub stars."
+    },
+    {
+      icon: "📊",
+      title: "Proven Business Impact",
+      description: "I've built real business systems that solve actual problems, from custom scheduling platforms to AI-powered applications. My code runs live businesses, not just demos."
+    },
+    {
+      icon: "🤝",
+      title: "Trust & Reliability",
+      description: "People trust me with their pets, homes, and keys. This translates to security-first thinking and exceptional client communication in tech projects."
+    }
+  ];
+
+  return (
+    <>
+      <h2 style={baseStyles.sectionTitle} className="responsive-section-title">
+        What Makes Me Different
+      </h2>
+      
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+        gap: '32px',
+        marginBottom: '80px'
+      }} className="responsive-grid">
+        {differentiators.map((item, index) => (
+          <div key={index} style={{
+            ...baseStyles.glassCard,
+            padding: '32px',
+            border: '2px solid rgba(255, 255, 255, 0.5)',
+            textAlign: 'center'
+          }} className="hover-glow-soft responsive-card">
+            <div style={{
+              fontSize: '48px',
+              marginBottom: '16px'
+            }}>
+              {item.icon}
+            </div>
+            <h3 style={{
+              fontSize: '24px',
+              fontWeight: 'bold',
+              color: '#1f2937',
+              marginBottom: '16px'
+            }} className="responsive-service-title">
+              {item.title}
+            </h3>
+            <p style={{
+              fontSize: '16px',
+              lineHeight: '1.6',
+              color: '#374151',
+              margin: 0
+            }} className="responsive-service-description">
+              {item.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+};
 
 const YourContact = ({ onNavigate }) => (
   <div style={{
