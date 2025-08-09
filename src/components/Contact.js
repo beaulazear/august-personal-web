@@ -1,316 +1,96 @@
 import React, { useState, useEffect } from 'react';
-import { Mail } from 'lucide-react';
-import styled from 'styled-components';
+import { Mail, Send, User, MessageSquare, CheckCircle, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
-const Container = styled.div`
-  padding: 40px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  box-shadow: 
-    0 25px 50px -12px rgba(0, 0, 0, 0.25),
-    0 0 0 1px rgba(59, 130, 246, 0.1);
-  max-width: 900px;
-  margin: 40px auto;
-  font-family: 'Inter', sans-serif;
-  text-align: left;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #3b82f6, #1d4ed8, #2563eb, #60a5fa);
-    background-size: 200% 100%;
-    animation: shimmer 3s ease-in-out infinite;
+const globalStyles = `
+  .contact-fade-in-up {
+    animation: contactFadeInUp 0.8s ease-out;
   }
-
-  @keyframes shimmer {
-    0%, 100% { background-position: 200% 0; }
-    50% { background-position: -200% 0; }
+  
+  .contact-slide-in-right {
+    animation: contactSlideInRight 0.8s ease-out;
   }
-
-  @media (max-width: 768px) {
-    padding: 16px;
-    margin: 12px;
+  
+  @keyframes contactFadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes contactSlideInRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  .contact-glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-primary-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
     border-radius: 16px;
-  }
-`;
-
-const Header = styled.div`
-  margin-bottom: 32px;
-  text-align: center;
-  position: relative;
-  
-  @media (max-width: 768px) {
-    margin-bottom: 20px;
-  }
-`;
-
-const Title = styled.h1`
-  font-size: 3rem;
-  font-weight: 800;
-  margin: 0 0 12px 0;
-  color: #ffffff;
-  text-shadow: 
-    0 2px 4px rgba(0, 0, 0, 0.8),
-    0 4px 8px rgba(0, 0, 0, 0.6),
-    0 0 20px rgba(255, 255, 255, 0.1);
-  letter-spacing: -0.02em;
-  
-  @media (max-width: 768px) {
-    font-size: 2rem;
-    margin-bottom: 8px;
-  }
-`;
-
-const Subtitle = styled.p`
-  color: #ffffff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-  font-size: 1.1rem;
-  margin: 0;
-  
-  @media (max-width: 768px) {
-    font-size: 0.95rem;
-  }
-`;
-
-const SectionTitle = styled.h2`
-  font-size: 1.75rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 30%, #bae6fd 70%, #ffffff 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  margin: 40px 0 20px 0;
-  position: relative;
-  padding-bottom: 12px;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, #3b82f6, #1d4ed8);
-    border-radius: 2px;
+    color: white;
+    font-weight: 600;
+    padding: 16px 32px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
   }
   
-  @media (max-width: 768px) {
-    font-size: 1.375rem;
-    margin: 24px 0 16px 0;
-    padding-bottom: 8px;
-    
-    &::after {
-      width: 100%;
-      height: 2px;
-    }
-  }
-`;
-
-const FormSection = styled.div`
-  background: rgba(59, 130, 246, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(59, 130, 246, 0.2);
-  border-radius: 16px;
-  padding: 24px;
-  margin: 24px 0;
-  
-  @media (max-width: 768px) {
-    padding: 16px;
-    margin: 16px 0;
-    border-radius: 12px;
-  }
-`;
-
-const InputGroup = styled.div`
-  margin-bottom: 24px;
-  
-  @media (max-width: 768px) {
-    margin-bottom: 16px;
-  }
-`;
-
-const Label = styled.label`
-  display: block;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #ffffff;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-  margin-bottom: 8px;
-  
-  @media (max-width: 768px) {
-    font-size: 0.9rem;
-  }
-`;
-
-const Input = styled.input`
-  width: 100%;
-  padding: 16px 20px;
-  border: 2px solid rgba(59, 130, 246, 0.3);
-  border-radius: 12px;
-  font-size: 16px;
-  font-family: 'Inter', sans-serif;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: #ffffff;
-  transition: all 0.3s ease;
-  box-sizing: border-box;
-  outline: none;
-
-  &::placeholder {
-    color: rgba(255, 255, 255, 0.6);
-  }
-
-  &:focus {
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-    background: rgba(255, 255, 255, 0.15);
+  .contact-primary-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
   }
   
-  @media (max-width: 768px) {
-    padding: 12px 16px;
-    font-size: 14px;
-  }
-`;
-
-const TextArea = styled.textarea`
-  width: 100%;
-  padding: 16px 20px;
-  border: 2px solid rgba(59, 130, 246, 0.3);
-  border-radius: 12px;
-  font-size: 16px;
-  font-family: 'Inter', sans-serif;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: #ffffff;
-  transition: all 0.3s ease;
-  box-sizing: border-box;
-  outline: none;
-  min-height: 120px;
-  resize: vertical;
-
-  &::placeholder {
-    color: rgba(255, 255, 255, 0.6);
-  }
-
-  &:focus {
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-    background: rgba(255, 255, 255, 0.15);
-  }
-  
-  @media (max-width: 768px) {
-    padding: 12px 16px;
-    font-size: 14px;
-    min-height: 100px;
-  }
-`;
-
-const SubmitButton = styled.button`
-  width: 100%;
-  padding: 16px 24px;
-  background: linear-gradient(135deg, #ffffff, #f1f5f9);
-  color: #1e293b;
-  border: 3px solid #ffffff;
-  border-radius: 12px;
-  font-size: 18px;
-  font-weight: 800;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 
-    0 10px 30px rgba(255, 255, 255, 0.2),
-    0 4px 15px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-family: 'Inter', sans-serif;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    transition: left 0.5s ease;
-  }
-
-  &:hover:not(:disabled) {
-    transform: translateY(-3px);
-    box-shadow: 
-      0 20px 50px rgba(255, 255, 255, 0.3),
-      0 8px 25px rgba(0, 0, 0, 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.9);
-    background: linear-gradient(135deg, #ffffff, #e2e8f0);
-    border-color: #f8fafc;
-
-    &::before {
-      left: 100%;
-    }
-  }
-
-  &:active:not(:disabled) {
-    transform: translateY(-1px);
-  }
-
-  &:disabled {
+  .contact-primary-button:disabled {
     opacity: 0.7;
     cursor: not-allowed;
     transform: none;
   }
   
-  @media (max-width: 768px) {
-    padding: 12px 20px;
+  .contact-input {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
     font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    background: rgba(255, 255, 255, 0.8);
+    color: #2d3748;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    outline: none;
   }
-`;
-
-const Message = styled.div`
-  padding: 12px 20px;
-  border-radius: 8px;
-  margin-top: 16px;
-  font-size: 16px;
-  font-weight: 500;
-  text-align: center;
+  
+  .contact-input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    background: rgba(255, 255, 255, 1);
+  }
+  
+  .contact-input::placeholder {
+    color: #9ca3af;
+  }
   
   @media (max-width: 768px) {
-    font-size: 14px;
-    padding: 10px 16px;
+    .contact-input {
+      padding: 14px 16px;
+      font-size: 14px;
+    }
+    
+    .contact-primary-button {
+      padding: 14px 24px;
+      font-size: 14px;
+    }
   }
-`;
-
-const ErrorMessage = styled(Message)`
-  background: rgba(239, 68, 68, 0.2);
-  color: #fca5a5;
-  border: 1px solid rgba(239, 68, 68, 0.4);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-`;
-
-const SuccessMessage = styled(Message)`
-  background: rgba(34, 197, 94, 0.2);
-  color: #86efac;
-  border: 1px solid rgba(34, 197, 94, 0.4);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 `;
 
 const Contact = () => {
@@ -329,7 +109,6 @@ const Contact = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-
     emailjs.init(PUBLIC_KEY);
   }, []);
 
@@ -383,60 +162,316 @@ const Contact = () => {
   };
 
   return (
-    <Container>
-      <Header>
-        <Title>Get In Touch</Title>
-        <Subtitle>
-          Let's discuss your project or opportunity. I'll get back to you within 24 hours!
-        </Subtitle>
-      </Header>
+    <div style={{ 
+      minHeight: '100vh',
+      background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+      fontFamily: 'Inter, sans-serif',
+      padding: '40px 20px'
+    }}>
+      <style>{globalStyles}</style>
 
-      <SectionTitle>Contact Form</SectionTitle>
-
-      <FormSection>
-        <div>
-          <InputGroup>
-            <Label>Your Name</Label>
-            <Input
-              type="text"
-              placeholder="Enter your full name"
-              value={formData.from_name}
-              onChange={(e) => handleInputChange('from_name', e.target.value)}
-              disabled={isSubmitting}
-            />
-          </InputGroup>
-
-          <InputGroup>
-            <Label>Email Address</Label>
-            <Input
-              type="email"
-              placeholder="your.email@example.com"
-              value={formData.from_email}
-              onChange={(e) => handleInputChange('from_email', e.target.value)}
-              disabled={isSubmitting}
-            />
-          </InputGroup>
-
-          <InputGroup>
-            <Label>Message</Label>
-            <TextArea
-              placeholder="Tell me about your project, timeline, and how I can help..."
-              value={formData.message}
-              onChange={(e) => handleInputChange('message', e.target.value)}
-              disabled={isSubmitting}
-            />
-          </InputGroup>
-
-          <SubmitButton onClick={handleSubmit} disabled={isSubmitting}>
-            <Mail size={20} />
-            {isSubmitting ? 'Sending...' : 'Send Message'}
-          </SubmitButton>
-
-          {error && <ErrorMessage>{error}</ErrorMessage>}
-          {success && <SuccessMessage>{success}</SuccessMessage>}
+      {/* Hero Section */}
+      <section style={{ 
+        padding: '60px 20px 40px',
+        textAlign: 'center',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <div style={{ 
+          maxWidth: '800px',
+          margin: '0 auto',
+          position: 'relative',
+          zIndex: 2
+        }}>
+          <div className="contact-fade-in-up">
+            <div style={{
+              fontSize: '14px',
+              fontWeight: '600',
+              color: '#667eea',
+              textTransform: 'uppercase',
+              letterSpacing: '2px',
+              marginBottom: '16px'
+            }}>
+              Let's Connect
+            </div>
+            
+            <h1 style={{
+              fontSize: '3.5rem',
+              fontWeight: '800',
+              margin: '0 0 24px 0',
+              color: '#2d3748'
+            }}>
+              Get In Touch
+            </h1>
+            
+            <p style={{
+              fontSize: '1.25rem',
+              color: '#6b7280',
+              maxWidth: '600px',
+              margin: '0 auto 48px',
+              lineHeight: '1.7'
+            }}>
+              I'd love to hear about your project or opportunity. 
+              Let's discuss how we can work together to bring your ideas to life.
+            </p>
+          </div>
         </div>
-      </FormSection>
-    </Container>
+      </section>
+
+      {/* Contact Form Section */}
+      <section style={{ 
+        padding: '0 20px 60px'
+      }}>
+        <div style={{ 
+          maxWidth: '700px',
+          margin: '0 auto'
+        }}>
+          <div className="contact-glass-card contact-slide-in-right" style={{
+            padding: '48px'
+          }}>
+            
+            {/* Contact Info */}
+            <div style={{
+              marginBottom: '40px',
+              textAlign: 'center'
+            }}>
+              <h2 style={{
+                fontSize: '1.5rem',
+                fontWeight: '700',
+                color: '#2d3748',
+                margin: '0 0 16px 0'
+              }}>
+                Ready to Start Something Great?
+              </h2>
+              <p style={{
+                color: '#6b7280',
+                fontSize: '1rem',
+                margin: '0',
+                lineHeight: '1.6'
+              }}>
+                Fill out the form below and I'll get back to you within 24 hours. 
+                Or email me directly at <strong style={{ color: '#667eea' }}>beaulazear@gmail.com</strong>
+              </p>
+            </div>
+
+            {/* Form */}
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+              
+              <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+                {/* Name Field */}
+                <div style={{ flex: '1', minWidth: '200px' }}>
+                  <label style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    color: '#374151',
+                    marginBottom: '8px'
+                  }}>
+                    <User size={16} />
+                    Your Name
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Enter your full name"
+                    value={formData.from_name}
+                    onChange={(e) => handleInputChange('from_name', e.target.value)}
+                    disabled={isSubmitting}
+                    className="contact-input"
+                  />
+                </div>
+
+                {/* Email Field */}
+                <div style={{ flex: '1', minWidth: '200px' }}>
+                  <label style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    color: '#374151',
+                    marginBottom: '8px'
+                  }}>
+                    <Mail size={16} />
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="your.email@example.com"
+                    value={formData.from_email}
+                    onChange={(e) => handleInputChange('from_email', e.target.value)}
+                    disabled={isSubmitting}
+                    className="contact-input"
+                  />
+                </div>
+              </div>
+
+              {/* Message Field */}
+              <div>
+                <label style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  color: '#374151',
+                  marginBottom: '8px'
+                }}>
+                  <MessageSquare size={16} />
+                  Project Details
+                </label>
+                <textarea
+                  placeholder="Tell me about your project, timeline, budget, and how I can help bring your vision to life..."
+                  value={formData.message}
+                  onChange={(e) => handleInputChange('message', e.target.value)}
+                  disabled={isSubmitting}
+                  className="contact-input"
+                  style={{
+                    minHeight: '140px',
+                    resize: 'vertical',
+                    fontFamily: 'Inter, sans-serif'
+                  }}
+                />
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="contact-primary-button"
+                style={{
+                  justifyContent: 'center',
+                  width: '100%',
+                  fontSize: '16px',
+                  padding: '18px 32px'
+                }}
+              >
+                {isSubmitting ? (
+                  <>
+                    <div style={{
+                      width: '16px',
+                      height: '16px',
+                      border: '2px solid transparent',
+                      borderTop: '2px solid white',
+                      borderRadius: '50%',
+                      animation: 'spin 1s linear infinite'
+                    }} />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send size={20} />
+                    Send Message
+                  </>
+                )}
+              </button>
+
+              {/* Success/Error Messages */}
+              {success && (
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '16px 20px',
+                  backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                  border: '1px solid rgba(16, 185, 129, 0.2)',
+                  borderRadius: '12px',
+                  color: '#059669',
+                  fontSize: '14px',
+                  fontWeight: '500'
+                }}>
+                  <CheckCircle size={18} />
+                  {success}
+                </div>
+              )}
+
+              {error && (
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '16px 20px',
+                  backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                  border: '1px solid rgba(239, 68, 68, 0.2)',
+                  borderRadius: '12px',
+                  color: '#dc2626',
+                  fontSize: '14px',
+                  fontWeight: '500'
+                }}>
+                  <AlertCircle size={18} />
+                  {error}
+                </div>
+              )}
+            </form>
+          </div>
+
+          {/* Additional Contact Options */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '24px',
+            marginTop: '32px'
+          }}>
+            <div className="contact-glass-card" style={{
+              padding: '24px',
+              textAlign: 'center'
+            }}>
+              <Mail size={24} color="#667eea" style={{ marginBottom: '12px' }} />
+              <h3 style={{
+                fontSize: '1rem',
+                fontWeight: '600',
+                color: '#2d3748',
+                margin: '0 0 8px 0'
+              }}>
+                Email Me Directly
+              </h3>
+              <a
+                href="mailto:beaulazear@gmail.com"
+                style={{
+                  color: '#667eea',
+                  textDecoration: 'none',
+                  fontSize: '14px'
+                }}
+              >
+                beaulazear@gmail.com
+              </a>
+            </div>
+
+            <div className="contact-glass-card" style={{
+              padding: '24px',
+              textAlign: 'center'
+            }}>
+              <CheckCircle size={24} color="#10b981" style={{ marginBottom: '12px' }} />
+              <h3 style={{
+                fontSize: '1rem',
+                fontWeight: '600',
+                color: '#2d3748',
+                margin: '0 0 8px 0'
+              }}>
+                Quick Response
+              </h3>
+              <p style={{
+                color: '#6b7280',
+                fontSize: '14px',
+                margin: '0'
+              }}>
+                24 hour response time
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <style>
+        {`
+          @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+          }
+        `}
+      </style>
+    </div>
   );
 };
 

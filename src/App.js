@@ -1,372 +1,291 @@
 import React, { useState } from 'react';
-import { Dog, Cat, Home, Bird, Linkedin, Github, Instagram, FileText, Mail, ArrowLeft, Monitor, Heart } from 'lucide-react';
-import AnimalCareCarousel from './components/AnimalCareCarousel';
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { Linkedin, Github, Mail, FileText, ArrowRight, Code, Briefcase, Star, CheckCircle, MapPin, GraduationCap, Heart, Zap, Building, FolderOpen, PawPrint } from 'lucide-react';
 import CroppedBeau from './images/CroppedBeau.jpeg';
-import GraphicTwo from './images/GraphicTwo.png';
 import Resume from './components/Resume.js';
 import Contact from './components/Contact.js';
+import AnimalCare from './components/AnimalCare.js';
 
 const globalStyles = `
-  @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
   
-  @keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
+  * { box-sizing: border-box; }
+  
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
   }
   
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-  }
-  
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+    50% { transform: translateY(-8px); }
   }
   
   @keyframes pulse {
-    0%, 100% { opacity: 0.4; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(1.05); }
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
   }
   
-  @keyframes drift {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    33% { transform: translate(30px, -30px) rotate(120deg); }
-    66% { transform: translate(-20px, 20px) rotate(240deg); }
-    100% { transform: translate(0, 0) rotate(360deg); }
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
   }
   
-  @keyframes wave {
-    0%, 100% { 
-      clip-path: polygon(0% 47%, 10% 48%, 33% 54%, 54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%);
-    }
-    50% { 
-      clip-path: polygon(0% 60%, 15% 65%, 34% 66%, 51% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%);
-    }
+  .animate-slide-in-right {
+    animation: slideInRight 0.8s ease-out;
   }
   
-  @keyframes gradient-shift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
   }
   
-  .floating { animation: float 6s ease-in-out infinite; }
-  .animate-fade-in-up { animation: fadeInUp 0.8s ease-out; }
-  .animate-slide-in { animation: slideIn 0.6s ease-out; }
-  .animate-fade-in-up-delay { animation: fadeInUp 0.8s ease-out 0.2s both; }
-  
-  .hover-glow-soft:hover { 
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3), 0 30px 60px rgba(59, 130, 246, 0.2) !important; 
-    transform: translateY(-3px) !important;
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   }
   
-  .hover-button:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4) !important;
+  .hover-pulse:hover {
+    animation: pulse 0.3s ease;
   }
   
-  .hover-social:hover {
-    transform: scale(1.05) !important;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4) !important;
+  .gradient-text {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   
-  .animated-bg {
-    background: linear-gradient(-45deg, #60a5fa, #3b82f6, #2563eb, #1e40af, #1e3a8a);
-    background-size: 400% 400%;
-    animation: gradient-shift 15s ease infinite;
+  .glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   }
   
-  .wave-layer {
-    animation: wave 8s ease-in-out infinite;
+  .primary-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 16px;
+    color: white;
+    font-weight: 600;
+    padding: 16px 32px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
   }
   
-  .drift-orb {
-    animation: drift 20s ease-in-out infinite;
+  .primary-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
   }
   
+  .secondary-button {
+    background: transparent;
+    border: 2px solid #667eea;
+    border-radius: 16px;
+    color: #667eea;
+    font-weight: 600;
+    padding: 14px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+  
+  .secondary-button:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-2px);
+  }
+  
+  @media (max-width: 1024px) {
+    .timeline-desktop { display: none !important; }
+    .timeline-mobile { display: flex !important; }
+  }
+  
+  @media (min-width: 1025px) {
+    .timeline-desktop { display: flex !important; }
+    .timeline-mobile { display: none !important; }
+  }
+
   @media (max-width: 768px) {
-    .responsive-title { font-size: 36px !important; }
-    .responsive-tagline { font-size: 18px !important; }
-    .responsive-section-title { font-size: 32px !important; }
-    .responsive-text { font-size: 16px !important; }
-    .responsive-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
-    .responsive-header { padding: 40px 20px 30px !important; }
-    .responsive-content { padding: 0 15px !important; }
-    .responsive-card { padding: 24px !important; }
-    .responsive-service-title { font-size: 24px !important; }
-    .responsive-project-title { font-size: 24px !important; }
-    .responsive-service-description { font-size: 16px !important; }
-    .responsive-project-description { font-size: 16px !important; }
-    .responsive-about { padding: 32px !important; margin-bottom: 40px !important; }
-    .responsive-graphic { padding: 20px !important; }
-    .responsive-social { gap: 16px !important; margin-top: 32px !important; }
-    .responsive-social-link { width: 48px !important; height: 48px !important; }
-    .responsive-toggle { max-width: 90% !important; margin: 0 auto 32px !important; }
-    .responsive-toggle-button { padding: 12px 20px !important; font-size: 14px !important; }
-    .responsive-profile { width: 180px !important; height: 180px !important; }
-  }
-  
-  @media (max-width: 480px) {
-    .responsive-title { font-size: 28px !important; }
-    .responsive-tagline { font-size: 16px !important; }
-    .responsive-section-title { font-size: 24px !important; }
-    .responsive-text { font-size: 14px !important; }
-    .responsive-card { padding: 20px !important; }
-    .responsive-service-title { font-size: 20px !important; }
-    .responsive-project-title { font-size: 20px !important; }
-    .responsive-service-description { font-size: 14px !important; }
-    .responsive-project-description { font-size: 14px !important; }
-    .responsive-about { padding: 24px !important; }
-    .responsive-profile { width: 160px !important; height: 160px !important; }
+    .hero-title { font-size: 2.5rem !important; }
+    .hero-subtitle { font-size: 1.25rem !important; }
+    .section-title { font-size: 2rem !important; }
+    .card-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+    .hero-buttons { flex-direction: column !important; align-items: stretch !important; gap: 12px !important; }
+    .primary-button, .secondary-button { justify-content: center; }
   }
 `;
 
-const baseStyles = {
-  // Glass effects
-  glassCard: {
-    background: 'rgba(255, 255, 255, 0.25)',
-    backdropFilter: 'blur(25px)',
-    border: '2px solid rgba(255, 255, 255, 0.5)',
-    borderRadius: '32px',
-    boxShadow: '0 30px 60px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.1) inset',
-    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
-  },
+const ModernPortfolio = () => {
+  const navigate = useNavigate();
+  
+  const timelineData = [
+    {
+      year: '2016-2017',
+      title: 'Early Foundation',
+      subtitle: 'Three Jobs in High School → NYC Move at 18',
+      description: 'Developed strong work ethic through multiple part-time jobs while in high school. At 18, moved to NYC with determination to build something meaningful.',
+      image: null,
+      icon: MapPin,
+      side: 'left'
+    },
+    {
+      year: '2017-2018',
+      title: 'Strategic Planning',
+      subtitle: 'Real Estate License + Zoo Internship',
+      description: 'Earned NY Real Estate License to financially support myself while pursuing unpaid zoo internship at Prospect Park. Strategic thinking to enable learning opportunity.',
+      image: null,
+      icon: Building,
+      side: 'right'
+    },
+    {
+      year: '2017-2019',
+      title: 'Prospect Park Zoo',
+      subtitle: 'Intern → Full-Time Zookeeper',
+      description: 'Advanced from internship to full-time zookeeper role. Mastered daily husbandry, enrichment programs, and detailed record keeping for exotic animal species.',
+      image: null,
+      icon: Heart,
+      side: 'left'
+    },
+    {
+      year: '2019',
+      title: 'ASPCA Emergency Care',
+      subtitle: 'Veterinary Assistant → Lead Assistant',
+      description: 'Provided critical medical support for animals under protective custody. Promoted to lead assistant during team transition due to proactive leadership and training abilities.',
+      image: null,
+      icon: Heart,
+      side: 'right'
+    },
+    {
+      year: '2019-Present',
+      title: 'Beau\'s Animal Care',
+      subtitle: 'Founded & Scaled Service Business',
+      description: 'Founded pet care company, grew to manage independent contractors while maintaining personal client relationships. Built custom React/Rails tools for operations, scheduling, and invoicing.',
+      image: null,
+      icon: Briefcase,
+      side: 'left'
+    },
+    {
+      year: '2023',
+      title: 'Full-Stack Development',
+      subtitle: 'Flatiron School Graduate + Aria Design Contract',
+      description: 'Completed intensive full-stack bootcamp while immediately applying skills. Started contract work with Aria Design Co for web development and digital strategy.',
+      image: null,
+      icon: GraduationCap,
+      side: 'right'
+    },
+    {
+      year: '2024',
+      title: 'Technical Leadership',
+      subtitle: 'Voxxy AI Co-Founder + AWS Certification',
+      description: 'Co-founded AI startup, managing technical direction and product strategy. Earned AWS Cloud Practitioner certification. Building platforms that help groups collaborate better.',
+      image: null,
+      icon: Zap,
+      side: 'left'
+    }
+  ];
 
-  glassCardOpaque: {
-    background: 'rgba(255, 255, 255, 0.4)',
-    backdropFilter: 'blur(30px)',
-    border: '2px solid rgba(255, 255, 255, 0.6)',
-    borderRadius: '32px',
-    boxShadow: '0 35px 70px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.2) inset',
-    transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
-  },
+  const projects = [
+    {
+      title: "Voxxy AI",
+      subtitle: "Co-Founder & Developer",
+      description: "Working with my co-founder to build an AI platform that helps groups make decisions together. We believe thoughtful planning creates better shared experiences and stronger communities.",
+      technologies: ["React", "Rails", "OpenAI", "React Native"],
+      links: [
+        { label: "Live Site", url: "https://www.voxxyai.com/#/" },
+        { label: "GitHub", url: "https://github.com/beaulazear/michael-personal-site.git" }
+      ],
+      highlight: "🤝 Collaborative Project"
+    },
+    {
+      title: "Beau's Animal Care",
+      subtitle: "Pet Care Service Business",
+      description: "Professional pet care service I founded in 2019. Built custom tools for scheduling and client management while serving 50+ families in Brooklyn. Click to view our dedicated site!",
+      technologies: ["React", "Rails", "PostgreSQL"],
+      links: [
+        { label: "View Site", url: "/animal-care", isInternal: true },
+        { label: "GitHub", url: "https://github.com/beaulazear/voxvy-rails-react" }
+      ],
+      highlight: "🐕 My Business"
+    },
+    {
+      title: "Aria Design Co",
+      subtitle: "Website & Digital Support",
+      description: "Ongoing partnership helping a talented design consultant showcase their work online. I handle the technical side so they can focus on creating beautiful spaces for their clients.",
+      technologies: ["React", "Styled Components"],
+      links: [
+        { label: "Live Site", url: "https://www.ariadesignconsultants.com/#/" }
+      ],
+      highlight: "🤝 Client Work"
+    }
+  ];
 
-  largeTitle: {
-    fontSize: '72px',
-    fontWeight: '700',
-    margin: '0 0 16px 0',
-    color: 'white',
-    textShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-    fontFamily: 'Fredoka, Inter, sans-serif'
-  },
-
-  sectionTitle: {
-    fontSize: '64px',
-    fontWeight: '700',
-    textAlign: 'center',
-    margin: '0 0 64px 0',
-    color: 'white',
-    textShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-    fontFamily: 'Fredoka, Inter, sans-serif'
-  },
-
-  container: {
-    minHeight: '100vh',
-    position: 'relative',
-    overflow: 'hidden',
-    fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif'
-  },
-
-  grid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-    gap: '32px',
-    marginBottom: '80px'
-  }
-};
-
-const ModernPortfolioLanding = ({ onNavigate }) => {
-  const [activeTab, setActiveTab] = useState('animal');
-
-  const data = {
-    projects: [
-      {
-        title: "Voxxy AI - Co-Founder & Lead Developer",
-        description: "AI-powered startup I co-founded that transforms group planning through smart recommendations. Built full-stack platform with React/Rails serving real users, integrated 5+ production APIs (OpenAI, Google Places, Mixpanel), and developed mobile app via React Native + Expo. Currently managing technical direction, deployment strategy, and product roadmap.",
-        links: [
-          { label: "Live Site", url: "https://www.voxxyai.com/#/" },
-          { label: "GitHub", url: "https://github.com/beaulazear/michael-personal-site.git" }
-        ]
-      },
-      {
-        title: "Pocket Walks - Business Management Platform",
-        description: "Custom-built business management system for my pet care company. Handles real-world operations including contractor management, client scheduling, payment processing, and automated invoicing. Built with React/Rails, this isn't a demo—it's the actual system running my business daily.",
-        links: [
-          { label: "Live Site", url: "https://www.pocket-walks.com/" },
-          { label: "GitHub", url: "https://github.com/beaulazear/voxxy-rails-react" }
-        ]
-      },
-      {
-        title: "Aria Design Consultants - Client Project",
-        description: "Professional portfolio and marketing site I built for a design consultancy as their digital contractor. Ongoing relationship includes website maintenance, social media strategy, and digital presence optimization. Demonstrates ability to work directly with founders and translate business needs into technical solutions.",
-        links: [
-          { label: "Live Site", url: "https://www.ariadesignconsultants.com/#/" },
-          { label: "GitHub", url: "https://github.com/beaulazear/michael-personal-site.git" }
-        ]
-      },
-      {
-        title: "Pokemon Guide - API Integration Demo",
-        description: "Clean, responsive React application showcasing API integration and data management skills. Built during my transition into tech to demonstrate frontend capabilities with external APIs, dynamic filtering, and modern React patterns.",
-        links: [
-          { label: "Live Site", url: "https://beaulazear.github.io/pokemon/" },
-          { label: "GitHub", url: "https://github.com/beaulazear/pokemon" }
-        ]
-      }
-    ],
-
-    services: [
-      {
-        icon: Dog,
-        title: "Dog Walking",
-        description: "Professional dog walking services with detailed photo updates and flexible scheduling. From 30-minute neighborhood strolls to extended adventure walks.",
-        price: "Starting at $25"
-      },
-      {
-        icon: Home,
-        title: "Pet Sitting",
-        description: "Overnight care including multiple walks, feeding, and comprehensive pet care in your home. Your pets stay comfortable in familiar surroundings.",
-        price: "$95/night"
-      },
-      {
-        icon: Cat,
-        title: "Cat Care",
-        description: "Daily visits for feeding, litter maintenance, and playtime for your feline friends. Includes mail collection and plant watering.",
-        price: "$25/visit"
-      },
-      {
-        icon: Bird,
-        title: "Exotic Animals",
-        description: "Specialized care for reptiles, birds, and other exotic pets with zoo-keeping experience. Enclosure cleaning and specialized feeding protocols.",
-        price: "$30/visit"
-      }
-    ],
-
-    testimonials: [
-      {
-        text: "Beau is the absolute best! Ralph's favorite part of the day is when Beau arrives. His daily recap texts include pictures, which is like hiring a professional photographer as an added bonus.",
-        author: "Julie & Ralph"
-      },
-      {
-        text: "From the moment Ruthie met Beau, she was in love. We trust him profoundly with our excitable mini goldendoodle. He loves her as if she were his own.",
-        author: "Anna & Ruthie"
-      },
-      {
-        text: "Beau is thoughtful, dependable, responsible, and incredibly kind. He communicates thoroughly and sends detailed summaries with adorable photographs after every walk.",
-        author: "Vanessa & River"
-      }
-    ]
-  };
+  const skills = [
+    {
+      category: "Frontend",
+      items: ["React", "React Native", "JavaScript", "HTML/CSS", "Responsive Design"]
+    },
+    {
+      category: "Backend", 
+      items: ["Ruby on Rails", "PostgreSQL", "REST APIs", "Authentication"]
+    },
+    {
+      category: "Tools & Integrations",
+      items: ["Git", "AWS", "Mixpanel", "OpenAI API", "Google Places"]
+    },
+    {
+      category: "Approach & Values",
+      items: ["Community-Minded", "Collaborative Work", "Supporting Causes", "Mindful Development", "Client Care"]
+    }
+  ];
 
   return (
-    <div style={baseStyles.container}>
+    <div style={{ 
+      minHeight: '100vh',
+      background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+      fontFamily: 'Inter, sans-serif'
+    }}>
       <style>{globalStyles}</style>
 
-      {/* Enhanced Animated Background */}
-      <div style={{
-        position: 'fixed',
-        inset: 0,
-        zIndex: 1
-      }} className="animated-bg">
-
-        {/* Wave layers */}
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'linear-gradient(45deg, rgba(147, 197, 253, 0.3) 0%, transparent 50%, rgba(30, 64, 175, 0.4) 100%)'
-        }} className="wave-layer" />
-
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'linear-gradient(-45deg, rgba(99, 102, 241, 0.2) 0%, transparent 70%, rgba(147, 197, 253, 0.3) 100%)',
-          animationDelay: '2s'
-        }} className="wave-layer" />
-
-        {/* Floating orbs with enhanced animation */}
-        <div style={{ position: 'absolute', inset: 0 }}>
-          {[
-            { top: '20%', left: '20%', size: '400px', delay: '0s', color: '147, 197, 253' },
-            { bottom: '20%', right: '20%', size: '350px', delay: '3s', color: '99, 102, 241' },
-            { top: '60%', left: '60%', size: '300px', delay: '1.5s', color: '147, 197, 253' },
-            { top: '80%', left: '10%', size: '250px', delay: '4.5s', color: '30, 64, 175' },
-            { top: '10%', right: '40%', size: '320px', delay: '2.5s', color: '59, 130, 246' }
-          ].map((orb, i) => (
-            <div key={i} style={{
-              position: 'absolute',
-              ...Object.fromEntries(Object.entries(orb).filter(([k]) => ['top', 'bottom', 'left', 'right'].includes(k))),
-              width: orb.size,
-              height: orb.size,
-              background: `radial-gradient(circle, rgba(${orb.color}, 0.3) 0%, rgba(${orb.color}, 0.1) 50%, transparent 100%)`,
-              borderRadius: '50%',
-              filter: 'blur(40px)',
-              animationDelay: orb.delay
-            }} className="drift-orb" />
-          ))}
-        </div>
-
-        {/* Particle-like elements */}
-        <div style={{ position: 'absolute', inset: 0 }}>
-          {Array.from({ length: 12 }).map((_, i) => (
-            <div key={i} style={{
-              position: 'absolute',
-              width: '4px',
-              height: '4px',
-              background: 'rgba(255, 255, 255, 0.6)',
-              borderRadius: '50%',
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animation: `pulse 3s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 3}s`
-            }} />
-          ))}
-        </div>
-      </div>
-
-      <div style={{ position: 'relative', zIndex: 10, color: '#374151' }}>
-        <header style={{
-          textAlign: 'center',
-          padding: '80px 20px 60px',
-          marginBottom: '48px'
-        }} className="animate-fade-in-up responsive-header">
-
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '32px',
-            marginBottom: '32px',
-            flexDirection: 'column'
-          }}>
-            {/* Enhanced Profile Picture - Much Larger */}
+      {/* Hero Section */}
+      <section style={{ 
+        padding: '100px 20px 80px',
+        textAlign: 'center',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <div style={{ 
+          maxWidth: '1200px',
+          margin: '0 auto',
+          position: 'relative',
+          zIndex: 2
+        }}>
+          <div className="animate-fade-in-up">
             <div style={{
-              width: '240px', // Increased from 144px
-              height: '240px', // Increased from 144px
+              width: '150px',
+              height: '150px',
               borderRadius: '50%',
               overflow: 'hidden',
-              boxShadow: '0 30px 60px rgba(0, 0, 0, 0.3), 0 0 0 6px rgba(255, 255, 255, 0.4)', // Enhanced shadow and border
-              border: '6px solid rgba(255, 255, 255, 0.5)', // Thicker border
-              position: 'relative'
-            }} className="floating responsive-profile">
+              margin: '0 auto 32px',
+              border: '4px solid white',
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)'
+            }} className="animate-float">
               <img
-                src={activeTab === 'software' ? CroppedBeau : GraphicTwo}
+                src={CroppedBeau}
                 alt="Beau Lazear"
                 style={{
                   width: '100%',
@@ -374,639 +293,862 @@ const ModernPortfolioLanding = ({ onNavigate }) => {
                   objectFit: 'cover'
                 }}
               />
-              <div style={{
-                position: 'absolute',
-                inset: 0,
-                borderRadius: '50%',
-                background: 'linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%)',
-                animation: 'shimmer 3s ease-in-out infinite'
-              }} />
             </div>
-
-            <div style={{ textAlign: 'center' }}>
-              <h1 style={baseStyles.largeTitle} className="responsive-title">
-                Beau Lazear
-              </h1>
-              <p style={{
-                fontSize: '32px',
-                color: '#dbeafe',
-                fontWeight: '500',
-                textShadow: '0 2px 10px rgba(0, 0, 0, 0.2)'
-              }} className="responsive-tagline">
-                Entrepreneurial Full-Stack Developer | 2x Founder | From Zookeeper to Tech Innovator
-              </p>
-            </div>
-          </div>
-
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '20px',
-            marginTop: '48px',
-            flexWrap: 'wrap'
-          }} className="responsive-social">
-            {[
-              { icon: Linkedin, href: "https://www.linkedin.com/in/beau-lazear", external: true },
-              { icon: Github, href: "https://github.com/beaulazear", external: true },
-              { icon: Instagram, href: "https://www.instagram.com", external: true },
-              { icon: FileText, action: () => onNavigate('resume') },
-              { icon: Mail, action: () => onNavigate('YourContact') }
-            ].map((item, i) => (
+            
+            <h1 style={{
+              fontSize: '3.5rem',
+              fontWeight: '800',
+              margin: '0 0 16px 0',
+              color: '#2d3748'
+            }} className="hero-title">
+              <span className="gradient-text">Beau Lazear</span>
+            </h1>
+            
+            <p style={{
+              fontSize: '1.5rem',
+              color: '#4a5568',
+              margin: '0 0 24px 0',
+              fontWeight: '500'
+            }} className="hero-subtitle">
+              Full-Stack Developer & Community Builder
+            </p>
+            
+            <p style={{
+              fontSize: '1.125rem',
+              color: '#6b7280',
+              maxWidth: '700px',
+              margin: '0 auto 32px',
+              lineHeight: '1.7'
+            }}>
+              From caring for animals to building meaningful web applications, I bring the same dedication to every project. 
+              Alongside my tech work, I've built a thriving pet care business serving 50+ families in Brooklyn, 
+              combining my love for animals with the community connections that make this work so rewarding.
+            </p>
+            
+            {/* Animal Care Business Link */}
+            <div style={{
+              marginBottom: '48px'
+            }}>
               <button
-                key={i}
-                onClick={item.action || (() => item.href && window.open(item.href, '_blank'))}
+                onClick={() => navigate('/animal-care')}
                 style={{
-                  width: '56px',
-                  height: '56px',
-                  background: 'rgba(255, 255, 255, 0.2)',
-                  backdropFilter: 'blur(20px)',
-                  border: '2px solid rgba(255, 255, 255, 0.4)',
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                  boxShadow: '0 15px 35px rgba(0, 0, 0, 0.15)'
-                }}
-                className="hover-social responsive-social-link"
-              >
-                <item.icon size={28} color="#dbeafe" />
-              </button>
-            ))}
-          </div>
-        </header>
-
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }} className="responsive-content">
-          <div style={{
-            display: 'flex',
-            background: 'rgba(255, 255, 255, 0.25)',
-            backdropFilter: 'blur(25px)',
-            border: '2px solid rgba(255, 255, 255, 0.5)',
-            borderRadius: '50px',
-            padding: '12px',
-            margin: '0 auto 48px',
-            maxWidth: '512px',
-            boxShadow: '0 30px 60px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1) inset'
-          }} className="animate-fade-in-up-delay responsive-toggle">
-            {['animal', 'software'].map((tab) => (
-              <button
-                key={tab}
-                style={{
-                  flex: 1,
-                  padding: '16px 32px',
+                  background: 'linear-gradient(135deg, #f59e0b 0%, #dc2626 100%)',
+                  color: 'white',
                   border: 'none',
-                  borderRadius: '40px',
-                  fontSize: '18px',
-                  fontWeight: 'bold',
+                  padding: '14px 28px',
+                  borderRadius: '12px',
                   cursor: 'pointer',
-                  transition: 'all 0.5s ease',
-                  background: activeTab === tab ? 'linear-gradient(135deg, #3b82f6, #2563eb)' : 'transparent',
-                  color: activeTab === tab ? 'white' : '#dbeafe',
-                  transform: activeTab === tab ? 'scale(1.05)' : 'scale(1)',
-                  boxShadow: activeTab === tab ? '0 10px 30px rgba(59, 130, 246, 0.4)' : 'none',
-                  display: 'flex',
+                  fontWeight: '600',
+                  fontSize: '16px',
+                  display: 'inline-flex',
                   alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '8px'
+                  gap: '10px',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 4px 15px rgba(245, 158, 11, 0.3)'
                 }}
-                className="responsive-toggle-button"
-                onClick={() => setActiveTab(tab)}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(245, 158, 11, 0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(245, 158, 11, 0.3)';
+                }}
               >
-                {tab === 'animal' ? (
-                  <>
-                    <Heart size={20} />
-                    Animal Care
-                  </>
-                ) : (
-                  <>
-                    <Monitor size={20} />
-                    Software Development
-                  </>
-                )}
+                <PawPrint size={20} />
+                Visit Beau's Animal Care
               </button>
-            ))}
-          </div>
-
-          <div className="animate-slide-in">
-            {activeTab === 'software' ? (
-              <SoftwareSection data={data} baseStyles={baseStyles} />
-            ) : (
-              <AnimalCareSection data={data} baseStyles={baseStyles} />
-            )}
+            </div>
+            
+            <div style={{
+              display: 'flex',
+              gap: '16px',
+              justifyContent: 'center',
+              flexWrap: 'wrap'
+            }} className="hero-buttons">
+              <button 
+                onClick={() => navigate('/contact')}
+                className="primary-button hover-pulse"
+              >
+                <Mail size={20} />
+                Hire Me
+              </button>
+              
+              <button 
+                onClick={() => navigate('/resume')}
+                className="secondary-button hover-pulse"
+              >
+                <FileText size={20} />
+                View Resume
+              </button>
+              
+              <button 
+                onClick={() => {
+                  const projectsSection = document.querySelector('#projects-section');
+                  if (projectsSection) {
+                    projectsSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="secondary-button hover-pulse"
+              >
+                <FolderOpen size={20} />
+                Projects
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <footer style={{
-        position: 'relative',
-        zIndex: 10,
-        textAlign: 'center',
-        padding: '40px 20px',
-        background: 'rgba(255, 255, 255, 0.1)',
-        backdropFilter: 'blur(20px)',
-        borderTop: '1px solid rgba(255, 255, 255, 0.2)',
-        marginTop: '80px'
+      {/* My Story Section */}
+      <section style={{ 
+        padding: '80px 20px',
+        background: 'rgba(255, 255, 255, 0.5)'
       }}>
-        <div style={{
+        <div style={{ 
           maxWidth: '1200px',
           margin: '0 auto'
         }}>
-          <p style={{
-            fontSize: '18px',
-            color: '#dbeafe',
-            margin: '0 0 8px 0',
-            fontWeight: '600'
+          <div style={{
+            textAlign: 'center',
+            marginBottom: '64px'
           }}>
-            Beau Lazear
-          </p>
-          <p style={{
-            fontSize: '16px',
-            color: '#bfdbfe',
-            margin: 0
+            <div style={{
+              fontSize: '14px',
+              fontWeight: '600',
+              color: '#667eea',
+              textTransform: 'uppercase',
+              letterSpacing: '2px',
+              marginBottom: '12px'
+            }}>
+              From Ground Up
+            </div>
+            <h2 style={{
+              fontSize: '2.5rem',
+              fontWeight: '700',
+              margin: '0 0 16px 0',
+              color: '#2d3748'
+            }} className="section-title">
+              Experience-Driven Growth
+            </h2>
+            <p style={{
+              fontSize: '1.125rem',
+              color: '#6b7280',
+              maxWidth: '500px',
+              margin: '0 auto'
+            }}>
+              Every role taught me something essential for building better software
+            </p>
+          </div>
+          
+          {/* Desktop Timeline */}
+          <div className="timeline-desktop" style={{
+            maxWidth: '1000px',
+            margin: '0 auto',
+            flexDirection: 'column',
+            gap: '32px'
           }}>
-            <a
-              href="mailto:beaulazear@gmail.com"
-              style={{
-                color: '#bfdbfe',
-                textDecoration: 'none',
-                transition: 'color 0.3s ease'
-              }}
-              onMouseOver={(e) => e.target.style.color = '#dbeafe'}
-              onMouseOut={(e) => e.target.style.color = '#bfdbfe'}
-            >
-              beaulazear@gmail.com
-            </a>
-          </p>
+            {timelineData.map((item, index) => (
+              <DesktopTimelineItem key={index} item={item} index={index} />
+            ))}
+          </div>
+          
+          {/* Mobile Timeline */}
+          <div className="timeline-mobile" style={{
+            maxWidth: '600px',
+            margin: '0 auto',
+            flexDirection: 'column',
+            gap: '24px',
+            display: 'none'
+          }}>
+            {timelineData.map((item, index) => (
+              <MobileTimelineItem key={index} item={item} />
+            ))}
+          </div>
+          
+          <div className="glass-card" style={{ 
+            padding: '32px',
+            textAlign: 'center',
+            marginTop: '48px',
+            maxWidth: '600px',
+            margin: '48px auto 0'
+          }}>
+            <p style={{
+              fontSize: '1.25rem',
+              lineHeight: '1.7',
+              color: '#4a5568',
+              margin: '0',
+              fontStyle: 'italic',
+              fontWeight: '500'
+            }}>
+              "I love using my mind, supporting causes I believe in, and working with people that inspire me."
+            </p>
+          </div>
         </div>
-      </footer>
+      </section>
+
+      {/* Featured Projects */}
+      <section id="projects-section" style={{ 
+        padding: '80px 20px'
+      }}>
+        <div style={{ 
+          maxWidth: '1200px',
+          margin: '0 auto'
+        }}>
+          <div style={{
+            textAlign: 'center',
+            marginBottom: '64px'
+          }}>
+            <h2 style={{
+              fontSize: '2.5rem',
+              fontWeight: '700',
+              margin: '0 0 16px 0',
+              color: '#2d3748'
+            }} className="section-title">
+              Featured Projects
+            </h2>
+            <p style={{
+              fontSize: '1.125rem',
+              color: '#6b7280',
+              maxWidth: '500px',
+              margin: '0 auto'
+            }}>
+              Real businesses and applications I've built from the ground up
+            </p>
+          </div>
+          
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+            gap: '32px'
+          }} className="card-grid">
+            {projects.map((project, index) => (
+              <ProjectCard key={index} project={project} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section style={{ 
+        padding: '80px 20px',
+        background: 'rgba(255, 255, 255, 0.5)'
+      }}>
+        <div style={{ 
+          maxWidth: '1000px',
+          margin: '0 auto'
+        }}>
+          <h2 style={{
+            fontSize: '2.5rem',
+            fontWeight: '700',
+            textAlign: 'center',
+            margin: '0 0 64px 0',
+            color: '#2d3748'
+          }} className="section-title">
+            Skills & Technologies
+          </h2>
+          
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+            gap: '24px'
+          }} className="card-grid">
+            {skills.map((skillGroup, index) => (
+              <SkillCard key={index} skillGroup={skillGroup} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section style={{ 
+        padding: '80px 20px',
+        textAlign: 'center'
+      }}>
+        <div style={{ 
+          maxWidth: '600px',
+          margin: '0 auto'
+        }}>
+          <h2 style={{
+            fontSize: '2.5rem',
+            fontWeight: '700',
+            margin: '0 0 24px 0',
+            color: '#2d3748'
+          }}>
+            Let's Build Something Meaningful
+          </h2>
+          
+          <p style={{
+            fontSize: '1.125rem',
+            color: '#6b7280',
+            margin: '0 0 48px 0',
+            lineHeight: '1.7'
+          }}>
+            I'd love to collaborate on projects that make a positive impact. 
+            Whether it's supporting a cause you believe in or bringing a helpful idea to life, let's explore how we can work together.
+          </p>
+          
+          <div style={{
+            display: 'flex',
+            gap: '16px',
+            justifyContent: 'center',
+            flexWrap: 'wrap'
+          }}>
+            <button 
+              onClick={() => navigate('/contact')}
+              className="primary-button hover-pulse"
+            >
+              <Mail size={20} />
+              Get In Touch
+            </button>
+            
+            <a 
+              href="https://www.linkedin.com/in/beau-lazear"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="secondary-button hover-pulse"
+            >
+              <Linkedin size={20} />
+              Connect on LinkedIn
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Links */}
+      <section style={{ 
+        padding: '40px 20px',
+        borderTop: '1px solid rgba(0, 0, 0, 0.1)',
+        textAlign: 'center'
+      }}>
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '24px',
+          marginBottom: '24px'
+        }}>
+          {[
+            { icon: Linkedin, href: "https://www.linkedin.com/in/beau-lazear", label: "LinkedIn" },
+            { icon: Github, href: "https://github.com/beaulazear", label: "GitHub" },
+            { icon: Mail, action: () => navigate('/contact'), label: "Email" }
+          ].map((item, i) => (
+            <button
+              key={i}
+              onClick={item.action || (() => window.open(item.href, '_blank'))}
+              style={{
+                width: '48px',
+                height: '48px',
+                borderRadius: '12px',
+                border: '2px solid #667eea',
+                background: 'transparent',
+                color: '#667eea',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease'
+              }}
+              className="hover-pulse"
+              onMouseEnter={(e) => {
+                e.target.style.background = '#667eea';
+                e.target.style.color = 'white';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = 'transparent';
+                e.target.style.color = '#667eea';
+              }}
+            >
+              <item.icon size={24} />
+            </button>
+          ))}
+        </div>
+        
+        <p style={{
+          color: '#9ca3af',
+          margin: 0,
+          fontSize: '14px'
+        }}>
+          © 2024 Beau Lazear. Built with React.
+        </p>
+      </section>
     </div>
   );
 };
 
-const SoftwareSection = ({ data, baseStyles }) => (
-  <>
-    <AboutCard
-      text="From caring for exotic animals at Prospect Park Zoo to building AI-powered platforms, I bring a rare perspective to software development. As a 2x founder (Voxxy AI & Beau's Animal Care), I don't just write code—I build businesses that solve real problems. My experience managing complex biological systems taught me to build robust, scalable technical systems. I understand business because I run two of them, and I build for real users, not GitHub stars."
-      baseStyles={baseStyles}
-    />
-
-    <WhatMakesMeDifferentSection baseStyles={baseStyles} />
-
-    <h2 style={baseStyles.sectionTitle} className="responsive-section-title">
-      Featured Projects
-      <div style={{
-        display: 'inline-block',
-        marginLeft: '20px',
-        padding: '8px 16px',
-        background: 'linear-gradient(135deg, #10b981, #059669)',
-        color: 'white',
-        borderRadius: '20px',
-        fontSize: '16px',
-        fontWeight: 'normal',
-        boxShadow: '0 4px 15px rgba(16, 185, 129, 0.3)'
+const ProjectCard = ({ project }) => {
+  const navigate = useNavigate();
+  return (
+    <div className="glass-card hover-lift" style={{
+      padding: '32px',
+      transition: 'all 0.3s ease',
+      position: 'relative',
+      overflow: 'hidden'
+    }}>
+      {project.highlight && (
+        <div style={{
+          position: 'absolute',
+          top: '16px',
+          right: '16px',
+          background: 'linear-gradient(135deg, #10b981, #059669)',
+          color: 'white',
+          padding: '4px 12px',
+          borderRadius: '12px',
+          fontSize: '12px',
+          fontWeight: '600'
+        }}>
+          {project.highlight}
+        </div>
+      )}
+      
+      <h3 style={{
+        fontSize: '1.5rem',
+        fontWeight: '700',
+        margin: '0 0 8px 0',
+        color: '#2d3748'
       }}>
-        🚀 Currently Building
+        {project.title}
+      </h3>
+      
+      <p style={{
+        fontSize: '1rem',
+        color: '#667eea',
+        margin: '0 0 16px 0',
+        fontWeight: '600'
+      }}>
+        {project.subtitle}
+      </p>
+      
+      <p style={{
+        color: '#6b7280',
+        lineHeight: '1.6',
+        margin: '0 0 24px 0'
+      }}>
+        {project.description}
+      </p>
+      
+      <div style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '8px',
+        marginBottom: '24px'
+      }}>
+        {project.technologies.map((tech, i) => (
+          <span key={i} style={{
+            background: 'rgba(102, 126, 234, 0.1)',
+            color: '#667eea',
+            padding: '4px 12px',
+            borderRadius: '16px',
+            fontSize: '14px',
+            fontWeight: '500'
+          }}>
+            {tech}
+          </span>
+        ))}
       </div>
-    </h2>
-
-    <div style={baseStyles.grid} className="responsive-grid">
-      {data.projects.map((project, index) => (
-        <ProjectCard key={index} project={project} baseStyles={baseStyles} />
-      ))}
+      
+      <div style={{
+        display: 'flex',
+        gap: '12px',
+        flexWrap: 'wrap'
+      }}>
+        {project.links.map((link, i) => (
+          link.isInternal ? (
+            <button
+              key={i}
+              onClick={() => navigate(link.url)}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                color: '#667eea',
+                textDecoration: 'none',
+                fontSize: '14px',
+                fontWeight: '600',
+                padding: '8px 16px',
+                border: '1px solid #667eea',
+                borderRadius: '12px',
+                transition: 'all 0.3s ease',
+                background: 'transparent',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = '#667eea';
+                e.currentTarget.style.color = 'white';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'transparent';
+                e.currentTarget.style.color = '#667eea';
+              }}
+            >
+              <PawPrint size={16} />
+              {link.label}
+            </button>
+          ) : (
+            <a
+              key={i}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                color: '#667eea',
+                textDecoration: 'none',
+                fontSize: '14px',
+                fontWeight: '600',
+                padding: '8px 16px',
+                border: '1px solid #667eea',
+                borderRadius: '12px',
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = '#667eea';
+                e.target.style.color = 'white';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = 'transparent';
+                e.target.style.color = '#667eea';
+              }}
+            >
+              <ArrowRight size={16} />
+              {link.label}
+            </a>
+          )
+        ))}
+      </div>
     </div>
+  );
+};
 
-
-  </>
-);
-
-const AnimalCareSection = ({ data, baseStyles }) => (
-  <>
-    <AboutCard
-      text="Founder of Beau's Animal Care, Brooklyn's trusted pet care company. My unique journey from Prospect Park Zoo zookeeper to ASPCA emergency veterinary assistant taught me to manage complex systems under pressure—skills that directly translate to building reliable software systems. Over 8 years of experience managing both live operations and now technical teams, serving clients with the same attention to detail I bring to code."
-      baseStyles={baseStyles}
-    />
-
-    <AnimalCareCarousel />
-
-    <h2 style={baseStyles.sectionTitle} className="responsive-section-title">
-      Services & Pricing
-    </h2>
-
-    <div style={baseStyles.grid} className="responsive-grid">
-      {data.services.map((service, index) => (
-        <ServiceCard key={index} service={service} baseStyles={baseStyles} />
-      ))}
-    </div>
-
-    <h2 style={baseStyles.sectionTitle} className="responsive-section-title">
-      Client Testimonials
-    </h2>
-
-    <div style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-      gap: '32px',
-      marginBottom: '80px'
-    }} className="responsive-grid">
-      {data.testimonials.map((testimonial, index) => (
-        <TestimonialCard key={index} testimonial={testimonial} baseStyles={baseStyles} />
-      ))}
-    </div>
-  </>
-);
-
-const AboutCard = ({ text, baseStyles }) => (
+const DesktopTimelineItem = ({ item, index }) => (
   <div style={{
-    ...baseStyles.glassCardOpaque,
-    padding: '48px',
-    marginBottom: '80px'
-  }} className="responsive-about">
+    display: 'grid',
+    gridTemplateColumns: '1fr auto 1fr',
+    gap: '24px',
+    alignItems: 'center',
+    position: 'relative',
+    minHeight: '120px'
+  }}>
+    {/* Timeline Line */}
+    {index !== 6 && (
+      <div style={{
+        position: 'absolute',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        top: '60px',
+        bottom: '-32px',
+        width: '2px',
+        background: 'linear-gradient(180deg, #667eea, rgba(102, 126, 234, 0.3))',
+        zIndex: 1
+      }} />
+    )}
+    
+    {/* Left Content */}
     <div style={{
-      fontSize: '24px',
-      lineHeight: '1.75',
-      color: '#374151',
-      textAlign: 'left',
-      maxWidth: '1200px',
-      margin: '0 auto',
-      fontWeight: '500'
-    }} className="responsive-text">
-      {text}
+      gridColumn: '1',
+      textAlign: 'right',
+      paddingRight: '16px'
+    }}>
+      {item.side === 'left' && (
+        <div className="glass-card hover-lift" style={{
+          padding: '24px',
+          marginLeft: 'auto',
+          maxWidth: '350px'
+        }}>
+          <TimelineContent item={item} />
+        </div>
+      )}
     </div>
-  </div>
-);
-
-const ProjectCard = ({ project, baseStyles }) => (
-  <div style={{
-    ...baseStyles.glassCard,
-    padding: '40px',
-    border: '2px solid rgba(255, 255, 255, 0.5)'
-  }} className="hover-glow-soft responsive-card">
-    <h4 style={{
-      fontSize: '32px',
-      fontWeight: 'bold',
-      marginBottom: '16px',
-      color: '#1f2937'
-    }} className="responsive-project-title">
-      {project.title}
-    </h4>
-    <p style={{
-      fontSize: '20px',
-      lineHeight: '1.75',
-      color: '#374151',
-      marginBottom: '32px'
-    }} className="responsive-project-description">
-      {project.description}
-    </p>
-    <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-      {project.links.map((link, i) => (
-        <a
-          key={i}
-          href={link.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: 'inline-block',
-            padding: '12px 32px',
-            background: 'linear-gradient(135deg, #3b82f6, #2563eb)',
-            color: 'white',
-            textDecoration: 'none',
-            borderRadius: '25px',
-            fontWeight: 'bold',
-            fontSize: '16px',
-            transition: 'all 0.3s ease'
-          }}
-          className="hover-button"
-        >
-          {link.label}
-        </a>
-      ))}
-    </div>
-  </div>
-);
-
-const ServiceCard = ({ service, baseStyles }) => (
-  <div style={{
-    ...baseStyles.glassCard,
-    padding: '32px',
-    border: '2px solid rgba(255, 255, 255, 0.5)'
-  }} className="hover-glow-soft responsive-card">
+    
+    {/* Center Timeline Dot */}
     <div style={{
+      gridColumn: '2',
       display: 'flex',
-      alignItems: 'center',
-      gap: '20px',
-      marginBottom: '20px'
+      justifyContent: 'center',
+      zIndex: 2
     }}>
       <div style={{
-        width: '60px',
-        height: '60px',
-        borderRadius: '12px',
-        background: 'linear-gradient(135deg, #60a5fa, #3b82f6)',
+        width: '48px',
+        height: '48px',
+        borderRadius: '50%',
+        background: 'linear-gradient(135deg, #667eea, #764ba2)',
+        border: '4px solid white',
+        boxShadow: '0 4px 12px rgba(102, 126, 234, 0.3)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}>
+        <item.icon size={20} color="white" />
+      </div>
+    </div>
+    
+    {/* Right Content */}
+    <div style={{
+      gridColumn: '3',
+      textAlign: 'left',
+      paddingLeft: '16px'
+    }}>
+      {item.side === 'right' && (
+        <div className="glass-card hover-lift" style={{
+          padding: '24px',
+          maxWidth: '350px'
+        }}>
+          <TimelineContent item={item} />
+        </div>
+      )}
+    </div>
+    
+  </div>
+);
+
+const MobileTimelineItem = ({ item }) => (
+  <div style={{
+    display: 'flex',
+    gap: '16px',
+    alignItems: 'flex-start'
+  }}>
+    {/* Timeline Dot */}
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      flexShrink: 0
+    }}>
+      <div style={{
+        width: '40px',
+        height: '40px',
+        borderRadius: '50%',
+        background: 'linear-gradient(135deg, #667eea, #764ba2)',
+        border: '3px solid white',
+        boxShadow: '0 4px 12px rgba(102, 126, 234, 0.3)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        boxShadow: '0 8px 25px rgba(0, 0, 0, 0.2)',
-        flexShrink: 0
+        marginBottom: '8px'
       }}>
-        <service.icon size={32} color="white" />
+        <item.icon size={16} color="white" />
       </div>
-      <h3 style={{
-        fontSize: '28px',
-        fontWeight: 'bold',
-        color: '#1f2937',
-        margin: 0
-      }} className="responsive-service-title">
-        {service.title}
-      </h3>
     </div>
-    <div style={{
-      display: 'inline-block',
-      background: 'linear-gradient(135deg, #3b82f6, #2563eb)',
-      color: 'white',
-      padding: '8px 20px',
-      borderRadius: '20px',
-      fontWeight: 'bold',
-      fontSize: '14px',
-      marginBottom: '16px',
-      boxShadow: '0 4px 15px rgba(59, 130, 246, 0.3)'
+    
+    {/* Content */}
+    <div className="glass-card" style={{
+      padding: '20px',
+      flex: 1
     }}>
-      {service.price}
-    </div>
-    <p style={{
-      fontSize: '18px',
-      lineHeight: '1.6',
-      color: '#374151',
-      margin: 0
-    }} className="responsive-service-description">
-      {service.description}
-    </p>
-  </div>
-);
-
-const TestimonialCard = ({ testimonial, baseStyles }) => (
-  <div style={{
-    ...baseStyles.glassCard,
-    padding: '40px',
-    border: '2px solid rgba(255, 255, 255, 0.5)'
-  }} className="responsive-card">
-    <p style={{
-      fontSize: '18px',
-      lineHeight: '1.75',
-      color: '#374151',
-      marginBottom: '24px',
-      fontStyle: 'italic'
-    }} className="responsive-text">
-      "{testimonial.text}"
-    </p>
-    <div style={{
-      fontWeight: 'bold',
-      color: '#1f2937',
-      fontSize: '18px'
-    }}>
-      — {testimonial.author}
+      <TimelineContent item={item} />
     </div>
   </div>
 );
 
-const WhatMakesMeDifferentSection = ({ baseStyles }) => {
-  const differentiators = [
-    {
-      icon: "🏢",
-      title: "Business Owner Mindset",
-      description: "I've managed both code deployments AND live animal deployments. Running two businesses taught me to think like a founder, not just a developer."
-    },
-    {
-      icon: "🔧",
-      title: "Real-World Problem Solver",
-      description: "My debugging skills were honed in life-or-death veterinary situations. I build for real users with real problems, not GitHub stars."
-    },
-    {
-      icon: "📊",
-      title: "Proven Business Impact",
-      description: "I've built real business systems that solve actual problems, from custom scheduling platforms to AI-powered applications. My code runs live businesses, not just demos."
-    },
-    {
-      icon: "🤝",
-      title: "Trust & Reliability",
-      description: "People trust me with their pets, homes, and keys. This translates to security-first thinking and exceptional client communication in tech projects."
-    }
-  ];
+const TimelineContent = ({ item }) => (
+  <>
+    <div style={{
+      fontSize: '11px',
+      fontWeight: '600',
+      color: '#667eea',
+      textTransform: 'uppercase',
+      letterSpacing: '1px',
+      marginBottom: '6px'
+    }}>
+      {item.year}
+    </div>
+    <h3 style={{
+      fontSize: '1.25rem',
+      fontWeight: '700',
+      color: '#2d3748',
+      margin: '0 0 6px 0'
+    }}>
+      {item.title}
+    </h3>
+    <p style={{
+      fontSize: '0.9rem',
+      fontWeight: '600',
+      color: '#667eea',
+      margin: '0 0 12px 0'
+    }}>
+      {item.subtitle}
+    </p>
+    <p style={{
+      fontSize: '0.875rem',
+      lineHeight: '1.5',
+      color: '#4a5568',
+      margin: '0'
+    }}>
+      {item.description}
+    </p>
+  </>
+);
 
+const SkillCard = ({ skillGroup }) => (
+  <div className="glass-card" style={{
+    padding: '24px',
+    textAlign: 'center'
+  }}>
+    <h3 style={{
+      fontSize: '1.25rem',
+      fontWeight: '600',
+      margin: '0 0 16px 0',
+      color: '#2d3748'
+    }}>
+      {skillGroup.category}
+    </h3>
+    
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '8px'
+    }}>
+      {skillGroup.items.map((skill, i) => (
+        <div key={i} style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          justifyContent: 'flex-start'
+        }}>
+          <CheckCircle size={16} color="#10b981" />
+          <span style={{
+            color: '#4a5568',
+            fontSize: '14px'
+          }}>
+            {skill}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+const StylishNavbar = () => {
+  const navigate = useNavigate();
   return (
-    <>
-      <h2 style={baseStyles.sectionTitle} className="responsive-section-title">
-        What Makes Me Different
-      </h2>
-      
+    <div style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.95) 100%)',
+      backdropFilter: 'blur(20px)',
+      borderBottom: '1px solid rgba(102, 126, 234, 0.1)',
+      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+      zIndex: 1000,
+      padding: '16px 0'
+    }}>
       <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-        gap: '32px',
-        marginBottom: '80px'
-      }} className="responsive-grid">
-        {differentiators.map((item, index) => (
-          <div key={index} style={{
-            ...baseStyles.glassCard,
-            padding: '32px',
-            border: '2px solid rgba(255, 255, 255, 0.5)',
-            textAlign: 'center'
-          }} className="hover-glow-soft responsive-card">
-            <div style={{
-              fontSize: '48px',
-              marginBottom: '16px'
-            }}>
-              {item.icon}
-            </div>
-            <h3 style={{
-              fontSize: '24px',
-              fontWeight: 'bold',
-              color: '#1f2937',
-              marginBottom: '16px'
-            }} className="responsive-service-title">
-              {item.title}
-            </h3>
-            <p style={{
-              fontSize: '16px',
-              lineHeight: '1.6',
-              color: '#374151',
-              margin: 0
-            }} className="responsive-service-description">
-              {item.description}
-            </p>
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: '0 20px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+      }}>
+        <button
+          onClick={() => navigate('/')}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            border: 'none',
+            padding: '10px 20px',
+            borderRadius: '12px',
+            color: 'white',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            fontWeight: '600',
+            fontSize: '15px',
+            boxShadow: '0 4px 15px rgba(102, 126, 234, 0.3)'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'translateY(-2px)';
+            e.currentTarget.style.boxShadow = '0 6px 20px rgba(102, 126, 234, 0.4)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.3)';
+          }}
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          Back to Home
+        </button>
+        
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px'
+        }}>
+          <div style={{
+            width: '40px',
+            height: '40px',
+            borderRadius: '50%',
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: 'white',
+            fontWeight: '700',
+            fontSize: '18px',
+            boxShadow: '0 2px 8px rgba(102, 126, 234, 0.3)'
+          }}>
+            BL
           </div>
-        ))}
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 
-const YourContact = ({ onNavigate }) => (
+const YourContact = () => (
   <div style={{
     minHeight: '100vh',
-    background: 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 35%, #1e40af 100%)',
+    background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
   }}>
+    <StylishNavbar />
     <div style={{
       maxWidth: '1000px',
       margin: '0 auto',
-      paddingTop: '20px'
+      paddingTop: '100px'
     }}>
-      <button
-        onClick={() => onNavigate('home')}
-        style={{
-          marginBottom: '20px',
-          marginLeft: '20px',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          background: 'rgba(255, 255, 255, 0.2)',
-          backdropFilter: 'blur(20px)',
-          border: '2px solid rgba(255, 255, 255, 0.4)',
-          padding: '12px 24px',
-          borderRadius: '25px',
-          color: '#dbeafe',
-          cursor: 'pointer',
-          transition: 'all 0.3s ease'
-        }}
-        className="hover-button"
-      >
-        <ArrowLeft size={20} />
-        Back to Home
-      </button>
       <Contact />
     </div>
-
-    <footer style={{
-      textAlign: 'center',
-      padding: '40px 20px',
-      background: 'rgba(255, 255, 255, 0.1)',
-      backdropFilter: 'blur(20px)',
-      borderTop: '1px solid rgba(255, 255, 255, 0.2)',
-      marginTop: '40px'
-    }}>
-      <div style={{
-        maxWidth: '1200px',
-        margin: '0 auto'
-      }}>
-        <p style={{
-          fontSize: '18px',
-          color: '#dbeafe',
-          margin: '0 0 8px 0',
-          fontWeight: '600'
-        }}>
-          Beau Lazear
-        </p>
-        <p style={{
-          fontSize: '16px',
-          color: '#bfdbfe',
-          margin: 0
-        }}>
-          <a
-            href="mailto:beaulazear@gmail.com"
-            style={{
-              color: '#bfdbfe',
-              textDecoration: 'none',
-              transition: 'color 0.3s ease'
-            }}
-            onMouseOver={(e) => e.target.style.color = '#dbeafe'}
-            onMouseOut={(e) => e.target.style.color = '#bfdbfe'}
-          >
-            beaulazear@gmail.com
-          </a>
-        </p>
-      </div>
-    </footer>
   </div>
 );
 
-const ResumeWrapper = ({ onNavigate }) => (
+const ResumeWrapper = () => (
   <div style={{
     minHeight: '100vh',
-    background: 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 35%, #1e40af 100%)',
+    background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
   }}>
+    <StylishNavbar />
     <div style={{
       maxWidth: '1000px',
       margin: '0 auto',
-      paddingTop: '20px'
+      paddingTop: '100px'
     }}>
-      <button
-        onClick={() => onNavigate('home')}
-        style={{
-          marginBottom: '20px',
-          marginLeft: '20px',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          background: 'rgba(255, 255, 255, 0.2)',
-          backdropFilter: 'blur(20px)',
-          border: '2px solid rgba(255, 255, 255, 0.4)',
-          padding: '12px 24px',
-          borderRadius: '25px',
-          color: '#dbeafe',
-          cursor: 'pointer',
-          transition: 'all 0.3s ease'
-        }}
-        className="hover-button"
-      >
-        <ArrowLeft size={20} />
-        Back to Home
-      </button>
-
-      {/* Render your actual Resume component here */}
-      <Resume onNavigate={onNavigate} />
+      <Resume />
     </div>
-
-    <footer style={{
-      textAlign: 'center',
-      padding: '40px 20px',
-      background: 'rgba(255, 255, 255, 0.1)',
-      backdropFilter: 'blur(20px)',
-      borderTop: '1px solid rgba(255, 255, 255, 0.2)',
-      marginTop: '40px'
-    }}>
-      <div style={{
-        maxWidth: '1200px',
-        margin: '0 auto'
-      }}>
-        <p style={{
-          fontSize: '18px',
-          color: '#dbeafe',
-          margin: '0 0 8px 0',
-          fontWeight: '600'
-        }}>
-          Beau Lazear
-        </p>
-        <p style={{
-          fontSize: '16px',
-          color: '#bfdbfe',
-          margin: 0
-        }}>
-          <a
-            href="mailto:beaulazear@gmail.com"
-            style={{
-              color: '#bfdbfe',
-              textDecoration: 'none',
-              transition: 'color 0.3s ease'
-            }}
-            onMouseOver={(e) => e.target.style.color = '#dbeafe'}
-            onMouseOut={(e) => e.target.style.color = '#bfdbfe'}
-          >
-            beaulazear@gmail.com
-          </a>
-        </p>
-      </div>
-    </footer >
-  </div >
+  </div>
 );
 
-const App = () => {
-  const [currentPage, setCurrentPage] = useState('home');
+const AnimalCareWrapper = () => {
+  const navigate = useNavigate();
+  return <AnimalCare onNavigate={() => navigate('/')} />;
+};
 
+const App = () => {
   return (
-    <div style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif' }}>
-      {currentPage === 'home' && <ModernPortfolioLanding onNavigate={setCurrentPage} />}
-      {currentPage === 'resume' && <ResumeWrapper onNavigate={setCurrentPage} />}
-      {currentPage === 'YourContact' && <YourContact onNavigate={setCurrentPage} />}
-    </div>
+    <Router>
+      <div style={{ fontFamily: 'Inter, sans-serif' }}>
+        <Routes>
+          <Route path="/" element={<ModernPortfolio />} />
+          <Route path="/resume" element={<ResumeWrapper />} />
+          <Route path="/contact" element={<YourContact />} />
+          <Route path="/animal-care" element={<AnimalCareWrapper />} />
+          <Route path="/beaus-animal-care" element={<AnimalCareWrapper />} />
+        </Routes>
+      </div>
+    </Router>
   );
 };
 
