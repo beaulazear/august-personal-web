@@ -101,6 +101,16 @@ const globalStyles = `
   @media (max-width: 640px) {
     .floating-input, .floating-textarea {
       font-size: 16px; /* Prevents zoom on iOS */
+      padding: 14px 16px;
+    }
+    
+    .floating-textarea {
+      min-height: 120px;
+    }
+    
+    .submit-button {
+      padding: 16px 24px;
+      font-size: 15px;
     }
   }
 `;
@@ -120,6 +130,7 @@ export default function Contact() {
     from_email: false,
     message: false
   });
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
 
   const SERVICE_ID = 'service_kqz5x4o';
   const TEMPLATE_ID = 'template_3ba6d27';
@@ -128,6 +139,13 @@ export default function Contact() {
   useEffect(() => {
     window.scrollTo(0, 0);
     emailjs.init(PUBLIC_KEY);
+    
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const handleSubmit = async (e) => {
@@ -207,43 +225,43 @@ export default function Contact() {
       width: '100vw',
       background: 'linear-gradient(135deg, #5a67d8 0%, #9f7aea 50%, #ed64a6 100%)',
       fontFamily: 'Quicksand, sans-serif',
-      paddingTop: '80px',
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
+      paddingTop: windowWidth <= 640 ? '60px' : '80px',
+      position: 'relative',
       overflow: 'auto'
     }}>
       <style>{globalStyles}</style>
 
       {/* Decorative circles */}
-      <div style={{
-        position: 'absolute',
-        top: '100px',
-        right: '10%',
-        width: '300px',
-        height: '300px',
-        borderRadius: '50%',
-        background: 'rgba(255, 255, 255, 0.1)',
-        filter: 'blur(60px)'
-      }} />
-      <div style={{
-        position: 'absolute',
-        bottom: '100px',
-        left: '10%',
-        width: '400px',
-        height: '400px',
-        borderRadius: '50%',
-        background: 'rgba(255, 255, 255, 0.08)',
-        filter: 'blur(80px)'
-      }} />
+      {windowWidth > 640 && (
+        <>
+          <div style={{
+            position: 'absolute',
+            top: '100px',
+            right: '10%',
+            width: '300px',
+            height: '300px',
+            borderRadius: '50%',
+            background: 'rgba(255, 255, 255, 0.1)',
+            filter: 'blur(60px)'
+          }} />
+          <div style={{
+            position: 'absolute',
+            bottom: '100px',
+            left: '10%',
+            width: '400px',
+            height: '400px',
+            borderRadius: '50%',
+            background: 'rgba(255, 255, 255, 0.08)',
+            filter: 'blur(80px)'
+          }} />
+        </>
+      )}
       
       <div style={{
         width: '100%',
         maxWidth: '600px',
         margin: '0 auto',
-        padding: '60px 20px',
+        padding: windowWidth <= 640 ? '20px 16px 80px' : '60px 20px 100px',
         position: 'relative',
         zIndex: 1
       }}>
@@ -251,23 +269,23 @@ export default function Contact() {
         {/* Title Section */}
         <div style={{
           textAlign: 'center',
-          marginBottom: '60px'
+          marginBottom: windowWidth <= 640 ? '30px' : '60px'
         }}>
           <h1 style={{
-            fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+            fontSize: windowWidth <= 640 ? '2rem' : 'clamp(2.5rem, 6vw, 4rem)',
             fontWeight: '700',
             color: 'white',
-            margin: '0 0 16px 0',
-            lineHeight: '1.1',
+            margin: '0 0 12px 0',
+            lineHeight: '1.2',
             textShadow: '0 4px 20px rgba(0, 0, 0, 0.2)'
           }}>
             Let's Create Together
           </h1>
           <p style={{
-            fontSize: 'clamp(1.1rem, 3vw, 1.3rem)',
+            fontSize: windowWidth <= 640 ? '1rem' : 'clamp(1.1rem, 3vw, 1.3rem)',
             color: 'rgba(255, 255, 255, 0.9)',
             margin: 0,
-            lineHeight: '1.6',
+            lineHeight: '1.5',
             fontWeight: '500'
           }}>
             I'm excited to hear about your ideas
@@ -278,10 +296,10 @@ export default function Contact() {
         <form onSubmit={handleSubmit} style={{ 
           display: 'flex', 
           flexDirection: 'column', 
-          gap: '24px',
+          gap: windowWidth <= 640 ? '20px' : '24px',
           background: 'rgba(255, 255, 255, 0.98)',
-          padding: '48px',
-          borderRadius: '24px',
+          padding: windowWidth <= 640 ? '24px 20px' : '48px',
+          borderRadius: windowWidth <= 640 ? '20px' : '24px',
           boxShadow: '0 20px 60px rgba(0, 0, 0, 0.15)',
           backdropFilter: 'blur(10px)'
         }}>
@@ -479,8 +497,8 @@ export default function Contact() {
         {/* Alternative Contact */}
         <div style={{
           textAlign: 'center',
-          marginTop: '60px',
-          padding: '40px',
+          marginTop: windowWidth <= 640 ? '30px' : '60px',
+          padding: windowWidth <= 640 ? '24px 20px' : '40px',
           background: 'rgba(0, 0, 0, 0.3)',
           borderRadius: '20px',
           border: '2px solid rgba(255, 255, 255, 0.3)',

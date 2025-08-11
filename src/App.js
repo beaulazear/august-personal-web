@@ -268,7 +268,7 @@ const ModernPortfolio = () => {
       title: "Pocket Walks",
       subtitle: "Business Management App",
       description: "Custom scheduling and client management app I built for my pet care business. Streamlines bookings, tracks walks, manages client information, and handles invoicing for 50+ regular clients.",
-      technologies: ["React", "Rails", "PostgreSQL", "Stripe"],
+      technologies: ["React", "Rails", "PostgreSQL"],
       links: [
         { label: "Live Site", url: "https://www.pocket-walks.com" }
       ],
