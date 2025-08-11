@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
-import { Linkedin, Github, Mail, FileText, ArrowRight, Code, Briefcase, Star, CheckCircle, MapPin, GraduationCap, Heart, Zap, Building, FolderOpen, PawPrint } from 'lucide-react';
-import CroppedBeau from './images/CroppedBeau.jpeg';
+import React, { useEffect } from 'react';
+import { HashRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { Linkedin, Github, Mail, FileText, ArrowRight, Briefcase, CheckCircle, MapPin, GraduationCap, Heart, Zap, Building, FolderOpen, PawPrint } from 'lucide-react';
+import BeauPic from './images/BeauPic.jpg';
 import Resume from './components/Resume.js';
 import Contact from './components/Contact.js';
 import AnimalCare from './components/AnimalCare.js';
 
 const globalStyles = `
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&display=swap');
   
   * { box-sizing: border-box; }
   
@@ -19,11 +19,6 @@ const globalStyles = `
   @keyframes slideInRight {
     from { opacity: 0; transform: translateX(40px); }
     to { opacity: 1; transform: translateX(0); }
-  }
-  
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); }
   }
   
   @keyframes pulse {
@@ -39,13 +34,9 @@ const globalStyles = `
     animation: slideInRight 0.8s ease-out;
   }
   
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-  
   .hover-lift:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 25px 50px rgba(99, 102, 241, 0.25), 0 10px 20px rgba(0, 0, 0, 0.1);
   }
   
   .hover-pulse:hover {
@@ -53,22 +44,22 @@ const globalStyles = `
   }
   
   .gradient-text {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #5a67d8 0%, #9f7aea 50%, #ed64a6 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   
   .glass-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(249, 250, 251, 0.95) 100%);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 24px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 40px rgba(99, 102, 241, 0.15), 0 2px 10px rgba(0, 0, 0, 0.08);
   }
   
   .primary-button {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #5a67d8 0%, #9f7aea 50%, #ed64a6 100%);
     border: none;
     border-radius: 16px;
     color: white;
@@ -105,9 +96,10 @@ const globalStyles = `
   }
   
   .secondary-button:hover {
-    background: #667eea;
+    background: linear-gradient(135deg, #5a67d8 0%, #805ad5 100%);
     color: white;
     transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(128, 90, 213, 0.4);
   }
   
   @media (max-width: 1024px) {
@@ -186,8 +178,8 @@ const globalStyles = `
       padding: 60px 16px !important;
     }
     .hero-image {
-      width: 120px !important;
-      height: 120px !important;
+      width: 140px !important;
+      height: 140px !important;
     }
   }
 `;
@@ -198,18 +190,18 @@ const ModernPortfolio = () => {
   const timelineData = [
     {
       year: '2016-2017',
-      title: 'Early Foundation',
-      subtitle: 'Talented & Gifted → NYC at 18',
-      description: 'TAG program, FCCLA, basketball, three jobs. Moved to NYC alone at 18 to pursue bigger opportunities.',
+      title: 'Started Working Young',
+      subtitle: 'High School → NYC at 18',
+      description: 'Talented & Gifted program, played basketball, worked three jobs. Moved to NYC alone at 18 to chase bigger opportunities.',
       image: null,
       icon: MapPin,
       side: 'left'
     },
     {
       year: '2017-2018',
-      title: 'Strategic Thinking',
-      subtitle: 'Real Estate + Zoo Internships',
-      description: 'Real estate until first unpaid internship. Dog walking during second unpaid internship - strategic persistence.',
+      title: 'Found My Path',
+      subtitle: 'Real Estate → Animal Care',
+      description: 'Started in real estate, then took unpaid zoo internships. Dog walked on the side to pay bills while learning the field I loved.',
       image: null,
       icon: Building,
       side: 'right'
@@ -217,35 +209,35 @@ const ModernPortfolio = () => {
     {
       year: '2017-2019',
       title: 'Prospect Park Zoo',
-      subtitle: 'Internships → Part-Time → Full Zookeeper',
-      description: 'After two internships, got part-time zoo role. Managed dog daycare for extra income until full-time promotion.',
+      subtitle: 'Intern → Full Zookeeper',
+      description: 'After two internships, earned part-time then full-time keeper role. Handled everything from animal care to public education while running a dog daycare on weekends.',
       image: null,
       icon: Heart,
       side: 'left'
     },
     {
       year: '2019',
-      title: 'ASPCA Leadership',
+      title: 'ASPCA Emergency Care',
       subtitle: 'Assistant → Lead Role',
-      description: 'Emergency animal care. Promoted to lead during transition for training abilities and proactive leadership.',
+      description: 'Worked in emergency animal care, often making quick decisions in tough situations. Got promoted to lead during a transition because I was good at training new people and solving problems.',
       image: null,
       icon: Heart,
       side: 'right'
     },
     {
       year: '2019-Present',
-      title: 'Business Owner',
-      subtitle: 'Founded & Scaled Pet Care',
-      description: 'Built company serving 50+ families. Self-taught HTML/CSS/JS to build website - sparked love for coding.',
+      title: 'Started My Own Business',
+      subtitle: 'Beau\'s Animal Care',
+      description: 'Built a pet care business from scratch, now serving 50+ regular clients. Taught myself to code to build our website, which led to discovering I really enjoy programming.',
       image: null,
       icon: Briefcase,
       side: 'left'
     },
     {
-      year: '2023',
-      title: 'Tech Transition',
-      subtitle: 'Flatiron + AWS + First Client',
-      description: 'Bootcamp grad, AWS certified. Built full-stack app for my business, websites for friends, landed Aria contract.',
+      year: '2023-Present',
+      title: 'Learning to Code',
+      subtitle: 'Bootcamp → Real Projects',
+      description: 'Completed Flatiron bootcamp and got AWS certified while still running my business. Built apps for myself and friends, then landed my first client contract with Aria.com.',
       image: null,
       icon: GraduationCap,
       side: 'right'
@@ -268,19 +260,27 @@ const ModernPortfolio = () => {
       description: "Working with my co-founder to build an AI platform that helps groups make decisions together. We believe thoughtful planning creates better shared experiences and stronger communities.",
       technologies: ["React", "Rails", "OpenAI", "React Native"],
       links: [
-        { label: "Live Site", url: "https://www.voxxyai.com/#/" },
-        { label: "GitHub", url: "https://github.com/beaulazear/michael-personal-site.git" }
+        { label: "Live Site", url: "https://www.voxxyai.com/#/" }
       ],
       highlight: "🚀 Co-Founded"
     },
     {
+      title: "Pocket Walks",
+      subtitle: "Business Management App",
+      description: "Custom scheduling and client management app I built for my pet care business. Streamlines bookings, tracks walks, manages client information, and handles invoicing for 50+ regular clients.",
+      technologies: ["React", "Rails", "PostgreSQL", "Stripe"],
+      links: [
+        { label: "Live Site", url: "https://www.pocket-walks.com" }
+      ],
+      highlight: "📱 Built & Use Daily"
+    },
+    {
       title: "Beau's Animal Care",
       subtitle: "Pet Care Service Business",
-      description: "Professional pet care service I founded in 2019. Built custom tools for scheduling and client management while serving 50+ families in Brooklyn. Click to view our dedicated site!",
-      technologies: ["React", "Rails", "PostgreSQL"],
+      description: "Professional pet care service I founded in 2019, serving 50+ families in Brooklyn. Built a dedicated website to showcase services and connect with clients. Click to view our site!",
+      technologies: ["React", "Customer Service", "Business Operations"],
       links: [
-        { label: "View Site", url: "/animal-care", isInternal: true },
-        { label: "GitHub", url: "https://github.com/beaulazear/voxvy-rails-react" }
+        { label: "View Site", url: "/animal-care", isInternal: true }
       ],
       highlight: "🐕 Founder"
     },
@@ -298,28 +298,28 @@ const ModernPortfolio = () => {
 
   const skills = [
     {
-      category: "Frontend",
-      items: ["React", "React Native", "JavaScript", "HTML/CSS", "Responsive Design"]
+      category: "Technical Skills",
+      items: ["React & React Native", "Ruby on Rails", "PostgreSQL", "AWS Services", "API Integration"]
     },
     {
-      category: "Backend", 
-      items: ["Ruby on Rails", "PostgreSQL", "REST APIs", "Authentication"]
+      category: "Business Experience", 
+      items: ["Running My Own Company", "Client Management", "Service Operations", "Project Planning", "Problem Solving"]
     },
     {
-      category: "Tools & Integrations",
-      items: ["Git", "AWS", "Mixpanel", "OpenAI API", "Google Places"]
+      category: "What I'm Good At",
+      items: ["Learning New Things", "Working Independently", "Team Collaboration", "Adapting to Change", "Attention to Detail"]
     },
     {
-      category: "Approach & Values",
-      items: ["Community-Minded", "Collaborative Work", "Supporting Causes", "Mindful Development", "Client Care"]
+      category: "Background",
+      items: ["5+ Years Animal Care", "50+ Business Clients", "Self-Taught Developer", "Bootcamp Graduate", "AWS Certified"]
     }
   ];
 
   return (
     <div style={{ 
       minHeight: '100vh',
-      background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
-      fontFamily: 'Inter, sans-serif'
+      background: 'linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 50%, #a5b4fc 100%)',
+      fontFamily: 'Quicksand, sans-serif'
     }}>
       <style>{globalStyles}</style>
 
@@ -338,23 +338,37 @@ const ModernPortfolio = () => {
         }}>
           <div className="animate-fade-in-up">
             <div style={{
-              width: '150px',
-              height: '150px',
-              borderRadius: '50%',
+              width: '180px',
+              height: '180px',
+              borderRadius: '20px',
               overflow: 'hidden',
               margin: '0 auto 32px',
-              border: '4px solid white',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)'
-            }} className="animate-float hero-image">
-              <img
-                src={CroppedBeau}
-                alt="Beau Lazear"
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover'
-                }}
-              />
+              position: 'relative',
+              background: 'linear-gradient(135deg, #5a67d8 0%, #9f7aea 50%, #ed64a6 100%)',
+              padding: '3px',
+              boxShadow: '0 25px 50px rgba(159, 122, 234, 0.3), 0 10px 20px rgba(237, 100, 166, 0.15)'
+            }} className="hero-image">
+              <div style={{
+                width: '100%',
+                height: '100%',
+                borderRadius: '17px',
+                overflow: 'hidden',
+                background: 'white'
+              }}>
+                <img
+                  src={BeauPic}
+                  alt="Beau Lazear"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    transition: 'transform 0.3s ease',
+                    filter: 'brightness(1.02) contrast(1.05)'
+                  }}
+                  onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
+                  onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+                />
+              </div>
             </div>
             
             <h1 style={{
@@ -372,7 +386,7 @@ const ModernPortfolio = () => {
               margin: '0 0 24px 0',
               fontWeight: '500'
             }} className="hero-subtitle">
-              Full-Stack Developer & Community Builder
+              Developer & Business Owner
             </p>
             
             <p className="hero-description" style={{
@@ -382,45 +396,10 @@ const ModernPortfolio = () => {
               margin: '0 auto 32px',
               lineHeight: '1.7'
             }}>
-              From caring for animals to building meaningful web applications, I bring the same dedication to every project. 
+              I work hard, learn quickly, and care about doing things right. Whether it's animals, code, or clients - I give everything my full attention. 
               Alongside my tech work, I've built a thriving pet care business serving 50+ families in Brooklyn, 
               combining my love for animals with the community connections that make this work so rewarding.
             </p>
-            
-            {/* Animal Care Business Link */}
-            <div style={{
-              marginBottom: '48px'
-            }}>
-              <button
-                onClick={() => navigate('/animal-care')}
-                style={{
-                  background: 'linear-gradient(135deg, #f59e0b 0%, #dc2626 100%)',
-                  color: 'white',
-                  border: 'none',
-                  padding: 'clamp(12px, 2vw, 14px) clamp(20px, 4vw, 28px)',
-                  borderRadius: '12px',
-                  cursor: 'pointer',
-                  fontWeight: '600',
-                  fontSize: 'clamp(14px, 2vw, 16px)',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '10px',
-                  transition: 'all 0.3s ease',
-                  boxShadow: '0 4px 15px rgba(245, 158, 11, 0.3)'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(245, 158, 11, 0.4)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(245, 158, 11, 0.3)';
-                }}
-              >
-                <PawPrint size={20} />
-                Visit Beau's Animal Care
-              </button>
-            </div>
             
             <div style={{
               display: 'flex',
@@ -464,7 +443,7 @@ const ModernPortfolio = () => {
       {/* My Story Section */}
       <section className="section-padding" style={{ 
         padding: '80px 20px',
-        background: 'rgba(255, 255, 255, 0.5)'
+        background: 'linear-gradient(135deg, rgba(237, 242, 255, 0.6) 0%, rgba(219, 234, 254, 0.5) 100%)'
       }}>
         <div style={{ 
           maxWidth: '1200px',
@@ -528,24 +507,6 @@ const ModernPortfolio = () => {
             ))}
           </div>
           
-          <div className="glass-card" style={{ 
-            padding: 'clamp(20px, 4vw, 32px)',
-            textAlign: 'center',
-            marginTop: '48px',
-            maxWidth: '600px',
-            margin: '48px auto 0'
-          }}>
-            <p style={{
-              fontSize: 'clamp(1rem, 3vw, 1.25rem)',
-              lineHeight: '1.7',
-              color: '#4a5568',
-              margin: '0',
-              fontStyle: 'italic',
-              fontWeight: '500'
-            }}>
-              "I love using my mind, supporting causes I believe in, and working with people that inspire me."
-            </p>
-          </div>
         </div>
       </section>
 
@@ -594,7 +555,7 @@ const ModernPortfolio = () => {
       {/* Skills Section */}
       <section className="section-padding" style={{ 
         padding: '80px 20px',
-        background: 'rgba(255, 255, 255, 0.5)'
+        background: 'linear-gradient(135deg, rgba(237, 242, 255, 0.6) 0%, rgba(219, 234, 254, 0.5) 100%)'
       }}>
         <div style={{ 
           maxWidth: '1000px',
@@ -607,7 +568,7 @@ const ModernPortfolio = () => {
             margin: '0 0 64px 0',
             color: '#2d3748'
           }} className="section-title">
-            Skills & Technologies
+            Skills & Experience
           </h2>
           
           <div style={{
@@ -638,7 +599,7 @@ const ModernPortfolio = () => {
             color: '#2d3748',
             lineHeight: '1.3'
           }}>
-            Let's Build Something Meaningful
+            Let's Work Together
           </h2>
           
           <p style={{
@@ -648,8 +609,8 @@ const ModernPortfolio = () => {
             lineHeight: '1.7',
             padding: '0 10px'
           }}>
-            I'd love to collaborate on projects that make a positive impact. 
-            Whether it's supporting a cause you believe in or bringing a helpful idea to life, let's explore how we can work together.
+            I'm looking for opportunities where I can contribute and keep learning. 
+            If you need someone who works hard and genuinely cares about doing good work, let's talk.
           </p>
           
           <div style={{
@@ -816,7 +777,27 @@ const ProjectCard = ({ project }) => {
         flexWrap: 'wrap'
       }}>
         {project.links.map((link, i) => (
-          link.isInternal ? (
+          link.disabled ? (
+            <span
+              key={i}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                color: '#9ca3af',
+                fontSize: '14px',
+                fontWeight: '600',
+                padding: '8px 16px',
+                border: '1px solid #e5e7eb',
+                borderRadius: '12px',
+                background: '#f9fafb',
+                cursor: 'not-allowed'
+              }}
+            >
+              <Building size={16} />
+              {link.label}
+            </span>
+          ) : link.isInternal ? (
             <button
               key={i}
               onClick={() => navigate(link.url)}
@@ -936,7 +917,7 @@ const DesktopTimelineItem = ({ item, index }) => (
         width: '48px',
         height: '48px',
         borderRadius: '50%',
-        background: 'linear-gradient(135deg, #667eea, #764ba2)',
+        background: 'linear-gradient(135deg, #5a67d8, #9f7aea, #ed64a6)',
         border: '4px solid white',
         boxShadow: '0 4px 12px rgba(102, 126, 234, 0.3)',
         display: 'flex',
@@ -983,7 +964,7 @@ const MobileTimelineItem = ({ item }) => (
         width: '36px',
         height: '36px',
         borderRadius: '50%',
-        background: 'linear-gradient(135deg, #667eea, #764ba2)',
+        background: 'linear-gradient(135deg, #5a67d8, #9f7aea, #ed64a6)',
         border: '3px solid white',
         boxShadow: '0 4px 12px rgba(102, 126, 234, 0.3)',
         display: 'flex',
@@ -1140,27 +1121,41 @@ const StylishNavbar = () => {
           Back to Home
         </button>
         
+        {/* Profile Picture */}
         <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px'
-        }}>
+          width: '45px',
+          height: '45px',
+          borderRadius: '12px',
+          overflow: 'hidden',
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          padding: '2px',
+          boxShadow: '0 4px 12px rgba(102, 126, 234, 0.2)',
+          cursor: 'pointer',
+          transition: 'transform 0.3s ease'
+        }}
+        onClick={() => navigate('/')}
+        onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+        onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+        >
           <div style={{
-            width: '40px',
-            height: '40px',
-            borderRadius: '50%',
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: 'white',
-            fontWeight: '700',
-            fontSize: '18px',
-            boxShadow: '0 2px 8px rgba(102, 126, 234, 0.3)'
+            width: '100%',
+            height: '100%',
+            borderRadius: '10px',
+            overflow: 'hidden',
+            background: 'white'
           }}>
-            BL
+            <img
+              src={BeauPic}
+              alt="Beau Lazear"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover'
+              }}
+            />
           </div>
         </div>
+        
       </div>
     </div>
   );
@@ -1198,15 +1193,30 @@ const ResumeWrapper = () => (
   </div>
 );
 
+// ScrollToTop component that scrolls to top on route change
+const ScrollToTop = () => {
+  const location = useLocation();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+  
+  return null;
+};
+
 const AnimalCareWrapper = () => {
   const navigate = useNavigate();
-  return <AnimalCare onNavigate={() => navigate('/')} />;
+  return <AnimalCare onNavigate={() => {
+    navigate('/');
+    window.scrollTo(0, 0);
+  }} />;
 };
 
 const App = () => {
   return (
     <Router>
-      <div style={{ fontFamily: 'Inter, sans-serif' }}>
+      <ScrollToTop />
+      <div style={{ fontFamily: 'Quicksand, sans-serif' }}>
         <Routes>
           <Route path="/" element={<ModernPortfolio />} />
           <Route path="/resume" element={<ResumeWrapper />} />

@@ -1,42 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Heart, MapPin, Phone, Mail, Clock, Shield, Star, CheckCircle, Calendar, Users, Award, ArrowRight, Menu, X, PawPrint, Dog, Cat, Home, ChevronLeft, ChevronRight, Bird } from 'lucide-react';
+import React from 'react';
+import { Heart, MapPin, Phone, Mail, Clock, Shield, Star, CheckCircle, Users, Award, ArrowRight, PawPrint, Dog, Cat, Home, Bird } from 'lucide-react';
 
 // Import images
 import BeauAndRalph from '../images/BeauAndRalph.JPG';
 import JavaLookinCute from '../images/JavaLookinCute.jpeg';
 import MooseOnVerandah from '../images/MooseOnVerandah.jpeg';
-import BeauAndHornbill from '../images/BeauAndHornbill.jpeg';
-import BeauAndRu from '../images/BeauAndRu.JPG';
-import BeauReykaMangoRu from '../images/BeauReykaMangoRu.jpeg';
-import BeauTwoDogs from '../images/BeauTwoDogs.jpg';
-import BeauWithAbe from '../images/BeauWithAbe.jpeg';
-import Marmoset from '../images/Marmoset.JPG';
-import BeauAndAlpaca from '../images/BeauAndAlpaca.JPG';
 import GraphicTwo from '../images/GraphicTwo.png';
-import CroppedBeau from '../images/CroppedBeau.jpeg';
+import BeauPic from '../images/BeauPic.jpg';
 
 const AnimalCare = ({ onNavigate }) => {
-  const navigate = useNavigate();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const galleryImages = [
-    { src: BeauReykaMangoRu, caption: "Fun group walks with furry friends" },
-    { src: BeauAndHornbill, caption: "Professional zookeeping experience" },
-    { src: BeauTwoDogs, caption: "Double the dogs, double the fun!" },
-    { src: Marmoset, caption: "Exotic animal care expertise" },
-    { src: BeauAndRu, caption: "Building trust with every visit" },
-    { src: BeauWithAbe, caption: "Gentle care for all personalities" },
-    { src: BeauAndAlpaca, caption: "Experience with all species" }
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [galleryImages.length]);
 
   const services = [
     {
@@ -120,18 +92,6 @@ const AnimalCare = ({ onNavigate }) => {
       rating: 5
     },
     {
-      name: "Anna",
-      pet: "Ruthie",
-      text: "From the moment Ruthie met Beau, she was in love. We say his name and her tail wags with delight. And if we had tails, we'd wag them too! Beau is communicative and professional, providing clear and detailed walking reports and pet sits. We trust him profoundly with our excitable and sometimes stubborn mini goldendoodle. He loves her as if she were his own, with great care and compassion.",
-      rating: 5
-    },
-    {
-      name: "Vanessa",
-      pet: "River",
-      text: "Admittedly, it's not easy for me to leave my pup, River, with anyone… except for Beau. I met Beau at a nearby dog park and knew instantly that he was a genuine and compassionate animal lover. He proves that time and time again, going above and beyond to keep River happy and safe. We are incredibly grateful that we found Beau and could not possibly recommend him more!",
-      rating: 5
-    },
-    {
       name: "Jaimee",
       pet: "Java",
       image: JavaLookinCute,
@@ -148,7 +108,7 @@ const AnimalCare = ({ onNavigate }) => {
   ];
 
   const features = [
-    { icon: Shield, text: "Fully Insured & Bonded" },
+    { icon: Shield, text: "Fully Insured" },
     { icon: Award, text: "8+ Years Experience" },
     { icon: Clock, text: "Flexible Scheduling" },
     { icon: Users, text: "Trusted by 50+ Families" },
@@ -192,8 +152,8 @@ const AnimalCare = ({ onNavigate }) => {
       
       /* Mobile hero section adjustments */
       .hero-image {
-        width: 140px !important;
-        height: 140px !important;
+        width: 280px !important;
+        height: 280px !important;
       }
       
       .hero-title {
@@ -229,8 +189,8 @@ const AnimalCare = ({ onNavigate }) => {
     
     @media (max-width: 480px) {
       .hero-image {
-        width: 120px !important;
-        height: 120px !important;
+        width: 220px !important;
+        height: 220px !important;
       }
       
       .hero-title {
@@ -264,149 +224,9 @@ const AnimalCare = ({ onNavigate }) => {
       <div className="animal-care-container" style={{
         minHeight: '100vh',
         background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)',
-        fontFamily: 'Inter, sans-serif'
+        fontFamily: 'Quicksand, sans-serif'
       }}>
         
-      {/* Navigation */}
-      <nav style={{
-        background: 'rgba(255, 255, 255, 0.98)',
-        backdropFilter: 'blur(20px)',
-        borderBottom: '2px solid #fbbf24',
-        position: 'sticky',
-        top: 0,
-        zIndex: 1000,
-        padding: '16px 0',
-        boxShadow: '0 4px 20px rgba(251, 191, 36, 0.1)'
-      }}>
-        <div className="section-container" style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center'
-        }}>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px'
-          }}>
-            <PawPrint size={32} color="#f59e0b" />
-            <h1 style={{
-              fontSize: '1.75rem',
-              fontWeight: '800',
-              margin: 0,
-              background: 'linear-gradient(135deg, #f59e0b 0%, #dc2626 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent'
-            }}>
-              Beau's Animal Care
-            </h1>
-          </div>
-
-          {/* Desktop Menu */}
-          <div style={{
-            display: 'flex',
-            gap: '32px',
-            alignItems: 'center'
-          }} className="desktop-menu">
-            <a href="#services" style={{ color: '#4b5563', textDecoration: 'none', fontWeight: '600', transition: 'color 0.3s' }}
-               onMouseEnter={(e) => e.target.style.color = '#f59e0b'}
-               onMouseLeave={(e) => e.target.style.color = '#4b5563'}>Services</a>
-            <a href="#gallery" style={{ color: '#4b5563', textDecoration: 'none', fontWeight: '600', transition: 'color 0.3s' }}
-               onMouseEnter={(e) => e.target.style.color = '#f59e0b'}
-               onMouseLeave={(e) => e.target.style.color = '#4b5563'}>Gallery</a>
-            <a href="#testimonials" style={{ color: '#4b5563', textDecoration: 'none', fontWeight: '600', transition: 'color 0.3s' }}
-               onMouseEnter={(e) => e.target.style.color = '#f59e0b'}
-               onMouseLeave={(e) => e.target.style.color = '#4b5563'}>Reviews</a>
-            <a href="#contact" style={{ color: '#4b5563', textDecoration: 'none', fontWeight: '600', transition: 'color 0.3s' }}
-               onMouseEnter={(e) => e.target.style.color = '#f59e0b'}
-               onMouseLeave={(e) => e.target.style.color = '#4b5563'}>Contact</a>
-            {onNavigate && (
-              <button
-                onClick={() => onNavigate('home')}
-                style={{
-                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                  color: 'white',
-                  border: 'none',
-                  padding: '10px 20px',
-                  borderRadius: '12px',
-                  cursor: 'pointer',
-                  fontWeight: '600',
-                  fontSize: '14px',
-                  transition: 'all 0.3s ease',
-                  boxShadow: '0 4px 15px rgba(102, 126, 234, 0.3)'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(102, 126, 234, 0.4)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.3)';
-                }}
-              >
-                Back to Portfolio
-              </button>
-            )}
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            style={{
-              display: 'none',
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              color: '#4b5563'
-            }}
-            className="mobile-menu-btn"
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div style={{
-            position: 'absolute',
-            top: '100%',
-            left: 0,
-            right: 0,
-            background: 'white',
-            borderBottom: '2px solid #fbbf24',
-            padding: '20px',
-            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)'
-          }}>
-            <div style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '16px'
-            }}>
-              <a href="#services" style={{ color: '#4b5563', textDecoration: 'none', fontWeight: '600' }}>Services</a>
-              <a href="#gallery" style={{ color: '#4b5563', textDecoration: 'none', fontWeight: '600' }}>Gallery</a>
-              <a href="#testimonials" style={{ color: '#4b5563', textDecoration: 'none', fontWeight: '600' }}>Reviews</a>
-              <a href="#contact" style={{ color: '#4b5563', textDecoration: 'none', fontWeight: '600' }}>Contact</a>
-              {onNavigate && (
-                <button
-                  onClick={() => onNavigate('home')}
-                  style={{
-                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                    color: 'white',
-                    border: 'none',
-                    padding: '10px 20px',
-                    borderRadius: '12px',
-                    cursor: 'pointer',
-                    fontWeight: '600',
-                    fontSize: '14px',
-                    width: 'fit-content'
-                  }}
-                >
-                  Back to Portfolio
-                </button>
-              )}
-            </div>
-          </div>
-        )}
-      </nav>
 
       {/* Hero Section - Matching Home Page Style */}
       <section style={{
@@ -422,44 +242,93 @@ const AnimalCare = ({ onNavigate }) => {
           position: 'relative',
           zIndex: 2
         }}>
+          {/* Stylish Title */}
+          <div style={{
+            marginBottom: '50px',
+            position: 'relative',
+            display: 'inline-block'
+          }}>
+            {/* Decorative elements */}
+            <div style={{
+              position: 'absolute',
+              top: '-20px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              display: 'flex',
+              gap: '20px',
+              opacity: 0.6
+            }}>
+              <PawPrint size={24} color="#fbbf24" style={{ transform: 'rotate(-15deg)' }} />
+              <PawPrint size={20} color="#f59e0b" style={{ transform: 'rotate(10deg) translateY(-5px)' }} />
+              <PawPrint size={24} color="#fbbf24" style={{ transform: 'rotate(-10deg)' }} />
+            </div>
+            
+            <h1 style={{
+              fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+              fontWeight: '700',
+              margin: 0,
+              fontFamily: 'Bubblegum Sans, cursive',
+              textAlign: 'center',
+              lineHeight: '1.2',
+              letterSpacing: '-1px',
+              position: 'relative',
+              textShadow: '2px 2px 4px rgba(245, 158, 11, 0.2)',
+              color: 'transparent',
+              background: 'linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #dc2626 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              animation: 'float 3s ease-in-out infinite'
+            }}>
+              Beau's Animal Care
+            </h1>
+            
+            {/* Subtitle tagline */}
+            <p style={{
+              fontSize: 'clamp(0.9rem, 2vw, 1.1rem)',
+              color: '#6b7280',
+              margin: '8px 0 0 0',
+              fontWeight: '500',
+              letterSpacing: '2px',
+              textTransform: 'uppercase',
+              textAlign: 'center'
+            }}>
+              Brooklyn's Trusted Pet Care
+            </p>
+            
+            {/* Decorative underline */}
+            <div style={{
+              width: '80px',
+              height: '3px',
+              background: 'linear-gradient(90deg, transparent, #fbbf24, transparent)',
+              margin: '12px auto 0',
+              borderRadius: '2px'
+            }}></div>
+          </div>
           {/* Main Graphic Image at Top */}
           <div className="hero-image" style={{
-            width: '150px',
-            height: '150px',
+            width: '350px',
+            height: '350px',
+            maxWidth: '90vw',
             borderRadius: '50%',
             overflow: 'hidden',
-            margin: '0 auto 32px',
-            border: '4px solid white',
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
-            background: 'white',
+            margin: '0 auto 40px',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            background: 'white',
+            boxShadow: '0 15px 40px rgba(0, 0, 0, 0.12)'
           }}>
             <img
               src={GraphicTwo}
               alt="Beau's Animal Care - Professional Pet Care"
               style={{
-                width: '90%',
-                height: '90%',
+                width: '85%',
+                height: '85%',
                 objectFit: 'contain'
               }}
             />
           </div>
-
-          <h1 className="hero-title" style={{
-            fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
-            fontWeight: '700',
-            margin: '0 0 16px 0',
-            background: 'linear-gradient(135deg, #f59e0b 0%, #dc2626 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            lineHeight: '1.2',
-            fontFamily: 'Fredoka, cursive',
-            letterSpacing: '-0.5px'
-          }}>
-            Beau's Animal Care
-          </h1>
 
           <p className="hero-subtitle" style={{
             fontSize: 'clamp(1.25rem, 3vw, 1.5rem)',
@@ -474,28 +343,13 @@ const AnimalCare = ({ onNavigate }) => {
             fontSize: 'clamp(1rem, 2.5vw, 1.125rem)',
             color: '#6b7280',
             maxWidth: '700px',
-            margin: '0 auto 32px',
+            margin: '0 auto 48px',
             lineHeight: '1.7'
           }}>
             With over 8 years of professional experience including zookeeping at Prospect Park Zoo 
-            and veterinary assisting at ASPCA, I provide trusted pet care for 50+ families in Brooklyn & NYC.
+            and veterinary assisting at ASPCA, I provide personal, trusted pet care for 50+ families in Brooklyn & NYC. 
+            As an independent pet care provider since 2019, I work directly with you and partner with a network of trusted independent walkers for backup coverage.
           </p>
-
-          {/* Trusted Since Badge */}
-          <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            background: 'rgba(245, 158, 11, 0.1)',
-            padding: '8px 16px',
-            borderRadius: '24px',
-            marginBottom: '32px'
-          }}>
-            <Star size={16} color="#f59e0b" />
-            <span style={{ color: '#f59e0b', fontWeight: '600', fontSize: '14px' }}>
-              Trusted Since 2019
-            </span>
-          </div>
 
           {/* CTA Buttons */}
           <div className="hero-buttons" style={{
@@ -506,7 +360,7 @@ const AnimalCare = ({ onNavigate }) => {
             marginBottom: '48px'
           }}>
             <button
-              onClick={() => navigate('/contact')}
+              onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
               style={{
                 background: 'linear-gradient(135deg, #f59e0b 0%, #dc2626 100%)',
                 color: 'white',
@@ -588,251 +442,9 @@ const AnimalCare = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* Image Gallery Section - Modern Compact Design */}
-      <section id="gallery" style={{
-        padding: '80px 0',
-        background: 'linear-gradient(135deg, rgba(254, 243, 199, 0.2) 0%, rgba(253, 230, 138, 0.2) 100%)'
-      }}>
-        <div className="section-container">
-          <div style={{
-            textAlign: 'center',
-            marginBottom: '40px'
-          }}>
-            <h2 style={{
-              fontSize: 'clamp(1.75rem, 3.5vw, 2.25rem)',
-              fontWeight: '600',
-              margin: '0 0 12px 0',
-              color: '#1f2937',
-              fontFamily: 'Fredoka, cursive'
-            }}>
-              My Furry Friends
-            </h2>
-            <p style={{
-              fontSize: '1rem',
-              color: '#6b7280',
-              fontFamily: 'Inter, sans-serif'
-            }}>
-              Professional care for every personality
-            </p>
-          </div>
-
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '2fr 1fr',
-            gap: '20px',
-            maxWidth: '1000px',
-            margin: '0 auto',
-            height: '400px'
-          }}>
-            {/* Main Image */}
-            <div style={{
-              position: 'relative',
-              borderRadius: '20px',
-              overflow: 'hidden',
-              boxShadow: '0 10px 40px rgba(0, 0, 0, 0.12)'
-            }}>
-              <img
-                src={galleryImages[currentImageIndex].src}
-                alt={galleryImages[currentImageIndex].caption}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover'
-                }}
-              />
-              
-              {/* Overlay Caption */}
-              <div style={{
-                position: 'absolute',
-                bottom: 0,
-                left: 0,
-                right: 0,
-                background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)',
-                padding: '30px 20px 20px',
-                color: 'white'
-              }}>
-                <p style={{
-                  fontSize: '1.125rem',
-                  fontWeight: '600',
-                  margin: 0,
-                  fontFamily: 'Inter, sans-serif'
-                }}>
-                  {galleryImages[currentImageIndex].caption}
-                </p>
-              </div>
-
-              {/* Sleek Navigation Buttons */}
-              <button
-                onClick={() => setCurrentImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length)}
-                style={{
-                  position: 'absolute',
-                  left: '16px',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  background: 'rgba(255, 255, 255, 0.95)',
-                  border: 'none',
-                  borderRadius: '12px',
-                  width: '40px',
-                  height: '40px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                  boxShadow: '0 2px 10px rgba(0, 0, 0, 0.15)',
-                  opacity: 0.8
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.opacity = '1';
-                  e.currentTarget.style.transform = 'translateY(-50%) scale(1.05)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.opacity = '0.8';
-                  e.currentTarget.style.transform = 'translateY(-50%) scale(1)';
-                }}
-              >
-                <ChevronLeft size={20} color="#1f2937" />
-              </button>
-
-              <button
-                onClick={() => setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length)}
-                style={{
-                  position: 'absolute',
-                  right: '16px',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  background: 'rgba(255, 255, 255, 0.95)',
-                  border: 'none',
-                  borderRadius: '12px',
-                  width: '40px',
-                  height: '40px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                  boxShadow: '0 2px 10px rgba(0, 0, 0, 0.15)',
-                  opacity: 0.8
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.opacity = '1';
-                  e.currentTarget.style.transform = 'translateY(-50%) scale(1.05)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.opacity = '0.8';
-                  e.currentTarget.style.transform = 'translateY(-50%) scale(1)';
-                }}
-              >
-                <ChevronRight size={20} color="#1f2937" />
-              </button>
-            </div>
-
-            {/* Thumbnail Grid */}
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gridTemplateRows: 'repeat(3, 1fr)',
-              gap: '10px',
-              height: '100%'
-            }}>
-              {galleryImages.slice(0, 6).map((image, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentImageIndex(index)}
-                  style={{
-                    position: 'relative',
-                    borderRadius: '12px',
-                    overflow: 'hidden',
-                    cursor: 'pointer',
-                    border: currentImageIndex === index ? '3px solid #f59e0b' : '3px solid transparent',
-                    transition: 'all 0.3s ease',
-                    padding: 0,
-                    background: 'none'
-                  }}
-                  onMouseEnter={(e) => {
-                    if (currentImageIndex !== index) {
-                      e.currentTarget.style.transform = 'scale(1.05)';
-                      e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.2)';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'scale(1)';
-                    e.currentTarget.style.boxShadow = 'none';
-                  }}
-                >
-                  <img
-                    src={image.src}
-                    alt=""
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      display: 'block',
-                      filter: currentImageIndex === index ? 'none' : 'brightness(0.9)'
-                    }}
-                  />
-                  {currentImageIndex === index && (
-                    <div style={{
-                      position: 'absolute',
-                      inset: 0,
-                      background: 'rgba(245, 158, 11, 0.2)',
-                      pointerEvents: 'none'
-                    }} />
-                  )}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Progress Dots */}
-          <div style={{
-            display: 'flex',
-            gap: '8px',
-            justifyContent: 'center',
-            marginTop: '24px',
-            marginBottom: '40px'
-          }}>
-            {galleryImages.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentImageIndex(index)}
-                style={{
-                  width: currentImageIndex === index ? '24px' : '8px',
-                  height: '8px',
-                  borderRadius: '4px',
-                  border: 'none',
-                  background: currentImageIndex === index ? '#f59e0b' : '#e5e7eb',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                  padding: 0
-                }}
-              />
-            ))}
-          </div>
-        </div>
-
-        <style>{`
-          @media (max-width: 768px) {
-            #gallery .section-container > div:nth-child(2) {
-              grid-template-columns: 1fr !important;
-              height: auto !important;
-            }
-            #gallery .section-container > div:nth-child(2) > div:first-child {
-              height: 300px;
-            }
-            #gallery .section-container > div:nth-child(2) > div:last-child {
-              grid-template-columns: repeat(3, 1fr) !important;
-              grid-template-rows: repeat(2, 1fr) !important;
-              height: 150px;
-              margin-top: 10px;
-            }
-          }
-        `}</style>
-      </section>
-
       {/* Services Section with Detailed Pricing */}
-      <section id="services" className="services-section" style={{
-        padding: '120px 0 80px',
+      <section id="services" className="services-section animate-fade-in" style={{
+        padding: '100px 0 80px',
         background: 'linear-gradient(135deg, rgba(254, 243, 199, 0.5) 0%, rgba(253, 230, 138, 0.5) 100%)'
       }}>
         <div className="section-container">
@@ -847,13 +459,13 @@ const AnimalCare = ({ onNavigate }) => {
               color: '#1f2937',
               fontFamily: 'Fredoka, cursive'
             }}>
-              Services and Pricing
+              Services & Pricing
             </h2>
             <p style={{
               fontSize: '1.125rem',
               color: '#6b7280'
             }}>
-              Comprehensive pet care tailored to your needs
+              Personal, flexible pet care directly with me - no corporate middleman
             </p>
           </div>
 
@@ -944,6 +556,375 @@ const AnimalCare = ({ onNavigate }) => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About Me & Contact Section */}
+      <section id="contact" style={{
+        padding: '80px 0',
+        background: 'linear-gradient(135deg, #f59e0b 0%, #dc2626 100%)'
+      }}>
+        <div className="section-container">
+          <div style={{
+            textAlign: 'center',
+            marginBottom: '48px'
+          }}>
+            <h2 style={{
+              fontSize: 'clamp(2rem, 4vw, 2.5rem)',
+              fontWeight: '600',
+              margin: '0 0 24px 0',
+              color: 'white',
+              fontFamily: 'Fredoka, cursive',
+              letterSpacing: '-0.5px'
+            }}>
+              Ready to Meet?
+            </h2>
+            <p style={{
+              fontSize: '1.125rem',
+              color: 'rgba(255, 255, 255, 0.9)',
+              lineHeight: '1.7',
+              maxWidth: '600px',
+              margin: '0 auto'
+            }}>
+              Let's schedule a free meet & greet to discuss your pet's needs. 
+              No apps, no middlemen – just personal, professional care.
+            </p>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '32px',
+            maxWidth: '900px',
+            margin: '0 auto'
+          }}>
+            {/* Profile Card */}
+            <div style={{
+              background: 'linear-gradient(135deg, #ffffff 0%, #fef3c7 100%)',
+              borderRadius: '24px',
+              padding: '40px',
+              boxShadow: '0 12px 40px rgba(0, 0, 0, 0.15)',
+              border: '2px solid rgba(255, 255, 255, 0.3)'
+            }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '16px',
+                marginBottom: '24px'
+              }}>
+                <div style={{
+                  width: '70px',
+                  height: '70px',
+                  borderRadius: '50%',
+                  overflow: 'hidden',
+                  boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
+                }}>
+                  <img
+                    src={BeauPic}
+                    alt="Beau Lazear"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover'
+                    }}
+                  />
+                </div>
+                <div>
+                  <h3 style={{
+                    fontSize: '1.25rem',
+                    fontWeight: '700',
+                    margin: '0 0 4px 0',
+                    color: '#1f2937'
+                  }}>
+                    Beau Lazear
+                  </h3>
+                  <p style={{
+                    color: '#6b7280',
+                    margin: 0,
+                    fontSize: '14px'
+                  }}>
+                    Independent Pet Care Professional
+                  </p>
+                </div>
+              </div>
+
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: '16px',
+                marginBottom: '24px'
+              }}>
+                <div>
+                  <p style={{ color: '#6b7280', fontSize: '12px', marginBottom: '2px' }}>Experience</p>
+                  <p style={{ color: '#1f2937', fontWeight: '600', margin: 0, fontSize: '14px' }}>8+ Years</p>
+                </div>
+                <div>
+                  <p style={{ color: '#6b7280', fontSize: '12px', marginBottom: '2px' }}>Pets Cared</p>
+                  <p style={{ color: '#1f2937', fontWeight: '600', margin: 0, fontSize: '14px' }}>200+</p>
+                </div>
+                <div>
+                  <p style={{ color: '#6b7280', fontSize: '12px', marginBottom: '2px' }}>Service Area</p>
+                  <p style={{ color: '#1f2937', fontWeight: '600', margin: 0, fontSize: '14px' }}>Brooklyn</p>
+                </div>
+                <div>
+                  <p style={{ color: '#6b7280', fontSize: '12px', marginBottom: '2px' }}>Availability</p>
+                  <p style={{ color: '#1f2937', fontWeight: '600', margin: 0, fontSize: '14px' }}>7 Days</p>
+                </div>
+              </div>
+
+              {/* Social Links */}
+              <div style={{
+                display: 'flex',
+                gap: '10px',
+                flexDirection: 'column'
+              }}>
+                {onNavigate && (
+                  <button
+                    onClick={() => onNavigate('home')}
+                    style={{
+                      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                      color: 'white',
+                      border: 'none',
+                      padding: '10px 20px',
+                      borderRadius: '10px',
+                      cursor: 'pointer',
+                      fontWeight: '600',
+                      fontSize: '14px',
+                      transition: 'all 0.3s ease',
+                      boxShadow: '0 3px 10px rgba(102, 126, 234, 0.3)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '8px',
+                      width: '100%'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                      e.currentTarget.style.boxShadow = '0 5px 15px rgba(102, 126, 234, 0.4)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 3px 10px rgba(102, 126, 234, 0.3)';
+                    }}
+                  >
+                    <ArrowRight size={16} style={{ transform: 'rotate(180deg)' }} />
+                    View Portfolio
+                  </button>
+                )}
+                
+                <a
+                  href="https://www.instagram.com/beaus.animal.care"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    background: 'linear-gradient(135deg, #833AB4 0%, #FD1D1D 50%, #FCB045 100%)',
+                    color: 'white',
+                    border: 'none',
+                    padding: '10px 20px',
+                    borderRadius: '10px',
+                    cursor: 'pointer',
+                    fontWeight: '600',
+                    fontSize: '14px',
+                    transition: 'all 0.3s ease',
+                    boxShadow: '0 3px 10px rgba(131, 58, 180, 0.3)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    textDecoration: 'none',
+                    width: '100%'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 5px 15px rgba(131, 58, 180, 0.4)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 3px 10px rgba(131, 58, 180, 0.3)';
+                  }}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                  @beaus.animal.care
+                </a>
+              </div>
+            </div>
+
+            {/* Contact Card */}
+            <div style={{
+              background: 'white',
+              borderRadius: '24px',
+              padding: '40px',
+              boxShadow: '0 12px 40px rgba(0, 0, 0, 0.15)'
+            }}>
+              <h3 style={{
+                fontSize: '1.25rem',
+                fontWeight: '600',
+                margin: '0 0 24px 0',
+                color: '#1f2937'
+              }}>
+                Get in Touch
+              </h3>
+              
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '16px'
+              }}>
+                <a
+                  href="tel:+17186141878"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '16px',
+                    padding: '14px',
+                    background: 'rgba(245, 158, 11, 0.05)',
+                    borderRadius: '12px',
+                    textDecoration: 'none',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(245, 158, 11, 0.1)';
+                    e.currentTarget.style.transform = 'translateX(4px)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'rgba(245, 158, 11, 0.05)';
+                    e.currentTarget.style.transform = 'translateX(0)';
+                  }}
+                >
+                  <Phone size={20} color="#f59e0b" />
+                  <div style={{ textAlign: 'left' }}>
+                    <p style={{ margin: '0 0 2px 0', color: '#6b7280', fontSize: '12px' }}>Call or Text</p>
+                    <p style={{ margin: 0, color: '#1f2937', fontWeight: '600', fontSize: '15px' }}>(718) 614-1878</p>
+                  </div>
+                </a>
+
+                <a
+                  href="mailto:beaulazear@gmail.com"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '16px',
+                    padding: '14px',
+                    background: 'rgba(245, 158, 11, 0.05)',
+                    borderRadius: '12px',
+                    textDecoration: 'none',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(245, 158, 11, 0.1)';
+                    e.currentTarget.style.transform = 'translateX(4px)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'rgba(245, 158, 11, 0.05)';
+                    e.currentTarget.style.transform = 'translateX(0)';
+                  }}
+                >
+                  <Mail size={20} color="#f59e0b" />
+                  <div style={{ textAlign: 'left' }}>
+                    <p style={{ margin: '0 0 2px 0', color: '#6b7280', fontSize: '12px' }}>Email</p>
+                    <p style={{ margin: 0, color: '#1f2937', fontWeight: '600', fontSize: '15px' }}>beaulazear@gmail.com</p>
+                  </div>
+                </a>
+
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '16px',
+                  padding: '14px',
+                  background: 'rgba(245, 158, 11, 0.05)',
+                  borderRadius: '12px'
+                }}>
+                  <MapPin size={20} color="#f59e0b" />
+                  <div style={{ textAlign: 'left' }}>
+                    <p style={{ margin: '0 0 2px 0', color: '#6b7280', fontSize: '12px' }}>Service Area</p>
+                    <p style={{ margin: 0, color: '#1f2937', fontWeight: '600', fontSize: '15px' }}>Brooklyn & NYC</p>
+                  </div>
+                </div>
+
+                <div style={{
+                  marginTop: '16px',
+                  paddingTop: '16px',
+                  borderTop: '1px solid #e5e7eb'
+                }}>
+                  <p style={{
+                    fontSize: '13px',
+                    color: '#6b7280',
+                    lineHeight: '1.5',
+                    margin: 0,
+                    textAlign: 'center'
+                  }}>
+                    Free meet & greet • Flexible scheduling • Direct communication
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Independent Section */}
+      <section style={{
+        padding: '80px 0',
+        background: 'linear-gradient(135deg, rgba(254, 243, 199, 0.3) 0%, rgba(253, 230, 138, 0.3) 100%)'
+      }}>
+        <div className="section-container">
+          <div style={{
+            maxWidth: '800px',
+            margin: '0 auto',
+            textAlign: 'center'
+          }}>
+            <h2 style={{
+              fontSize: 'clamp(2rem, 4vw, 2.5rem)',
+              fontWeight: '600',
+              margin: '0 0 24px 0',
+              color: '#1f2937',
+              fontFamily: 'Fredoka, cursive'
+            }}>
+              Why Choose an Independent Pet Care Provider?
+            </h2>
+
+            <p style={{
+              color: '#6b7280',
+              fontSize: '1.125rem',
+              lineHeight: '1.7',
+              marginBottom: '48px'
+            }}>
+              As an independent pet care provider with zookeeping and veterinary experience, 
+              I offer the personal attention and flexibility that your pets deserve. When you work with me, 
+              you're supporting local independent pet care professionals, not a corporate service.
+            </p>
+
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: '24px',
+              textAlign: 'left'
+            }}>
+              {[
+                "Direct relationship with me - your dedicated walker",
+                "No corporate fees or app markups",
+                "Flexible scheduling that works for you",
+                "Former Zookeeper at Prospect Park Zoo",
+                "Veterinary Assistant experience at ASPCA",
+                "Network of trusted independent walkers for backup",
+                "Supporting local independent pet care professionals",
+                "Fully insured"
+              ].map((item, index) => (
+                <div key={index} style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px'
+                }}>
+                  <CheckCircle size={20} color="#10b981" />
+                  <span style={{ color: '#4b5563', fontWeight: '500' }}>{item}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -1054,280 +1035,6 @@ const AnimalCare = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* About Section */}
-      <section style={{
-        padding: '80px 0',
-        background: 'linear-gradient(135deg, rgba(254, 243, 199, 0.3) 0%, rgba(253, 230, 138, 0.3) 100%)'
-      }}>
-        <div className="section-container">
-          <div className="grid-responsive grid-2-cols" style={{
-            gap: '64px',
-            alignItems: 'center'
-          }}>
-            <div>
-              <h2 style={{
-                fontSize: 'clamp(2rem, 4vw, 2.5rem)',
-                fontWeight: '600',
-                margin: '0 0 24px 0',
-                color: '#1f2937',
-                fontFamily: 'Fredoka, cursive'
-              }}>
-                Why Choose Beau's Animal Care?
-              </h2>
-
-              <p style={{
-                color: '#6b7280',
-                fontSize: '1.125rem',
-                lineHeight: '1.7',
-                marginBottom: '32px'
-              }}>
-                With my background as a zookeeper at Prospect Park Zoo and veterinary assistant at ASPCA, 
-                I bring professional animal care expertise to every visit. Your pets aren't just clients - 
-                they're family to me.
-              </p>
-
-              <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '16px'
-              }}>
-                {[
-                  "Former Zookeeper at Prospect Park Zoo (WCS)",
-                  "Veterinary Assistant at ASPCA",
-                  "8+ years of professional animal care",
-                  "Trusted by over 50 families in Brooklyn",
-                  "Available for emergencies and last-minute needs",
-                  "Regular photo updates during every visit",
-                  "Fully insured and bonded"
-                ].map((item, index) => (
-                  <div key={index} style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px'
-                  }}>
-                    <CheckCircle size={20} color="#10b981" />
-                    <span style={{ color: '#4b5563', fontWeight: '500' }}>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div style={{
-              background: 'white',
-              borderRadius: '20px',
-              padding: '40px',
-              boxShadow: '0 8px 30px rgba(0, 0, 0, 0.1)',
-              border: '2px solid #fde68a'
-            }}>
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '16px',
-                marginBottom: '32px'
-              }}>
-                <div style={{
-                  width: '80px',
-                  height: '80px',
-                  borderRadius: '50%',
-                  overflow: 'hidden',
-                  boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
-                }}>
-                  <img
-                    src={CroppedBeau}
-                    alt="Beau Lazear"
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover'
-                    }}
-                  />
-                </div>
-                <div>
-                  <h3 style={{
-                    fontSize: '1.5rem',
-                    fontWeight: '700',
-                    margin: '0 0 4px 0',
-                    color: '#1f2937'
-                  }}>
-                    Beau Lazear
-                  </h3>
-                  <p style={{
-                    color: '#6b7280',
-                    margin: 0
-                  }}>
-                    Founder & Lead Pet Care Specialist
-                  </p>
-                </div>
-              </div>
-
-              <div style={{
-                borderTop: '1px solid #e5e7eb',
-                paddingTop: '24px'
-              }}>
-                <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1fr 1fr',
-                  gap: '24px'
-                }}>
-                  <div>
-                    <p style={{ color: '#6b7280', fontSize: '14px', marginBottom: '4px' }}>Experience</p>
-                    <p style={{ color: '#1f2937', fontWeight: '600', margin: 0 }}>8+ Years</p>
-                  </div>
-                  <div>
-                    <p style={{ color: '#6b7280', fontSize: '14px', marginBottom: '4px' }}>Pets Cared For</p>
-                    <p style={{ color: '#1f2937', fontWeight: '600', margin: 0 }}>200+</p>
-                  </div>
-                  <div>
-                    <p style={{ color: '#6b7280', fontSize: '14px', marginBottom: '4px' }}>Service Area</p>
-                    <p style={{ color: '#1f2937', fontWeight: '600', margin: 0 }}>Brooklyn & NYC</p>
-                  </div>
-                  <div>
-                    <p style={{ color: '#6b7280', fontSize: '14px', marginBottom: '4px' }}>Availability</p>
-                    <p style={{ color: '#1f2937', fontWeight: '600', margin: 0 }}>7 Days/Week</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" style={{
-        padding: '80px 0',
-        background: 'linear-gradient(135deg, #f59e0b 0%, #dc2626 100%)'
-      }}>
-        <div style={{
-          maxWidth: '600px',
-          margin: '0 auto',
-          padding: '0 20px',
-          textAlign: 'center'
-        }}>
-          <h2 style={{
-            fontSize: 'clamp(2rem, 4vw, 2.5rem)',
-            fontWeight: '600',
-            margin: '0 0 24px 0',
-            color: 'white',
-            fontFamily: 'Fredoka, cursive'
-          }}>
-            Ready to Get Started?
-          </h2>
-
-          <p style={{
-            fontSize: '1.125rem',
-            color: 'rgba(255, 255, 255, 0.9)',
-            marginBottom: '48px',
-            lineHeight: '1.7'
-          }}>
-            Schedule a free meet & greet to discuss your pet's needs and see if we're the right fit.
-          </p>
-
-          <div style={{
-            background: 'white',
-            borderRadius: '20px',
-            padding: '40px',
-            boxShadow: '0 8px 30px rgba(0, 0, 0, 0.1)'
-          }}>
-            <div style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '24px'
-            }}>
-              <a
-                href="tel:+17186141878"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '16px',
-                  padding: '16px',
-                  background: 'rgba(245, 158, 11, 0.05)',
-                  borderRadius: '12px',
-                  textDecoration: 'none',
-                  transition: 'background 0.3s ease'
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(245, 158, 11, 0.1)'}
-                onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(245, 158, 11, 0.05)'}
-              >
-                <Phone size={24} color="#f59e0b" />
-                <div style={{ textAlign: 'left' }}>
-                  <p style={{ margin: '0 0 4px 0', color: '#6b7280', fontSize: '14px' }}>Call or Text</p>
-                  <p style={{ margin: 0, color: '#1f2937', fontWeight: '600' }}>(718) 614-1878</p>
-                </div>
-              </a>
-
-              <a
-                href="mailto:beaulazear@gmail.com"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '16px',
-                  padding: '16px',
-                  background: 'rgba(245, 158, 11, 0.05)',
-                  borderRadius: '12px',
-                  textDecoration: 'none',
-                  transition: 'background 0.3s ease'
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(245, 158, 11, 0.1)'}
-                onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(245, 158, 11, 0.05)'}
-              >
-                <Mail size={24} color="#f59e0b" />
-                <div style={{ textAlign: 'left' }}>
-                  <p style={{ margin: '0 0 4px 0', color: '#6b7280', fontSize: '14px' }}>Email</p>
-                  <p style={{ margin: 0, color: '#1f2937', fontWeight: '600' }}>beaulazear@gmail.com</p>
-                </div>
-              </a>
-
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '16px',
-                padding: '16px',
-                background: 'rgba(245, 158, 11, 0.05)',
-                borderRadius: '12px'
-              }}>
-                <MapPin size={24} color="#f59e0b" />
-                <div style={{ textAlign: 'left' }}>
-                  <p style={{ margin: '0 0 4px 0', color: '#6b7280', fontSize: '14px' }}>Service Area</p>
-                  <p style={{ margin: 0, color: '#1f2937', fontWeight: '600' }}>Brooklyn & NYC</p>
-                </div>
-              </div>
-            </div>
-
-            <div style={{
-              marginTop: '32px',
-              paddingTop: '32px',
-              borderTop: '1px solid #e5e7eb'
-            }}>
-              <button
-                onClick={() => navigate('/contact')}
-                style={{
-                  width: '100%',
-                  background: 'linear-gradient(135deg, #f59e0b 0%, #dc2626 100%)',
-                  color: 'white',
-                  padding: '16px',
-                  borderRadius: '12px',
-                  border: 'none',
-                  fontWeight: '600',
-                  fontSize: '16px',
-                  cursor: 'pointer',
-                  transition: 'transform 0.3s ease',
-                  boxShadow: '0 4px 15px rgba(245, 158, 11, 0.3)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '8px'
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
-                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
-              >
-                <Mail size={20} />
-                Contact Me for Pet Care
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer style={{
         padding: '40px 20px',
@@ -1348,7 +1055,7 @@ const AnimalCare = ({ onNavigate }) => {
             color: '#6b7280',
             fontSize: '14px'
           }}>
-            © 2024 Beau's Animal Care. All rights reserved.
+            © 2024 Beau's Animal Care - Independent Pet Services
           </p>
         </div>
         <p style={{
@@ -1356,19 +1063,10 @@ const AnimalCare = ({ onNavigate }) => {
           color: '#9ca3af',
           fontSize: '12px'
         }}>
-          Fully insured and bonded for your peace of mind • Serving Brooklyn & NYC since 2019
+          Fully insured for your peace of mind • Serving Brooklyn & NYC since 2019
         </p>
       </footer>
 
-      <style>{`
-        @media (max-width: 768px) {
-          .desktop-menu { display: none !important; }
-          .mobile-menu-btn { display: block !important; }
-        }
-        @media (min-width: 769px) {
-          .mobile-menu-btn { display: none !important; }
-        }
-      `}</style>
       </div>
     </>
   );

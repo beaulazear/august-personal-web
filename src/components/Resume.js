@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import ResumePDF from "../images/ResumePDF.pdf";
-import { Download, ArrowLeft } from 'lucide-react';
+import { Download } from 'lucide-react';
 
 const globalStyles = `
   .resume-fade-in-up {
@@ -13,15 +13,15 @@ const globalStyles = `
   }
   
   .resume-glass-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(249, 250, 251, 0.95) 100%);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 24px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 25px 50px rgba(159, 122, 234, 0.25), 0 10px 20px rgba(0, 0, 0, 0.1);
   }
   
   .resume-primary-button {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #5a67d8 0%, #9f7aea 50%, #ed64a6 100%);
     border: none;
     border-radius: 16px;
     color: white;
@@ -38,7 +38,8 @@ const globalStyles = `
   
   .resume-primary-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 12px 35px rgba(159, 122, 234, 0.5), 0 6px 20px rgba(237, 100, 166, 0.3);
+    background: linear-gradient(135deg, #4c51bf 0%, #7c3aed 50%, #c53090 100%);
   }
   
   @media (max-width: 768px) {
@@ -70,7 +71,7 @@ const Resume = ({ onNavigate }) => {
     <div style={{ 
       minHeight: '100vh',
       background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
-      fontFamily: 'Inter, sans-serif',
+      fontFamily: 'Quicksand, sans-serif',
       padding: '40px 20px'
     }}>
       <style>{globalStyles}</style>
@@ -106,7 +107,7 @@ const Resume = ({ onNavigate }) => {
               margin: '0 0 24px 0',
               fontWeight: '500'
             }}>
-              Full-Stack Developer & Entrepreneur
+              Developer & Business Owner
             </p>
 
             <p style={{
@@ -136,7 +137,11 @@ const Resume = ({ onNavigate }) => {
               fontWeight: '700',
               color: '#2d3748',
               margin: '0 0 20px 0',
-              borderBottom: '2px solid #667eea',
+              borderBottom: '2px solid transparent',
+              backgroundImage: 'linear-gradient(to right, #5a67d8, #9f7aea, #ed64a6)',
+              backgroundPosition: 'bottom',
+              backgroundSize: '100% 2px',
+              backgroundRepeat: 'no-repeat',
               paddingBottom: '8px'
             }}>
               Professional Summary
@@ -161,7 +166,11 @@ const Resume = ({ onNavigate }) => {
               fontWeight: '700',
               color: '#2d3748',
               margin: '0 0 32px 0',
-              borderBottom: '2px solid #667eea',
+              borderBottom: '2px solid transparent',
+              backgroundImage: 'linear-gradient(to right, #5a67d8, #9f7aea, #ed64a6)',
+              backgroundPosition: 'bottom',
+              backgroundSize: '100% 2px',
+              backgroundRepeat: 'no-repeat',
               paddingBottom: '8px'
             }}>
               Experience
@@ -642,7 +651,11 @@ const Resume = ({ onNavigate }) => {
               fontWeight: '700',
               color: '#2d3748',
               margin: '0 0 20px 0',
-              borderBottom: '2px solid #667eea',
+              borderBottom: '2px solid transparent',
+              backgroundImage: 'linear-gradient(to right, #5a67d8, #9f7aea, #ed64a6)',
+              backgroundPosition: 'bottom',
+              backgroundSize: '100% 2px',
+              backgroundRepeat: 'no-repeat',
               paddingBottom: '8px'
             }}>
               Skills
@@ -738,7 +751,11 @@ const Resume = ({ onNavigate }) => {
               fontWeight: '700',
               color: '#2d3748',
               margin: '0 0 20px 0',
-              borderBottom: '2px solid #667eea',
+              borderBottom: '2px solid transparent',
+              backgroundImage: 'linear-gradient(to right, #5a67d8, #9f7aea, #ed64a6)',
+              backgroundPosition: 'bottom',
+              backgroundSize: '100% 2px',
+              backgroundRepeat: 'no-repeat',
               paddingBottom: '8px'
             }}>
               Education & Certifications
