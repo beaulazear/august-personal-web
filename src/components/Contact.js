@@ -20,17 +20,19 @@ const globalStyles = `
     font-size: 16px;
     border: 2px solid;
     border-radius: 16px;
-    background: rgba(255, 255, 255, 0.98);
+    background: white;
     transition: all 0.3s ease;
     font-family: 'Quicksand', sans-serif;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
-    font-weight: 500;
+    font-weight: 600;
+    color: #1a202c;
   }
   
   .floating-input:focus {
     outline: none;
-    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15), 0 4px 12px rgba(139, 92, 246, 0.1);
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2), 0 2px 8px rgba(0, 0, 0, 0.15);
+    border-color: #059669;
   }
   
   .floating-input:disabled {
@@ -44,24 +46,26 @@ const globalStyles = `
     font-size: 16px;
     border: 2px solid;
     border-radius: 16px;
-    background: rgba(255, 255, 255, 0.98);
+    background: white;
     transition: all 0.3s ease;
     resize: vertical;
     min-height: 150px;
     font-family: 'Quicksand', sans-serif;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
-    font-weight: 500;
+    font-weight: 600;
+    color: #1a202c;
   }
   
   .floating-textarea:focus {
     outline: none;
-    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15), 0 4px 12px rgba(139, 92, 246, 0.1);
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2), 0 2px 8px rgba(0, 0, 0, 0.15);
+    border-color: #059669;
   }
   
   .submit-button {
-    background: linear-gradient(135deg, #5a67d8 0%, #805ad5 50%, #d53f8c 100%);
-    border: none;
+    background: #2d3748;
+    border: 2px solid #1a202c;
     border-radius: 16px;
     color: white;
     font-weight: 700;
@@ -74,21 +78,24 @@ const globalStyles = `
     justify-content: center;
     gap: 10px;
     width: 100%;
-    box-shadow: 0 10px 30px rgba(128, 90, 213, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     text-transform: uppercase;
     letter-spacing: 1px;
   }
   
   .submit-button:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 12px 35px rgba(128, 90, 213, 0.5);
-    background: linear-gradient(135deg, #4c51bf 0%, #7c3aed 50%, #c53090 100%);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    background: #1a202c;
+    border-color: #000;
   }
   
   .submit-button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
-    background: #e5e7eb;
+    background: #cbd5e0;
+    border-color: #a0aec0;
+    color: #718096;
   }
   
   @media (max-width: 640px) {
@@ -197,94 +204,86 @@ export default function Contact() {
   return (
     <div style={{ 
       minHeight: '100vh',
-      background: 'transparent',
+      width: '100vw',
+      background: 'linear-gradient(135deg, #5a67d8 0%, #9f7aea 50%, #ed64a6 100%)',
       fontFamily: 'Quicksand, sans-serif',
-      paddingTop: '80px'
+      paddingTop: '80px',
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      overflow: 'auto'
     }}>
       <style>{globalStyles}</style>
 
+      {/* Decorative circles */}
       <div style={{
-        background: 'linear-gradient(135deg, #5a67d8 0%, #9f7aea 50%, #ed64a6 100%)',
-        padding: '120px 20px',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
-        {/* Decorative circles */}
-        <div style={{
-          position: 'absolute',
-          top: '-100px',
-          right: '-100px',
-          width: '300px',
-          height: '300px',
-          borderRadius: '50%',
-          background: 'rgba(255, 255, 255, 0.1)',
-          filter: 'blur(40px)'
-        }} />
-        <div style={{
-          position: 'absolute',
-          bottom: '-150px',
-          left: '-150px',
-          width: '400px',
-          height: '400px',
-          borderRadius: '50%',
-          background: 'rgba(255, 255, 255, 0.08)',
-          filter: 'blur(60px)'
-        }} />
-        
-        <div className="contact-container" style={{
-          width: '100%',
-          maxWidth: '600px',
-          margin: '0 auto',
-          position: 'relative',
-          zIndex: 1
-        }}>
-        
-          {/* Title Section */}
-          <div style={{
-            textAlign: 'center',
-            marginBottom: '60px'
-          }}>
-            <h1 style={{
-              fontSize: 'clamp(2.5rem, 6vw, 4rem)',
-              fontWeight: '700',
-              color: 'white',
-              margin: '0 0 16px 0',
-              lineHeight: '1.1',
-              textShadow: '0 4px 20px rgba(0, 0, 0, 0.2)'
-            }}>
-              Let's Create Together
-            </h1>
-            <p style={{
-              fontSize: 'clamp(1.1rem, 3vw, 1.3rem)',
-              color: 'rgba(255, 255, 255, 0.9)',
-              margin: 0,
-              lineHeight: '1.6',
-              fontWeight: '500'
-            }}>
-              I'm excited to hear about your ideas
-            </p>
-          </div>
-        </div>
-      </div>
+        position: 'absolute',
+        top: '100px',
+        right: '10%',
+        width: '300px',
+        height: '300px',
+        borderRadius: '50%',
+        background: 'rgba(255, 255, 255, 0.1)',
+        filter: 'blur(60px)'
+      }} />
+      <div style={{
+        position: 'absolute',
+        bottom: '100px',
+        left: '10%',
+        width: '400px',
+        height: '400px',
+        borderRadius: '50%',
+        background: 'rgba(255, 255, 255, 0.08)',
+        filter: 'blur(80px)'
+      }} />
       
       <div style={{
         width: '100%',
         maxWidth: '600px',
-        margin: '-40px auto 0',
-        padding: '0 20px 60px',
+        margin: '0 auto',
+        padding: '60px 20px',
         position: 'relative',
-        zIndex: 2
+        zIndex: 1
       }}>
+        
+        {/* Title Section */}
+        <div style={{
+          textAlign: 'center',
+          marginBottom: '60px'
+        }}>
+          <h1 style={{
+            fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+            fontWeight: '700',
+            color: 'white',
+            margin: '0 0 16px 0',
+            lineHeight: '1.1',
+            textShadow: '0 4px 20px rgba(0, 0, 0, 0.2)'
+          }}>
+            Let's Create Together
+          </h1>
+          <p style={{
+            fontSize: 'clamp(1.1rem, 3vw, 1.3rem)',
+            color: 'rgba(255, 255, 255, 0.9)',
+            margin: 0,
+            lineHeight: '1.6',
+            fontWeight: '500'
+          }}>
+            I'm excited to hear about your ideas
+          </p>
+        </div>
 
         {/* Form */}
         <form onSubmit={handleSubmit} style={{ 
           display: 'flex', 
           flexDirection: 'column', 
           gap: '24px',
-          background: 'white',
+          background: 'rgba(255, 255, 255, 0.98)',
           padding: '48px',
           borderRadius: '24px',
-          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.15)'
+          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.15)',
+          backdropFilter: 'blur(10px)'
         }}>
           
           {/* Name Field */}
@@ -294,8 +293,8 @@ export default function Contact() {
               alignItems: 'center',
               justifyContent: 'space-between',
               fontSize: '15px',
-              fontWeight: '600',
-              color: '#4a5568',
+              fontWeight: '700',
+              color: '#1a202c',
               marginBottom: '8px'
             }}>
               <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -303,12 +302,12 @@ export default function Contact() {
                 Name
               </span>
               {touched.from_name && formData.from_name.trim() && (
-                <Check size={16} style={{ color: '#9f7aea' }} />
+                <Check size={16} style={{ color: '#059669' }} />
               )}
             </label>
             <input
               type="text"
-              placeholder="Your full name"
+              placeholder="Enter your full name"
               value={formData.from_name}
               onChange={(e) => handleInputChange('from_name', e.target.value)}
               onBlur={() => handleBlur('from_name')}
@@ -316,14 +315,14 @@ export default function Contact() {
               className="floating-input"
               style={{
                 borderColor: touched.from_name && !formData.from_name.trim() 
-                  ? '#ed64a6' 
+                  ? '#dc2626' 
                   : touched.from_name && formData.from_name.trim() 
-                  ? '#9f7aea' 
-                  : '#e5e7eb'
+                  ? '#059669' 
+                  : '#d1d5db'
               }}
             />
             {touched.from_name && !formData.from_name.trim() && (
-              <p style={{ color: '#ed64a6', fontSize: '12px', marginTop: '4px', fontWeight: '500' }}>Name is required</p>
+              <p style={{ color: '#dc2626', fontSize: '13px', marginTop: '6px', fontWeight: '600' }}>Name is required</p>
             )}
           </div>
 
@@ -334,8 +333,8 @@ export default function Contact() {
               alignItems: 'center',
               justifyContent: 'space-between',
               fontSize: '15px',
-              fontWeight: '600',
-              color: '#4a5568',
+              fontWeight: '700',
+              color: '#1a202c',
               marginBottom: '8px'
             }}>
               <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -344,15 +343,15 @@ export default function Contact() {
               </span>
               {formData.from_email && (
                 emailValid ? (
-                  <Check size={16} style={{ color: '#9f7aea' }} />
+                  <Check size={16} style={{ color: '#059669' }} />
                 ) : (
-                  <X size={16} style={{ color: '#ed64a6' }} />
+                  <X size={16} style={{ color: '#dc2626' }} />
                 )
               )}
             </label>
             <input
               type="email"
-              placeholder="your@email.com"
+              placeholder="Enter your email address"
               value={formData.from_email}
               onChange={(e) => handleInputChange('from_email', e.target.value)}
               onBlur={() => handleBlur('from_email')}
@@ -360,14 +359,14 @@ export default function Contact() {
               className="floating-input"
               style={{
                 borderColor: formData.from_email && !emailValid 
-                  ? '#ed64a6' 
+                  ? '#dc2626' 
                   : formData.from_email && emailValid 
-                  ? '#9f7aea' 
-                  : '#e5e7eb'
+                  ? '#059669' 
+                  : '#d1d5db'
               }}
             />
             {touched.from_email && formData.from_email && !emailValid && (
-              <p style={{ color: '#ed64a6', fontSize: '12px', marginTop: '4px', fontWeight: '500' }}>Please enter a valid email address</p>
+              <p style={{ color: '#dc2626', fontSize: '13px', marginTop: '6px', fontWeight: '600' }}>Please enter a valid email address</p>
             )}
           </div>
 
@@ -378,8 +377,8 @@ export default function Contact() {
               alignItems: 'center',
               justifyContent: 'space-between',
               fontSize: '15px',
-              fontWeight: '600',
-              color: '#4a5568',
+              fontWeight: '700',
+              color: '#1a202c',
               marginBottom: '8px'
             }}>
               <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -387,11 +386,11 @@ export default function Contact() {
                 Message
               </span>
               {touched.message && formData.message.trim().length >= 10 && (
-                <Check size={16} style={{ color: '#9f7aea' }} />
+                <Check size={16} style={{ color: '#059669' }} />
               )}
             </label>
             <textarea
-              placeholder="Tell me about your project..."
+              placeholder="Describe your project or message (minimum 10 characters)"
               value={formData.message}
               onChange={(e) => handleInputChange('message', e.target.value)}
               onBlur={() => handleBlur('message')}
@@ -399,19 +398,19 @@ export default function Contact() {
               className="floating-textarea"
               style={{
                 borderColor: touched.message && formData.message.trim().length < 10 
-                  ? '#ed64a6' 
+                  ? '#dc2626' 
                   : touched.message && formData.message.trim().length >= 10 
-                  ? '#9f7aea' 
-                  : '#e5e7eb'
+                  ? '#059669' 
+                  : '#d1d5db'
               }}
             />
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '4px' }}>
               {touched.message && formData.message.trim().length < 10 ? (
-                <p style={{ color: '#ed64a6', fontSize: '12px', fontWeight: '500' }}>Message must be at least 10 characters</p>
+                <p style={{ color: '#dc2626', fontSize: '13px', fontWeight: '600' }}>Message must be at least 10 characters</p>
               ) : (
                 <span></span>
               )}
-              <p style={{ color: '#9ca3af', fontSize: '12px' }}>{formData.message.length} characters</p>
+              <p style={{ color: '#4b5563', fontSize: '13px', fontWeight: '500' }}>{formData.message.length} characters</p>
             </div>
           </div>
 
@@ -421,14 +420,15 @@ export default function Contact() {
               display: 'flex',
               alignItems: 'center',
               gap: '8px',
-              padding: '12px 16px',
-              background: 'linear-gradient(135deg, rgba(237, 100, 166, 0.1) 0%, rgba(159, 122, 234, 0.1) 100%)',
+              padding: '14px 18px',
+              background: '#fef2f2',
               borderRadius: '12px',
-              color: '#ed64a6',
-              border: '1px solid rgba(237, 100, 166, 0.2)'
+              color: '#991b1b',
+              border: '2px solid #dc2626',
+              fontWeight: '600'
             }}>
               <AlertCircle size={20} />
-              <span style={{ fontSize: '14px' }}>{error}</span>
+              <span style={{ fontSize: '15px' }}>{error}</span>
             </div>
           )}
 
@@ -437,14 +437,15 @@ export default function Contact() {
               display: 'flex',
               alignItems: 'center',
               gap: '8px',
-              padding: '12px 16px',
-              background: 'linear-gradient(135deg, rgba(159, 122, 234, 0.1) 0%, rgba(90, 103, 216, 0.1) 100%)',
+              padding: '14px 18px',
+              background: '#f0fdf4',
               borderRadius: '12px',
-              color: '#9f7aea',
-              border: '1px solid rgba(159, 122, 234, 0.2)'
+              color: '#14532d',
+              border: '2px solid #059669',
+              fontWeight: '600'
             }}>
               <CheckCircle size={20} />
-              <span style={{ fontSize: '14px' }}>{success}</span>
+              <span style={{ fontSize: '15px' }}>{success}</span>
             </div>
           )}
 
@@ -480,12 +481,13 @@ export default function Contact() {
           textAlign: 'center',
           marginTop: '60px',
           padding: '40px',
-          background: 'linear-gradient(135deg, rgba(90, 103, 216, 0.05) 0%, rgba(159, 122, 234, 0.05) 50%, rgba(237, 100, 166, 0.05) 100%)',
+          background: 'rgba(0, 0, 0, 0.3)',
           borderRadius: '20px',
-          border: '2px solid rgba(159, 122, 234, 0.1)'
+          border: '2px solid rgba(255, 255, 255, 0.3)',
+          backdropFilter: 'blur(10px)'
         }}>
           <p style={{
-            color: '#6b7280',
+            color: 'rgba(255, 255, 255, 0.9)',
             fontSize: '16px',
             margin: '0 0 12px 0',
             fontWeight: '500'
@@ -495,10 +497,7 @@ export default function Contact() {
           <a
             href="mailto:beaulazear@gmail.com"
             style={{
-              background: 'linear-gradient(135deg, #5a67d8, #9f7aea, #ed64a6)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
+              color: 'white',
               fontWeight: '700',
               textDecoration: 'none',
               fontSize: '18px',

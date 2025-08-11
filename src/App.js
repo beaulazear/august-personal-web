@@ -1164,16 +1164,12 @@ const StylishNavbar = () => {
 const YourContact = () => (
   <div style={{
     minHeight: '100vh',
-    background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+    background: 'transparent',
+    margin: 0,
+    padding: 0
   }}>
     <StylishNavbar />
-    <div style={{
-      maxWidth: '1000px',
-      margin: '0 auto',
-      paddingTop: '100px'
-    }}>
-      <Contact />
-    </div>
+    <Contact />
   </div>
 );
 
