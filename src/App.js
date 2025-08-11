@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
-import { Linkedin, Github, Mail, FileText, ArrowRight, Briefcase, CheckCircle, MapPin, GraduationCap, Heart, Zap, Building, FolderOpen, PawPrint } from 'lucide-react';
+import { Linkedin, Github, Mail, FileText, ArrowRight, Briefcase, CheckCircle, MapPin, GraduationCap, Heart, Zap, Building, FolderOpen, PawPrint, Rocket, TrendingUp, Users, Code, Trophy, Sparkles, Target } from 'lucide-react';
 import BeauPic from './images/BeauPic.jpg';
 import Resume from './components/Resume.js';
 import Contact from './components/Contact.js';
@@ -194,7 +194,7 @@ const ModernPortfolio = () => {
       subtitle: 'High School → NYC at 18',
       description: 'Talented & Gifted program, played basketball, worked three jobs. Moved to NYC alone at 18 to chase bigger opportunities.',
       image: null,
-      icon: MapPin,
+      icon: Rocket,
       side: 'left'
     },
     {
@@ -203,7 +203,7 @@ const ModernPortfolio = () => {
       subtitle: 'Real Estate → Animal Care',
       description: 'Started in real estate, then took unpaid zoo internships. Dog walked on the side to pay bills while learning the field I loved.',
       image: null,
-      icon: Building,
+      icon: Target,
       side: 'right'
     },
     {
@@ -212,7 +212,7 @@ const ModernPortfolio = () => {
       subtitle: 'Intern → Full Zookeeper',
       description: 'After two internships, earned part-time then full-time keeper role. Handled everything from animal care to public education while running a dog daycare on weekends.',
       image: null,
-      icon: Heart,
+      icon: PawPrint,
       side: 'left'
     },
     {
@@ -230,25 +230,25 @@ const ModernPortfolio = () => {
       subtitle: 'Beau\'s Animal Care',
       description: 'Built a pet care business from scratch, now serving 50+ regular clients. Taught myself to code to build our website, which led to discovering I really enjoy programming.',
       image: null,
-      icon: Briefcase,
+      icon: TrendingUp,
       side: 'left'
     },
     {
       year: '2023-Present',
       title: 'Learning to Code',
       subtitle: 'Bootcamp → Real Projects',
-      description: 'Completed Flatiron bootcamp and got AWS certified while still running my business. Built apps for myself and friends, then landed my first client contract with Aria.com.',
+      description: 'Completed Flatiron bootcamp and got AWS certified while still running my business. Built apps for myself and friends, then landed my first client contract with www.ariadesignconsultants.com.',
       image: null,
-      icon: GraduationCap,
+      icon: Code,
       side: 'right'
     },
     {
-      year: '2024',
-      title: 'Tech Leadership',
-      subtitle: 'Co-Founder & CTO',
-      description: 'Voxxy AI CTO. Architecting scalable system for multiple products. Managing full technical stack and roadmap.',
+      year: '2024-Present',
+      title: 'Still Learning',
+      subtitle: 'Tech + Community + Growth',
+      description: "I'm happy where I'm at today - building projects I'm passionate about like Voxxy with people I love, running my dog walking business and staying active in the community, and growing my skills while being optimistic about what's to come.",
       image: null,
-      icon: Zap,
+      icon: Sparkles,
       side: 'left'
     }
   ];
@@ -258,7 +258,7 @@ const ModernPortfolio = () => {
       title: "Voxxy AI",
       subtitle: "Co-Founder & Developer",
       description: "Working with my co-founder to build an AI platform that helps groups make decisions together. We believe thoughtful planning creates better shared experiences and stronger communities.",
-      technologies: ["React", "Rails", "OpenAI", "React Native"],
+      technologies: ["React", "Rails", "OpenAI", "React Native", "AWS", "Git", "Google Cloud", "Mixpanel"],
       links: [
         { label: "Live Site", url: "https://www.voxxyai.com/#/" }
       ],
@@ -268,11 +268,11 @@ const ModernPortfolio = () => {
       title: "Pocket Walks",
       subtitle: "Business Management App",
       description: "Custom scheduling and client management app I built for my pet care business. Streamlines bookings, tracks walks, manages client information, and handles invoicing for 50+ regular clients.",
-      technologies: ["React", "Rails", "PostgreSQL"],
+      technologies: ["React", "Rails", "PostgreSQL", "AWS"],
       links: [
         { label: "Live Site", url: "https://www.pocket-walks.com" }
       ],
-      highlight: "📱 Built & Use Daily"
+      highlight: "📱 Daily Use"
     },
     {
       title: "Beau's Animal Care",
@@ -1003,8 +1003,12 @@ const TimelineContent = ({ item }) => (
       fontWeight: '700',
       color: '#2d3748',
       margin: '0 0 6px 0',
-      lineHeight: '1.3'
+      lineHeight: '1.3',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '8px'
     }}>
+      <item.icon size={18} style={{ color: '#667eea', flexShrink: 0 }} />
       {item.title}
     </h3>
     <p style={{
@@ -1068,18 +1072,27 @@ const SkillCard = ({ skillGroup }) => (
 
 const StylishNavbar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  
+  const getPageTitle = () => {
+    if (location.pathname.includes('resume')) return 'Resume';
+    if (location.pathname.includes('contact')) return 'Contact';
+    if (location.pathname.includes('animal-care')) return 'Animal Care';
+    return 'Portfolio';
+  };
+  
   return (
     <div style={{
       position: 'fixed',
       top: 0,
       left: 0,
       right: 0,
-      background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.95) 100%)',
+      background: 'rgba(255, 255, 255, 0.85)',
       backdropFilter: 'blur(20px)',
-      borderBottom: '1px solid rgba(102, 126, 234, 0.1)',
-      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+      borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
+      boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
       zIndex: 1000,
-      padding: '16px 0'
+      padding: '12px 0'
     }}>
       <div style={{
         maxWidth: '1200px',
@@ -1089,71 +1102,183 @@ const StylishNavbar = () => {
         alignItems: 'center',
         justifyContent: 'space-between'
       }}>
-        <button
-          onClick={() => navigate('/')}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            border: 'none',
-            padding: '10px 20px',
-            borderRadius: '12px',
-            color: 'white',
-            cursor: 'pointer',
-            transition: 'all 0.3s ease',
-            fontWeight: '600',
-            fontSize: '15px',
-            boxShadow: '0 4px 15px rgba(102, 126, 234, 0.3)'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'translateY(-2px)';
-            e.currentTarget.style.boxShadow = '0 6px 20px rgba(102, 126, 234, 0.4)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.3)';
-          }}
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M19 12H5M12 19l-7-7 7-7"/>
-          </svg>
-          Back to Home
-        </button>
-        
-        {/* Profile Picture */}
+        {/* Left Side - Back Button and Page Title */}
         <div style={{
-          width: '45px',
-          height: '45px',
-          borderRadius: '12px',
-          overflow: 'hidden',
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-          padding: '2px',
-          boxShadow: '0 4px 12px rgba(102, 126, 234, 0.2)',
-          cursor: 'pointer',
-          transition: 'transform 0.3s ease'
-        }}
-        onClick={() => navigate('/')}
-        onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-        onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-        >
+          display: 'flex',
+          alignItems: 'center',
+          gap: '20px'
+        }}>
+          <button
+            onClick={() => navigate('/')}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '40px',
+              height: '40px',
+              background: 'transparent',
+              border: 'none',
+              borderRadius: '12px',
+              color: '#667eea',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              position: 'relative'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(102, 126, 234, 0.1)';
+              e.currentTarget.style.transform = 'translateX(-2px)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'transparent';
+              e.currentTarget.style.transform = 'translateX(0)';
+            }}
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+          </button>
+          
           <div style={{
-            width: '100%',
-            height: '100%',
-            borderRadius: '10px',
-            overflow: 'hidden',
-            background: 'white'
+            fontSize: '18px',
+            fontWeight: '600',
+            color: '#2d3748',
+            fontFamily: 'Quicksand, sans-serif',
+            display: window.innerWidth > 380 ? 'block' : 'none'
           }}>
-            <img
-              src={BeauPic}
-              alt="Beau Lazear"
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover'
-              }}
-            />
+            {getPageTitle()}
           </div>
+        </div>
+        
+        {/* Center - Name (hide on mobile) */}
+        <div style={{
+          position: 'absolute',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          fontSize: '16px',
+          fontWeight: '600',
+          background: 'linear-gradient(135deg, #5a67d8 0%, #9f7aea 50%, #ed64a6 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          fontFamily: 'Comfortaa, cursive',
+          letterSpacing: '0.5px',
+          display: window.innerWidth > 480 ? 'block' : 'none'
+        }}>
+          Beau Lazear
+        </div>
+        
+        {/* Right Side - Navigation Icons */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px'
+        }}>
+          <button
+            onClick={() => navigate('/resume')}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '40px',
+              height: '40px',
+              background: location.pathname.includes('resume') ? 'rgba(102, 126, 234, 0.1)' : 'transparent',
+              border: 'none',
+              borderRadius: '12px',
+              color: location.pathname.includes('resume') ? '#667eea' : '#6b7280',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseEnter={(e) => {
+              if (!location.pathname.includes('resume')) {
+                e.currentTarget.style.background = 'rgba(102, 126, 234, 0.05)';
+              }
+            }}
+            onMouseLeave={(e) => {
+              if (!location.pathname.includes('resume')) {
+                e.currentTarget.style.background = 'transparent';
+              }
+            }}
+          >
+            <FileText size={20} />
+          </button>
+          
+          <button
+            onClick={() => navigate('/contact')}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '40px',
+              height: '40px',
+              background: location.pathname.includes('contact') ? 'rgba(102, 126, 234, 0.1)' : 'transparent',
+              border: 'none',
+              borderRadius: '12px',
+              color: location.pathname.includes('contact') ? '#667eea' : '#6b7280',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseEnter={(e) => {
+              if (!location.pathname.includes('contact')) {
+                e.currentTarget.style.background = 'rgba(102, 126, 234, 0.05)';
+              }
+            }}
+            onMouseLeave={(e) => {
+              if (!location.pathname.includes('contact')) {
+                e.currentTarget.style.background = 'transparent';
+              }
+            }}
+          >
+            <Mail size={20} />
+          </button>
+          
+          <div style={{
+            width: '1px',
+            height: '24px',
+            background: 'rgba(0, 0, 0, 0.1)',
+            margin: '0 4px'
+          }} />
+          
+          <button
+            onClick={() => navigate('/')}
+            style={{
+              width: '40px',
+              height: '40px',
+              borderRadius: '12px',
+              overflow: 'hidden',
+              background: 'linear-gradient(135deg, #667eea 0%, #9f7aea 100%)',
+              padding: '2px',
+              border: 'none',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 2px 8px rgba(102, 126, 234, 0.2)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'scale(1.05)';
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(102, 126, 234, 0.3)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'scale(1)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(102, 126, 234, 0.2)';
+            }}
+          >
+            <div style={{
+              width: '100%',
+              height: '100%',
+              borderRadius: '10px',
+              overflow: 'hidden',
+              background: 'white'
+            }}>
+              <img
+                src={BeauPic}
+                alt="Beau Lazear"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover'
+                }}
+              />
+            </div>
+          </button>
         </div>
         
       </div>
@@ -1175,17 +1300,13 @@ const YourContact = () => (
 
 const ResumeWrapper = () => (
   <div style={{
+    width: '100%',
     minHeight: '100vh',
-    background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+    margin: 0,
+    padding: 0
   }}>
     <StylishNavbar />
-    <div style={{
-      maxWidth: '1000px',
-      margin: '0 auto',
-      paddingTop: '100px'
-    }}>
-      <Resume />
-    </div>
+    <Resume />
   </div>
 );
 

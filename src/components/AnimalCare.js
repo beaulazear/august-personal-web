@@ -213,7 +213,7 @@ const AnimalCare = ({ onNavigate }) => {
     
     .hover-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 12px 40px rgba(251, 191, 36, 0.15);
+      box-shadow: 0 20px 50px rgba(74, 144, 226, 0.25);
     }
   `;
 
@@ -223,7 +223,7 @@ const AnimalCare = ({ onNavigate }) => {
       
       <div className="animal-care-container" style={{
         minHeight: '100vh',
-        background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)',
+        background: 'linear-gradient(135deg, #E8F4FD 0%, #B8E0FF 50%, #4A90E2 100%)',
         fontFamily: 'Quicksand, sans-serif'
       }}>
         
@@ -232,7 +232,7 @@ const AnimalCare = ({ onNavigate }) => {
       <section style={{
         padding: '80px 20px 60px',
         textAlign: 'center',
-        background: 'linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)',
+        background: 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.9) 100%)',
         position: 'relative',
         overflow: 'hidden'
       }}>
@@ -258,9 +258,9 @@ const AnimalCare = ({ onNavigate }) => {
               gap: '20px',
               opacity: 0.6
             }}>
-              <PawPrint size={24} color="#fbbf24" style={{ transform: 'rotate(-15deg)' }} />
-              <PawPrint size={20} color="#f59e0b" style={{ transform: 'rotate(10deg) translateY(-5px)' }} />
-              <PawPrint size={24} color="#fbbf24" style={{ transform: 'rotate(-10deg)' }} />
+              <PawPrint size={24} color="#4A90E2" style={{ transform: 'rotate(-15deg)' }} />
+              <PawPrint size={20} color="#2563EB" style={{ transform: 'rotate(10deg) translateY(-5px)' }} />
+              <PawPrint size={24} color="#4A90E2" style={{ transform: 'rotate(-10deg)' }} />
             </div>
             
             <h1 style={{
@@ -272,9 +272,9 @@ const AnimalCare = ({ onNavigate }) => {
               lineHeight: '1.2',
               letterSpacing: '-1px',
               position: 'relative',
-              textShadow: '2px 2px 4px rgba(245, 158, 11, 0.2)',
+              textShadow: '2px 2px 4px rgba(37, 99, 235, 0.2)',
               color: 'transparent',
-              background: 'linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #dc2626 100%)',
+              background: 'linear-gradient(135deg, #2563EB 0%, #4A90E2 50%, #0EA5E9 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -286,9 +286,9 @@ const AnimalCare = ({ onNavigate }) => {
             {/* Subtitle tagline */}
             <p style={{
               fontSize: 'clamp(0.9rem, 2vw, 1.1rem)',
-              color: '#6b7280',
+              color: '#1E293B',
               margin: '8px 0 0 0',
-              fontWeight: '500',
+              fontWeight: '600',
               letterSpacing: '2px',
               textTransform: 'uppercase',
               textAlign: 'center'
@@ -300,7 +300,7 @@ const AnimalCare = ({ onNavigate }) => {
             <div style={{
               width: '80px',
               height: '3px',
-              background: 'linear-gradient(90deg, transparent, #fbbf24, transparent)',
+              background: 'linear-gradient(90deg, transparent, #4A90E2, transparent)',
               margin: '12px auto 0',
               borderRadius: '2px'
             }}></div>
@@ -317,7 +317,8 @@ const AnimalCare = ({ onNavigate }) => {
             alignItems: 'center',
             justifyContent: 'center',
             background: 'white',
-            boxShadow: '0 15px 40px rgba(0, 0, 0, 0.12)'
+            boxShadow: '0 20px 50px rgba(74, 144, 226, 0.25)',
+            border: '2px solid #E0E7FF'
           }}>
             <img
               src={GraphicTwo}
@@ -332,16 +333,16 @@ const AnimalCare = ({ onNavigate }) => {
 
           <p className="hero-subtitle" style={{
             fontSize: 'clamp(1.25rem, 3vw, 1.5rem)',
-            color: '#4a5568',
+            color: '#1E293B',
             margin: '0 0 24px 0',
-            fontWeight: '500'
+            fontWeight: '600'
           }}>
             Professional Pet Care with a Personal Touch
           </p>
 
           <p className="hero-description" style={{
             fontSize: 'clamp(1rem, 2.5vw, 1.125rem)',
-            color: '#6b7280',
+            color: '#475569',
             maxWidth: '700px',
             margin: '0 auto 48px',
             lineHeight: '1.7'
@@ -362,7 +363,7 @@ const AnimalCare = ({ onNavigate }) => {
             <button
               onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
               style={{
-                background: 'linear-gradient(135deg, #f59e0b 0%, #dc2626 100%)',
+                background: 'linear-gradient(135deg, #2563EB 0%, #4A90E2 100%)',
                 color: 'white',
                 padding: '16px 32px',
                 borderRadius: '12px',
@@ -373,7 +374,7 @@ const AnimalCare = ({ onNavigate }) => {
                 alignItems: 'center',
                 gap: '8px',
                 transition: 'transform 0.3s ease',
-                boxShadow: '0 4px 15px rgba(245, 158, 11, 0.3)',
+                boxShadow: '0 6px 20px rgba(37, 99, 235, 0.35)',
                 cursor: 'pointer'
               }}
               onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
@@ -384,12 +385,12 @@ const AnimalCare = ({ onNavigate }) => {
             </button>
             
             <button
-              onClick={() => document.getElementById('services').scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('testimonials').scrollIntoView({ behavior: 'smooth' })}
               style={{
-                background: 'transparent',
-                border: '2px solid #f59e0b',
+                background: 'white',
+                border: '2px solid #2563EB',
                 borderRadius: '12px',
-                color: '#f59e0b',
+                color: '#2563EB',
                 fontWeight: '600',
                 padding: '14px 30px',
                 fontSize: '16px',
@@ -400,16 +401,16 @@ const AnimalCare = ({ onNavigate }) => {
                 gap: '8px'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#f59e0b';
+                e.currentTarget.style.background = '#2563EB';
                 e.currentTarget.style.color = 'white';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'transparent';
-                e.currentTarget.style.color = '#f59e0b';
+                e.currentTarget.style.background = 'white';
+                e.currentTarget.style.color = '#2563EB';
               }}
             >
-              <PawPrint size={20} />
-              View Services
+              <Star size={20} />
+              Testimonials
             </button>
           </div>
 
@@ -428,11 +429,11 @@ const AnimalCare = ({ onNavigate }) => {
                 justifyContent: 'center',
                 gap: '8px'
               }}>
-                <feature.icon size={20} color="#f59e0b" />
+                <feature.icon size={20} color="#2563EB" />
                 <span style={{
-                  color: '#4b5563',
+                  color: '#1E293B',
                   fontSize: '14px',
-                  fontWeight: '500'
+                  fontWeight: '600'
                 }}>
                   {feature.text}
                 </span>
@@ -445,7 +446,7 @@ const AnimalCare = ({ onNavigate }) => {
       {/* Services Section with Detailed Pricing */}
       <section id="services" className="services-section animate-fade-in" style={{
         padding: '100px 0 80px',
-        background: 'linear-gradient(135deg, rgba(254, 243, 199, 0.5) 0%, rgba(253, 230, 138, 0.5) 100%)'
+        background: 'linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%)'
       }}>
         <div className="section-container">
           <div style={{
@@ -454,16 +455,16 @@ const AnimalCare = ({ onNavigate }) => {
           }}>
             <h2 style={{
               fontSize: 'clamp(2rem, 4vw, 2.5rem)',
-              fontWeight: '600',
+              fontWeight: '700',
               margin: '0 0 16px 0',
-              color: '#1f2937',
+              color: '#0F172A',
               fontFamily: 'Fredoka, cursive'
             }}>
               Services & Pricing
             </h2>
             <p style={{
               fontSize: '1.125rem',
-              color: '#6b7280'
+              color: '#475569'
             }}>
               Personal, flexible pet care directly with me - no corporate middleman
             </p>
@@ -475,40 +476,42 @@ const AnimalCare = ({ onNavigate }) => {
                 background: 'white',
                 borderRadius: '20px',
                 padding: '32px',
-                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-                border: '2px solid transparent'
+                boxShadow: '0 10px 30px rgba(74, 144, 226, 0.15)',
+                border: '2px solid #E0E7FF'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#fbbf24';
+                e.currentTarget.style.borderColor = '#2563EB';
+                e.currentTarget.style.boxShadow = '0 15px 40px rgba(74, 144, 226, 0.25)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'transparent';
+                e.currentTarget.style.borderColor = '#E0E7FF';
+                e.currentTarget.style.boxShadow = '0 10px 30px rgba(74, 144, 226, 0.15)';
               }}
               >
                 <div style={{
                   width: '60px',
                   height: '60px',
                   borderRadius: '16px',
-                  background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(220, 38, 38, 0.1) 100%)',
+                  background: 'linear-gradient(135deg, #E0E7FF 0%, #C7D2FE 100%)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   marginBottom: '24px'
                 }}>
-                  <service.icon size={28} color="#f59e0b" />
+                  <service.icon size={28} color="#2563EB" />
                 </div>
 
                 <h3 style={{
                   fontSize: '1.5rem',
-                  fontWeight: '600',
+                  fontWeight: '700',
                   margin: '0 0 12px 0',
-                  color: '#1f2937'
+                  color: '#0F172A'
                 }}>
                   {service.title}
                 </h3>
 
                 <p style={{
-                  color: '#6b7280',
+                  color: '#475569',
                   lineHeight: '1.6',
                   margin: '0 0 24px 0'
                 }}>
@@ -522,8 +525,8 @@ const AnimalCare = ({ onNavigate }) => {
                 }}>
                   {service.pricing.map((price, i) => (
                     <p key={i} style={{
-                      color: '#f59e0b',
-                      fontWeight: '600',
+                      color: '#2563EB',
+                      fontWeight: '700',
                       fontSize: '1.125rem',
                       margin: '8px 0'
                     }}>
@@ -543,9 +546,9 @@ const AnimalCare = ({ onNavigate }) => {
                       gap: '8px',
                       marginBottom: '8px'
                     }}>
-                      <CheckCircle size={16} color="#10b981" style={{ flexShrink: 0, marginTop: '2px' }} />
+                      <CheckCircle size={16} color="#059669" style={{ flexShrink: 0, marginTop: '2px' }} />
                       <span style={{
-                        color: '#4b5563',
+                        color: '#334155',
                         fontSize: '14px',
                         lineHeight: '1.4'
                       }}>
@@ -563,7 +566,7 @@ const AnimalCare = ({ onNavigate }) => {
       {/* About Me & Contact Section */}
       <section id="contact" style={{
         padding: '80px 0',
-        background: 'linear-gradient(135deg, #f59e0b 0%, #dc2626 100%)'
+        background: 'linear-gradient(135deg, #2563EB 0%, #4A90E2 100%)'
       }}>
         <div className="section-container">
           <div style={{
@@ -572,7 +575,7 @@ const AnimalCare = ({ onNavigate }) => {
           }}>
             <h2 style={{
               fontSize: 'clamp(2rem, 4vw, 2.5rem)',
-              fontWeight: '600',
+              fontWeight: '700',
               margin: '0 0 24px 0',
               color: 'white',
               fontFamily: 'Fredoka, cursive',
@@ -601,11 +604,11 @@ const AnimalCare = ({ onNavigate }) => {
           }}>
             {/* Profile Card */}
             <div style={{
-              background: 'linear-gradient(135deg, #ffffff 0%, #fef3c7 100%)',
+              background: 'linear-gradient(135deg, #ffffff 0%, #F0F9FF 100%)',
               borderRadius: '24px',
               padding: '40px',
-              boxShadow: '0 12px 40px rgba(0, 0, 0, 0.15)',
-              border: '2px solid rgba(255, 255, 255, 0.3)'
+              boxShadow: '0 20px 50px rgba(0, 0, 0, 0.15)',
+              border: '2px solid #E0E7FF'
             }}>
               <div style={{
                 display: 'flex',
@@ -635,12 +638,12 @@ const AnimalCare = ({ onNavigate }) => {
                     fontSize: '1.25rem',
                     fontWeight: '700',
                     margin: '0 0 4px 0',
-                    color: '#1f2937'
+                    color: '#0F172A'
                   }}>
                     Beau Lazear
                   </h3>
                   <p style={{
-                    color: '#6b7280',
+                    color: '#475569',
                     margin: 0,
                     fontSize: '14px'
                   }}>
@@ -656,20 +659,20 @@ const AnimalCare = ({ onNavigate }) => {
                 marginBottom: '24px'
               }}>
                 <div>
-                  <p style={{ color: '#6b7280', fontSize: '12px', marginBottom: '2px' }}>Experience</p>
-                  <p style={{ color: '#1f2937', fontWeight: '600', margin: 0, fontSize: '14px' }}>8+ Years</p>
+                  <p style={{ color: '#64748B', fontSize: '12px', marginBottom: '2px' }}>Experience</p>
+                  <p style={{ color: '#0F172A', fontWeight: '700', margin: 0, fontSize: '14px' }}>8+ Years</p>
                 </div>
                 <div>
-                  <p style={{ color: '#6b7280', fontSize: '12px', marginBottom: '2px' }}>Pets Cared</p>
-                  <p style={{ color: '#1f2937', fontWeight: '600', margin: 0, fontSize: '14px' }}>200+</p>
+                  <p style={{ color: '#64748B', fontSize: '12px', marginBottom: '2px' }}>Pets Cared</p>
+                  <p style={{ color: '#0F172A', fontWeight: '700', margin: 0, fontSize: '14px' }}>200+</p>
                 </div>
                 <div>
-                  <p style={{ color: '#6b7280', fontSize: '12px', marginBottom: '2px' }}>Service Area</p>
-                  <p style={{ color: '#1f2937', fontWeight: '600', margin: 0, fontSize: '14px' }}>Brooklyn</p>
+                  <p style={{ color: '#64748B', fontSize: '12px', marginBottom: '2px' }}>Service Area</p>
+                  <p style={{ color: '#0F172A', fontWeight: '700', margin: 0, fontSize: '14px' }}>Brooklyn</p>
                 </div>
                 <div>
-                  <p style={{ color: '#6b7280', fontSize: '12px', marginBottom: '2px' }}>Availability</p>
-                  <p style={{ color: '#1f2937', fontWeight: '600', margin: 0, fontSize: '14px' }}>7 Days</p>
+                  <p style={{ color: '#64748B', fontSize: '12px', marginBottom: '2px' }}>Availability</p>
+                  <p style={{ color: '#0F172A', fontWeight: '700', margin: 0, fontSize: '14px' }}>7 Days</p>
                 </div>
               </div>
 
@@ -683,7 +686,7 @@ const AnimalCare = ({ onNavigate }) => {
                   <button
                     onClick={() => onNavigate('home')}
                     style={{
-                      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                      background: 'linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%)',
                       color: 'white',
                       border: 'none',
                       padding: '10px 20px',
@@ -692,7 +695,7 @@ const AnimalCare = ({ onNavigate }) => {
                       fontWeight: '600',
                       fontSize: '14px',
                       transition: 'all 0.3s ease',
-                      boxShadow: '0 3px 10px rgba(102, 126, 234, 0.3)',
+                      boxShadow: '0 6px 20px rgba(139, 92, 246, 0.35)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -701,11 +704,11 @@ const AnimalCare = ({ onNavigate }) => {
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.transform = 'translateY(-2px)';
-                      e.currentTarget.style.boxShadow = '0 5px 15px rgba(102, 126, 234, 0.4)';
+                      e.currentTarget.style.boxShadow = '0 10px 25px rgba(139, 92, 246, 0.45)';
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = '0 3px 10px rgba(102, 126, 234, 0.3)';
+                      e.currentTarget.style.boxShadow = '0 6px 20px rgba(139, 92, 246, 0.35)';
                     }}
                   >
                     <ArrowRight size={16} style={{ transform: 'rotate(180deg)' }} />
@@ -759,13 +762,14 @@ const AnimalCare = ({ onNavigate }) => {
               background: 'white',
               borderRadius: '24px',
               padding: '40px',
-              boxShadow: '0 12px 40px rgba(0, 0, 0, 0.15)'
+              boxShadow: '0 20px 50px rgba(37, 99, 235, 0.2)',
+              border: '2px solid #E0E7FF'
             }}>
               <h3 style={{
                 fontSize: '1.25rem',
-                fontWeight: '600',
+                fontWeight: '700',
                 margin: '0 0 24px 0',
-                color: '#1f2937'
+                color: '#0F172A'
               }}>
                 Get in Touch
               </h3>
@@ -782,24 +786,24 @@ const AnimalCare = ({ onNavigate }) => {
                     alignItems: 'center',
                     gap: '16px',
                     padding: '14px',
-                    background: 'rgba(245, 158, 11, 0.05)',
+                    background: 'rgba(37, 99, 235, 0.05)',
                     borderRadius: '12px',
                     textDecoration: 'none',
                     transition: 'all 0.3s ease'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = 'rgba(245, 158, 11, 0.1)';
+                    e.currentTarget.style.background = 'rgba(37, 99, 235, 0.1)';
                     e.currentTarget.style.transform = 'translateX(4px)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'rgba(245, 158, 11, 0.05)';
+                    e.currentTarget.style.background = 'rgba(37, 99, 235, 0.05)';
                     e.currentTarget.style.transform = 'translateX(0)';
                   }}
                 >
-                  <Phone size={20} color="#f59e0b" />
+                  <Phone size={20} color="#2563EB" />
                   <div style={{ textAlign: 'left' }}>
-                    <p style={{ margin: '0 0 2px 0', color: '#6b7280', fontSize: '12px' }}>Call or Text</p>
-                    <p style={{ margin: 0, color: '#1f2937', fontWeight: '600', fontSize: '15px' }}>(718) 614-1878</p>
+                    <p style={{ margin: '0 0 2px 0', color: '#64748B', fontSize: '12px' }}>Call or Text</p>
+                    <p style={{ margin: 0, color: '#0F172A', fontWeight: '700', fontSize: '15px' }}>(718) 614-1878</p>
                   </div>
                 </a>
 
@@ -810,24 +814,24 @@ const AnimalCare = ({ onNavigate }) => {
                     alignItems: 'center',
                     gap: '16px',
                     padding: '14px',
-                    background: 'rgba(245, 158, 11, 0.05)',
+                    background: 'rgba(37, 99, 235, 0.05)',
                     borderRadius: '12px',
                     textDecoration: 'none',
                     transition: 'all 0.3s ease'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = 'rgba(245, 158, 11, 0.1)';
+                    e.currentTarget.style.background = 'rgba(37, 99, 235, 0.1)';
                     e.currentTarget.style.transform = 'translateX(4px)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'rgba(245, 158, 11, 0.05)';
+                    e.currentTarget.style.background = 'rgba(37, 99, 235, 0.05)';
                     e.currentTarget.style.transform = 'translateX(0)';
                   }}
                 >
-                  <Mail size={20} color="#f59e0b" />
+                  <Mail size={20} color="#2563EB" />
                   <div style={{ textAlign: 'left' }}>
-                    <p style={{ margin: '0 0 2px 0', color: '#6b7280', fontSize: '12px' }}>Email</p>
-                    <p style={{ margin: 0, color: '#1f2937', fontWeight: '600', fontSize: '15px' }}>beaulazear@gmail.com</p>
+                    <p style={{ margin: '0 0 2px 0', color: '#64748B', fontSize: '12px' }}>Email</p>
+                    <p style={{ margin: 0, color: '#0F172A', fontWeight: '700', fontSize: '15px' }}>beaulazear@gmail.com</p>
                   </div>
                 </a>
 
@@ -839,10 +843,10 @@ const AnimalCare = ({ onNavigate }) => {
                   background: 'rgba(245, 158, 11, 0.05)',
                   borderRadius: '12px'
                 }}>
-                  <MapPin size={20} color="#f59e0b" />
+                  <MapPin size={20} color="#2563EB" />
                   <div style={{ textAlign: 'left' }}>
-                    <p style={{ margin: '0 0 2px 0', color: '#6b7280', fontSize: '12px' }}>Service Area</p>
-                    <p style={{ margin: 0, color: '#1f2937', fontWeight: '600', fontSize: '15px' }}>Brooklyn & NYC</p>
+                    <p style={{ margin: '0 0 2px 0', color: '#64748B', fontSize: '12px' }}>Service Area</p>
+                    <p style={{ margin: 0, color: '#0F172A', fontWeight: '700', fontSize: '15px' }}>Brooklyn & NYC</p>
                   </div>
                 </div>
 
@@ -853,7 +857,7 @@ const AnimalCare = ({ onNavigate }) => {
                 }}>
                   <p style={{
                     fontSize: '13px',
-                    color: '#6b7280',
+                    color: '#475569',
                     lineHeight: '1.5',
                     margin: 0,
                     textAlign: 'center'
@@ -870,7 +874,7 @@ const AnimalCare = ({ onNavigate }) => {
       {/* Why Choose Independent Section */}
       <section style={{
         padding: '80px 0',
-        background: 'linear-gradient(135deg, rgba(254, 243, 199, 0.3) 0%, rgba(253, 230, 138, 0.3) 100%)'
+        background: 'linear-gradient(135deg, #F8FAFC 0%, #F0F9FF 100%)'
       }}>
         <div className="section-container">
           <div style={{
@@ -880,16 +884,16 @@ const AnimalCare = ({ onNavigate }) => {
           }}>
             <h2 style={{
               fontSize: 'clamp(2rem, 4vw, 2.5rem)',
-              fontWeight: '600',
+              fontWeight: '700',
               margin: '0 0 24px 0',
-              color: '#1f2937',
+              color: '#0F172A',
               fontFamily: 'Fredoka, cursive'
             }}>
               Why Choose an Independent Pet Care Provider?
             </h2>
 
             <p style={{
-              color: '#6b7280',
+              color: '#475569',
               fontSize: '1.125rem',
               lineHeight: '1.7',
               marginBottom: '48px'
@@ -920,8 +924,8 @@ const AnimalCare = ({ onNavigate }) => {
                   alignItems: 'center',
                   gap: '12px'
                 }}>
-                  <CheckCircle size={20} color="#10b981" />
-                  <span style={{ color: '#4b5563', fontWeight: '500' }}>{item}</span>
+                  <CheckCircle size={20} color="#059669" />
+                  <span style={{ color: '#1E293B', fontWeight: '600' }}>{item}</span>
                 </div>
               ))}
             </div>
@@ -932,7 +936,7 @@ const AnimalCare = ({ onNavigate }) => {
       {/* Testimonials Section */}
       <section id="testimonials" style={{
         padding: '80px 0',
-        background: 'linear-gradient(135deg, rgba(254, 243, 199, 0.3) 0%, rgba(253, 230, 138, 0.3) 100%)'
+        background: 'linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)'
       }}>
         <div className="section-container">
           <div style={{
@@ -941,16 +945,16 @@ const AnimalCare = ({ onNavigate }) => {
           }}>
             <h2 style={{
               fontSize: 'clamp(2rem, 4vw, 2.5rem)',
-              fontWeight: '600',
+              fontWeight: '700',
               margin: '0 0 16px 0',
-              color: '#1f2937',
+              color: '#0F172A',
               fontFamily: 'Fredoka, cursive'
             }}>
               Client Testimonials
             </h2>
             <p style={{
               fontSize: '1.125rem',
-              color: '#6b7280'
+              color: '#475569'
             }}>
               Don't just take my word for it - hear from happy pet parents!
             </p>
@@ -959,11 +963,11 @@ const AnimalCare = ({ onNavigate }) => {
           <div className="grid-responsive grid-3-cols">
             {testimonials.map((testimonial, index) => (
               <div key={index} style={{
-                background: 'linear-gradient(135deg, #fff 0%, #fef3c7 100%)',
+                background: 'linear-gradient(135deg, #ffffff 0%, #F0F9FF 100%)',
                 borderRadius: '20px',
                 padding: '32px',
-                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-                border: '2px solid #fde68a'
+                boxShadow: '0 10px 30px rgba(74, 144, 226, 0.12)',
+                border: '2px solid #C7D2FE'
               }}>
                 {testimonial.image && (
                   <div style={{
@@ -992,12 +996,12 @@ const AnimalCare = ({ onNavigate }) => {
                   marginBottom: '16px'
                 }}>
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} size={20} fill="#fbbf24" color="#fbbf24" />
+                    <Star key={i} size={20} fill="#FBBF24" color="#FBBF24" />
                   ))}
                 </div>
 
                 <p style={{
-                  color: '#4b5563',
+                  color: '#334155',
                   fontSize: '1rem',
                   lineHeight: '1.7',
                   marginBottom: '24px',
@@ -1010,21 +1014,21 @@ const AnimalCare = ({ onNavigate }) => {
                 <div style={{
                   textAlign: 'center',
                   paddingTop: '16px',
-                  borderTop: '1px solid #fde68a'
+                  borderTop: '1px solid #C7D2FE'
                 }}>
                   <p style={{
-                    fontWeight: '600',
-                    color: '#1f2937',
+                    fontWeight: '700',
+                    color: '#0F172A',
                     margin: '0 0 4px 0',
                     fontSize: '1.125rem'
                   }}>
                     {testimonial.name}
                   </p>
                   <p style={{
-                    color: '#f59e0b',
+                    color: '#2563EB',
                     fontSize: '14px',
                     margin: 0,
-                    fontWeight: '500'
+                    fontWeight: '600'
                   }}>
                     Parent of {testimonial.pet}
                   </p>
@@ -1039,7 +1043,7 @@ const AnimalCare = ({ onNavigate }) => {
       <footer style={{
         padding: '40px 20px',
         background: 'white',
-        borderTop: '2px solid #fde68a',
+        borderTop: '2px solid #C7D2FE',
         textAlign: 'center'
       }}>
         <div style={{
@@ -1049,10 +1053,10 @@ const AnimalCare = ({ onNavigate }) => {
           gap: '8px',
           marginBottom: '16px'
         }}>
-          <PawPrint size={24} color="#f59e0b" />
+          <PawPrint size={24} color="#2563EB" />
           <p style={{
             margin: 0,
-            color: '#6b7280',
+            color: '#475569',
             fontSize: '14px'
           }}>
             © 2024 Beau's Animal Care - Independent Pet Services
@@ -1060,7 +1064,7 @@ const AnimalCare = ({ onNavigate }) => {
         </div>
         <p style={{
           margin: 0,
-          color: '#9ca3af',
+          color: '#64748B',
           fontSize: '12px'
         }}>
           Fully insured for your peace of mind • Serving Brooklyn & NYC since 2019
