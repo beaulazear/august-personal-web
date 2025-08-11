@@ -16,10 +16,10 @@ const globalStyles = `
   
   .floating-input {
     width: 100%;
-    padding: 18px 24px;
+    padding: 16px 20px;
     font-size: 16px;
     border: 2px solid;
-    border-radius: 16px;
+    border-radius: 12px;
     background: white;
     transition: all 0.3s ease;
     font-family: 'Quicksand', sans-serif;
@@ -42,14 +42,14 @@ const globalStyles = `
   
   .floating-textarea {
     width: 100%;
-    padding: 18px 24px;
+    padding: 16px 20px;
     font-size: 16px;
     border: 2px solid;
-    border-radius: 16px;
+    border-radius: 12px;
     background: white;
     transition: all 0.3s ease;
     resize: vertical;
-    min-height: 150px;
+    min-height: 130px;
     font-family: 'Quicksand', sans-serif;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
@@ -66,11 +66,11 @@ const globalStyles = `
   .submit-button {
     background: #2d3748;
     border: 2px solid #1a202c;
-    border-radius: 16px;
+    border-radius: 12px;
     color: white;
     font-weight: 700;
-    padding: 18px 36px;
-    font-size: 17px;
+    padding: 16px 32px;
+    font-size: 16px;
     cursor: pointer;
     transition: all 0.3s ease;
     display: inline-flex;
@@ -80,7 +80,8 @@ const globalStyles = `
     width: 100%;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
+    box-sizing: border-box;
   }
   
   .submit-button:hover:not(:disabled) {
@@ -101,7 +102,8 @@ const globalStyles = `
   @media (max-width: 640px) {
     .floating-input, .floating-textarea {
       font-size: 16px; /* Prevents zoom on iOS */
-      padding: 14px 16px;
+      padding: 12px 14px;
+      width: 100% !important;
     }
     
     .floating-textarea {
@@ -109,8 +111,9 @@ const globalStyles = `
     }
     
     .submit-button {
-      padding: 16px 24px;
+      padding: 14px 20px;
       font-size: 15px;
+      width: 100% !important;
     }
   }
 `;
@@ -222,12 +225,13 @@ export default function Contact() {
   return (
     <div style={{ 
       minHeight: '100vh',
-      width: '100vw',
+      width: '100%',
       background: 'linear-gradient(135deg, #5a67d8 0%, #9f7aea 50%, #ed64a6 100%)',
       fontFamily: 'Quicksand, sans-serif',
-      paddingTop: windowWidth <= 640 ? '60px' : '80px',
+      paddingTop: windowWidth <= 640 ? '100px' : '120px',
       position: 'relative',
-      overflow: 'auto'
+      overflowX: 'hidden',
+      overflowY: 'auto'
     }}>
       <style>{globalStyles}</style>
 
@@ -259,11 +263,12 @@ export default function Contact() {
       
       <div style={{
         width: '100%',
-        maxWidth: '600px',
+        maxWidth: windowWidth <= 640 ? '100%' : '600px',
         margin: '0 auto',
-        padding: windowWidth <= 640 ? '20px 16px 80px' : '60px 20px 100px',
+        padding: windowWidth <= 640 ? '20px 12px 80px' : '60px 20px 100px',
         position: 'relative',
-        zIndex: 1
+        zIndex: 1,
+        boxSizing: 'border-box'
       }}>
         
         {/* Title Section */}
@@ -272,21 +277,22 @@ export default function Contact() {
           marginBottom: windowWidth <= 640 ? '30px' : '60px'
         }}>
           <h1 style={{
-            fontSize: windowWidth <= 640 ? '2rem' : 'clamp(2.5rem, 6vw, 4rem)',
+            fontSize: windowWidth <= 640 ? '1.75rem' : 'clamp(2.5rem, 6vw, 4rem)',
             fontWeight: '700',
             color: 'white',
-            margin: '0 0 12px 0',
+            margin: '0 0 8px 0',
             lineHeight: '1.2',
             textShadow: '0 4px 20px rgba(0, 0, 0, 0.2)'
           }}>
             Let's Create Together
           </h1>
           <p style={{
-            fontSize: windowWidth <= 640 ? '1rem' : 'clamp(1.1rem, 3vw, 1.3rem)',
+            fontSize: windowWidth <= 640 ? '0.95rem' : 'clamp(1.1rem, 3vw, 1.3rem)',
             color: 'rgba(255, 255, 255, 0.9)',
             margin: 0,
-            lineHeight: '1.5',
-            fontWeight: '500'
+            lineHeight: '1.4',
+            fontWeight: '500',
+            padding: '0 10px'
           }}>
             I'm excited to hear about your ideas
           </p>
@@ -296,12 +302,14 @@ export default function Contact() {
         <form onSubmit={handleSubmit} style={{ 
           display: 'flex', 
           flexDirection: 'column', 
-          gap: windowWidth <= 640 ? '20px' : '24px',
+          gap: windowWidth <= 640 ? '18px' : '24px',
           background: 'rgba(255, 255, 255, 0.98)',
-          padding: windowWidth <= 640 ? '24px 20px' : '48px',
-          borderRadius: windowWidth <= 640 ? '20px' : '24px',
+          padding: windowWidth <= 640 ? '20px 16px' : '48px',
+          borderRadius: windowWidth <= 640 ? '16px' : '24px',
           boxShadow: '0 20px 60px rgba(0, 0, 0, 0.15)',
-          backdropFilter: 'blur(10px)'
+          backdropFilter: 'blur(10px)',
+          width: '100%',
+          boxSizing: 'border-box'
         }}>
           
           {/* Name Field */}
@@ -310,10 +318,10 @@ export default function Contact() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              fontSize: '15px',
+              fontSize: windowWidth <= 640 ? '14px' : '15px',
               fontWeight: '700',
               color: '#1a202c',
-              marginBottom: '8px'
+              marginBottom: '6px'
             }}>
               <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <User size={16} />
@@ -350,10 +358,10 @@ export default function Contact() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              fontSize: '15px',
+              fontSize: windowWidth <= 640 ? '14px' : '15px',
               fontWeight: '700',
               color: '#1a202c',
-              marginBottom: '8px'
+              marginBottom: '6px'
             }}>
               <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <Mail size={16} />
@@ -394,10 +402,10 @@ export default function Contact() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              fontSize: '15px',
+              fontSize: windowWidth <= 640 ? '14px' : '15px',
               fontWeight: '700',
               color: '#1a202c',
-              marginBottom: '8px'
+              marginBottom: '6px'
             }}>
               <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <MessageSquare size={16} />
@@ -497,12 +505,14 @@ export default function Contact() {
         {/* Alternative Contact */}
         <div style={{
           textAlign: 'center',
-          marginTop: windowWidth <= 640 ? '30px' : '60px',
-          padding: windowWidth <= 640 ? '24px 20px' : '40px',
+          marginTop: windowWidth <= 640 ? '24px' : '60px',
+          padding: windowWidth <= 640 ? '20px 16px' : '40px',
           background: 'rgba(0, 0, 0, 0.3)',
-          borderRadius: '20px',
+          borderRadius: '16px',
           border: '2px solid rgba(255, 255, 255, 0.3)',
-          backdropFilter: 'blur(10px)'
+          backdropFilter: 'blur(10px)',
+          width: '100%',
+          boxSizing: 'border-box'
         }}>
           <p style={{
             color: 'rgba(255, 255, 255, 0.9)',
