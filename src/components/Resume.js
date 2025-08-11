@@ -105,16 +105,8 @@ const globalStyles = `
   
   .resume-company-card {
     transition: all 0.3s ease;
-    border-left: 3px solid transparent;
     padding-left: 24px;
     position: relative;
-  }
-  
-  .resume-company-card:hover {
-    border-left-color: #667eea;
-    background: linear-gradient(90deg, rgba(102, 126, 234, 0.05) 0%, transparent 100%);
-    margin-left: -24px;
-    padding-left: 48px;
   }
   
   @media (max-width: 768px) {
@@ -136,11 +128,6 @@ const globalStyles = `
     
     .resume-glass-card {
       border-radius: 16px;
-    }
-    
-    .resume-company-card:hover {
-      margin-left: 0;
-      padding-left: 24px;
     }
   }
 `;

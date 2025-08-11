@@ -7,13 +7,38 @@ import Contact from './components/Contact.js';
 import AnimalCare from './components/AnimalCare.js';
 
 const globalStyles = `
-  @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
   
   * { box-sizing: border-box; }
   
   @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(40px); }
+    from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  
+  @keyframes morphing {
+    0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  }
+  
+  @keyframes slideInFromLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  @keyframes slideInFromRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
   }
   
   @keyframes slideInRight {
@@ -27,15 +52,20 @@ const globalStyles = `
   }
   
   .animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out;
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    animation-fill-mode: both;
   }
   
   .animate-slide-in-right {
     animation: slideInRight 0.8s ease-out;
   }
   
+  .hover-lift {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
   .hover-lift:hover {
-    transform: translateY(-8px);
+    transform: translateY(-8px) scale(1.02);
     box-shadow: 0 25px 50px rgba(99, 102, 241, 0.25), 0 10px 20px rgba(0, 0, 0, 0.1);
   }
   
@@ -56,6 +86,16 @@ const globalStyles = `
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 24px;
     box-shadow: 0 10px 40px rgba(99, 102, 241, 0.15), 0 2px 10px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 100%);
+    pointer-events: none;
   }
   
   .primary-button {
@@ -67,11 +107,26 @@ const globalStyles = `
     padding: 16px 32px;
     font-size: 16px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: inline-flex;
     align-items: center;
     gap: 8px;
     text-decoration: none;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .primary-button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .primary-button:hover::after {
+    opacity: 1;
   }
   
   .primary-button:hover {
@@ -88,11 +143,13 @@ const globalStyles = `
     padding: 14px 30px;
     font-size: 16px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: inline-flex;
     align-items: center;
     gap: 8px;
     text-decoration: none;
+    position: relative;
+    overflow: hidden;
   }
   
   .secondary-button:hover {
@@ -257,7 +314,7 @@ const ModernPortfolio = () => {
     {
       title: "Voxxy AI",
       subtitle: "Co-Founder & Developer",
-      description: "Working with my co-founder to build an AI platform that helps groups make decisions together. We believe thoughtful planning creates better shared experiences and stronger communities.",
+      description: "Building an AI-powered platform that revolutionizes group decision-making. We're combining thoughtful UX with machine learning to help teams collaborate more effectively.",
       technologies: ["React", "Rails", "OpenAI", "React Native", "AWS", "Git", "Google Cloud", "Mixpanel"],
       links: [
         { label: "Live Site", url: "https://www.voxxyai.com/#/" }
@@ -324,103 +381,227 @@ const ModernPortfolio = () => {
       <style>{globalStyles}</style>
 
       {/* Hero Section */}
-      <section className="section-padding" style={{ 
-        padding: '80px 20px 60px',
-        textAlign: 'center',
+      <section style={{ 
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
         position: 'relative',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        background: 'linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 25%, #ddd6fe 50%, #f3e8ff 75%, #fce7f3 100%)'
       }}>
+        {/* Animated Background Elements */}
+        <div style={{
+          position: 'absolute',
+          top: '10%',
+          left: '5%',
+          width: '400px',
+          height: '400px',
+          background: 'linear-gradient(135deg, #667eea 0%, #9f7aea 100%)',
+          borderRadius: '50%',
+          filter: 'blur(100px)',
+          opacity: 0.3,
+          animation: 'morphing 8s ease-in-out infinite'
+        }} />
+        <div style={{
+          position: 'absolute',
+          bottom: '10%',
+          right: '5%',
+          width: '350px',
+          height: '350px',
+          background: 'linear-gradient(135deg, #ed64a6 0%, #ec4899 100%)',
+          borderRadius: '50%',
+          filter: 'blur(90px)',
+          opacity: 0.25,
+          animation: 'morphing 8s ease-in-out infinite reverse'
+        }} />
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '600px',
+          height: '600px',
+          background: 'radial-gradient(circle, rgba(159, 122, 234, 0.1) 0%, transparent 70%)',
+          animation: 'float 6s ease-in-out infinite'
+        }} />
+        
         <div style={{ 
-          maxWidth: '1200px',
+          maxWidth: '1400px',
           margin: '0 auto',
+          padding: '40px 20px',
           position: 'relative',
-          zIndex: 2
+          zIndex: 2,
+          width: '100%',
+          display: 'grid',
+          gridTemplateColumns: window.innerWidth > 968 ? '1fr 1fr' : '1fr',
+          gap: '60px',
+          alignItems: 'center'
         }}>
-          <div className="animate-fade-in-up">
+          {/* Left Content */}
+          <div style={{
+            textAlign: window.innerWidth > 968 ? 'left' : 'center',
+            animation: 'slideInFromLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
+          }}>
+            <h1 style={{
+              fontSize: window.innerWidth > 768 ? '4.5rem' : '3rem',
+              fontWeight: '900',
+              margin: '0 0 24px 0',
+              lineHeight: '1.1',
+              fontFamily: 'Inter, sans-serif'
+            }}>
+              <span style={{
+                background: 'linear-gradient(135deg, #5a67d8 0%, #9f7aea 25%, #ed64a6 50%, #ec4899 75%, #f97316 100%)',
+                backgroundSize: '200% 200%',
+                animation: 'shimmer 3s linear infinite',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}>Hi, I'm Beau</span>
+              <br />
+              <span style={{
+                color: '#1f2937',
+                fontSize: window.innerWidth > 768 ? '3.5rem' : '2.5rem'
+              }}>I Build Things</span>
+            </h1>
+            
             <div style={{
-              width: '180px',
-              height: '180px',
-              borderRadius: '20px',
-              overflow: 'hidden',
-              margin: '0 auto 32px',
-              position: 'relative',
-              background: 'linear-gradient(135deg, #5a67d8 0%, #9f7aea 50%, #ed64a6 100%)',
-              padding: '3px',
-              boxShadow: '0 25px 50px rgba(159, 122, 234, 0.3), 0 10px 20px rgba(237, 100, 166, 0.15)'
-            }} className="hero-image">
-              <div style={{
-                width: '100%',
-                height: '100%',
-                borderRadius: '17px',
-                overflow: 'hidden',
-                background: 'white'
-              }}>
-                <img
-                  src={BeauPic}
-                  alt="Beau Lazear"
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    transition: 'transform 0.3s ease',
-                    filter: 'brightness(1.02) contrast(1.05)'
-                  }}
-                  onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
-                  onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
-                />
+              fontSize: '1.5rem',
+              color: '#6b7280',
+              marginBottom: '32px',
+              fontWeight: '500',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '16px',
+              justifyContent: window.innerWidth > 968 ? 'flex-start' : 'center'
+            }}>
+              <span>Animal Lover</span>
+              <span style={{ color: '#d1d5db' }}>•</span>
+              <span>Software Developer</span>
+              <span style={{ color: '#d1d5db' }}>•</span>
+              <span>Problem Solver</span>
+            </div>
+            
+            <p style={{
+              fontSize: '1.125rem',
+              color: '#4b5563',
+              maxWidth: '600px',
+              margin: window.innerWidth > 968 ? '0 0 40px 0' : '0 auto 40px',
+              lineHeight: '1.8',
+              fontWeight: '400'
+            }}>
+              From zookeeper to software engineer, I bring a unique perspective to tech. 
+              Currently building <span style={{ 
+                fontWeight: '700', 
+                color: '#667eea',
+                borderBottom: '2px solid #667eea',
+                paddingBottom: '1px'
+              }}>Voxxy AI</span>, successfully running <span style={{ 
+                fontWeight: '700', 
+                color: '#667eea',
+                borderBottom: '2px solid #667eea',
+                paddingBottom: '1px',
+                cursor: 'pointer'
+              }} onClick={() => navigate('/animal-care')}>Beau's Animal Care</span>, and building <span style={{ 
+                fontWeight: '700', 
+                color: '#667eea',
+                borderBottom: '2px solid #667eea',
+                paddingBottom: '1px',
+                cursor: 'pointer'
+              }} onClick={() => window.open('https://www.pocket-walks.com', '_blank')}>Pocket Walks</span> as a tool for my business.
+            </p>
+            
+            {/* Stats Row */}
+            <div style={{
+              display: 'flex',
+              gap: '40px',
+              marginBottom: '40px',
+              justifyContent: window.innerWidth > 968 ? 'flex-start' : 'center',
+              flexWrap: 'wrap'
+            }}>
+              <div>
+                <div style={{
+                  fontSize: '2rem',
+                  fontWeight: '800',
+                  color: '#667eea',
+                  marginBottom: '4px'
+                }}>50+</div>
+                <div style={{
+                  fontSize: '14px',
+                  color: '#6b7280',
+                  fontWeight: '500',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.5px'
+                }}>Happy Clients</div>
+              </div>
+              <div>
+                <div style={{
+                  fontSize: '2rem',
+                  fontWeight: '800',
+                  color: '#9f7aea',
+                  marginBottom: '4px'
+                }}>5+</div>
+                <div style={{
+                  fontSize: '14px',
+                  color: '#6b7280',
+                  fontWeight: '500',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.5px'
+                }}>Years Experience</div>
+              </div>
+              <div>
+                <div style={{
+                  fontSize: '2rem',
+                  fontWeight: '800',
+                  color: '#ed64a6',
+                  marginBottom: '4px'
+                }}>∞</div>
+                <div style={{
+                  fontSize: '14px',
+                  color: '#6b7280',
+                  fontWeight: '500',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.5px'
+                }}>Curiosity</div>
               </div>
             </div>
             
-            <h1 style={{
-              fontSize: '3.5rem',
-              fontWeight: '800',
-              margin: '0 0 16px 0',
-              color: '#2d3748'
-            }} className="hero-title">
-              <span className="gradient-text">Beau Lazear</span>
-            </h1>
-            
-            <p style={{
-              fontSize: '1.5rem',
-              color: '#4a5568',
-              margin: '0 0 24px 0',
-              fontWeight: '500'
-            }} className="hero-subtitle">
-              Developer & Business Owner
-            </p>
-            
-            <p className="hero-description" style={{
-              fontSize: '1.125rem',
-              color: '#6b7280',
-              maxWidth: '700px',
-              margin: '0 auto 32px',
-              lineHeight: '1.7'
-            }}>
-              I work hard, learn quickly, and care about doing things right. Whether it's animals, code, or clients - I give everything my full attention. 
-              Alongside my tech work, I've built a thriving pet care business serving 50+ families in Brooklyn, 
-              combining my love for animals with the community connections that make this work so rewarding.
-            </p>
-            
+            {/* CTA Buttons */}
             <div style={{
               display: 'flex',
               gap: '16px',
-              justifyContent: 'center',
-              flexWrap: 'wrap'
-            }} className="hero-buttons">
+              flexWrap: 'wrap',
+              justifyContent: window.innerWidth > 968 ? 'flex-start' : 'center'
+            }}>
               <button 
                 onClick={() => navigate('/contact')}
-                className="primary-button hover-pulse"
+                style={{
+                  background: 'linear-gradient(135deg, #5a67d8 0%, #9f7aea 50%, #ed64a6 100%)',
+                  border: 'none',
+                  borderRadius: '12px',
+                  color: 'white',
+                  fontWeight: '700',
+                  padding: '18px 36px',
+                  fontSize: '16px',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  boxShadow: '0 10px 30px rgba(99, 102, 241, 0.3)',
+                  position: 'relative',
+                  overflow: 'hidden'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px) scale(1.02)';
+                  e.currentTarget.style.boxShadow = '0 15px 40px rgba(99, 102, 241, 0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 10px 30px rgba(99, 102, 241, 0.3)';
+                }}
               >
                 <Mail size={20} />
-                Hire Me
-              </button>
-              
-              <button 
-                onClick={() => navigate('/resume')}
-                className="secondary-button hover-pulse"
-              >
-                <FileText size={20} />
-                View Resume
+                Let's Work Together
               </button>
               
               <button 
@@ -430,12 +611,285 @@ const ModernPortfolio = () => {
                     projectsSection.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                className="secondary-button hover-pulse"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.9)',
+                  backdropFilter: 'blur(10px)',
+                  border: 'none',
+                  borderRadius: '12px',
+                  color: '#667eea',
+                  fontWeight: '700',
+                  padding: '18px 36px',
+                  fontSize: '16px',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  boxShadow: '0 4px 15px rgba(0, 0, 0, 0.08)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.12)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.08)';
+                }}
               >
                 <FolderOpen size={20} />
-                Projects
+                View My Work
               </button>
             </div>
+            
+            {/* Social Links */}
+            <div style={{
+              display: 'flex',
+              gap: '16px',
+              marginTop: '40px',
+              justifyContent: window.innerWidth > 968 ? 'flex-start' : 'center'
+            }}>
+              {[
+                { icon: Linkedin, href: "https://www.linkedin.com/in/beau-lazear" },
+                { icon: Github, href: "https://github.com/beaulazear" },
+                { icon: FileText, action: () => navigate('/resume') }
+              ].map((item, i) => (
+                <button
+                  key={i}
+                  onClick={item.action || (() => window.open(item.href, '_blank'))}
+                  style={{
+                    width: '44px',
+                    height: '44px',
+                    borderRadius: '12px',
+                    border: 'none',
+                    background: 'rgba(255, 255, 255, 0.8)',
+                    backdropFilter: 'blur(10px)',
+                    color: '#6b7280',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'linear-gradient(135deg, #5a67d8, #9f7aea)';
+                    e.currentTarget.style.color = 'white';
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(102, 126, 234, 0.3)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.8)';
+                    e.currentTarget.style.color = '#6b7280';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.05)';
+                  }}
+                >
+                  <item.icon size={18} />
+                </button>
+              ))}
+            </div>
+          </div>
+          
+          {/* Right Content - Image */}
+          {window.innerWidth > 968 && (
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              animation: 'slideInFromRight 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+              position: 'relative'
+            }}>
+              {/* Decorative Elements */}
+              <div style={{
+                position: 'absolute',
+                width: '500px',
+                height: '500px',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(159, 122, 234, 0.05) 100%)',
+                animation: 'float 6s ease-in-out infinite'
+              }} />
+              
+              <div style={{
+                width: '380px',
+                height: '380px',
+                position: 'relative',
+                animation: 'float 8s ease-in-out infinite reverse'
+              }}>
+                <div style={{
+                  width: '100%',
+                  height: '100%',
+                  borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',
+                  overflow: 'hidden',
+                  position: 'relative',
+                  background: 'linear-gradient(135deg, #5a67d8 0%, #9f7aea 50%, #ed64a6 100%)',
+                  padding: '4px',
+                  boxShadow: '0 30px 60px rgba(159, 122, 234, 0.3), 0 15px 30px rgba(237, 100, 166, 0.2)',
+                  animation: 'morphing 8s ease-in-out infinite'
+                }}>
+                  <div style={{
+                    width: '100%',
+                    height: '100%',
+                    borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',
+                    overflow: 'hidden',
+                    background: 'white'
+                  }}>
+                    <img
+                      src={BeauPic}
+                      alt="Beau Lazear"
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        filter: 'brightness(1.05) contrast(1.08)',
+                        transform: 'scale(1.1)'
+                      }}
+                    />
+                  </div>
+                </div>
+                
+                {/* Floating Icons */}
+                <div style={{
+                  position: 'absolute',
+                  top: '-20px',
+                  right: '-20px',
+                  width: '60px',
+                  height: '60px',
+                  borderRadius: '16px',
+                  background: 'white',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  animation: 'float 4s ease-in-out infinite'
+                }}>
+                  <Code size={28} color="#667eea" />
+                </div>
+                
+                <div style={{
+                  position: 'absolute',
+                  bottom: '20px',
+                  left: '-30px',
+                  width: '60px',
+                  height: '60px',
+                  borderRadius: '16px',
+                  background: 'white',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  animation: 'float 5s ease-in-out infinite reverse'
+                }}>
+                  <PawPrint size={28} color="#ed64a6" />
+                </div>
+                
+                <div style={{
+                  position: 'absolute',
+                  top: '50%',
+                  right: '-40px',
+                  width: '50px',
+                  height: '50px',
+                  borderRadius: '12px',
+                  background: 'linear-gradient(135deg, #10b981, #059669)',
+                  boxShadow: '0 8px 25px rgba(16, 185, 129, 0.3)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  animation: 'float 6s ease-in-out infinite',
+                  color: 'white',
+                  fontWeight: '700',
+                  fontSize: '20px'
+                }}>
+                  ✓
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Mobile Image */}
+          {window.innerWidth <= 968 && (
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              marginTop: '40px'
+            }}>
+              <div style={{
+                width: '200px',
+                height: '200px',
+                borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',
+                overflow: 'hidden',
+                position: 'relative',
+                background: 'linear-gradient(135deg, #5a67d8 0%, #9f7aea 50%, #ed64a6 100%)',
+                padding: '3px',
+                boxShadow: '0 25px 50px rgba(159, 122, 234, 0.3)',
+                animation: 'morphing 8s ease-in-out infinite'
+              }}>
+                <div style={{
+                  width: '100%',
+                  height: '100%',
+                  borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',
+                  overflow: 'hidden',
+                  background: 'white'
+                }}>
+                  <img
+                    src={BeauPic}
+                    alt="Beau Lazear"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      filter: 'brightness(1.05) contrast(1.08)'
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+        
+        {/* Scroll Indicator */}
+        <div style={{
+          position: 'absolute',
+          bottom: '30px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '8px',
+          cursor: 'pointer',
+          animation: 'float 2s ease-in-out infinite'
+        }}
+        onClick={() => {
+          const nextSection = document.querySelector('.section-padding');
+          if (nextSection) {
+            nextSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }}>
+          <span style={{
+            fontSize: '12px',
+            color: '#6b7280',
+            fontWeight: '600',
+            letterSpacing: '1px',
+            textTransform: 'uppercase'
+          }}>Scroll</span>
+          <div style={{
+            width: '24px',
+            height: '40px',
+            border: '2px solid #9ca3af',
+            borderRadius: '12px',
+            position: 'relative'
+          }}>
+            <div style={{
+              width: '4px',
+              height: '8px',
+              background: '#9ca3af',
+              borderRadius: '2px',
+              position: 'absolute',
+              top: '8px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              animation: 'float 1.5s ease-in-out infinite'
+            }} />
           </div>
         </div>
       </section>
@@ -543,7 +997,8 @@ const ModernPortfolio = () => {
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '32px'
+            gap: '32px',
+            alignItems: 'stretch'
           }} className="card-grid project-grid">
             {projects.map((project, index) => (
               <ProjectCard key={index} project={project} />
@@ -705,9 +1160,11 @@ const ProjectCard = ({ project }) => {
   return (
     <div className="glass-card hover-lift" style={{
       padding: 'clamp(20px, 3vw, 32px)',
-      transition: 'all 0.3s ease',
       position: 'relative',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100%'
     }}>
       {project.highlight && (
         <div style={{
@@ -746,7 +1203,8 @@ const ProjectCard = ({ project }) => {
       <p style={{
         color: '#6b7280',
         lineHeight: '1.6',
-        margin: '0 0 24px 0'
+        margin: '0 0 24px 0',
+        flex: '1'
       }}>
         {project.description}
       </p>
@@ -1032,9 +1490,10 @@ const TimelineContent = ({ item }) => (
 );
 
 const SkillCard = ({ skillGroup }) => (
-  <div className="glass-card" style={{
+  <div className="glass-card hover-lift" style={{
     padding: 'clamp(16px, 3vw, 24px)',
-    textAlign: 'center'
+    textAlign: 'center',
+    cursor: 'default'
   }}>
     <h3 style={{
       fontSize: 'clamp(1rem, 3vw, 1.25rem)',

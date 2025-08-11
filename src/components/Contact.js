@@ -21,9 +21,9 @@ const globalStyles = `
     border: 2px solid;
     border-radius: 12px;
     background: white;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-family: 'Quicksand', sans-serif;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     box-sizing: border-box;
     font-weight: 600;
     color: #1a202c;
@@ -31,8 +31,9 @@ const globalStyles = `
   
   .floating-input:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2), 0 2px 8px rgba(0, 0, 0, 0.15);
-    border-color: #059669;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2), 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: #667eea;
+    transform: translateY(-1px);
   }
   
   .floating-input:disabled {
@@ -59,36 +60,50 @@ const globalStyles = `
   
   .floating-textarea:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2), 0 2px 8px rgba(0, 0, 0, 0.15);
-    border-color: #059669;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2), 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: #667eea;
+    transform: translateY(-1px);
   }
   
   .submit-button {
-    background: #2d3748;
-    border: 2px solid #1a202c;
+    background: linear-gradient(135deg, #5a67d8 0%, #9f7aea 50%, #ed64a6 100%);
+    border: none;
     border-radius: 12px;
     color: white;
     font-weight: 700;
     padding: 16px 32px;
     font-size: 16px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
     width: 100%;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
     text-transform: uppercase;
     letter-spacing: 0.5px;
     box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .submit-button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .submit-button:hover::after {
+    opacity: 1;
   }
   
   .submit-button:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-    background: #1a202c;
-    border-color: #000;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
   }
   
   .submit-button:disabled {
