@@ -5,7 +5,7 @@ import { Heart, MapPin, Phone, Mail, Clock, Shield, Star, CheckCircle, Users, Aw
 import BeauAndRalph from '../images/BeauAndRalph.JPG';
 import JavaLookinCute from '../images/JavaLookinCute.jpeg';
 import MooseOnVerandah from '../images/MooseOnVerandah.jpeg';
-import GraphicTwo from '../images/GraphicTwo.png';
+import WebsiteBanner from '../images/Website-Banner.jpg';
 import BeauPic from '../images/BeauPic.jpg';
 
 const AnimalCare = ({ onNavigate }) => {
@@ -124,6 +124,7 @@ const AnimalCare = ({ onNavigate }) => {
     .animal-care-container {
       width: 100%;
       overflow-x: hidden;
+      margin-top: 25px;
     }
     
     .section-container {
@@ -150,10 +151,9 @@ const AnimalCare = ({ onNavigate }) => {
       .hero-content { text-align: center; }
       .hero-grid { grid-template-columns: 1fr !important; }
       
-      /* Mobile hero section adjustments */
-      .hero-image {
-        width: 280px !important;
-        height: 280px !important;
+      /* Mobile logo banner adjustments */
+      .logo-banner {
+        padding: 0 !important;
       }
       
       .hero-title {
@@ -188,9 +188,8 @@ const AnimalCare = ({ onNavigate }) => {
     }
     
     @media (max-width: 480px) {
-      .hero-image {
-        width: 220px !important;
-        height: 220px !important;
+      .logo-banner {
+        padding: 0 !important;
       }
       
       .hero-title {
@@ -228,9 +227,36 @@ const AnimalCare = ({ onNavigate }) => {
       }}>
         
 
-      {/* Hero Section - Matching Home Page Style */}
+      {/* Full-Width Logo Banner Section */}
+      <section className="logo-banner" style={{
+        width: '100%',
+        background: 'white',
+        padding: '20px 0 0 0',
+        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <div style={{
+          width: '100%',
+          height: 'auto',
+          position: 'relative'
+        }}>
+          <img
+            src={WebsiteBanner}
+            alt="Beau's Animal Care - Professional Pet Care"
+            style={{
+              width: '100%',
+              height: 'auto',
+              objectFit: 'cover',
+              display: 'block'
+            }}
+          />
+        </div>
+      </section>
+
+      {/* Hero Section - Title and Content */}
       <section style={{
-        padding: '80px 20px 60px',
+        padding: '60px 20px 60px',
         textAlign: 'center',
         background: 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.9) 100%)',
         position: 'relative',
@@ -244,7 +270,7 @@ const AnimalCare = ({ onNavigate }) => {
         }}>
           {/* Stylish Title */}
           <div style={{
-            marginBottom: '50px',
+            marginBottom: '40px',
             position: 'relative',
             display: 'inline-block'
           }}>
@@ -256,11 +282,11 @@ const AnimalCare = ({ onNavigate }) => {
               transform: 'translateX(-50%)',
               display: 'flex',
               gap: '20px',
-              opacity: 0.6
+              opacity: 0.8
             }}>
-              <PawPrint size={24} color="#4A90E2" style={{ transform: 'rotate(-15deg)' }} />
-              <PawPrint size={20} color="#2563EB" style={{ transform: 'rotate(10deg) translateY(-5px)' }} />
-              <PawPrint size={24} color="#4A90E2" style={{ transform: 'rotate(-10deg)' }} />
+              <PawPrint size={28} color="#4A90E2" style={{ transform: 'rotate(-15deg)' }} />
+              <PawPrint size={24} color="#2563EB" style={{ transform: 'rotate(10deg) translateY(-5px)' }} />
+              <PawPrint size={28} color="#4A90E2" style={{ transform: 'rotate(-10deg)' }} />
             </div>
             
             <h1 style={{
@@ -304,31 +330,6 @@ const AnimalCare = ({ onNavigate }) => {
               margin: '12px auto 0',
               borderRadius: '2px'
             }}></div>
-          </div>
-          {/* Main Graphic Image at Top */}
-          <div className="hero-image" style={{
-            width: '350px',
-            height: '350px',
-            maxWidth: '90vw',
-            borderRadius: '50%',
-            overflow: 'hidden',
-            margin: '0 auto 40px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: 'white',
-            boxShadow: '0 20px 50px rgba(74, 144, 226, 0.25)',
-            border: '2px solid #E0E7FF'
-          }}>
-            <img
-              src={GraphicTwo}
-              alt="Beau's Animal Care - Professional Pet Care"
-              style={{
-                width: '85%',
-                height: '85%',
-                objectFit: 'contain'
-              }}
-            />
           </div>
 
           <p className="hero-subtitle" style={{
