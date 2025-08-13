@@ -523,8 +523,9 @@ const ModernPortfolio = () => {
                 fontWeight: '700', 
                 color: '#667eea',
                 borderBottom: '2px solid #667eea',
-                paddingBottom: '1px'
-              }}>Voxxy AI</span>, successfully running <span style={{ 
+                paddingBottom: '1px',
+                cursor: 'pointer'
+              }} onClick={() => window.open('https://www.voxxyai.com/#/', '_blank')}>Voxxy AI</span>, successfully running <span style={{ 
                 fontWeight: '700', 
                 color: '#667eea',
                 borderBottom: '2px solid #667eea',
