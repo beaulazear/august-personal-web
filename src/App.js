@@ -426,22 +426,56 @@ const ModernPortfolio = () => {
         }} />
         
         <div style={{ 
-          maxWidth: '1400px',
+          maxWidth: '900px',
           margin: '0 auto',
           padding: '40px 20px',
           position: 'relative',
           zIndex: 2,
-          width: '100%',
-          display: 'grid',
-          gridTemplateColumns: window.innerWidth > 968 ? '1fr 1fr' : '1fr',
-          gap: '60px',
-          alignItems: 'center'
+          width: '100%'
         }}>
-          {/* Left Content */}
+          {/* Main Content */}
           <div style={{
-            textAlign: window.innerWidth > 968 ? 'left' : 'center',
-            animation: 'slideInFromLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
+            textAlign: 'center',
+            animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
           }}>
+            {/* Profile Image - Now above title */}
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              marginBottom: '32px'
+            }}>
+              <div style={{
+                width: '150px',
+                height: '150px',
+                borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',
+                overflow: 'hidden',
+                position: 'relative',
+                background: 'linear-gradient(135deg, #5a67d8 0%, #9f7aea 50%, #ed64a6 100%)',
+                padding: '3px',
+                boxShadow: '0 20px 40px rgba(159, 122, 234, 0.3)',
+                animation: 'morphing 8s ease-in-out infinite'
+              }}>
+                <div style={{
+                  width: '100%',
+                  height: '100%',
+                  borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',
+                  overflow: 'hidden',
+                  background: 'white'
+                }}>
+                  <img
+                    src={BeauPic}
+                    alt="Beau Lazear"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      filter: 'brightness(1.05) contrast(1.08)'
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+            
             <h1 style={{
               fontSize: window.innerWidth > 768 ? '4.5rem' : '3rem',
               fontWeight: '900',
@@ -450,18 +484,13 @@ const ModernPortfolio = () => {
               fontFamily: 'Inter, sans-serif'
             }}>
               <span style={{
-                background: 'linear-gradient(135deg, #5a67d8 0%, #9f7aea 25%, #ed64a6 50%, #ec4899 75%, #f97316 100%)',
-                backgroundSize: '200% 200%',
-                animation: 'shimmer 3s linear infinite',
+                background: 'linear-gradient(135deg, #5a67d8 0%, #9f7aea 50%, #ed64a6 100%)',
+                backgroundSize: '400% 400%',
+                animation: 'pulse 4s ease-in-out infinite',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text'
               }}>Hi, I'm Beau</span>
-              <br />
-              <span style={{
-                color: '#1f2937',
-                fontSize: window.innerWidth > 768 ? '3.5rem' : '2.5rem'
-              }}>I Build Things</span>
             </h1>
             
             <div style={{
@@ -471,8 +500,8 @@ const ModernPortfolio = () => {
               fontWeight: '500',
               display: 'flex',
               alignItems: 'center',
-              gap: '16px',
-              justifyContent: window.innerWidth > 968 ? 'flex-start' : 'center'
+              gap: '8px',
+              justifyContent: 'center'
             }}>
               <span>Animal Lover</span>
               <span style={{ color: '#d1d5db' }}>•</span>
@@ -485,7 +514,7 @@ const ModernPortfolio = () => {
               fontSize: '1.125rem',
               color: '#4b5563',
               maxWidth: '600px',
-              margin: window.innerWidth > 968 ? '0 0 40px 0' : '0 auto 40px',
+              margin: '0 auto 40px',
               lineHeight: '1.8',
               fontWeight: '400'
             }}>
@@ -515,7 +544,7 @@ const ModernPortfolio = () => {
               display: 'flex',
               gap: '40px',
               marginBottom: '40px',
-              justifyContent: window.innerWidth > 968 ? 'flex-start' : 'center',
+              justifyContent: 'center',
               flexWrap: 'wrap'
             }}>
               <div>
@@ -548,21 +577,6 @@ const ModernPortfolio = () => {
                   letterSpacing: '0.5px'
                 }}>Years Experience</div>
               </div>
-              <div>
-                <div style={{
-                  fontSize: '2rem',
-                  fontWeight: '800',
-                  color: '#ed64a6',
-                  marginBottom: '4px'
-                }}>∞</div>
-                <div style={{
-                  fontSize: '14px',
-                  color: '#6b7280',
-                  fontWeight: '500',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.5px'
-                }}>Curiosity</div>
-              </div>
             </div>
             
             {/* CTA Buttons */}
@@ -570,7 +584,7 @@ const ModernPortfolio = () => {
               display: 'flex',
               gap: '16px',
               flexWrap: 'wrap',
-              justifyContent: window.innerWidth > 968 ? 'flex-start' : 'center'
+              justifyContent: 'center'
             }}>
               <button 
                 onClick={() => navigate('/contact')}
@@ -646,7 +660,7 @@ const ModernPortfolio = () => {
               display: 'flex',
               gap: '16px',
               marginTop: '40px',
-              justifyContent: window.innerWidth > 968 ? 'flex-start' : 'center'
+              justifyContent: 'center'
             }}>
               {[
                 { icon: Linkedin, href: "https://www.linkedin.com/in/beau-lazear" },
@@ -690,207 +704,6 @@ const ModernPortfolio = () => {
             </div>
           </div>
           
-          {/* Right Content - Image */}
-          {window.innerWidth > 968 && (
-            <div style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              animation: 'slideInFromRight 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
-              position: 'relative'
-            }}>
-              {/* Decorative Elements */}
-              <div style={{
-                position: 'absolute',
-                width: '500px',
-                height: '500px',
-                borderRadius: '50%',
-                background: 'linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(159, 122, 234, 0.05) 100%)',
-                animation: 'float 6s ease-in-out infinite'
-              }} />
-              
-              <div style={{
-                width: '380px',
-                height: '380px',
-                position: 'relative',
-                animation: 'float 8s ease-in-out infinite reverse'
-              }}>
-                <div style={{
-                  width: '100%',
-                  height: '100%',
-                  borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',
-                  overflow: 'hidden',
-                  position: 'relative',
-                  background: 'linear-gradient(135deg, #5a67d8 0%, #9f7aea 50%, #ed64a6 100%)',
-                  padding: '4px',
-                  boxShadow: '0 30px 60px rgba(159, 122, 234, 0.3), 0 15px 30px rgba(237, 100, 166, 0.2)',
-                  animation: 'morphing 8s ease-in-out infinite'
-                }}>
-                  <div style={{
-                    width: '100%',
-                    height: '100%',
-                    borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',
-                    overflow: 'hidden',
-                    background: 'white'
-                  }}>
-                    <img
-                      src={BeauPic}
-                      alt="Beau Lazear"
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        filter: 'brightness(1.05) contrast(1.08)',
-                        transform: 'scale(1.1)'
-                      }}
-                    />
-                  </div>
-                </div>
-                
-                {/* Floating Icons */}
-                <div style={{
-                  position: 'absolute',
-                  top: '-20px',
-                  right: '-20px',
-                  width: '60px',
-                  height: '60px',
-                  borderRadius: '16px',
-                  background: 'white',
-                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  animation: 'float 4s ease-in-out infinite'
-                }}>
-                  <Code size={28} color="#667eea" />
-                </div>
-                
-                <div style={{
-                  position: 'absolute',
-                  bottom: '20px',
-                  left: '-30px',
-                  width: '60px',
-                  height: '60px',
-                  borderRadius: '16px',
-                  background: 'white',
-                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  animation: 'float 5s ease-in-out infinite reverse'
-                }}>
-                  <PawPrint size={28} color="#ed64a6" />
-                </div>
-                
-                <div style={{
-                  position: 'absolute',
-                  top: '50%',
-                  right: '-40px',
-                  width: '50px',
-                  height: '50px',
-                  borderRadius: '12px',
-                  background: 'linear-gradient(135deg, #10b981, #059669)',
-                  boxShadow: '0 8px 25px rgba(16, 185, 129, 0.3)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  animation: 'float 6s ease-in-out infinite',
-                  color: 'white',
-                  fontWeight: '700',
-                  fontSize: '20px'
-                }}>
-                  ✓
-                </div>
-              </div>
-            </div>
-          )}
-          
-          {/* Mobile Image */}
-          {window.innerWidth <= 968 && (
-            <div style={{
-              display: 'flex',
-              justifyContent: 'center',
-              marginTop: '40px'
-            }}>
-              <div style={{
-                width: '200px',
-                height: '200px',
-                borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',
-                overflow: 'hidden',
-                position: 'relative',
-                background: 'linear-gradient(135deg, #5a67d8 0%, #9f7aea 50%, #ed64a6 100%)',
-                padding: '3px',
-                boxShadow: '0 25px 50px rgba(159, 122, 234, 0.3)',
-                animation: 'morphing 8s ease-in-out infinite'
-              }}>
-                <div style={{
-                  width: '100%',
-                  height: '100%',
-                  borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',
-                  overflow: 'hidden',
-                  background: 'white'
-                }}>
-                  <img
-                    src={BeauPic}
-                    alt="Beau Lazear"
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      filter: 'brightness(1.05) contrast(1.08)'
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-        
-        {/* Scroll Indicator */}
-        <div style={{
-          position: 'absolute',
-          bottom: '30px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '8px',
-          cursor: 'pointer',
-          animation: 'float 2s ease-in-out infinite'
-        }}
-        onClick={() => {
-          const nextSection = document.querySelector('.section-padding');
-          if (nextSection) {
-            nextSection.scrollIntoView({ behavior: 'smooth' });
-          }
-        }}>
-          <span style={{
-            fontSize: '12px',
-            color: '#6b7280',
-            fontWeight: '600',
-            letterSpacing: '1px',
-            textTransform: 'uppercase'
-          }}>Scroll</span>
-          <div style={{
-            width: '24px',
-            height: '40px',
-            border: '2px solid #9ca3af',
-            borderRadius: '12px',
-            position: 'relative'
-          }}>
-            <div style={{
-              width: '4px',
-              height: '8px',
-              background: '#9ca3af',
-              borderRadius: '2px',
-              position: 'absolute',
-              top: '8px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              animation: 'float 1.5s ease-in-out infinite'
-            }} />
-          </div>
         </div>
       </section>
 

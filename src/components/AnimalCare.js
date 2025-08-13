@@ -230,16 +230,41 @@ const AnimalCare = ({ onNavigate }) => {
       {/* Full-Width Logo Banner Section */}
       <section className="logo-banner" style={{
         width: '100%',
-        background: 'white',
-        padding: '20px 0 0 0',
+        background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
+        padding: '20px 0 40px 0',
         boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
         position: 'relative',
         overflow: 'hidden'
       }}>
+        {/* Animated paw prints background */}
+        <div style={{
+          position: 'absolute',
+          width: '100%',
+          height: '100%',
+          top: 0,
+          left: 0,
+          opacity: 0.05,
+          pointerEvents: 'none'
+        }}>
+          <PawPrint size={40} color="#4A90E2" style={{ position: 'absolute', top: '20%', left: '10%', transform: 'rotate(-15deg)', animation: 'float 8s ease-in-out infinite' }} />
+          <PawPrint size={30} color="#2563EB" style={{ position: 'absolute', top: '60%', left: '85%', transform: 'rotate(25deg)', animation: 'float 6s ease-in-out infinite reverse' }} />
+          <PawPrint size={35} color="#4A90E2" style={{ position: 'absolute', top: '40%', left: '5%', transform: 'rotate(-30deg)', animation: 'float 7s ease-in-out infinite' }} />
+          <PawPrint size={45} color="#2563EB" style={{ position: 'absolute', top: '70%', right: '15%', transform: 'rotate(10deg)', animation: 'float 9s ease-in-out infinite reverse' }} />
+        </div>
+        
         <div style={{
           width: '100%',
           height: 'auto',
-          position: 'relative'
+          position: 'relative',
+          animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+          transform: 'scale(1)',
+          transition: 'transform 0.3s ease'
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = 'scale(1.02)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = 'scale(1)';
         }}>
           <img
             src={WebsiteBanner}
@@ -248,9 +273,23 @@ const AnimalCare = ({ onNavigate }) => {
               width: '100%',
               height: 'auto',
               objectFit: 'cover',
-              display: 'block'
+              display: 'block',
+              filter: 'brightness(1.02) contrast(1.05)',
+              borderRadius: '0 0 20px 20px'
             }}
           />
+          
+          {/* Gradient overlay for depth */}
+          <div style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: '30%',
+            background: 'linear-gradient(to top, rgba(37, 99, 235, 0.05), transparent)',
+            pointerEvents: 'none',
+            borderRadius: '0 0 20px 20px'
+          }} />
         </div>
       </section>
 
@@ -258,9 +297,10 @@ const AnimalCare = ({ onNavigate }) => {
       <section style={{
         padding: '60px 20px 60px',
         textAlign: 'center',
-        background: 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.9) 100%)',
+        background: 'linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%)',
         position: 'relative',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        borderTop: '3px solid #E0E7FF'
       }}>
         <div style={{
           maxWidth: '1200px',
