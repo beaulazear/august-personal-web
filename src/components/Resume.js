@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ResumePDF from "../images/ResumePDF.pdf";
-import { Download, Code, Briefcase, Award, GraduationCap, Star, MapPin, Calendar, CheckCircle, TrendingUp, Users, Zap, Heart, PawPrint, Building, Target } from 'lucide-react';
+import { Download, Code, Briefcase, Award, GraduationCap, Star, MapPin, CheckCircle, TrendingUp, Users, Zap, Heart, PawPrint, Building, Target } from 'lucide-react';
 
 const globalStyles = `
   @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&display=swap');
@@ -452,7 +452,7 @@ const Resume = ({ onNavigate }) => {
 
             {[
               {
-                title: "Co-Founder & CTO",
+                title: "Co-Founder",
                 company: "Voxxy AI",
                 period: "2024–Present",
                 icon: Star,
@@ -477,7 +477,7 @@ const Resume = ({ onNavigate }) => {
                 ]
               },
               {
-                title: "Founder & CEO",
+                title: "Owner & Operator",
                 company: "Beau's Animal Care",
                 period: "2019–Present",
                 icon: Heart,

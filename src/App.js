@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
-import { Linkedin, Github, Mail, FileText, ArrowRight, Briefcase, CheckCircle, MapPin, GraduationCap, Heart, Zap, Building, FolderOpen, PawPrint, Rocket, TrendingUp, Users, Code, Trophy, Sparkles, Target } from 'lucide-react';
+import { Linkedin, Github, Mail, FileText, ArrowRight, CheckCircle, Heart, Building, FolderOpen, PawPrint, Rocket, TrendingUp, Code, Sparkles, Target } from 'lucide-react';
 import BeauPic from './images/BeauPic.jpg';
 import Resume from './components/Resume.js';
 import Contact from './components/Contact.js';
@@ -317,7 +317,7 @@ const ModernPortfolio = () => {
       description: "Building an AI-powered platform that revolutionizes group decision-making. We're combining thoughtful UX with machine learning to help teams collaborate more effectively.",
       technologies: ["React", "Rails", "OpenAI", "React Native", "AWS", "Git", "Google Cloud", "Mixpanel"],
       links: [
-        { label: "Live Site", url: "https://www.voxxyai.com/#/" }
+        { label: "Live Site", url: "https://www.heyvoxxy.com/#/" }
       ],
       highlight: "🚀 Co-Founded"
     },
@@ -345,7 +345,7 @@ const ModernPortfolio = () => {
       title: "Aria Design Co",
       subtitle: "Website & Digital Support",
       description: "Ongoing partnership helping a talented design consultant showcase their work online. I handle the technical side so they can focus on creating beautiful spaces for their clients.",
-      technologies: ["React", "Styled Components"],
+      technologies: ["React", "Bootstrap"],
       links: [
         { label: "Live Site", url: "https://www.ariadesignconsultants.com/#/" }
       ],
@@ -368,7 +368,7 @@ const ModernPortfolio = () => {
     },
     {
       category: "Background",
-      items: ["5+ Years Animal Care", "50+ Business Clients", "Self-Taught Developer", "Bootcamp Graduate", "AWS Certified"]
+      items: ["8+ Years Animal Care", "50+ Business Clients", "Self-Taught Developer", "Bootcamp Graduate", "AWS Certified"]
     }
   ];
 
@@ -525,7 +525,7 @@ const ModernPortfolio = () => {
                 borderBottom: '2px solid #667eea',
                 paddingBottom: '1px',
                 cursor: 'pointer'
-              }} onClick={() => window.open('https://www.voxxyai.com/#/', '_blank')}>Voxxy AI</span>, successfully running <span style={{ 
+              }} onClick={() => window.open('https://www.heyvoxxy.com/#/', '_blank')}>Voxxy AI</span>, successfully running <span style={{ 
                 fontWeight: '700', 
                 color: '#667eea',
                 borderBottom: '2px solid #667eea',
@@ -569,7 +569,7 @@ const ModernPortfolio = () => {
                   fontWeight: '800',
                   color: '#9f7aea',
                   marginBottom: '4px'
-                }}>5+</div>
+                }}>8+</div>
                 <div style={{
                   fontSize: '14px',
                   color: '#6b7280',
@@ -1346,6 +1346,16 @@ const SkillCard = ({ skillGroup }) => (
 const StylishNavbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [windowWidth, setWindowWidth] = React.useState(typeof window !== 'undefined' ? window.innerWidth : 768);
+  
+  React.useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   
   const getPageTitle = () => {
     if (location.pathname.includes('resume')) return 'Resume';
@@ -1416,29 +1426,31 @@ const StylishNavbar = () => {
             fontWeight: '600',
             color: '#2d3748',
             fontFamily: 'Quicksand, sans-serif',
-            display: window.innerWidth > 380 ? 'block' : 'none'
+            display: windowWidth > 380 ? 'block' : 'none'
           }}>
             {getPageTitle()}
           </div>
         </div>
         
-        {/* Center - Name (hide on mobile) */}
-        <div style={{
-          position: 'absolute',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          fontSize: '16px',
-          fontWeight: '600',
-          background: 'linear-gradient(135deg, #5a67d8 0%, #9f7aea 50%, #ed64a6 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-          fontFamily: 'Comfortaa, cursive',
-          letterSpacing: '0.5px',
-          display: window.innerWidth > 480 ? 'block' : 'none'
-        }}>
-          Beau Lazear
-        </div>
+        {/* Center - Name (hide on mobile and on Contact/Resume pages) */}
+        {!location.pathname.includes('contact') && !location.pathname.includes('resume') && (
+          <div style={{
+            position: 'absolute',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            fontSize: '16px',
+            fontWeight: '600',
+            background: 'linear-gradient(135deg, #5a67d8 0%, #9f7aea 50%, #ed64a6 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            fontFamily: 'Comfortaa, cursive',
+            letterSpacing: '0.5px',
+            display: windowWidth > 480 ? 'block' : 'none'
+          }}>
+            Beau Lazear
+          </div>
+        )}
         
         {/* Right Side - Navigation Icons */}
         <div style={{
