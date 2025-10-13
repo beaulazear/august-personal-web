@@ -301,9 +301,9 @@ const ModernPortfolio = () => {
     },
     {
       year: '2024-Present',
-      title: 'Still Learning',
-      subtitle: 'Tech + Community + Growth',
-      description: "I'm happy where I'm at today - building projects I'm passionate about like Voxxy with people I love, running my dog walking business and staying active in the community, and growing my skills while being optimistic about what's to come.",
+      title: 'Growing My Career',
+      subtitle: 'Multiple Contract Roles + CTO',
+      description: "Co-founded Voxxy AI as CTO while taking on contract work at Catch Drive (front-end dev with WordPress) and United Advisors (building workflow automations and CRM integrations). Balancing multiple projects while continuing to run my pet care business.",
       image: null,
       icon: Sparkles,
       side: 'left'
@@ -356,11 +356,11 @@ const ModernPortfolio = () => {
   const skills = [
     {
       category: "Technical Skills",
-      items: ["React & React Native", "Ruby on Rails", "PostgreSQL", "AWS Services", "API Integration"]
+      items: ["React & React Native", "Ruby on Rails", "PostgreSQL", "WordPress & Breakdance", "API Integration", "Workflow Automation"]
     },
     {
-      category: "Business Experience", 
-      items: ["Running My Own Company", "Client Management", "Service Operations", "Project Planning", "Problem Solving"]
+      category: "Business Experience",
+      items: ["Running My Own Company", "Client Management", "Service Operations", "Project Planning", "Problem Solving", "CRM Integration"]
     },
     {
       category: "What I'm Good At",
@@ -513,31 +513,43 @@ const ModernPortfolio = () => {
             <p style={{
               fontSize: '1.125rem',
               color: '#4b5563',
-              maxWidth: '600px',
+              maxWidth: '650px',
               margin: '0 auto 40px',
               lineHeight: '1.8',
               fontWeight: '400'
             }}>
-              From zookeeper to software engineer, I bring a unique perspective to tech. 
-              Currently building <span style={{ 
-                fontWeight: '700', 
+              Full-stack developer specializing in React, Rails, WordPress, and workflow automation.
+              Co-founder of <span style={{
+                fontWeight: '700',
                 color: '#667eea',
                 borderBottom: '2px solid #667eea',
                 paddingBottom: '1px',
                 cursor: 'pointer'
-              }} onClick={() => window.open('https://www.heyvoxxy.com/#/', '_blank')}>Voxxy AI</span>, successfully running <span style={{ 
-                fontWeight: '700', 
+              }} onClick={() => window.open('https://www.heyvoxxy.com/#/', '_blank')}>Voxxy AI</span>, building front-end at <span style={{
+                fontWeight: '700',
                 color: '#667eea',
                 borderBottom: '2px solid #667eea',
                 paddingBottom: '1px',
                 cursor: 'pointer'
-              }} onClick={() => navigate('/animal-care')}>Beau's Animal Care</span>, and building <span style={{ 
-                fontWeight: '700', 
+              }} onClick={() => window.open('https://catchdrive.co/', '_blank')}>Catch Drive</span>, creating automations for <span style={{
+                fontWeight: '700',
                 color: '#667eea',
                 borderBottom: '2px solid #667eea',
                 paddingBottom: '1px',
                 cursor: 'pointer'
-              }} onClick={() => window.open('https://www.pocket-walks.com', '_blank')}>Pocket Walks</span> as a tool for my business.
+              }} onClick={() => window.open('https://unitedadvisors.com/', '_blank')}>United Advisors</span>, and supporting <span style={{
+                fontWeight: '700',
+                color: '#667eea',
+                borderBottom: '2px solid #667eea',
+                paddingBottom: '1px',
+                cursor: 'pointer'
+              }} onClick={() => window.open('https://www.ariadesignconsultants.com/#/', '_blank')}>Aria Design Co</span>. Small business owner of <span style={{
+                fontWeight: '700',
+                color: '#667eea',
+                borderBottom: '2px solid #667eea',
+                paddingBottom: '1px',
+                cursor: 'pointer'
+              }} onClick={() => navigate('/animal-care')}>Beau's Animal Care</span>.
             </p>
             
             {/* Stats Row */}
@@ -569,7 +581,7 @@ const ModernPortfolio = () => {
                   fontWeight: '800',
                   color: '#9f7aea',
                   marginBottom: '4px'
-                }}>8+</div>
+                }}>10+</div>
                 <div style={{
                   fontSize: '14px',
                   color: '#6b7280',

@@ -140,10 +140,10 @@ const Resume = ({ onNavigate }) => {
   }, []);
 
   const skills = {
-    "Frontend": ["React", "React Native", "JavaScript", "HTML/CSS", "Styled Components", "Responsive Design"],
-    "Backend": ["Ruby on Rails", "PostgreSQL", "REST APIs", "JWT Auth", "Active Storage"],
-    "Cloud & Tools": ["AWS", "Google Cloud", "Git", "Docker", "SendGrid", "Mixpanel"],
-    "Business": ["Team Leadership", "Client Relations", "Project Management", "Problem Solving"]
+    "Frontend": ["React", "React Native", "JavaScript", "HTML/CSS", "WordPress", "Breakdance", "Styled Components", "Responsive Design"],
+    "Backend": ["Ruby on Rails", "PostgreSQL", "REST APIs", "JWT Auth", "Active Storage", "Webhook Integrations"],
+    "Cloud & Tools": ["AWS", "Google Cloud", "Git", "Docker", "SendGrid", "Mixpanel", "CRM Automation"],
+    "Business": ["Team Leadership", "Client Relations", "Project Management", "Problem Solving", "Workflow Automation"]
   };
 
   const highlights = [
@@ -194,7 +194,7 @@ const Resume = ({ onNavigate }) => {
             margin: '0 0 32px 0',
             fontWeight: '500'
           }}>
-            Developer • Entrepreneur • Problem Solver
+            Developer • Co-Founder • Automation Specialist
           </p>
 
           {/* Quick Stats */}
@@ -300,12 +300,12 @@ const Resume = ({ onNavigate }) => {
               lineHeight: '1.8',
               margin: 0
             }}>
-              Self-taught developer who transitioned from animal care to tech. 
-              I bring a unique perspective from running my own business while building 
-              production applications. Co-founding Voxxy AI as CTO, I architect scalable 
-              solutions and lead technical strategy. My hands-on experience spans from 
-              zoo keeping to full-stack development, always focused on solving real problems 
-              for real people.
+              Full-stack developer with expertise in React, Rails, WordPress, and workflow automation.
+              Currently juggling multiple roles: co-founding Voxxy AI, building responsive
+              websites at Catch Drive, and creating CRM automations at United Advisors. I specialize in
+              turning complex business problems into elegant technical solutions—from AI-powered apps to
+              webhook integrations. My unconventional path from zookeeper to developer gives me a unique
+              perspective on user needs and problem-solving.
             </p>
           </div>
 
@@ -462,6 +462,32 @@ const Resume = ({ onNavigate }) => {
                   "Integrated OpenAI, Mixpanel, Google Cloud services",
                   "Leading technical roadmap and deployment strategy",
                   "Building React Native mobile app with Expo"
+                ]
+              },
+              {
+                title: "Front End Developer",
+                company: "Catch Drive",
+                period: "July 2024–Present",
+                icon: Code,
+                color: "#3b82f6",
+                highlights: [
+                  "Building responsive websites using WordPress and Breakdance",
+                  "Advanced CSS and dev console tools for debugging",
+                  "Collaborating with UX professionals for intuitive design",
+                  "Creating user-friendly, accessible web experiences"
+                ]
+              },
+              {
+                title: "Automation Developer",
+                company: "United Advisors",
+                period: "2024–Present",
+                icon: Zap,
+                color: "#8b5cf6",
+                highlights: [
+                  "Building workflow automations and CRM integrations",
+                  "Connecting Google Forms to inbound webhooks",
+                  "Automated client creation and management systems",
+                  "Email and SMS automation based on user actions"
                 ]
               },
               {
