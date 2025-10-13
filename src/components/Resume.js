@@ -194,7 +194,7 @@ const Resume = ({ onNavigate }) => {
             margin: '0 0 32px 0',
             fontWeight: '500'
           }}>
-            Developer • Co-Founder • Automation Specialist
+            Developer • Co-Founder • Problem Solver
           </p>
 
           {/* Quick Stats */}
