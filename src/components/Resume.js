@@ -142,7 +142,7 @@ const Resume = ({ onNavigate }) => {
   const skills = {
     "Frontend": ["React", "React Native", "JavaScript", "HTML/CSS", "WordPress", "Breakdance", "Styled Components", "Responsive Design"],
     "Backend": ["Ruby on Rails", "PostgreSQL", "REST APIs", "JWT Auth", "Active Storage", "Webhook Integrations"],
-    "Cloud & Tools": ["AWS", "Google Cloud", "Git", "Docker", "SendGrid", "Mixpanel", "CRM Automation"],
+    "Cloud & Tools": ["AWS", "Google Cloud", "Git", "SendGrid", "Mixpanel", "CRM Automation"],
     "Business": ["Team Leadership", "Client Relations", "Project Management", "Problem Solving", "Workflow Automation"]
   };
 
