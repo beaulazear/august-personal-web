@@ -300,12 +300,12 @@ const Resume = ({ onNavigate }) => {
               lineHeight: '1.8',
               margin: 0
             }}>
-              Full-stack developer with expertise in React, Rails, WordPress, and workflow automation.
-              Currently juggling multiple roles: co-founding Voxxy AI, building responsive
-              websites at Catch Drive, and creating CRM automations at United Advisors. I specialize in
-              turning complex business problems into elegant technical solutions—from AI-powered apps to
-              webhook integrations. My unconventional path from zookeeper to developer gives me a unique
-              perspective on user needs and problem-solving.
+              Small business owner and developer with expertise in React, Rails, WordPress, and workflow automation.
+              I run Beau's Animal Care, serving 50+ clients across Brooklyn, while co-founding Voxxy AI
+              (building our API/backend and mobile app), creating responsive interfaces at Catch Drive Solutions,
+              and consulting on technical solutions for various clients. I specialize in turning business challenges
+              into practical technical solutions. My path from zookeeper to developer gives me a unique perspective
+              on understanding user needs and building solutions that actually work.
             </p>
           </div>
 
@@ -452,66 +452,55 @@ const Resume = ({ onNavigate }) => {
 
             {[
               {
-                title: "Co-Founder",
-                company: "Voxxy AI",
-                period: "2024–Present",
-                icon: Star,
-                color: "#ed64a6",
-                highlights: [
-                  "Architecting scalable React/Rails platform for AI group planning",
-                  "Integrated OpenAI, Mixpanel, Google Cloud services",
-                  "Leading technical roadmap and deployment strategy",
-                  "Building React Native mobile app with Expo"
-                ]
-              },
-              {
-                title: "Front End Developer",
-                company: "Catch Drive",
-                period: "July 2024–Present",
-                icon: Code,
-                color: "#3b82f6",
-                highlights: [
-                  "Building responsive websites using WordPress and Breakdance",
-                  "Advanced CSS and dev console tools for debugging",
-                  "Collaborating with UX professionals for intuitive design",
-                  "Creating user-friendly, accessible web experiences"
-                ]
-              },
-              {
-                title: "Automation Developer",
-                company: "United Advisors",
-                period: "2024–Present",
-                icon: Zap,
-                color: "#8b5cf6",
-                highlights: [
-                  "Building workflow automations and CRM integrations",
-                  "Connecting Google Forms to inbound webhooks",
-                  "Automated client creation and management systems",
-                  "Email and SMS automation based on user actions"
-                ]
-              },
-              {
-                title: "Digital Contractor",
-                company: "Aria Design Co",
-                period: "2023–Present",
-                icon: Code,
-                color: "#9f7aea",
-                highlights: [
-                  "Built and maintain company website portfolio",
-                  "Managing social media strategy and content",
-                  "Direct collaboration with founder on tech solutions"
-                ]
-              },
-              {
                 title: "Owner & Operator",
                 company: "Beau's Animal Care",
                 period: "2019–Present",
                 icon: Heart,
                 color: "#667eea",
                 highlights: [
-                  "Built business serving 50+ regular clients",
-                  "Developed custom scheduling & invoicing platform",
-                  "Managing team of independent contractors"
+                  "Built and manage pet care business serving 50+ regular clients across Brooklyn",
+                  "Developed custom scheduling & invoicing platform (Pocket Walks)",
+                  "Lead service delivery and client relations (~35 hours/week)",
+                  "Managing network of trusted independent contractors"
+                ]
+              },
+              {
+                title: "Co-Founder & CTO",
+                company: "Voxxy AI",
+                period: "2024–Present",
+                icon: Star,
+                color: "#ed64a6",
+                highlights: [
+                  "Building platform company with dual product offerings (Voxxy Mobile & Voxxy Presents)",
+                  "Developed backend API and mobile application infrastructure using React Native and Rails",
+                  "Leading community engagement efforts including bank-sponsored local events with vendors",
+                  "Scaling from product development to community-driven business"
+                ]
+              },
+              {
+                title: "Front End Developer",
+                company: "Catch Drive Solutions",
+                period: "April 2025–Present",
+                icon: Code,
+                color: "#3b82f6",
+                highlights: [
+                  "Creating visually appealing responsive interfaces using WordPress and advanced CSS",
+                  "Website maintenance and debugging via browser developer console",
+                  "Collaborating with UX professionals for intuitive design",
+                  "Delivering user-friendly, accessible web experiences"
+                ]
+              },
+              {
+                title: "Technical Consultant",
+                company: "Various Clients",
+                period: "2023–Present",
+                icon: Briefcase,
+                color: "#8b5cf6",
+                highlights: [
+                  "Aria Design Co: Website development and social media management",
+                  "United Advisors: CRM integration and workflow automation solutions",
+                  "Custom technical solutions for small business clients",
+                  "Intermittent contract work supporting diverse business needs"
                 ]
               },
               {

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
-import { Linkedin, Github, Mail, FileText, ArrowRight, CheckCircle, Heart, Building, FolderOpen, PawPrint, Rocket, TrendingUp, Code, Sparkles, Target } from 'lucide-react';
+import { Linkedin, Github, Mail, FileText, ArrowRight, CheckCircle, Heart, Building, FolderOpen, PawPrint, Rocket, TrendingUp, Code, Sparkles, Target, Smartphone } from 'lucide-react';
 import BeauPic from './images/BeauPic.jpg';
 import Resume from './components/Resume.js';
 import Contact from './components/Contact.js';
@@ -246,10 +246,10 @@ const ModernPortfolio = () => {
   
   const timelineData = [
     {
-      year: '2016-2017',
+      year: '2014-2017',
       title: 'Started Working Young',
       subtitle: 'High School → NYC at 18',
-      description: 'Talented & Gifted program, played basketball, worked three jobs. Moved to NYC alone at 18 to chase bigger opportunities.',
+      description: 'Talented & Gifted program, played basketball, worked three jobs starting at age 15. Moved to NYC alone at 18 to chase bigger opportunities.',
       image: null,
       icon: Rocket,
       side: 'left'
@@ -301,9 +301,9 @@ const ModernPortfolio = () => {
     },
     {
       year: '2024-Present',
-      title: 'Growing My Career',
-      subtitle: 'Multiple Contract Roles + CTO',
-      description: "Co-founded Voxxy AI as CTO while taking on contract work at Catch Drive (front-end dev with WordPress) and United Advisors (building workflow automations and CRM integrations). Balancing multiple projects while continuing to run my pet care business.",
+      title: 'Building Multiple Ventures',
+      subtitle: 'CTO + Developer + Business Owner',
+      description: "Co-founded Voxxy as CTO, building our API/backend and mobile app while leading community engagement efforts. Started front-end development at Catch Drive Solutions (April 2025), creating WordPress interfaces. Consulting for clients like Aria Design Co and United Advisors while managing my pet care business full-time.",
       image: null,
       icon: Sparkles,
       side: 'left'
@@ -313,11 +313,13 @@ const ModernPortfolio = () => {
   const projects = [
     {
       title: "Voxxy AI",
-      subtitle: "Co-Founder & Developer",
-      description: "Building an AI-powered platform that revolutionizes group decision-making. We're combining thoughtful UX with machine learning to help teams collaborate more effectively.",
-      technologies: ["React", "Rails", "OpenAI", "React Native", "AWS", "Git", "Google Cloud", "Mixpanel"],
+      subtitle: "Co-Founder & CTO",
+      description: "Building a platform company with two products (Voxxy Mobile & Voxxy Presents). Developed the backend API and mobile infrastructure. Leading community engagement efforts including bank-sponsored local events. Transforming from a product into a community-driven business.",
+      technologies: ["React", "Rails", "React Native", "AWS", "Git", "Google Cloud", "Mixpanel"],
       links: [
-        { label: "Live Site", url: "https://www.heyvoxxy.com/#/" }
+        { label: "Voxxy Mobile", url: "https://apps.apple.com/us/app/voxxy/id6746337878", icon: "apple" },
+        { label: "Voxxy Presents", url: "https://www.voxxypresents.com" },
+        { label: "Company Site", url: "https://www.heyvoxxy.com/#/" }
       ],
       highlight: "🚀 Co-Founded"
     },
@@ -518,38 +520,38 @@ const ModernPortfolio = () => {
               lineHeight: '1.8',
               fontWeight: '400'
             }}>
-              Full-stack developer specializing in React, Rails, WordPress, and workflow automation.
-              Co-founder of <span style={{
+              Small business owner and developer specializing in React, Rails, WordPress, and workflow automation.
+              Running <span style={{
                 fontWeight: '700',
                 color: '#667eea',
                 borderBottom: '2px solid #667eea',
                 paddingBottom: '1px',
                 cursor: 'pointer'
-              }} onClick={() => window.open('https://www.heyvoxxy.com/#/', '_blank')}>Voxxy AI</span>, building front-end at <span style={{
+              }} onClick={() => navigate('/animal-care')}>Beau's Animal Care</span> (50+ clients), co-founding <span style={{
                 fontWeight: '700',
                 color: '#667eea',
                 borderBottom: '2px solid #667eea',
                 paddingBottom: '1px',
                 cursor: 'pointer'
-              }} onClick={() => window.open('https://catchdrive.co/', '_blank')}>Catch Drive</span>, creating automations for <span style={{
+              }} onClick={() => window.open('https://www.heyvoxxy.com/#/', '_blank')}>Voxxy</span> (building our community-focused platform), creating interfaces at <span style={{
                 fontWeight: '700',
                 color: '#667eea',
                 borderBottom: '2px solid #667eea',
                 paddingBottom: '1px',
                 cursor: 'pointer'
-              }} onClick={() => window.open('https://unitedadvisors.com/', '_blank')}>United Advisors</span>, and supporting <span style={{
+              }} onClick={() => window.open('https://catchdrive.co/', '_blank')}>Catch Drive Solutions</span>, and consulting for clients like <span style={{
                 fontWeight: '700',
                 color: '#667eea',
                 borderBottom: '2px solid #667eea',
                 paddingBottom: '1px',
                 cursor: 'pointer'
-              }} onClick={() => window.open('https://www.ariadesignconsultants.com/#/', '_blank')}>Aria Design Co</span>. Small business owner of <span style={{
+              }} onClick={() => window.open('https://www.ariadesignconsultants.com/#/', '_blank')}>Aria Design Co</span> and <span style={{
                 fontWeight: '700',
                 color: '#667eea',
                 borderBottom: '2px solid #667eea',
                 paddingBottom: '1px',
                 cursor: 'pointer'
-              }} onClick={() => navigate('/animal-care')}>Beau's Animal Care</span>.
+              }} onClick={() => window.open('https://unitedadvisors.com/', '_blank')}>United Advisors</span>.
             </p>
             
             {/* Stats Row */}
@@ -1140,7 +1142,7 @@ const ProjectCard = ({ project }) => {
                 e.target.style.color = '#667eea';
               }}
             >
-              <ArrowRight size={16} />
+              {link.icon === 'apple' ? <Smartphone size={16} /> : <ArrowRight size={16} />}
               {link.label}
             </a>
           )
@@ -1183,7 +1185,8 @@ const DesktopTimelineItem = ({ item, index }) => (
         <div className="glass-card hover-lift" style={{
           padding: '24px',
           marginLeft: 'auto',
-          maxWidth: '350px'
+          maxWidth: '350px',
+          textAlign: 'left'
         }}>
           <TimelineContent item={item} />
         </div>

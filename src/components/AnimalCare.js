@@ -1,12 +1,12 @@
 import React from 'react';
-import { Heart, MapPin, Phone, Mail, Clock, Shield, Star, CheckCircle, Users, Award, ArrowRight, PawPrint, Dog, Cat, Home, Bird } from 'lucide-react';
+import { Heart, MapPin, Phone, Mail, Shield, Star, CheckCircle, Users, Award, ArrowRight, PawPrint, Dog, Cat, Home, Bird } from 'lucide-react';
 
 // Import images
 import BeauAndRalph from '../images/BeauAndRalph.JPG';
 import JavaLookinCute from '../images/JavaLookinCute.jpeg';
 import MooseOnVerandah from '../images/MooseOnVerandah.jpeg';
-import WebsiteBanner from '../images/Website-Banner.jpg';
 import BeauPic from '../images/BeauPic.jpg';
+import BeauWalkingDogs from '../images/BeauReykaMangoRu.jpeg';
 
 const AnimalCare = ({ onNavigate }) => {
 
@@ -66,7 +66,7 @@ const AnimalCare = ({ onNavigate }) => {
         "Feeding & water changes",
         "Heat lamp monitoring",
         "Specialized handling",
-        "8+ years zoo experience"
+        "10+ years zoo experience"
       ]
     },
     {
@@ -107,15 +107,6 @@ const AnimalCare = ({ onNavigate }) => {
     }
   ];
 
-  const features = [
-    { icon: Shield, text: "Fully Insured" },
-    { icon: Award, text: "8+ Years Experience" },
-    { icon: Clock, text: "Flexible Scheduling" },
-    { icon: Users, text: "Trusted by 50+ Families" },
-    { icon: MapPin, text: "Serving Brooklyn & NYC" },
-    { icon: Heart, text: "Former Zookeeper & Vet Assistant" }
-  ];
-
   const globalStyles = `
     @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Bubblegum+Sans&display=swap');
     
@@ -124,7 +115,6 @@ const AnimalCare = ({ onNavigate }) => {
     .animal-care-container {
       width: 100%;
       overflow-x: hidden;
-      margin-top: 25px;
     }
     
     .section-container {
@@ -148,9 +138,23 @@ const AnimalCare = ({ onNavigate }) => {
     
     @media (max-width: 767px) {
       .grid-2-cols, .grid-3-cols { grid-template-columns: 1fr; }
-      .hero-content { text-align: center; }
-      .hero-grid { grid-template-columns: 1fr !important; }
-      
+      .hero-content {
+        text-align: center;
+        align-items: center;
+      }
+      .hero-grid {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+      }
+
+      .hero-content > div:first-child {
+        justify-content: center !important;
+      }
+
+      .hero-buttons {
+        justify-content: center !important;
+      }
+
       /* Mobile logo banner adjustments */
       .logo-banner {
         padding: 0 !important;
@@ -227,12 +231,10 @@ const AnimalCare = ({ onNavigate }) => {
       }}>
         
 
-      {/* Full-Width Logo Banner Section */}
-      <section className="logo-banner" style={{
-        width: '100%',
-        background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
-        padding: '20px 0 40px 0',
-        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+      {/* Hero Section - Two Column Layout */}
+      <section style={{
+        padding: '80px 20px 100px',
+        background: 'linear-gradient(135deg, #E0F2FE 0%, #F0F9FF 50%, #E0F2FE 100%)',
         position: 'relative',
         overflow: 'hidden'
       }}>
@@ -243,243 +245,300 @@ const AnimalCare = ({ onNavigate }) => {
           height: '100%',
           top: 0,
           left: 0,
-          opacity: 0.05,
+          opacity: 0.03,
           pointerEvents: 'none'
         }}>
-          <PawPrint size={40} color="#4A90E2" style={{ position: 'absolute', top: '20%', left: '10%', transform: 'rotate(-15deg)', animation: 'float 8s ease-in-out infinite' }} />
-          <PawPrint size={30} color="#2563EB" style={{ position: 'absolute', top: '60%', left: '85%', transform: 'rotate(25deg)', animation: 'float 6s ease-in-out infinite reverse' }} />
-          <PawPrint size={35} color="#4A90E2" style={{ position: 'absolute', top: '40%', left: '5%', transform: 'rotate(-30deg)', animation: 'float 7s ease-in-out infinite' }} />
-          <PawPrint size={45} color="#2563EB" style={{ position: 'absolute', top: '70%', right: '15%', transform: 'rotate(10deg)', animation: 'float 9s ease-in-out infinite reverse' }} />
+          <PawPrint size={60} color="#4A90E2" style={{ position: 'absolute', top: '15%', left: '8%', transform: 'rotate(-15deg)', animation: 'float 8s ease-in-out infinite' }} />
+          <PawPrint size={50} color="#2563EB" style={{ position: 'absolute', top: '65%', left: '88%', transform: 'rotate(25deg)', animation: 'float 6s ease-in-out infinite reverse' }} />
+          <PawPrint size={55} color="#4A90E2" style={{ position: 'absolute', top: '40%', right: '90%', transform: 'rotate(-30deg)', animation: 'float 7s ease-in-out infinite' }} />
+          <PawPrint size={65} color="#2563EB" style={{ position: 'absolute', top: '80%', right: '10%', transform: 'rotate(10deg)', animation: 'float 9s ease-in-out infinite reverse' }} />
         </div>
-        
-        <div style={{
-          width: '100%',
-          height: 'auto',
-          position: 'relative',
-          animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
-          transform: 'scale(1)',
-          transition: 'transform 0.3s ease'
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.transform = 'scale(1.02)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = 'scale(1)';
-        }}>
-          <img
-            src={WebsiteBanner}
-            alt="Beau's Animal Care - Professional Pet Care"
-            style={{
-              width: '100%',
-              height: 'auto',
-              objectFit: 'cover',
-              display: 'block',
-              filter: 'brightness(1.02) contrast(1.05)',
-              borderRadius: '0 0 20px 20px'
-            }}
-          />
-          
-          {/* Gradient overlay for depth */}
-          <div style={{
-            position: 'absolute',
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: '30%',
-            background: 'linear-gradient(to top, rgba(37, 99, 235, 0.05), transparent)',
-            pointerEvents: 'none',
-            borderRadius: '0 0 20px 20px'
-          }} />
-        </div>
-      </section>
 
-      {/* Hero Section - Title and Content */}
-      <section style={{
-        padding: '60px 20px 60px',
-        textAlign: 'center',
-        background: 'linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%)',
-        position: 'relative',
-        overflow: 'hidden',
-        borderTop: '3px solid #E0E7FF'
-      }}>
-        <div style={{
+        <div className="section-container" style={{
           maxWidth: '1200px',
           margin: '0 auto',
           position: 'relative',
           zIndex: 2
         }}>
-          {/* Stylish Title */}
-          <div style={{
-            marginBottom: '40px',
-            position: 'relative',
-            display: 'inline-block'
+          {/* Two Column Grid */}
+          <div className="hero-grid" style={{
+            display: 'grid',
+            gridTemplateColumns: '1.2fr 0.8fr',
+            gap: '60px',
+            alignItems: 'center'
           }}>
-            {/* Decorative elements */}
-            <div style={{
-              position: 'absolute',
-              top: '-20px',
-              left: '50%',
-              transform: 'translateX(-50%)',
+
+            {/* Left Column - Content */}
+            <div className="hero-content" style={{
               display: 'flex',
-              gap: '20px',
-              opacity: 0.8
+              flexDirection: 'column',
+              gap: '24px'
             }}>
-              <PawPrint size={28} color="#4A90E2" style={{ transform: 'rotate(-15deg)' }} />
-              <PawPrint size={24} color="#2563EB" style={{ transform: 'rotate(10deg) translateY(-5px)' }} />
-              <PawPrint size={28} color="#4A90E2" style={{ transform: 'rotate(-10deg)' }} />
-            </div>
-            
-            <h1 style={{
-              fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-              fontWeight: '700',
-              margin: 0,
-              fontFamily: 'Bubblegum Sans, cursive',
-              textAlign: 'center',
-              lineHeight: '1.2',
-              letterSpacing: '-1px',
-              position: 'relative',
-              textShadow: '2px 2px 4px rgba(37, 99, 235, 0.2)',
-              color: 'transparent',
-              background: 'linear-gradient(135deg, #2563EB 0%, #4A90E2 50%, #0EA5E9 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              animation: 'float 3s ease-in-out infinite'
-            }}>
-              Beau's Animal Care
-            </h1>
-            
-            {/* Subtitle tagline */}
-            <p style={{
-              fontSize: 'clamp(0.9rem, 2vw, 1.1rem)',
-              color: '#1E293B',
-              margin: '8px 0 0 0',
-              fontWeight: '600',
-              letterSpacing: '2px',
-              textTransform: 'uppercase',
-              textAlign: 'center'
-            }}>
-              Brooklyn's Trusted Pet Care
-            </p>
-            
-            {/* Decorative underline */}
-            <div style={{
-              width: '80px',
-              height: '3px',
-              background: 'linear-gradient(90deg, transparent, #4A90E2, transparent)',
-              margin: '12px auto 0',
-              borderRadius: '2px'
-            }}></div>
-          </div>
-
-          <p className="hero-subtitle" style={{
-            fontSize: 'clamp(1.25rem, 3vw, 1.5rem)',
-            color: '#1E293B',
-            margin: '0 0 24px 0',
-            fontWeight: '600'
-          }}>
-            Professional Pet Care with a Personal Touch
-          </p>
-
-          <p className="hero-description" style={{
-            fontSize: 'clamp(1rem, 2.5vw, 1.125rem)',
-            color: '#475569',
-            maxWidth: '700px',
-            margin: '0 auto 48px',
-            lineHeight: '1.7'
-          }}>
-            With over 8 years of professional experience including zookeeping at Prospect Park Zoo 
-            and veterinary assisting at ASPCA, I provide personal, trusted pet care for 50+ families in Brooklyn & NYC. 
-            As an independent pet care provider since 2019, I work directly with you and partner with a network of trusted independent walkers for backup coverage.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="hero-buttons" style={{
-            display: 'flex',
-            gap: '16px',
-            justifyContent: 'center',
-            flexWrap: 'wrap',
-            marginBottom: '48px'
-          }}>
-            <button
-              onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-              style={{
-                background: 'linear-gradient(135deg, #2563EB 0%, #4A90E2 100%)',
-                color: 'white',
-                padding: '16px 32px',
-                borderRadius: '12px',
-                border: 'none',
-                fontWeight: '600',
-                fontSize: '16px',
+              {/* Decorative paw prints */}
+              <div style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                transition: 'transform 0.3s ease',
-                boxShadow: '0 6px 20px rgba(37, 99, 235, 0.35)',
-                cursor: 'pointer'
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
-              onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
-            >
-              <Mail size={20} />
-              Contact Me
-            </button>
-            
-            <button
-              onClick={() => document.getElementById('testimonials').scrollIntoView({ behavior: 'smooth' })}
-              style={{
-                background: 'white',
-                border: '2px solid #2563EB',
-                borderRadius: '12px',
-                color: '#2563EB',
+                marginBottom: '8px'
+              }}>
+                <PawPrint size={28} color="#4A90E2" style={{ opacity: 0.7, transform: 'rotate(-15deg)' }} />
+                <PawPrint size={24} color="#2563EB" style={{ opacity: 0.7 }} />
+                <PawPrint size={28} color="#4A90E2" style={{ opacity: 0.7, transform: 'rotate(15deg)' }} />
+              </div>
+
+              <h1 className="hero-title" style={{
+                fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+                fontWeight: '700',
+                margin: 0,
+                fontFamily: 'Fredoka, sans-serif',
+                lineHeight: '1.1',
+                letterSpacing: '-1px',
+                color: 'transparent',
+                background: 'linear-gradient(135deg, #2563EB 0%, #4A90E2 50%, #0EA5E9 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                textShadow: '3px 3px 6px rgba(37, 99, 235, 0.15)'
+              }}>
+                Beau's Animal Care
+              </h1>
+
+              <p className="hero-subtitle" style={{
+                fontSize: 'clamp(1rem, 2.5vw, 1.3rem)',
+                color: '#1E293B',
+                margin: 0,
                 fontWeight: '600',
-                padding: '14px 30px',
-                fontSize: '16px',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px'
+                fontFamily: 'Fredoka, sans-serif',
+                letterSpacing: '1px',
+                textTransform: 'uppercase'
+              }}>
+                Brooklyn's Trusted Pet Care
+              </p>
+
+              <div style={{
+                width: '80px',
+                height: '4px',
+                background: 'linear-gradient(90deg, #4A90E2, #2563EB)',
+                borderRadius: '2px'
+              }}></div>
+
+              <p className="hero-description" style={{
+                fontSize: 'clamp(1rem, 2vw, 1.125rem)',
+                color: '#475569',
+                lineHeight: '1.8',
+                margin: 0,
+                fontFamily: 'Quicksand, sans-serif'
+              }}>
+                With over 10 years of professional experience including zookeeping at Prospect Park Zoo
+                and veterinary assisting at ASPCA, I provide personal, trusted pet care for 50+ families in Brooklyn & NYC.
+              </p>
+
+              {/* Trust Badges */}
+              <div style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '16px',
+                marginTop: '8px'
+              }}>
+                {[
+                  { icon: Shield, text: "Fully Insured" },
+                  { icon: Award, text: "10+ Years" },
+                  { icon: Users, text: "50+ Families" }
+                ].map((feature, index) => (
+                  <div key={index} style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    background: 'rgba(255, 255, 255, 0.8)',
+                    backdropFilter: 'blur(10px)',
+                    padding: '10px 16px',
+                    borderRadius: '12px',
+                    border: '2px solid #E0E7FF',
+                    boxShadow: '0 4px 15px rgba(37, 99, 235, 0.1)'
+                  }}>
+                    <feature.icon size={18} color="#2563EB" />
+                    <span style={{
+                      color: '#1E293B',
+                      fontSize: '14px',
+                      fontWeight: '600',
+                      fontFamily: 'Fredoka, sans-serif'
+                    }}>
+                      {feature.text}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="hero-buttons" style={{
+                display: 'flex',
+                gap: '16px',
+                flexWrap: 'wrap',
+                marginTop: '16px'
+              }}>
+                <button
+                  onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+                  style={{
+                    background: 'linear-gradient(135deg, #2563EB 0%, #4A90E2 100%)',
+                    color: 'white',
+                    padding: '16px 32px',
+                    borderRadius: '14px',
+                    border: 'none',
+                    fontWeight: '600',
+                    fontSize: '16px',
+                    fontFamily: 'Fredoka, sans-serif',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    transition: 'all 0.3s ease',
+                    boxShadow: '0 8px 24px rgba(37, 99, 235, 0.35)',
+                    cursor: 'pointer'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-3px)';
+                    e.currentTarget.style.boxShadow = '0 12px 32px rgba(37, 99, 235, 0.45)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 8px 24px rgba(37, 99, 235, 0.35)';
+                  }}
+                >
+                  <Mail size={20} />
+                  Get In Touch
+                </button>
+
+                <button
+                  onClick={() => document.getElementById('testimonials').scrollIntoView({ behavior: 'smooth' })}
+                  style={{
+                    background: 'white',
+                    border: '2px solid #2563EB',
+                    borderRadius: '14px',
+                    color: '#2563EB',
+                    fontWeight: '600',
+                    fontFamily: 'Fredoka, sans-serif',
+                    padding: '14px 30px',
+                    fontSize: '16px',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    boxShadow: '0 4px 15px rgba(37, 99, 235, 0.15)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = '#2563EB';
+                    e.currentTarget.style.color = 'white';
+                    e.currentTarget.style.transform = 'translateY(-3px)';
+                    e.currentTarget.style.boxShadow = '0 8px 24px rgba(37, 99, 235, 0.25)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'white';
+                    e.currentTarget.style.color = '#2563EB';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 4px 15px rgba(37, 99, 235, 0.15)';
+                  }}
+                >
+                  <Star size={20} />
+                  Testimonials
+                </button>
+              </div>
+            </div>
+
+            {/* Right Column - Image */}
+            <div style={{
+              position: 'relative',
+              animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s backwards',
+              maxWidth: '420px',
+              margin: '0 auto',
+              width: '100%'
+            }}>
+              {/* Decorative background blur */}
+              <div style={{
+                position: 'absolute',
+                top: '-10px',
+                left: '-10px',
+                right: '-10px',
+                bottom: '-10px',
+                background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(74, 144, 226, 0.15) 100%)',
+                borderRadius: '32px',
+                filter: 'blur(20px)',
+                zIndex: 0
+              }}></div>
+
+              <div style={{
+                position: 'relative',
+                zIndex: 1,
+                borderRadius: '24px',
+                overflow: 'hidden',
+                boxShadow: '0 25px 60px rgba(37, 99, 235, 0.25), 0 15px 35px rgba(0, 0, 0, 0.1)',
+                border: '4px solid white',
+                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                background: 'white'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#2563EB';
-                e.currentTarget.style.color = 'white';
+                e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)';
+                e.currentTarget.style.boxShadow = '0 30px 70px rgba(37, 99, 235, 0.35), 0 20px 45px rgba(0, 0, 0, 0.15)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'white';
-                e.currentTarget.style.color = '#2563EB';
-              }}
-            >
-              <Star size={20} />
-              Testimonials
-            </button>
-          </div>
-
-          {/* Trust Indicators Grid */}
-          <div className="trust-grid" style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '24px',
-            maxWidth: '800px',
-            margin: '0 auto'
-          }}>
-            {features.slice(0, 6).map((feature, index) => (
-              <div key={index} style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px'
+                e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                e.currentTarget.style.boxShadow = '0 25px 60px rgba(37, 99, 235, 0.25), 0 15px 35px rgba(0, 0, 0, 0.1)';
               }}>
-                <feature.icon size={20} color="#2563EB" />
-                <span style={{
-                  color: '#1E293B',
-                  fontSize: '14px',
-                  fontWeight: '600'
+                <div style={{ position: 'relative' }}>
+                  <img
+                    src={BeauWalkingDogs}
+                    alt="Beau walking dogs in Brooklyn - Professional Pet Care"
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      display: 'block',
+                      objectFit: 'cover',
+                      aspectRatio: '3/4'
+                    }}
+                  />
+                  {/* Gradient overlay for better badge visibility */}
+                  <div style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    height: '120px',
+                    background: 'linear-gradient(to top, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 100%)',
+                    pointerEvents: 'none'
+                  }}></div>
+                </div>
+
+                {/* Overlay badge */}
+                <div style={{
+                  position: 'absolute',
+                  bottom: '16px',
+                  left: '16px',
+                  right: '16px',
+                  background: 'rgba(255, 255, 255, 0.98)',
+                  backdropFilter: 'blur(12px)',
+                  padding: '12px 16px',
+                  borderRadius: '16px',
+                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.15)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '10px',
+                  border: '2px solid rgba(37, 99, 235, 0.1)'
                 }}>
-                  {feature.text}
-                </span>
+                  <Award size={20} color="#2563EB" />
+                  <span style={{
+                    color: '#0F172A',
+                    fontWeight: '700',
+                    fontSize: '14px',
+                    fontFamily: 'Fredoka, sans-serif',
+                    letterSpacing: '0.3px'
+                  }}>
+                    10+ Years Experience
+                  </span>
+                  <PawPrint size={16} color="#4A90E2" />
+                </div>
               </div>
-            ))}
+            </div>
+
           </div>
         </div>
       </section>
@@ -655,14 +714,16 @@ const AnimalCare = ({ onNavigate }) => {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '16px',
-                marginBottom: '24px'
+                marginBottom: '24px',
+                justifyContent: 'center'
               }}>
                 <div style={{
-                  width: '70px',
-                  height: '70px',
+                  width: '60px',
+                  height: '60px',
                   borderRadius: '50%',
                   overflow: 'hidden',
-                  boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
+                  boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
+                  border: '2px solid white'
                 }}>
                   <img
                     src={BeauPic}
@@ -674,7 +735,7 @@ const AnimalCare = ({ onNavigate }) => {
                     }}
                   />
                 </div>
-                <div>
+                <div style={{ textAlign: 'left' }}>
                   <h3 style={{
                     fontSize: '1.25rem',
                     fontWeight: '700',
@@ -701,7 +762,7 @@ const AnimalCare = ({ onNavigate }) => {
               }}>
                 <div>
                   <p style={{ color: '#64748B', fontSize: '12px', marginBottom: '2px' }}>Experience</p>
-                  <p style={{ color: '#0F172A', fontWeight: '700', margin: 0, fontSize: '14px' }}>8+ Years</p>
+                  <p style={{ color: '#0F172A', fontWeight: '700', margin: 0, fontSize: '14px' }}>10+ Years</p>
                 </div>
                 <div>
                   <p style={{ color: '#64748B', fontSize: '12px', marginBottom: '2px' }}>Pets Cared</p>
@@ -995,10 +1056,38 @@ const AnimalCare = ({ onNavigate }) => {
             </h2>
             <p style={{
               fontSize: '1.125rem',
-              color: '#475569'
+              color: '#475569',
+              marginBottom: '24px'
             }}>
               Don't just take my word for it - hear from happy pet parents!
             </p>
+
+            {/* Google Reviews Badge */}
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '12px',
+              background: 'white',
+              padding: '16px 24px',
+              borderRadius: '16px',
+              boxShadow: '0 6px 20px rgba(74, 144, 226, 0.15)',
+              border: '2px solid #E0E7FF',
+              marginBottom: '8px'
+            }}>
+              <div style={{ display: 'flex', gap: '4px' }}>
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={20} fill="#FBBF24" color="#FBBF24" />
+                ))}
+              </div>
+              <span style={{
+                color: '#0F172A',
+                fontWeight: '700',
+                fontSize: '1.125rem',
+                fontFamily: 'Fredoka, sans-serif'
+              }}>
+                5.0 on Google
+              </span>
+            </div>
           </div>
 
           <div className="grid-responsive grid-3-cols">
@@ -1076,6 +1165,64 @@ const AnimalCare = ({ onNavigate }) => {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Google Reviews CTA */}
+          <div style={{
+            textAlign: 'center',
+            marginTop: '64px'
+          }}>
+            <a
+              href="https://www.google.com/search?q=Beau%27s+Animal+Care+Reviews"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '12px',
+                background: 'white',
+                color: '#2563EB',
+                padding: '18px 36px',
+                borderRadius: '16px',
+                border: '3px solid #2563EB',
+                fontWeight: '700',
+                fontSize: '1.125rem',
+                fontFamily: 'Fredoka, sans-serif',
+                textDecoration: 'none',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 8px 24px rgba(37, 99, 235, 0.2)',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = '#2563EB';
+                e.currentTarget.style.color = 'white';
+                e.currentTarget.style.transform = 'translateY(-3px)';
+                e.currentTarget.style.boxShadow = '0 12px 32px rgba(37, 99, 235, 0.35)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'white';
+                e.currentTarget.style.color = '#2563EB';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(37, 99, 235, 0.2)';
+              }}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
+              Read All Google Reviews
+              <ArrowRight size={20} />
+            </a>
+            <p style={{
+              color: '#64748B',
+              fontSize: '14px',
+              marginTop: '16px',
+              fontFamily: 'Quicksand, sans-serif'
+            }}>
+              See what other pet parents are saying about Beau's Animal Care
+            </p>
           </div>
         </div>
       </section>
