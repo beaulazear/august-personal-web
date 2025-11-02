@@ -42,17 +42,36 @@ const ModernPortfolio = () => {
     let animationFrameId;
     let userInteracting = false;
     let interactionTimeout;
+    let lastScrollLeft = 0;
+    let scrollCheckInterval;
 
     const autoScroll = () => {
       if (!isPaused && !userInteracting && scrollContainer) {
-        scrollContainer.scrollLeft += scrollSpeed;
+        // Force scroll even on mobile by using scrollTo
+        const newScrollLeft = scrollContainer.scrollLeft + scrollSpeed;
+        scrollContainer.scrollTo({
+          left: newScrollLeft,
+          behavior: 'auto'
+        });
 
         // Reset to start when reaching the end
-        if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
-          scrollContainer.scrollLeft = 0;
+        if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth - 10) {
+          scrollContainer.scrollTo({ left: 0, behavior: 'auto' });
         }
       }
       animationFrameId = requestAnimationFrame(autoScroll);
+    };
+
+    // Detect if user is manually scrolling
+    const handleScroll = () => {
+      if (Math.abs(scrollContainer.scrollLeft - lastScrollLeft) > scrollSpeed * 2) {
+        userInteracting = true;
+        clearTimeout(interactionTimeout);
+        interactionTimeout = setTimeout(() => {
+          userInteracting = false;
+        }, 2000);
+      }
+      lastScrollLeft = scrollContainer.scrollLeft;
     };
 
     // Handle touch/mouse interaction
@@ -65,23 +84,41 @@ const ModernPortfolio = () => {
       clearTimeout(interactionTimeout);
       interactionTimeout = setTimeout(() => {
         userInteracting = false;
-      }, 1000); // Resume after 1 second of no interaction
+      }, 2000); // Resume after 2 seconds of no interaction
     };
 
+    scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
     scrollContainer.addEventListener('touchstart', handleInteractionStart, { passive: true });
     scrollContainer.addEventListener('touchend', handleInteractionEnd, { passive: true });
+    scrollContainer.addEventListener('touchmove', handleInteractionStart, { passive: true });
     scrollContainer.addEventListener('mousedown', handleInteractionStart);
     scrollContainer.addEventListener('mouseup', handleInteractionEnd);
 
+    // Start animation
     animationFrameId = requestAnimationFrame(autoScroll);
+
+    // Backup: use setInterval as fallback for mobile browsers that throttle RAF
+    scrollCheckInterval = setInterval(() => {
+      if (!isPaused && !userInteracting && scrollContainer && !animationFrameId) {
+        const newScrollLeft = scrollContainer.scrollLeft + scrollSpeed;
+        scrollContainer.scrollTo({ left: newScrollLeft, behavior: 'auto' });
+
+        if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth - 10) {
+          scrollContainer.scrollTo({ left: 0, behavior: 'auto' });
+        }
+      }
+    }, 16); // ~60fps
 
     return () => {
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
       }
       clearTimeout(interactionTimeout);
+      clearInterval(scrollCheckInterval);
+      scrollContainer.removeEventListener('scroll', handleScroll);
       scrollContainer.removeEventListener('touchstart', handleInteractionStart);
       scrollContainer.removeEventListener('touchend', handleInteractionEnd);
+      scrollContainer.removeEventListener('touchmove', handleInteractionStart);
       scrollContainer.removeEventListener('mousedown', handleInteractionStart);
       scrollContainer.removeEventListener('mouseup', handleInteractionEnd);
     };
@@ -346,7 +383,12 @@ const ModernPortfolio = () => {
               <div
                 ref={scrollRef}
                 className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8"
-                style={{ scrollBehavior: 'auto', WebkitOverflowScrolling: 'touch', touchAction: 'pan-x' }}
+                style={{
+                  scrollBehavior: 'auto',
+                  WebkitOverflowScrolling: 'touch',
+                  touchAction: 'pan-x',
+                  willChange: 'scroll-position'
+                }}
               >
                 {timelineHighlights.map((item, index) => {
                   const Icon = item.icon;
