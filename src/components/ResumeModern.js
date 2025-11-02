@@ -4,7 +4,7 @@ import ResumePDF from "../images/ResumePDF.pdf";
 import {
   Download, Code, Briefcase, Award, GraduationCap,
   MapPin, CheckCircle, TrendingUp, Users, Zap,
-  PawPrint, Building, Target, Mail, ExternalLink
+  PawPrint, Building, Target, Mail, ExternalLink, Phone
 } from 'lucide-react';
 
 const ResumeModern = () => {
@@ -213,6 +213,36 @@ const ResumeModern = () => {
               I specialize in turning business challenges into practical technical solutions.
               My path from zookeeper to developer gives me a unique perspective on understanding user needs.
             </p>
+          </div>
+
+          {/* Contact Information */}
+          <div className="glass-effect rounded-3xl p-6 hover-lift">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-rose-500 rounded-xl flex items-center justify-center">
+                <Mail className="text-white" size={20} />
+              </div>
+              <h2 className="text-xl font-heading font-bold text-gray-800">
+                Contact
+              </h2>
+            </div>
+
+            <div className="space-y-3">
+              <a href="mailto:beaulazear@gmail.com" className="flex items-start gap-3 group hover:bg-brand-50 p-2 rounded-lg transition-colors">
+                <Mail className="text-brand-600 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" size={16} />
+                <div>
+                  <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-0.5">Email</p>
+                  <p className="text-sm text-gray-700 font-medium break-all">beaulazear@gmail.com</p>
+                </div>
+              </a>
+
+              <a href="tel:7186141878" className="flex items-start gap-3 group hover:bg-brand-50 p-2 rounded-lg transition-colors">
+                <Phone className="text-brand-600 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" size={16} />
+                <div>
+                  <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-0.5">Phone</p>
+                  <p className="text-sm text-gray-700 font-medium">(718) 614-1878</p>
+                </div>
+              </a>
+            </div>
           </div>
 
           {/* Skills Section */}

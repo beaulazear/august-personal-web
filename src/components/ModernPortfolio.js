@@ -184,14 +184,14 @@ const ModernPortfolio = () => {
       icon: Cloud,
       title: "Cloud & DevOps",
       description: "Deploying and managing applications in the cloud. AWS certified and experienced with modern deployment workflows.",
-      technologies: ["AWS", "Heroku", "Git", "GitHub Actions", "S3", "EC2"],
+      technologies: ["AWS", "Git", "GitHub Actions", "S3", "EC2"],
       color: "from-purple-500 to-pink-500"
     },
     {
       icon: Blocks,
       title: "WordPress & No-Code",
       description: "Creating professional sites for clients quickly. Expert with WordPress, Breakdance builder, and custom theme development.",
-      technologies: ["WordPress", "Breakdance Builder", "PHP", "Custom Themes", "WooCommerce"],
+      technologies: ["WordPress", "Breakdance Builder", "PHP", "Custom Themes"],
       color: "from-green-500 to-emerald-500"
     },
     {
@@ -219,7 +219,7 @@ const ModernPortfolio = () => {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
 
             {/* Large Hero Card - Spans most of the width */}
-            <div className="md:col-span-8 glass-effect rounded-3xl p-8 md:p-12 relative overflow-hidden group hover-lift observe-animate">
+            <div className="md:col-span-8 glass-effect rounded-3xl p-8 md:p-12 relative overflow-hidden group hover-lift observe-animate border border-white/60">
               {/* Animated Background Gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-brand-500/10 via-purple-500/10 to-brand-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
@@ -290,7 +290,7 @@ const ModernPortfolio = () => {
 
             {/* Stats Card - Vertical */}
             <div className="md:col-span-4 flex flex-col gap-4">
-              <div className="glass-effect rounded-3xl p-6 hover-lift observe-animate">
+              <div className="glass-effect rounded-3xl p-6 hover-lift observe-animate border border-white/60">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 bg-gradient-to-br from-brand-500 to-purple-500 rounded-2xl flex items-center justify-center">
                     <Star className="text-white" size={24} />
@@ -302,7 +302,7 @@ const ModernPortfolio = () => {
                 </div>
               </div>
 
-              <div className="glass-effect rounded-3xl p-6 hover-lift observe-animate">
+              <div className="glass-effect rounded-3xl p-6 hover-lift observe-animate border border-white/60">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center">
                     <Coffee className="text-white" size={24} />
@@ -315,7 +315,7 @@ const ModernPortfolio = () => {
               </div>
 
               {/* Quick Links */}
-              <div className="glass-effect rounded-3xl p-4 observe-animate">
+              <div className="glass-effect rounded-3xl p-4 observe-animate border border-white/60">
                 <p className="text-xs font-semibold text-gray-600 mb-2">Connect</p>
                 <div className="flex gap-2">
                   {[
@@ -345,15 +345,15 @@ const ModernPortfolio = () => {
               </h2>
               <div
                 ref={scrollRef}
-                className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide"
-                style={{ scrollBehavior: 'auto' }}
+                className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8"
+                style={{ scrollBehavior: 'auto', WebkitOverflowScrolling: 'touch', touchAction: 'pan-x' }}
               >
                 {timelineHighlights.map((item, index) => {
                   const Icon = item.icon;
                   return (
                     <div
                       key={index}
-                      className="min-w-[280px] md:min-w-[320px] bg-white/90 backdrop-blur-sm rounded-3xl p-6 hover-lift shadow-md hover:shadow-xl border border-white/60 transition-all duration-300"
+                      className="w-[280px] md:w-[320px] flex-shrink-0 bg-white/90 backdrop-blur-sm rounded-3xl p-6 hover-lift shadow-md hover:shadow-xl border border-white/60 transition-all duration-300"
                       onMouseEnter={() => setIsPaused(true)}
                       onMouseLeave={() => setIsPaused(false)}
                       onTouchStart={() => setIsPaused(true)}
@@ -374,7 +374,7 @@ const ModernPortfolio = () => {
                   return (
                     <div
                       key={`duplicate-${index}`}
-                      className="min-w-[280px] md:min-w-[320px] bg-white/90 backdrop-blur-sm rounded-3xl p-6 hover-lift shadow-md hover:shadow-xl border border-white/60 transition-all duration-300"
+                      className="w-[280px] md:w-[320px] flex-shrink-0 bg-white/90 backdrop-blur-sm rounded-3xl p-6 hover-lift shadow-md hover:shadow-xl border border-white/60 transition-all duration-300"
                       onMouseEnter={() => setIsPaused(true)}
                       onMouseLeave={() => setIsPaused(false)}
                       onTouchStart={() => setIsPaused(true)}
@@ -415,7 +415,7 @@ const ModernPortfolio = () => {
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="glass-effect rounded-3xl p-8 hover-lift group observe-animate relative overflow-hidden"
+                className="glass-effect rounded-3xl p-8 hover-lift group observe-animate relative overflow-hidden border border-white/60"
               >
                 {/* Gradient Overlay on Hover */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
@@ -485,7 +485,7 @@ const ModernPortfolio = () => {
               return (
                 <div
                   key={index}
-                  className="glass-effect rounded-3xl p-8 hover-lift observe-animate group relative overflow-hidden"
+                  className="glass-effect rounded-3xl p-8 hover-lift observe-animate group relative overflow-hidden border border-white/60"
                 >
                   {/* Gradient overlay on hover */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
@@ -528,7 +528,7 @@ const ModernPortfolio = () => {
       {/* CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <div className="glass-effect rounded-3xl p-12 text-center observe-animate relative overflow-hidden group">
+          <div className="glass-effect rounded-3xl p-12 text-center observe-animate relative overflow-hidden group border border-white/60">
             <div className="absolute inset-0 bg-gradient-to-br from-brand-500/10 to-brand-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
             <div className="relative z-10">
