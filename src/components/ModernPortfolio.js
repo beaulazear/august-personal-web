@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import {
   Linkedin, Github, Mail, FileText, ArrowRight,
   Heart, Building, FolderOpen, PawPrint, Rocket,
-  Code, Sparkles, Star, Coffee, Zap, TrendingUp
+  Code, Sparkles, Star, Coffee, Zap, TrendingUp,
+  Smartphone, Database, Cloud, Blocks, Users, Lightbulb
 } from 'lucide-react';
 import BeauPic from '../images/BeauPic.jpg';
 
@@ -39,9 +40,11 @@ const ModernPortfolio = () => {
 
     const scrollSpeed = 0.5; // pixels per frame
     let animationFrameId;
+    let userInteracting = false;
+    let interactionTimeout;
 
     const autoScroll = () => {
-      if (!isPaused && scrollContainer) {
+      if (!isPaused && !userInteracting && scrollContainer) {
         scrollContainer.scrollLeft += scrollSpeed;
 
         // Reset to start when reaching the end
@@ -52,12 +55,35 @@ const ModernPortfolio = () => {
       animationFrameId = requestAnimationFrame(autoScroll);
     };
 
+    // Handle touch/mouse interaction
+    const handleInteractionStart = () => {
+      userInteracting = true;
+      clearTimeout(interactionTimeout);
+    };
+
+    const handleInteractionEnd = () => {
+      clearTimeout(interactionTimeout);
+      interactionTimeout = setTimeout(() => {
+        userInteracting = false;
+      }, 1000); // Resume after 1 second of no interaction
+    };
+
+    scrollContainer.addEventListener('touchstart', handleInteractionStart, { passive: true });
+    scrollContainer.addEventListener('touchend', handleInteractionEnd, { passive: true });
+    scrollContainer.addEventListener('mousedown', handleInteractionStart);
+    scrollContainer.addEventListener('mouseup', handleInteractionEnd);
+
     animationFrameId = requestAnimationFrame(autoScroll);
 
     return () => {
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
       }
+      clearTimeout(interactionTimeout);
+      scrollContainer.removeEventListener('touchstart', handleInteractionStart);
+      scrollContainer.removeEventListener('touchend', handleInteractionEnd);
+      scrollContainer.removeEventListener('mousedown', handleInteractionStart);
+      scrollContainer.removeEventListener('mouseup', handleInteractionEnd);
     };
   }, [isPaused]);
 
@@ -139,15 +165,49 @@ const ModernPortfolio = () => {
     }
   ];
 
-  const skills = [
-    { name: "React & React Native", level: 90 },
-    { name: "Ruby on Rails", level: 85 },
-    { name: "PostgreSQL", level: 80 },
-    { name: "WordPress & Breakdance", level: 85 },
-    { name: "API Integration", level: 90 },
-    { name: "Client Management", level: 95 },
-    { name: "Problem Solving", level: 95 },
-    { name: "Learning New Things", level: 100 }
+  const skillCategories = [
+    {
+      icon: Smartphone,
+      title: "Frontend Development",
+      description: "Building responsive web and mobile apps that users love. From complex dashboards to sleek mobile experiences.",
+      technologies: ["React", "React Native", "JavaScript", "TailwindCSS", "Styled Components"],
+      color: "from-blue-500 to-cyan-500"
+    },
+    {
+      icon: Database,
+      title: "Backend & APIs",
+      description: "Crafting robust server-side logic and APIs. Built the entire backend for Voxxy's mobile app from scratch.",
+      technologies: ["Ruby on Rails", "PostgreSQL", "RESTful APIs", "AWS S3", "ActiveRecord"],
+      color: "from-red-500 to-orange-500"
+    },
+    {
+      icon: Cloud,
+      title: "Cloud & DevOps",
+      description: "Deploying and managing applications in the cloud. AWS certified and experienced with modern deployment workflows.",
+      technologies: ["AWS", "Heroku", "Git", "GitHub Actions", "S3", "EC2"],
+      color: "from-purple-500 to-pink-500"
+    },
+    {
+      icon: Blocks,
+      title: "WordPress & No-Code",
+      description: "Creating professional sites for clients quickly. Expert with WordPress, Breakdance builder, and custom theme development.",
+      technologies: ["WordPress", "Breakdance Builder", "PHP", "Custom Themes", "WooCommerce"],
+      color: "from-green-500 to-emerald-500"
+    },
+    {
+      icon: Users,
+      title: "Client Relations",
+      description: "Managing 50+ pet care clients and multiple dev projects. I know how to communicate, set expectations, and deliver.",
+      technologies: ["Communication", "Project Management", "Scheduling", "Customer Service"],
+      color: "from-indigo-500 to-violet-500"
+    },
+    {
+      icon: Lightbulb,
+      title: "Problem Solving",
+      description: "Whether it's a tricky bug or a business challenge, I love figuring things out. Self-taught developer who learns fast.",
+      technologies: ["Debugging", "Creative Solutions", "Fast Learning", "Adaptability"],
+      color: "from-amber-500 to-yellow-500"
+    }
   ];
 
   return (
@@ -296,6 +356,8 @@ const ModernPortfolio = () => {
                       className="min-w-[280px] md:min-w-[320px] bg-white/90 backdrop-blur-sm rounded-3xl p-6 hover-lift shadow-md hover:shadow-xl border border-white/60 transition-all duration-300"
                       onMouseEnter={() => setIsPaused(true)}
                       onMouseLeave={() => setIsPaused(false)}
+                      onTouchStart={() => setIsPaused(true)}
+                      onTouchEnd={() => setTimeout(() => setIsPaused(false), 500)}
                     >
                       <div className={`w-14 h-14 ${item.color} rounded-2xl flex items-center justify-center mb-4 shadow-lg`}>
                         <Icon className="text-white" size={24} />
@@ -315,6 +377,8 @@ const ModernPortfolio = () => {
                       className="min-w-[280px] md:min-w-[320px] bg-white/90 backdrop-blur-sm rounded-3xl p-6 hover-lift shadow-md hover:shadow-xl border border-white/60 transition-all duration-300"
                       onMouseEnter={() => setIsPaused(true)}
                       onMouseLeave={() => setIsPaused(false)}
+                      onTouchStart={() => setIsPaused(true)}
+                      onTouchEnd={() => setTimeout(() => setIsPaused(false), 500)}
                     >
                       <div className={`w-14 h-14 ${item.color} rounded-2xl flex items-center justify-center mb-4 shadow-lg`}>
                         <Icon className="text-white" size={24} />
@@ -405,7 +469,7 @@ const ModernPortfolio = () => {
 
       {/* Skills Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 observe-animate">
             <h2 className="text-3xl md:text-5xl font-heading font-bold text-gray-800 mb-4">
               What I Bring to the Table
@@ -415,24 +479,48 @@ const ModernPortfolio = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {skills.map((skill, index) => (
-              <div
-                key={index}
-                className="glass-effect rounded-2xl p-6 hover-lift observe-animate group"
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <span className="font-semibold text-gray-800">{skill.name}</span>
-                  <Zap className="text-brand-500 group-hover:rotate-12 transition-transform" size={18} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {skillCategories.map((category, index) => {
+              const Icon = category.icon;
+              return (
+                <div
+                  key={index}
+                  className="glass-effect rounded-3xl p-8 hover-lift observe-animate group relative overflow-hidden"
+                >
+                  {/* Gradient overlay on hover */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
+
+                  <div className="relative z-10">
+                    {/* Icon */}
+                    <div className={`w-16 h-16 bg-gradient-to-br ${category.color} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                      <Icon className="text-white" size={28} />
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-xl font-heading font-bold text-gray-800 mb-3">
+                      {category.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                      {category.description}
+                    </p>
+
+                    {/* Technologies */}
+                    <div className="flex flex-wrap gap-2">
+                      {category.technologies.map((tech, i) => (
+                        <span
+                          key={i}
+                          className="text-xs bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg font-medium hover:bg-gray-200 transition-colors"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-                  <div
-                    className="bg-gradient-to-r from-brand-500 to-brand-pink-500 h-full rounded-full transition-all duration-1000 ease-out"
-                    style={{ width: `${skill.level}%` }}
-                  />
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Mail, FileText, PawPrint } from 'lucide-react';
+import { Mail, FileText, PawPrint, Menu, X } from 'lucide-react';
 
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +15,11 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleNavigation = (path) => {
+    navigate(path);
+    setMobileMenuOpen(false);
+  };
 
   const navLinks = [
     { label: 'Work', path: '/', icon: null },
@@ -41,7 +47,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Name/Logo */}
           <button
-            onClick={() => navigate('/')}
+            onClick={() => handleNavigation('/')}
             className="group flex items-center gap-3 focus:outline-none"
           >
             <div className="relative">
@@ -52,8 +58,8 @@ const Header = () => {
             </div>
           </button>
 
-          {/* Navigation Links */}
-          <nav className="flex items-center gap-1 sm:gap-2">
+          {/* Desktop Navigation Links */}
+          <nav className="hidden md:flex items-center gap-2">
             {navLinks.map((link) => {
               const Icon = link.icon;
               const active = isActive(link.path);
@@ -61,9 +67,9 @@ const Header = () => {
               return (
                 <button
                   key={link.path}
-                  onClick={() => navigate(link.path)}
+                  onClick={() => handleNavigation(link.path)}
                   className={`
-                    relative px-3 sm:px-4 py-2 rounded-xl font-medium text-sm sm:text-base
+                    relative px-4 py-2 rounded-xl font-medium text-base
                     transition-all duration-300 flex items-center gap-1.5
                     ${
                       active
@@ -72,10 +78,55 @@ const Header = () => {
                     }
                   `}
                 >
-                  {Icon && <Icon size={16} className="hidden sm:block" />}
+                  {Icon && <Icon size={16} />}
                   <span>{link.label}</span>
                   {active && (
                     <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-brand-500 to-brand-pink-500 rounded-full" />
+                  )}
+                </button>
+              );
+            })}
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 rounded-xl text-gray-700 hover:text-brand-600 hover:bg-brand-50 transition-all duration-300 focus:outline-none"
+            aria-label="Toggle mobile menu"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div
+          className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden bg-white/95 backdrop-blur-xl -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 ${
+            mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          }`}
+        >
+          <nav className="py-4 space-y-2">
+            {navLinks.map((link) => {
+              const Icon = link.icon;
+              const active = isActive(link.path);
+
+              return (
+                <button
+                  key={link.path}
+                  onClick={() => handleNavigation(link.path)}
+                  className={`
+                    w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-base
+                    transition-all duration-300
+                    ${
+                      active
+                        ? 'text-brand-600 bg-brand-100'
+                        : 'text-gray-700 hover:text-brand-600 hover:bg-brand-50'
+                    }
+                  `}
+                >
+                  {Icon && <Icon size={20} />}
+                  <span>{link.label}</span>
+                  {active && (
+                    <div className="ml-auto w-2 h-2 rounded-full bg-gradient-to-r from-brand-500 to-brand-pink-500" />
                   )}
                 </button>
               );
