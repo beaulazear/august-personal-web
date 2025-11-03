@@ -240,16 +240,16 @@ const ModernPortfolio = () => {
                   Running{' '}
                   <button
                     onClick={() => navigate('/animal-care')}
-                    className="text-brand-600 font-semibold hover:text-brand-700 border-b-2 border-brand-600 transition-colors"
+                    className="text-brand-600 font-semibold hover:text-brand-700 transition-colors"
                   >
                     Beau's Animal Care
                   </button>{' '}
                   (50+ clients), co-founding{' '}
                   <button
                     onClick={() => window.open('https://www.heyvoxxy.com/#/', '_blank')}
-                    className="inline-flex items-center hover:opacity-80 transition-opacity border-b-2 border-brand-600 hover:border-brand-700"
+                    className="inline-flex items-center hover:opacity-80 transition-opacity align-middle"
                   >
-                    <img src={VoxxyLogo} alt="Voxxy" className="h-5 inline-block" />
+                    <img src={VoxxyLogo} alt="Voxxy" className="h-5 align-middle" />
                   </button>
                   , and consulting for awesome clients.
                 </p>

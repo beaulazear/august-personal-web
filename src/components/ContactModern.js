@@ -77,7 +77,7 @@ export default function ContactModern() {
       setTouched({ from_name: false, from_email: false, message: false });
       setEmailValid(null);
     } catch (err) {
-      setError('Failed to send message. Please try again or email me directly at lazear.beau@gmail.com');
+      setError('Failed to send message. Please try again or email me directly at beaulazear@gmail.com');
       console.error('Email error:', err);
     } finally {
       setIsSubmitting(false);
@@ -115,10 +115,10 @@ export default function ContactModern() {
               </div>
               <h3 className="font-heading font-bold text-gray-800 mb-2">Email</h3>
               <a
-                href="mailto:lazear.beau@gmail.com"
+                href="mailto:beaulazear@gmail.com"
                 className="text-brand-600 hover:text-brand-700 font-medium text-sm break-all"
               >
-                lazear.beau@gmail.com
+                beaulazear@gmail.com
               </a>
             </div>
 
@@ -129,10 +129,10 @@ export default function ContactModern() {
               </div>
               <h3 className="font-heading font-bold text-gray-800 mb-2">Phone</h3>
               <a
-                href="tel:+16318038945"
+                href="tel:+17186141878"
                 className="text-green-600 hover:text-green-700 font-medium text-sm"
               >
-                +1 (631) 803-8945
+                +1 (718) 614-1878
               </a>
             </div>
 

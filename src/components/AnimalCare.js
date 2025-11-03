@@ -252,7 +252,7 @@ const AnimalCare = () => {
                         What's Included
                       </h4>
                       {service.extras.map((extra, i) => (
-                        <div key={i} className="flex items-start gap-2 mb-1">
+                        <div key={i} className="flex items-center gap-2 mb-1">
                           <span className="text-brand-400 flex-shrink-0">•</span>
                           <span className="text-xs text-gray-600">{extra}</span>
                         </div>
@@ -378,7 +378,7 @@ const AnimalCare = () => {
                   <Award className="text-brand-500 flex-shrink-0 mt-1" size={24} />
                   <div>
                     <h3 className="font-semibold text-gray-800 mb-1">10+ Years Animal Care</h3>
-                    <p className="text-gray-600 text-sm">From Prospect Park Zoo to ASPCA, I've cared for everything from zebras to guinea pigs.</p>
+                    <p className="text-gray-600 text-sm">From Prospect Park Zoo to ASPCA, I've cared for everything from primates to canines.</p>
                   </div>
                 </div>
 
