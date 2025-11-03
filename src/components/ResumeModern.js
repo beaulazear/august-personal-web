@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ResumePDF from "../images/ResumePDF.pdf";
+import VoxxyLogo from "../images/header.svg";
+import AriaLogo from "../images/Aria_header.svg";
 import {
   Download, Code, Briefcase, Award, GraduationCap,
   MapPin, CheckCircle, TrendingUp, Users, Zap,
@@ -17,8 +19,7 @@ const ResumeModern = () => {
   const highlights = [
     { icon: Users, text: "50+ Regular Clients", color: "text-green-500" },
     { icon: Code, text: "Full Stack Developer", color: "text-brand-600" },
-    { icon: TrendingUp, text: "Business Owner", color: "text-amber-500" },
-    { icon: Award, text: "AWS Certified", color: "text-red-500" }
+    { icon: TrendingUp, text: "Business Owner", color: "text-amber-500" }
   ];
 
   const skills = {
@@ -80,9 +81,8 @@ const ResumeModern = () => {
       icon: Briefcase,
       color: "from-indigo-500 to-purple-500",
       description: [
-        "Aria Design Co: Built and maintain React-based website for interior design consultant",
-        "United Advisors: Implemented technical solutions and custom web applications",
-        "Provided full-stack development services using React, Rails, and WordPress"
+        "Aria Design Co: Built and hosted React-based website on GitHub Pages, optimized SEO, managed social media presence, created new brand graphics, and provide ongoing technical support",
+        "United Advisors: Created workflow automations within their CRM, developed email and SMS templates, connected Google Forms to CRM using custom scripts for automated agent data collection"
       ]
     }
   ];
@@ -340,7 +340,11 @@ const ResumeModern = () => {
                             {job.title}
                           </h3>
                           <p className="text-brand-600 font-semibold">
-                            {job.company}
+                            {job.company === "Voxxy AI" ? (
+                              <img src={VoxxyLogo} alt="Voxxy AI" className="h-5 inline-block" />
+                            ) : (
+                              job.company
+                            )}
                           </p>
                         </div>
                         <div className="text-right">
@@ -356,7 +360,16 @@ const ResumeModern = () => {
                         {job.description.map((item, i) => (
                           <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
                             <CheckCircle className="text-green-500 flex-shrink-0 mt-0.5" size={16} />
-                            <span>{item}</span>
+                            <span>
+                              {item.includes("Aria Design Co") ? (
+                                <>
+                                  <img src={AriaLogo} alt="Aria Design Co" className="h-4 inline-block mr-1" />
+                                  {item.replace("Aria Design Co: ", ": ")}
+                                </>
+                              ) : (
+                                item
+                              )}
+                            </span>
                           </li>
                         ))}
                       </ul>

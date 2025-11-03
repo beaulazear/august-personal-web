@@ -7,6 +7,8 @@ import {
   Smartphone, Database, Cloud, Blocks, Users, Lightbulb
 } from 'lucide-react';
 import BeauPic from '../images/BeauPic.jpg';
+import VoxxyLogo from '../images/header.svg';
+import AriaLogo from '../images/Aria_header.svg';
 
 const ModernPortfolio = () => {
   const navigate = useNavigate();
@@ -38,89 +40,27 @@ const ModernPortfolio = () => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
-    const scrollSpeed = 0.5; // pixels per frame
+    const scrollSpeed = 0.5;
     let animationFrameId;
-    let userInteracting = false;
-    let interactionTimeout;
-    let lastScrollLeft = 0;
-    let scrollCheckInterval;
 
     const autoScroll = () => {
-      if (!isPaused && !userInteracting && scrollContainer) {
-        // Force scroll even on mobile by using scrollTo
-        const newScrollLeft = scrollContainer.scrollLeft + scrollSpeed;
-        scrollContainer.scrollTo({
-          left: newScrollLeft,
-          behavior: 'auto'
-        });
+      if (!isPaused && scrollContainer) {
+        scrollContainer.scrollLeft += scrollSpeed;
 
         // Reset to start when reaching the end
-        if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth - 10) {
-          scrollContainer.scrollTo({ left: 0, behavior: 'auto' });
+        if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
+          scrollContainer.scrollLeft = 0;
         }
       }
       animationFrameId = requestAnimationFrame(autoScroll);
     };
 
-    // Detect if user is manually scrolling
-    const handleScroll = () => {
-      if (Math.abs(scrollContainer.scrollLeft - lastScrollLeft) > scrollSpeed * 2) {
-        userInteracting = true;
-        clearTimeout(interactionTimeout);
-        interactionTimeout = setTimeout(() => {
-          userInteracting = false;
-        }, 2000);
-      }
-      lastScrollLeft = scrollContainer.scrollLeft;
-    };
-
-    // Handle touch/mouse interaction
-    const handleInteractionStart = () => {
-      userInteracting = true;
-      clearTimeout(interactionTimeout);
-    };
-
-    const handleInteractionEnd = () => {
-      clearTimeout(interactionTimeout);
-      interactionTimeout = setTimeout(() => {
-        userInteracting = false;
-      }, 2000); // Resume after 2 seconds of no interaction
-    };
-
-    scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
-    scrollContainer.addEventListener('touchstart', handleInteractionStart, { passive: true });
-    scrollContainer.addEventListener('touchend', handleInteractionEnd, { passive: true });
-    scrollContainer.addEventListener('touchmove', handleInteractionStart, { passive: true });
-    scrollContainer.addEventListener('mousedown', handleInteractionStart);
-    scrollContainer.addEventListener('mouseup', handleInteractionEnd);
-
-    // Start animation
     animationFrameId = requestAnimationFrame(autoScroll);
-
-    // Backup: use setInterval as fallback for mobile browsers that throttle RAF
-    scrollCheckInterval = setInterval(() => {
-      if (!isPaused && !userInteracting && scrollContainer && !animationFrameId) {
-        const newScrollLeft = scrollContainer.scrollLeft + scrollSpeed;
-        scrollContainer.scrollTo({ left: newScrollLeft, behavior: 'auto' });
-
-        if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth - 10) {
-          scrollContainer.scrollTo({ left: 0, behavior: 'auto' });
-        }
-      }
-    }, 16); // ~60fps
 
     return () => {
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
       }
-      clearTimeout(interactionTimeout);
-      clearInterval(scrollCheckInterval);
-      scrollContainer.removeEventListener('scroll', handleScroll);
-      scrollContainer.removeEventListener('touchstart', handleInteractionStart);
-      scrollContainer.removeEventListener('touchend', handleInteractionEnd);
-      scrollContainer.removeEventListener('touchmove', handleInteractionStart);
-      scrollContainer.removeEventListener('mousedown', handleInteractionStart);
-      scrollContainer.removeEventListener('mouseup', handleInteractionEnd);
     };
   }, [isPaused]);
 
@@ -145,6 +85,15 @@ const ModernPortfolio = () => {
       links: [{ label: "Live Site", url: "https://www.pocket-walks.com" }],
       highlight: "📱 Daily Use",
       color: "from-blue-500 to-cyan-500"
+    },
+    {
+      title: "Aria Design Consultants",
+      subtitle: "Client Portfolio Website",
+      description: "A modern, responsive portfolio website for an interior design consultant. Example of a basic landing page utilizing React and design libraries, hosted on Render.",
+      technologies: ["React", "TailwindCSS", "Render", "Responsive Design"],
+      links: [{ label: "Live Site", url: "https://aria-design-consultants.com" }],
+      highlight: "🎨 Client Work",
+      color: "from-rose-500 to-pink-500"
     },
     {
       title: "Beau's Animal Care",
@@ -214,14 +163,14 @@ const ModernPortfolio = () => {
       icon: Database,
       title: "Backend & APIs",
       description: "Crafting robust server-side logic and APIs. Built the entire backend for Voxxy's mobile app from scratch.",
-      technologies: ["Ruby on Rails", "PostgreSQL", "RESTful APIs", "AWS S3", "ActiveRecord"],
+      technologies: ["Ruby on Rails", "PostgreSQL", "RESTful APIs", "ActiveRecord"],
       color: "from-red-500 to-orange-500"
     },
     {
       icon: Cloud,
       title: "Cloud & DevOps",
       description: "Deploying and managing applications in the cloud. AWS certified and experienced with modern deployment workflows.",
-      technologies: ["AWS", "Git", "GitHub Actions", "S3", "EC2"],
+      technologies: ["AWS", "Render", "Git", "GitHub Actions"],
       color: "from-purple-500 to-pink-500"
     },
     {
@@ -298,9 +247,9 @@ const ModernPortfolio = () => {
                   (50+ clients), co-founding{' '}
                   <button
                     onClick={() => window.open('https://www.heyvoxxy.com/#/', '_blank')}
-                    className="text-brand-600 font-semibold hover:text-brand-700 border-b-2 border-brand-600 transition-colors"
+                    className="inline-flex items-center hover:opacity-80 transition-opacity border-b-2 border-brand-600 hover:border-brand-700"
                   >
-                    Voxxy
+                    <img src={VoxxyLogo} alt="Voxxy" className="h-5 inline-block" />
                   </button>
                   , and consulting for awesome clients.
                 </p>
@@ -383,12 +332,7 @@ const ModernPortfolio = () => {
               <div
                 ref={scrollRef}
                 className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8"
-                style={{
-                  scrollBehavior: 'auto',
-                  WebkitOverflowScrolling: 'touch',
-                  touchAction: 'pan-x',
-                  willChange: 'scroll-position'
-                }}
+                style={{ scrollBehavior: 'auto' }}
               >
                 {timelineHighlights.map((item, index) => {
                   const Icon = item.icon;
@@ -457,7 +401,7 @@ const ModernPortfolio = () => {
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="glass-effect rounded-3xl p-8 hover-lift group observe-animate relative overflow-hidden border border-white/60"
+                className="glass-effect rounded-3xl p-8 hover-lift group observe-animate relative overflow-hidden border-2 border-white/70 shadow-sm"
               >
                 {/* Gradient Overlay on Hover */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
@@ -470,7 +414,15 @@ const ModernPortfolio = () => {
                     <Building className="text-gray-400 group-hover:text-brand-500 transition-colors" size={20} />
                   </div>
 
-                  <h3 className="text-2xl font-heading font-bold text-gray-800 mb-2">{project.title}</h3>
+                  <h3 className="text-2xl font-heading font-bold text-gray-800 mb-2">
+                    {project.title === "Voxxy AI" ? (
+                      <img src={VoxxyLogo} alt="Voxxy AI" className="h-8 inline-block" />
+                    ) : project.title === "Aria Design Consultants" ? (
+                      <img src={AriaLogo} alt="Aria Design Consultants" className="h-8 inline-block" />
+                    ) : (
+                      project.title
+                    )}
+                  </h3>
                   <p className="text-sm text-brand-600 font-semibold mb-3">{project.subtitle}</p>
                   <p className="text-gray-600 text-sm leading-relaxed mb-4">{project.description}</p>
 
@@ -527,7 +479,7 @@ const ModernPortfolio = () => {
               return (
                 <div
                   key={index}
-                  className="glass-effect rounded-3xl p-8 hover-lift observe-animate group relative overflow-hidden border border-white/60"
+                  className="glass-effect rounded-3xl p-8 hover-lift observe-animate group relative overflow-hidden border-2 border-white/70 shadow-sm"
                 >
                   {/* Gradient overlay on hover */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
