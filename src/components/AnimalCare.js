@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import { Heart, MapPin, Phone, Mail, Star, CheckCircle, Dog, Cat, Home, Bird, Award, PawPrint } from 'lucide-react';
+import { Heart, MapPin, Phone, Mail, Star, CheckCircle, Dog, Cat, Home, Bird, Award, PawPrint, Instagram, ExternalLink } from 'lucide-react';
 
 // Import images
 import BeauAndRalph from '../images/BeauAndRalph.JPG';
 import JavaLookinCute from '../images/JavaLookinCute.jpeg';
 import MooseOnVerandah from '../images/MooseOnVerandah.jpeg';
-import BeauPic from '../images/BeauPic.jpg';
+import BeauAndRu from '../images/BeauAndRu.JPG';
 import BeauWalkingDogs from '../images/BeauReykaMangoRu.jpeg';
 
 const AnimalCare = () => {
@@ -171,10 +171,19 @@ const AnimalCare = () => {
                 </a>
                 <a
                   href="mailto:beaulazear@gmail.com"
-                  className="glass-effect border-2 border-white/70 text-brand-600 px-6 py-3 rounded-xl font-semibold flex items-center gap-2 hover:shadow-lg hover:scale-105 transition-all duration-300"
+                  className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-2 hover:shadow-lg hover:scale-105 transition-all duration-300"
                 >
                   <Mail size={18} />
                   Email Me
+                </a>
+                <a
+                  href="https://www.instagram.com/beaus.animal.care/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-2 hover:shadow-lg hover:scale-105 transition-all duration-300"
+                >
+                  <Instagram size={18} />
+                  Instagram
                 </a>
               </div>
             </div>
@@ -273,9 +282,29 @@ const AnimalCare = () => {
             <h2 className="text-4xl md:text-5xl font-heading font-bold text-gray-800 mb-4">
               What Pet Parents Say
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-600 mb-6">
               Don't just take my word for it
             </p>
+
+            {/* Google Reviews Button */}
+            <div className="flex justify-center">
+              <a
+                href="https://www.google.com/search?q=beau%27s+animal+care+reviews"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-white px-6 py-3 rounded-xl font-semibold text-gray-800 hover:shadow-xl hover:scale-105 transition-all duration-300 border-2 border-gray-200"
+              >
+                <div className="flex items-center gap-1">
+                  <Star className="text-yellow-500 fill-yellow-500" size={20} />
+                  <Star className="text-yellow-500 fill-yellow-500" size={20} />
+                  <Star className="text-yellow-500 fill-yellow-500" size={20} />
+                  <Star className="text-yellow-500 fill-yellow-500" size={20} />
+                  <Star className="text-yellow-500 fill-yellow-500" size={20} />
+                </div>
+                <span className="text-lg">Read Google Reviews</span>
+                <ExternalLink size={18} className="text-gray-600" />
+              </a>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -360,7 +389,7 @@ const AnimalCare = () => {
             <div>
               <div className="glass-effect rounded-3xl p-4 border-2 border-white/70 hover-lift">
                 <img
-                  src={BeauPic}
+                  src={BeauAndRu}
                   alt="Beau Lazear"
                   className="w-full h-auto rounded-2xl"
                 />
@@ -433,10 +462,19 @@ const AnimalCare = () => {
                 </a>
                 <a
                   href="mailto:beaulazear@gmail.com"
-                  className="bg-white text-brand-600 px-8 py-4 rounded-xl font-bold text-lg flex items-center gap-3 hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-brand-200"
+                  className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center gap-3 hover:shadow-2xl hover:scale-105 transition-all duration-300"
                 >
                   <Mail size={20} />
                   Send Email
+                </a>
+                <a
+                  href="https://www.instagram.com/beaus.animal.care/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center gap-3 hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                >
+                  <Instagram size={20} />
+                  Instagram
                 </a>
               </div>
             </div>

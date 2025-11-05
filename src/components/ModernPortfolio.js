@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   Linkedin, Github, Mail, FileText, ArrowRight,
   Heart, Building, FolderOpen, PawPrint, Rocket,
-  Code, Sparkles, Star, Coffee, Zap, TrendingUp,
+  Code, Sparkles, Star, Coffee, TrendingUp,
   Smartphone, Database, Cloud, Blocks, Users, Lightbulb
 } from 'lucide-react';
 import BeauPic from '../images/BeauPic.jpg';
@@ -251,7 +251,7 @@ const ModernPortfolio = () => {
                   >
                     <img src={VoxxyLogo} alt="Voxxy" className="h-5 align-middle" />
                   </button>
-                  , and consulting for awesome clients.
+                  , and building websites for clients at Catch Drive.
                 </p>
 
                 {/* CTA Buttons */}
