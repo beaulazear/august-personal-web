@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.css": "/static/css/main.907dd2e9.css",
-    "main.js": "/static/js/main.00c1fd7f.js",
+    "main.css": "/static/css/main.b19b17aa.css",
+    "main.js": "/static/js/main.3d65866d.js",
     "static/js/453.506b5fe3.chunk.js": "/static/js/453.506b5fe3.chunk.js",
     "static/media/BeauAndRalph.JPG": "/static/media/BeauAndRalph.9b8ecdd39db9b85bd93a.JPG",
     "static/media/BeauReykaMangoRu.jpeg": "/static/media/BeauReykaMangoRu.06dafeed414154afc57c.jpeg",
+    "static/media/BeauAndRu.JPG": "/static/media/BeauAndRu.002b2051b6900cd44ba7.JPG",
     "static/media/JavaLookinCute.jpeg": "/static/media/JavaLookinCute.fd01dd7a6a13e9eb2cf9.jpeg",
     "static/media/MooseOnVerandah.jpeg": "/static/media/MooseOnVerandah.9470cd44cba681628cdc.jpeg",
     "static/media/BeauPic.jpg": "/static/media/BeauPic.ac4454fe6305a5452f96.jpg",
@@ -12,12 +13,12 @@
     "index.html": "/index.html",
     "static/media/Aria_header.svg": "/static/media/Aria_header.fc62755d15fca6f8851730feaf52f8f5.svg",
     "static/media/header.svg": "/static/media/header.269e98001eb4ba485490c98a345fd68a.svg",
-    "main.907dd2e9.css.map": "/static/css/main.907dd2e9.css.map",
-    "main.00c1fd7f.js.map": "/static/js/main.00c1fd7f.js.map",
+    "main.b19b17aa.css.map": "/static/css/main.b19b17aa.css.map",
+    "main.3d65866d.js.map": "/static/js/main.3d65866d.js.map",
     "453.506b5fe3.chunk.js.map": "/static/js/453.506b5fe3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.907dd2e9.css",
-    "static/js/main.00c1fd7f.js"
+    "static/css/main.b19b17aa.css",
+    "static/js/main.3d65866d.js"
   ]
 }
