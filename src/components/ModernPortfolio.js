@@ -9,6 +9,9 @@ import {
 import BeauPic from '../images/BeauPic.jpg';
 import VoxxyLogo from '../images/header.svg';
 import AriaLogo from '../images/Aria_header.svg';
+import BeausAnimalCareLogo from '../images/BeausAnimalCare.svg';
+import PocketWalksLogo from '../images/PocketWalks.svg';
+import VoxxyPresentsLogo from '../images/VoxxyPresents.svg';
 
 const ModernPortfolio = () => {
   const navigate = useNavigate();
@@ -74,8 +77,21 @@ const ModernPortfolio = () => {
         { label: "App Store", url: "https://apps.apple.com/us/app/voxxy/id6746337878" },
         { label: "Website", url: "https://www.heyvoxxy.com/#/" }
       ],
-      highlight: "🚀 Co-Founded",
+      highlight: "Co-Founded",
+      highlightIcon: Rocket,
       color: "from-purple-500 to-pink-500"
+    },
+    {
+      title: "Voxxy Presents",
+      subtitle: "Event Management Platform",
+      description: "The Operating System for Recurring Event Producers. Event coordination tools that help producers manage vendor relationships, automate logistics, and scale without burning out.",
+      technologies: ["React", "TypeScript", "Rails API"],
+      links: [
+        { label: "Request Paid Beta Access", url: "https://www.voxxypresents.com/" }
+      ],
+      highlight: "Product Launch",
+      highlightIcon: Sparkles,
+      color: "from-indigo-500 to-purple-500"
     },
     {
       title: "Pocket Walks",
@@ -83,7 +99,8 @@ const ModernPortfolio = () => {
       description: "Custom scheduling and client management app I built for my pet care business. Streamlines bookings for 50+ regular clients.",
       technologies: ["React", "Rails", "PostgreSQL", "AWS"],
       links: [{ label: "Live Site", url: "https://www.pocket-walks.com" }],
-      highlight: "📱 Daily Use",
+      highlight: "Daily Use",
+      highlightIcon: Smartphone,
       color: "from-blue-500 to-cyan-500"
     },
     {
@@ -92,7 +109,8 @@ const ModernPortfolio = () => {
       description: "A modern, responsive portfolio website for an interior design consultant. Example of a basic landing page utilizing React and design libraries, hosted on Render.",
       technologies: ["React", "TailwindCSS", "Render", "Responsive Design"],
       links: [{ label: "Live Site", url: "https://aria-design-consultants.com" }],
-      highlight: "🎨 Client Work",
+      highlight: "Client Work",
+      highlightIcon: Users,
       color: "from-rose-500 to-pink-500"
     },
     {
@@ -101,7 +119,8 @@ const ModernPortfolio = () => {
       description: "Professional pet care service I founded in 2019, serving 50+ families in Brooklyn. Built a dedicated website to showcase services.",
       technologies: ["React", "Customer Service", "Operations"],
       links: [{ label: "View Site", url: "/animal-care", isInternal: true }],
-      highlight: "🐕 Founder",
+      highlight: "Founder",
+      highlightIcon: PawPrint,
       color: "from-green-500 to-emerald-500"
     }
   ];
@@ -240,9 +259,9 @@ const ModernPortfolio = () => {
                   Running{' '}
                   <button
                     onClick={() => navigate('/animal-care')}
-                    className="text-brand-600 font-semibold hover:text-brand-700 transition-colors"
+                    className="inline-flex items-center hover:opacity-80 transition-opacity align-middle px-2 py-0 -mx-2 -my-1"
                   >
-                    Beau's Animal Care
+                    <img src={BeausAnimalCareLogo} alt="Beau's Animal Care" className="h-10 md:h-16 align-middle p-0" />
                   </button>{' '}
                   (50+ clients), co-founding{' '}
                   <button
@@ -408,7 +427,8 @@ const ModernPortfolio = () => {
 
                 <div className="relative z-10">
                   <div className="flex items-start justify-between mb-4">
-                    <div className="text-xs font-bold text-brand-600 bg-brand-100 px-3 py-1 rounded-full">
+                    <div className="text-xs font-bold text-brand-600 bg-brand-100 px-3 py-1 rounded-full flex items-center gap-1.5">
+                      {React.createElement(project.highlightIcon, { size: 14 })}
                       {project.highlight}
                     </div>
                     <Building className="text-gray-400 group-hover:text-brand-500 transition-colors" size={20} />
@@ -419,6 +439,12 @@ const ModernPortfolio = () => {
                       <img src={VoxxyLogo} alt="Voxxy AI" className="h-8 inline-block" />
                     ) : project.title === "Aria Design Consultants" ? (
                       <img src={AriaLogo} alt="Aria Design Consultants" className="h-8 inline-block" />
+                    ) : project.title === "Beau's Animal Care" ? (
+                      <img src={BeausAnimalCareLogo} alt="Beau's Animal Care" className="h-24 inline-block" />
+                    ) : project.title === "Pocket Walks" ? (
+                      <img src={PocketWalksLogo} alt="Pocket Walks" className="h-20 inline-block" />
+                    ) : project.title === "Voxxy Presents" ? (
+                      <img src={VoxxyPresentsLogo} alt="Voxxy Presents" className="h-20 inline-block" />
                     ) : (
                       project.title
                     )}

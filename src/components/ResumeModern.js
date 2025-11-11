@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import ResumePDF from "../images/ResumePDF.pdf";
 import VoxxyLogo from "../images/header.svg";
 import AriaLogo from "../images/Aria_header.svg";
+import BeausAnimalCareLogo from "../images/BeausAnimalCare.svg";
 import {
   Download, Code, Briefcase, Award, GraduationCap,
   MapPin, CheckCircle, TrendingUp, Users, Zap,
@@ -342,6 +343,8 @@ const ResumeModern = () => {
                           <p className="text-brand-600 font-semibold">
                             {job.company === "Voxxy AI" ? (
                               <img src={VoxxyLogo} alt="Voxxy AI" className="h-5 inline-block" />
+                            ) : job.company === "Beau's Animal Care" ? (
+                              <img src={BeausAnimalCareLogo} alt="Beau's Animal Care" className="h-16 inline-block -my-2" />
                             ) : (
                               job.company
                             )}

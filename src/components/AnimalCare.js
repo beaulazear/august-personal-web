@@ -7,6 +7,7 @@ import JavaLookinCute from '../images/JavaLookinCute.jpeg';
 import MooseOnVerandah from '../images/MooseOnVerandah.jpeg';
 import BeauAndRu from '../images/BeauAndRu.JPG';
 import BeauWalkingDogs from '../images/BeauReykaMangoRu.jpeg';
+import BeausAnimalCareLogo from '../images/BeausAnimalCare.svg';
 
 const AnimalCare = () => {
 
@@ -136,8 +137,8 @@ const AnimalCare = () => {
                 <PawPrint className="text-brand-600" size={28} />
               </div>
 
-              <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6 bg-gradient-to-r from-gray-800 to-brand-700 bg-clip-text text-transparent">
-                Beau's Animal Care
+              <h1 className="mb-6 p-0 leading-none -my-4">
+                <img src={BeausAnimalCareLogo} alt="Beau's Animal Care" className="h-48 md:h-60 p-0 block" />
               </h1>
 
               <p className="text-xl text-gray-700 mb-4">
