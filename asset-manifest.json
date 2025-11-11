@@ -1,24 +1,27 @@
 {
   "files": {
-    "main.css": "/static/css/main.b19b17aa.css",
-    "main.js": "/static/js/main.3d65866d.js",
+    "main.css": "/static/css/main.99fa190c.css",
+    "main.js": "/static/js/main.d079e7b0.js",
     "static/js/453.506b5fe3.chunk.js": "/static/js/453.506b5fe3.chunk.js",
     "static/media/BeauAndRalph.JPG": "/static/media/BeauAndRalph.9b8ecdd39db9b85bd93a.JPG",
     "static/media/BeauReykaMangoRu.jpeg": "/static/media/BeauReykaMangoRu.06dafeed414154afc57c.jpeg",
     "static/media/BeauAndRu.JPG": "/static/media/BeauAndRu.002b2051b6900cd44ba7.JPG",
+    "static/media/VoxxyPresents.svg": "/static/media/VoxxyPresents.38c9a4ae45016809abcb514ce39add12.svg",
     "static/media/JavaLookinCute.jpeg": "/static/media/JavaLookinCute.fd01dd7a6a13e9eb2cf9.jpeg",
     "static/media/MooseOnVerandah.jpeg": "/static/media/MooseOnVerandah.9470cd44cba681628cdc.jpeg",
     "static/media/BeauPic.jpg": "/static/media/BeauPic.ac4454fe6305a5452f96.jpg",
+    "static/media/BeausAnimalCare.svg": "/static/media/BeausAnimalCare.069e443ca7a1f4f0658cb1e354bafd4a.svg",
     "static/media/ResumePDF.pdf": "/static/media/ResumePDF.d5b0a1c6090180021cbf.pdf",
+    "static/media/PocketWalks.svg": "/static/media/PocketWalks.15a5c6f4cb2c1834c0226ed9daf1b628.svg",
     "index.html": "/index.html",
     "static/media/Aria_header.svg": "/static/media/Aria_header.fc62755d15fca6f8851730feaf52f8f5.svg",
     "static/media/header.svg": "/static/media/header.269e98001eb4ba485490c98a345fd68a.svg",
-    "main.b19b17aa.css.map": "/static/css/main.b19b17aa.css.map",
-    "main.3d65866d.js.map": "/static/js/main.3d65866d.js.map",
+    "main.99fa190c.css.map": "/static/css/main.99fa190c.css.map",
+    "main.d079e7b0.js.map": "/static/js/main.d079e7b0.js.map",
     "453.506b5fe3.chunk.js.map": "/static/js/453.506b5fe3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b19b17aa.css",
-    "static/js/main.3d65866d.js"
+    "static/css/main.99fa190c.css",
+    "static/js/main.d079e7b0.js"
   ]
 }
