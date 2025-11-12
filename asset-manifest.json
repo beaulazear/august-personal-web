@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.99fa190c.css",
-    "main.js": "/static/js/main.d079e7b0.js",
+    "main.css": "/static/css/main.6ee686b2.css",
+    "main.js": "/static/js/main.eafa8264.js",
     "static/js/453.506b5fe3.chunk.js": "/static/js/453.506b5fe3.chunk.js",
     "static/media/BeauAndRalph.JPG": "/static/media/BeauAndRalph.9b8ecdd39db9b85bd93a.JPG",
     "static/media/BeauReykaMangoRu.jpeg": "/static/media/BeauReykaMangoRu.06dafeed414154afc57c.jpeg",
@@ -16,12 +16,12 @@
     "index.html": "/index.html",
     "static/media/Aria_header.svg": "/static/media/Aria_header.fc62755d15fca6f8851730feaf52f8f5.svg",
     "static/media/header.svg": "/static/media/header.269e98001eb4ba485490c98a345fd68a.svg",
-    "main.99fa190c.css.map": "/static/css/main.99fa190c.css.map",
-    "main.d079e7b0.js.map": "/static/js/main.d079e7b0.js.map",
+    "main.6ee686b2.css.map": "/static/css/main.6ee686b2.css.map",
+    "main.eafa8264.js.map": "/static/js/main.eafa8264.js.map",
     "453.506b5fe3.chunk.js.map": "/static/js/453.506b5fe3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.99fa190c.css",
-    "static/js/main.d079e7b0.js"
+    "static/css/main.6ee686b2.css",
+    "static/js/main.eafa8264.js"
   ]
 }
