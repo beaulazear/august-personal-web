@@ -259,9 +259,9 @@ const ModernPortfolio = () => {
                   Running{' '}
                   <button
                     onClick={() => navigate('/animal-care')}
-                    className="inline-flex items-center hover:opacity-80 transition-opacity align-middle px-2 py-0 -mx-2 -my-1"
+                    className="inline-flex items-center hover:opacity-80 transition-opacity align-middle px-2 py-0 -mx-2 -my-2"
                   >
-                    <img src={BeausAnimalCareLogo} alt="Beau's Animal Care" className="h-10 md:h-16 align-middle p-0" />
+                    <img src={BeausAnimalCareLogo} alt="Beau's Animal Care" className="h-14 -my-2 align-middle p-0" />
                   </button>{' '}
                   (50+ clients), co-founding{' '}
                   <button
@@ -434,17 +434,17 @@ const ModernPortfolio = () => {
                     <Building className="text-gray-400 group-hover:text-brand-500 transition-colors" size={20} />
                   </div>
 
-                  <h3 className="text-2xl font-heading font-bold text-gray-800 mb-2">
+                  <h3 className="text-2xl font-heading font-bold text-gray-800 mb-2 -my-4">
                     {project.title === "Voxxy AI" ? (
                       <img src={VoxxyLogo} alt="Voxxy AI" className="h-8 inline-block" />
                     ) : project.title === "Aria Design Consultants" ? (
                       <img src={AriaLogo} alt="Aria Design Consultants" className="h-8 inline-block" />
                     ) : project.title === "Beau's Animal Care" ? (
-                      <img src={BeausAnimalCareLogo} alt="Beau's Animal Care" className="h-24 inline-block" />
+                      <img src={BeausAnimalCareLogo} alt="Beau's Animal Care" className="h-20 -my-4 -mb-5 inline-block" />
                     ) : project.title === "Pocket Walks" ? (
-                      <img src={PocketWalksLogo} alt="Pocket Walks" className="h-20 inline-block" />
+                      <img src={PocketWalksLogo} alt="Pocket Walks" className="h-16 -mb-5 -my-2 inline-block" />
                     ) : project.title === "Voxxy Presents" ? (
-                      <img src={VoxxyPresentsLogo} alt="Voxxy Presents" className="h-20 inline-block" />
+                      <img src={VoxxyPresentsLogo} alt="Voxxy Presents" className="h-16 inline-block" />
                     ) : (
                       project.title
                     )}

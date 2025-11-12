@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Mail, FileText, PawPrint, Menu, X, Briefcase } from 'lucide-react';
+import BeausAnimalCareLogo from '../images/BeausAnimalCare.svg';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ const Header = () => {
 
   const navLinks = [
     { label: 'Work', path: '/', icon: Briefcase },
-    { label: 'Animal Care', path: '/beaus-animal-care', icon: PawPrint },
+    { label: 'Pets', path: '/beaus-animal-care', icon: PawPrint },
     { label: 'Resume', path: '/resume', icon: FileText },
     { label: 'Contact', path: '/contact', icon: Mail },
   ];
@@ -51,10 +52,20 @@ const Header = () => {
             className="group flex items-center gap-3 focus:outline-none"
           >
             <div className="relative">
-              <span className="text-2xl sm:text-3xl font-heading font-bold bg-gradient-to-r from-gray-800 to-brand-700 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300">
-                Beau Lazear
-              </span>
-              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-brand-500 to-brand-pink-500 group-hover:w-full transition-all duration-300" />
+              {location.pathname === '/animal-care' || location.pathname === '/beaus-animal-care' ? (
+                <img
+                  src={BeausAnimalCareLogo}
+                  alt="Beau's Animal Care"
+                  className="h-22 -my-4 hover:scale-105 transition-transform duration-300"
+                />
+              ) : (
+                <>
+                  <span className="text-2xl sm:text-3xl font-heading font-bold bg-gradient-to-r from-gray-800 to-brand-700 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300">
+                    Beau Lazear
+                  </span>
+                  <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-brand-500 to-brand-pink-500 group-hover:w-full transition-all duration-300" />
+                </>
+              )}
             </div>
           </button>
 

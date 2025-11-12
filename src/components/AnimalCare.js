@@ -131,22 +131,25 @@ const AnimalCare = () => {
 
             {/* Left Column - Content */}
             <div>
-              <div className="flex items-center gap-2 mb-4">
+              <div className="flex items-center gap-2 mb-6">
                 <PawPrint className="text-brand-600" size={32} />
                 <PawPrint className="text-brand-pink-500" size={24} />
                 <PawPrint className="text-brand-600" size={28} />
               </div>
 
-              <h1 className="mb-6 p-0 leading-none -my-4">
-                <img src={BeausAnimalCareLogo} alt="Beau's Animal Care" className="h-48 md:h-60 p-0 block" />
+              <h1 className="text-4xl md:text-6xl font-heading font-bold text-gray-800 mb-6 leading-tight">
+                Professional <span className="whitespace-nowrap">Pet Care</span>
+                <span className="block text-transparent bg-gradient-to-r from-brand-500 to-brand-pink-500 bg-clip-text">
+                  in Brooklyn
+                </span>
               </h1>
 
-              <p className="text-xl text-gray-700 mb-4">
-                Professional pet care in Brooklyn since 2019
+              <p className="text-xl text-gray-700 font-medium mb-6">
+                Serving families since 2019 with loving, reliable care for dogs, cats, and exotic animals.
               </p>
 
               <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                From zookeeper to your pet's best friend. Providing loving, reliable care for dogs, cats, and exotic animals with over 10 years of animal care experience.
+                From zookeeper to your pet's best friend—I bring over 10 years of professional animal care experience to every walk, visit, and overnight stay.
               </p>
 
               {/* Trust Indicators */}
