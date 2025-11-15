@@ -118,7 +118,7 @@ const ModernPortfolio = () => {
       subtitle: "Pet Care Service",
       description: "Professional pet care service I founded in 2019, serving 50+ families in Brooklyn. Built a dedicated website to showcase services.",
       technologies: ["React", "Customer Service", "Operations"],
-      links: [{ label: "View Site", url: "/animal-care", isInternal: true }],
+      links: [{ label: "View Site", url: "https://www.beausanimalcare.com" }],
       highlight: "Founder",
       highlightIcon: PawPrint,
       color: "from-green-500 to-emerald-500"
@@ -258,7 +258,7 @@ const ModernPortfolio = () => {
                   Small business owner and full-stack developer building web and mobile applications with React, Rails, and WordPress.
                   Running{' '}
                   <button
-                    onClick={() => navigate('/animal-care')}
+                    onClick={() => window.open('https://www.beausanimalcare.com', '_blank')}
                     className="inline-flex items-center hover:opacity-80 transition-opacity align-middle px-2 py-0 -mx-2 -my-2"
                   >
                     <img src={BeausAnimalCareLogo} alt="Beau's Animal Care" className="h-14 -my-2 align-middle p-0" />

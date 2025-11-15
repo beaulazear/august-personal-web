@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Mail, FileText, PawPrint, Menu, X, Briefcase } from 'lucide-react';
-import BeausAnimalCareLogo from '../images/BeausAnimalCare.svg';
+import { Mail, FileText, Menu, X, Briefcase } from 'lucide-react';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -17,14 +16,17 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavigation = (path) => {
-    navigate(path);
+  const handleNavigation = (path, isExternal = false) => {
+    if (isExternal) {
+      window.open(path, '_blank');
+    } else {
+      navigate(path);
+    }
     setMobileMenuOpen(false);
   };
 
   const navLinks = [
     { label: 'Work', path: '/', icon: Briefcase },
-    { label: 'Pets', path: '/beaus-animal-care', icon: PawPrint },
     { label: 'Resume', path: '/resume', icon: FileText },
     { label: 'Contact', path: '/contact', icon: Mail },
   ];
@@ -52,20 +54,10 @@ const Header = () => {
             className="group flex items-center gap-3 focus:outline-none"
           >
             <div className="relative">
-              {location.pathname === '/animal-care' || location.pathname === '/beaus-animal-care' ? (
-                <img
-                  src={BeausAnimalCareLogo}
-                  alt="Beau's Animal Care"
-                  className="h-22 -my-4 hover:scale-105 transition-transform duration-300"
-                />
-              ) : (
-                <>
-                  <span className="text-2xl sm:text-3xl font-heading font-bold bg-gradient-to-r from-gray-800 to-brand-700 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300">
-                    Beau Lazear
-                  </span>
-                  <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-brand-500 to-brand-pink-500 group-hover:w-full transition-all duration-300" />
-                </>
-              )}
+              <span className="text-2xl sm:text-3xl font-heading font-bold bg-gradient-to-r from-gray-800 to-brand-700 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300">
+                Beau Lazear
+              </span>
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-brand-500 to-brand-pink-500 group-hover:w-full transition-all duration-300" />
             </div>
           </button>
 
@@ -78,7 +70,7 @@ const Header = () => {
               return (
                 <button
                   key={link.path}
-                  onClick={() => handleNavigation(link.path)}
+                  onClick={() => handleNavigation(link.path, link.isExternal)}
                   className={`
                     relative px-4 py-2 rounded-xl font-medium text-base
                     transition-all duration-300 flex items-center gap-1.5
@@ -123,7 +115,7 @@ const Header = () => {
               return (
                 <button
                   key={link.path}
-                  onClick={() => handleNavigation(link.path)}
+                  onClick={() => handleNavigation(link.path, link.isExternal)}
                   className={`
                     w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-base
                     transition-all duration-300

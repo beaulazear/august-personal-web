@@ -344,7 +344,7 @@ const ResumeModern = () => {
                             {job.company === "Voxxy AI" ? (
                               <img src={VoxxyLogo} alt="Voxxy AI" className="h-5 inline-block" />
                             ) : job.company === "Beau's Animal Care" ? (
-                              <img src={BeausAnimalCareLogo} alt="Beau's Animal Care" className="h-16 inline-block -my-2" />
+                              <img src={BeausAnimalCareLogo} alt="Beau's Animal Care" className="h-16 inline-block -my-4" />
                             ) : (
                               job.company
                             )}

@@ -4,7 +4,6 @@ import Header from './components/Header';
 import ModernPortfolio from './components/ModernPortfolio';
 import ResumeModern from './components/ResumeModern';
 import ContactModern from './components/ContactModern';
-import AnimalCare from './components/AnimalCare';
 
 // ScrollToTop component that scrolls to top on route change
 const ScrollToTop = () => {
@@ -45,16 +44,6 @@ const App = () => {
         <Route path="/contact" element={
           <Layout>
             <ContactModern />
-          </Layout>
-        } />
-        <Route path="/animal-care" element={
-          <Layout>
-            <AnimalCare />
-          </Layout>
-        } />
-        <Route path="/beaus-animal-care" element={
-          <Layout>
-            <AnimalCare />
           </Layout>
         } />
       </Routes>
