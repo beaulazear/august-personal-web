@@ -108,7 +108,7 @@ const ModernPortfolio = () => {
       subtitle: "Client Portfolio Website",
       description: "A modern, responsive portfolio website for an interior design consultant. Example of a basic landing page utilizing React and design libraries, hosted on Render.",
       technologies: ["React", "TailwindCSS", "Render", "Responsive Design"],
-      links: [{ label: "Live Site", url: "https://aria-design-consultants.com" }],
+      links: [{ label: "Live Site", url: "https://ariadesignconsultants.com" }],
       highlight: "Client Work",
       highlightIcon: Users,
       color: "from-rose-500 to-pink-500"
