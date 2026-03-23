@@ -236,6 +236,7 @@ const ModernPortfolio = () => {
                       <img
                         src={BeauPic}
                         alt="Beau Lazear"
+                        loading="lazy"
                         className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                       />
                     </div>
@@ -255,20 +256,20 @@ const ModernPortfolio = () => {
                 </div>
 
                 <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                  Small business owner and full-stack developer building web and mobile applications with React, Rails, and WordPress.
+                  Small business owner and software developer building web and mobile applications with React, Rails, and WordPress.
                   Running{' '}
                   <button
                     onClick={() => window.open('https://www.beausanimalcare.com', '_blank')}
                     className="inline-flex items-center hover:opacity-80 transition-opacity align-middle px-2 py-0 -mx-2 -my-2"
                   >
-                    <img src={BeausAnimalCareLogo} alt="Beau's Animal Care" className="h-14 -my-2 align-middle p-0" />
+                    <img src={BeausAnimalCareLogo} alt="Beau's Animal Care" loading="lazy" className="h-14 -my-2 align-middle p-0" />
                   </button>{' '}
                   (50+ clients), co-founding{' '}
                   <button
                     onClick={() => window.open('https://www.heyvoxxy.com/#/', '_blank')}
                     className="inline-flex items-center hover:opacity-80 transition-opacity align-middle"
                   >
-                    <img src={VoxxyLogo} alt="Voxxy" className="h-5 align-middle" />
+                    <img src={VoxxyLogo} alt="Voxxy" loading="lazy" className="h-5 align-middle" />
                   </button>
                   , and building websites for clients at Catch Drive.
                 </p>
@@ -436,15 +437,15 @@ const ModernPortfolio = () => {
 
                   <h3 className="text-2xl font-heading font-bold text-gray-800 mb-2 -my-4">
                     {project.title === "Voxxy AI" ? (
-                      <img src={VoxxyLogo} alt="Voxxy AI" className="h-8 inline-block" />
+                      <img src={VoxxyLogo} alt="Voxxy AI" loading="lazy" className="h-8 inline-block" />
                     ) : project.title === "Aria Design Consultants" ? (
-                      <img src={AriaLogo} alt="Aria Design Consultants" className="h-8 inline-block" />
+                      <img src={AriaLogo} alt="Aria Design Consultants" loading="lazy" className="h-8 inline-block" />
                     ) : project.title === "Beau's Animal Care" ? (
-                      <img src={BeausAnimalCareLogo} alt="Beau's Animal Care" className="h-20 -my-4 -mb-5 inline-block" />
+                      <img src={BeausAnimalCareLogo} alt="Beau's Animal Care" loading="lazy" className="h-20 -my-4 -mb-5 inline-block" />
                     ) : project.title === "Pocket Walks" ? (
-                      <img src={PocketWalksLogo} alt="Pocket Walks" className="h-16 -mb-5 -my-2 inline-block" />
+                      <img src={PocketWalksLogo} alt="Pocket Walks" loading="lazy" className="h-16 -mb-5 -my-2 inline-block" />
                     ) : project.title === "Voxxy Presents" ? (
-                      <img src={VoxxyPresentsLogo} alt="Voxxy Presents" className="h-16 inline-block" />
+                      <img src={VoxxyPresentsLogo} alt="Voxxy Presents" loading="lazy" className="h-16 inline-block" />
                     ) : (
                       project.title
                     )}

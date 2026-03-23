@@ -210,7 +210,7 @@ const ResumeModern = () => {
             </div>
 
             <p className="text-gray-700 text-sm leading-relaxed">
-              Small business owner and full-stack developer building web and mobile applications with React, Rails, and WordPress.
+              Small business owner and software developer building web and mobile applications with React, Rails, and WordPress.
               I specialize in turning business challenges into practical technical solutions.
               My path from zookeeper to developer gives me a unique perspective on understanding user needs.
             </p>
@@ -342,9 +342,9 @@ const ResumeModern = () => {
                           </h3>
                           <p className="text-brand-600 font-semibold">
                             {job.company === "Voxxy AI" ? (
-                              <img src={VoxxyLogo} alt="Voxxy AI" className="h-5 inline-block" />
+                              <img src={VoxxyLogo} alt="Voxxy AI" loading="lazy" className="h-5 inline-block" />
                             ) : job.company === "Beau's Animal Care" ? (
-                              <img src={BeausAnimalCareLogo} alt="Beau's Animal Care" className="h-16 inline-block -my-4" />
+                              <img src={BeausAnimalCareLogo} alt="Beau's Animal Care" loading="lazy" className="h-16 inline-block -my-4" />
                             ) : (
                               job.company
                             )}
@@ -366,7 +366,7 @@ const ResumeModern = () => {
                             <span>
                               {item.includes("Aria Design Co") ? (
                                 <>
-                                  <img src={AriaLogo} alt="Aria Design Co" className="h-4 inline-block mr-1" />
+                                  <img src={AriaLogo} alt="Aria Design Co" loading="lazy" className="h-4 inline-block mr-1" />
                                   {item.replace("Aria Design Co: ", ": ")}
                                 </>
                               ) : (

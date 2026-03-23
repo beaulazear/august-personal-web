@@ -6,25 +6,25 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'brand': {
-          50: '#f5f3ff',
-          100: '#ede9fe',
-          200: '#ddd6fe',
-          300: '#c4b5fd',
-          400: '#a78bfa',
-          500: '#8b5cf6',
-          600: '#7c3aed',
-          700: '#6d28d9',
-          800: '#5b21b6',
-          900: '#4c1d95',
+        'terminal': {
+          green: '#00ff00',
+          'green-dim': '#00cc00',
+          amber: '#ffb000',
+          red: '#ff0000',
+          blue: '#0099ff',
         },
-        'brand-pink': {
-          400: '#f472b6',
-          500: '#ec4899',
-          600: '#db2777',
+        'window': {
+          bg: '#1e1e1e',
+          'bg-light': '#2d2d2d',
+          border: '#3d3d3d',
+          text: '#e0e0e0',
+        },
+        'desktop': {
+          bg: '#0a0a0a',
         },
       },
       fontFamily: {
+        'mono': ['Courier New', 'Courier', 'Monaco', 'Menlo', 'monospace'],
         'display': ['Quicksand', 'sans-serif'],
         'heading': ['Comfortaa', 'cursive'],
         'body': ['Inter', 'system-ui', 'sans-serif'],
@@ -36,6 +36,9 @@ module.exports = {
         'fade-in': 'fade-in 0.5s ease-out',
         'scale-in': 'scale-in 0.3s ease-out',
         'blob': 'blob 7s infinite',
+        'window-open': 'window-open 0.3s ease-out',
+        'window-minimize': 'window-minimize 0.3s ease-out forwards',
+        'blink': 'blink 1s step-end infinite',
       },
       keyframes: {
         float: {
@@ -63,6 +66,19 @@ module.exports = {
           '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
           '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
           '100%': { transform: 'translate(0px, 0px) scale(1)' },
+        },
+        'window-open': {
+          '0%': { transform: 'scale(0.95)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+        'window-minimize': {
+          '0%': { transform: 'scale(1) translateY(0)', opacity: '1' },
+          '50%': { transform: 'scale(0.5) translateY(50vh)', opacity: '0.5' },
+          '100%': { transform: 'scale(0.1) translateY(100vh)', opacity: '0' },
+        },
+        blink: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0' },
         },
       },
       backdropBlur: {
