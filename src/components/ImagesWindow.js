@@ -13,6 +13,14 @@ import BeauReykaMangoRu from '../images/BeauReykaMangoRu.jpeg';
 import Marmoset from '../images/Marmoset.jpeg';
 import BeauAndRu from '../images/BeauAndRu.JPG';
 
+// Voxxy Mobile V1 Screenshots
+import VoxxyHomeScreen from '../images/voxxy-home-screen.png';
+import VoxxyActivityCreation from '../images/voxxy-activity-creation.png';
+import VoxxyPreferences from '../images/voxxy-preferences.png';
+import VoxxyRecommendations from '../images/voxxy-recommendations.png';
+import VoxxyMapView from '../images/voxxy-map-view.png';
+import VoxxyCommunityFeed from '../images/voxxy-community-feed.png';
+
 const FolderItem = ({ name, itemCount, onClick }) => {
   return (
     <button
@@ -50,6 +58,17 @@ const ImagesWindow = () => {
   const [currentFolder, setCurrentFolder] = useState(null);
 
   const folders = {
+    'voxxy-mobile': {
+      name: 'Voxxy Mobile V1',
+      images: [
+        { src: VoxxyHomeScreen, alt: 'Voxxy Home Screen - Dashboard with activities and community feed' },
+        { src: VoxxyActivityCreation, alt: 'Activity Creation - Multi-step modal interface' },
+        { src: VoxxyPreferences, alt: 'Preference Collection - Cuisine and dietary requirements' },
+        { src: VoxxyRecommendations, alt: 'AI Recommendations - Card view with venue details' },
+        { src: VoxxyMapView, alt: 'Map View - Interactive map with venue markers' },
+        { src: VoxxyCommunityFeed, alt: 'Community Feed - Friends favorite venues' },
+      ]
+    },
     'landing-page': {
       name: 'Landing Page Images',
       images: [
@@ -109,6 +128,11 @@ const ImagesWindow = () => {
         // Show folders
         <div className="space-y-3">
           <FolderItem
+            name="Voxxy Mobile V1"
+            itemCount={folders['voxxy-mobile'].images.length}
+            onClick={() => handleFolderClick('voxxy-mobile')}
+          />
+          <FolderItem
             name="Landing Page Images"
             itemCount={folders['landing-page'].images.length}
             onClick={() => handleFolderClick('landing-page')}
@@ -156,7 +180,7 @@ const ImagesWindow = () => {
       <div className="pt-4 text-sm text-gray-400 border-t border-window-border font-medium">
         <span className="text-terminal-green font-bold">$</span>
         <span className="ml-2">
-          {currentFolder ? `${folders[currentFolder].images.length} files` : '2 directories'}
+          {currentFolder ? `${folders[currentFolder].images.length} files` : '3 directories'}
         </span>
       </div>
     </div>

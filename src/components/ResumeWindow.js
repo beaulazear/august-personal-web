@@ -81,6 +81,11 @@ const ResumeWindow = () => {
       school: "Flatiron School",
       degree: "Software Engineering",
       period: "2023"
+    },
+    {
+      school: "Amazon Web Services (AWS)",
+      degree: "AWS Certified Cloud Practitioner",
+      period: "2024"
     }
   ];
 

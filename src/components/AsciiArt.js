@@ -53,6 +53,16 @@ const AsciiArt = ({ type, className = "" }) => {
 │ █                          │
 └─────────────────────────────┘
 `,
+    welcome: `
+     Click an icon in the dock below
+            to get to know me
+
+               / \\__
+              (    @\\___
+              /         O
+             /   (_____/
+            /_____/   U
+`,
     code: `
   { }
  /   \\
@@ -91,7 +101,7 @@ const AsciiArt = ({ type, className = "" }) => {
   };
 
   return (
-    <pre className={`font-mono text-xs leading-tight ${className}`}>
+    <pre className={`font-mono leading-tight ${className}`}>
       {art[type] || art.dog}
     </pre>
   );

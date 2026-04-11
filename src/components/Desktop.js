@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { User, FolderOpen, FileText, Mail, Image } from 'lucide-react';
+import { User, FolderOpen, FileText, Mail } from 'lucide-react';
 import Window from './Window';
 import Dock from './Dock';
 import AboutWindow from './AboutWindow';
 import ProjectsWindow from './ProjectsWindow';
 import ResumeWindow from './ResumeWindow';
 import ContactWindow from './ContactWindow';
-import ImagesWindow from './ImagesWindow';
 import AsciiArt from './AsciiArt';
 
 const Desktop = () => {
@@ -22,10 +21,10 @@ const Desktop = () => {
       label: 'About',
       title: 'about.txt',
       component: AboutWindow,
-      initialX: window.innerWidth / 2 - 300,
-      initialY: 100,
-      width: 600,
-      height: 500,
+      initialX: window.innerWidth / 2 - 450,
+      initialY: Math.max(40, (window.innerHeight - 600) / 2 - 80),
+      width: 900,
+      height: 600,
     },
     {
       id: 'projects',
@@ -33,9 +32,9 @@ const Desktop = () => {
       label: 'Projects',
       title: 'projects/',
       component: ProjectsWindow,
-      initialX: 150,
-      initialY: 150,
-      width: 700,
+      initialX: window.innerWidth / 2 - 450,
+      initialY: Math.max(40, (window.innerHeight - 600) / 2 - 80),
+      width: 900,
       height: 600,
     },
     {
@@ -44,10 +43,10 @@ const Desktop = () => {
       label: 'Resume',
       title: 'resume.txt',
       component: ResumeWindow,
-      initialX: 200,
-      initialY: 120,
-      width: 650,
-      height: 550,
+      initialX: window.innerWidth / 2 - 450,
+      initialY: Math.max(40, (window.innerHeight - 600) / 2 - 80),
+      width: 900,
+      height: 600,
     },
     {
       id: 'contact',
@@ -55,50 +54,27 @@ const Desktop = () => {
       label: 'Contact',
       title: 'contact.sh',
       component: ContactWindow,
-      initialX: 250,
-      initialY: 140,
-      width: 600,
-      height: 500,
-    },
-    {
-      id: 'images',
-      icon: Image,
-      label: 'Images',
-      title: 'images/',
-      component: ImagesWindow,
-      initialX: 180,
-      initialY: 100,
-      width: 700,
+      initialX: window.innerWidth / 2 - 450,
+      initialY: Math.max(40, (window.innerHeight - 600) / 2 - 80),
+      width: 900,
       height: 600,
     },
   ];
 
   const handleOpenWindow = (windowId) => {
-    const isMobile = window.innerWidth < 768;
-
     if (!openWindows.includes(windowId)) {
-      // Window not open, open it
-      if (isMobile) {
-        // On mobile, close all other windows and open only this one
-        setOpenWindows([windowId]);
-        setMinimizedWindows([]);
-      } else {
-        setOpenWindows([...openWindows, windowId]);
-      }
+      // Window not open, close all others and open only this one
+      setOpenWindows([windowId]);
+      setMinimizedWindows([]);
       handleFocusWindow(windowId);
     } else if (minimizedWindows.includes(windowId)) {
       // Window is minimized, restore it
-      if (isMobile) {
-        // On mobile, close all other windows and restore only this one
-        setOpenWindows([windowId]);
-        setMinimizedWindows([]);
-      } else {
-        setMinimizedWindows(minimizedWindows.filter(id => id !== windowId));
-      }
+      setOpenWindows([windowId]);
+      setMinimizedWindows([]);
       handleFocusWindow(windowId);
     } else {
-      // Window is open and visible, minimize it
-      handleMinimizeWindow(windowId);
+      // Window is open and visible, close it
+      handleCloseWindow(windowId);
     }
   };
 
@@ -147,17 +123,12 @@ const Desktop = () => {
 
       {/* Home screen - always visible as wallpaper */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none select-none w-11/12 md:w-auto px-2 md:px-0">
-        <div className="text-terminal-green font-mono opacity-80">
-          <div className="text-2xl md:text-4xl font-bold mb-3 md:mb-4">Hello, I'm Beau</div>
-          <div className="text-sm md:text-lg font-semibold text-terminal-amber mb-4 md:mb-8">
+        <div className="text-terminal-green font-mono opacity-90">
+          <div className="text-3xl md:text-6xl font-bold mb-4 md:mb-6">Hello, I'm Beau</div>
+          <div className="text-base md:text-2xl font-semibold text-terminal-amber mb-6 md:mb-10">
             <span className="text-window-text">$</span> Software Developer • Entrepreneur • Animal Lover
           </div>
-          <AsciiArt type="terminal" className="text-terminal-green mb-4 md:mb-8 opacity-60 hidden md:block" />
-          <div className="text-sm md:text-base text-gray-400 font-medium">
-            Click an icon in the dock to explore
-            <span className="animate-blink ml-1">█</span>
-          </div>
-          <AsciiArt type="dog" className="text-terminal-amber mt-4 md:mt-6 opacity-70" />
+          <AsciiArt type="welcome" className="text-terminal-green opacity-80 text-sm md:text-base" />
         </div>
       </div>
 

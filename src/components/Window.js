@@ -103,7 +103,7 @@ const Window = ({
         left: isMobile ? '10px' : '20px',
         top: isMobile ? '10px' : '20px',
         width: isMobile ? 'calc(100vw - 20px)' : 'calc(100vw - 40px)',
-        height: isMobile ? 'calc(100vh - 150px)' : 'calc(100vh - 160px)',
+        height: isMobile ? 'calc(100vh - 180px)' : 'calc(100vh - 200px)',
         zIndex: zIndex + 1000,
       } : {
         left: `${position.x}px`,
@@ -156,7 +156,7 @@ const Window = ({
       </div>
 
       {/* Window Content */}
-      <div className="p-4 md:p-6 text-window-text font-mono text-sm md:text-base overflow-auto" style={isFullscreen || isMobile ? { height: isMobile ? 'calc(100vh - 210px)' : 'calc(100vh - 220px)' } : { maxHeight: `${size.height - 100}px` }}>
+      <div className="p-4 md:p-6 text-window-text font-mono text-sm md:text-base overflow-auto" style={isFullscreen || isMobile ? { height: isMobile ? 'calc(100vh - 240px)' : 'calc(100vh - 260px)' } : { maxHeight: `${size.height - 100}px` }}>
         {children}
       </div>
     </div>
