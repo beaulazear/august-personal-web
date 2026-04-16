@@ -1,11 +1,12 @@
 {
   "files": {
     "main.css": "/static/css/main.a6d3e816.css",
-    "main.js": "/static/js/main.5b289883.js",
+    "main.js": "/static/js/main.bba1a450.js",
     "static/js/453.506b5fe3.chunk.js": "/static/js/453.506b5fe3.chunk.js",
     "static/media/BeauReykaMangoRu.jpeg": "/static/media/BeauReykaMangoRu.06dafeed414154afc57c.jpeg",
     "static/media/BeauAndRu.JPG": "/static/media/BeauAndRu.002b2051b6900cd44ba7.JPG",
     "static/media/Washtenaw.png": "/static/media/Washtenaw.9ab0133ac68615430822.png",
+    "static/media/Aces.png": "/static/media/Aces.2416fabf97ecd5ab95cb.png",
     "static/media/AriaLanding.png": "/static/media/AriaLanding.65b9a6dcbc8e32e662e3.png",
     "static/media/BeausAnimalCareLanding.png": "/static/media/BeausAnimalCareLanding.8d4da3e51642a91df010.png",
     "static/media/voxxy-community-feed.png": "/static/media/voxxy-community-feed.368116fe88b329a8a500.png",
@@ -19,11 +20,11 @@
     "static/media/ResumePDF.pdf": "/static/media/ResumePDF.d5b0a1c6090180021cbf.pdf",
     "index.html": "/index.html",
     "main.a6d3e816.css.map": "/static/css/main.a6d3e816.css.map",
-    "main.5b289883.js.map": "/static/js/main.5b289883.js.map",
+    "main.bba1a450.js.map": "/static/js/main.bba1a450.js.map",
     "453.506b5fe3.chunk.js.map": "/static/js/453.506b5fe3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a6d3e816.css",
-    "static/js/main.5b289883.js"
+    "static/js/main.bba1a450.js"
   ]
 }
