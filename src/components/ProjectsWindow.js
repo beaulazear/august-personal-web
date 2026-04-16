@@ -13,6 +13,7 @@ import VoxxyCommunityFeed from '../images/voxxy-community-feed.png';
 import Washtenaw from '../images/Washtenaw.png';
 import BeausAnimalCareLanding from '../images/BeausAnimalCareLanding.png';
 import AriaLanding from '../images/AriaLanding.png';
+import FlippingAces from '../images/Aces.png';
 
 const ProjectFolderItem = ({ name, description, onClick }) => {
   return (
@@ -201,6 +202,7 @@ const ProjectsWindow = () => {
         { label: "Beau's Animal Care", url: "https://www.beausanimalcare.com/" }
       ],
       images: [
+        { src: FlippingAces, alt: 'Flipping Aces - Restaurant website built with WordPress and Breakdance' },
         { src: AriaLanding, alt: 'Aria Design Consultants - React-based design consultancy website' },
         { src: BeausAnimalCareLanding, alt: "Beau's Animal Care - React-based pet care services landing page" },
         { src: Washtenaw, alt: 'Washtenaw - Community organization website' },
