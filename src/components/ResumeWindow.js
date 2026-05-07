@@ -1,6 +1,4 @@
 import React from 'react';
-import { Download } from 'lucide-react';
-import ResumePDF from "../images/ResumePDF.pdf";
 
 const ExperienceItem = ({ company, role, period, highlights }) => {
   return (
@@ -91,18 +89,6 @@ const ResumeWindow = () => {
 
   return (
     <div className="space-y-6">
-      {/* Download PDF button */}
-      <div className="flex justify-end">
-        <a
-          href={ResumePDF}
-          download="Beau_Lazear_Resume.pdf"
-          className="flex items-center gap-1 px-3 py-1.5 bg-terminal-green text-black rounded hover:bg-terminal-green-dim transition-colors text-sm font-mono font-semibold"
-        >
-          <Download size={14} />
-          Download PDF
-        </a>
-      </div>
-
       {/* Experience Section */}
       <div>
         <div className="text-terminal-amber mb-3 flex items-center gap-2 text-lg font-semibold">

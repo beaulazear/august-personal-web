@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ResumePDF from "../images/ResumePDF.pdf";
 import VoxxyLogo from "../images/header.svg";
 import AriaLogo from "../images/Aria_header.svg";
 import BeausAnimalCareLogo from "../images/BeausAnimalCare.svg";
@@ -172,18 +171,9 @@ const ResumeModern = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href={ResumePDF}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gradient-to-r from-brand-500 to-brand-pink-500 text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-2 hover:shadow-lg hover:scale-105 transition-all duration-300"
-            >
-              <Download size={18} />
-              Download PDF Resume
-            </a>
             <button
               onClick={() => navigate('/contact')}
-              className="bg-white/80 backdrop-blur-sm text-brand-600 px-6 py-3 rounded-xl font-semibold flex items-center gap-2 hover:shadow-lg hover:scale-105 transition-all duration-300 border-2 border-brand-200 hover:border-brand-400"
+              className="bg-gradient-to-r from-brand-500 to-brand-pink-500 text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-2 hover:shadow-lg hover:scale-105 transition-all duration-300"
             >
               <Mail size={18} />
               Contact Me
