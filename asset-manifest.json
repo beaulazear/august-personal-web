@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.a6d3e816.css",
-    "main.js": "/static/js/main.8ab48ced.js",
+    "main.js": "/static/js/main.4d025378.js",
     "static/js/453.506b5fe3.chunk.js": "/static/js/453.506b5fe3.chunk.js",
     "static/media/BeauReykaMangoRu.jpeg": "/static/media/BeauReykaMangoRu.06dafeed414154afc57c.jpeg",
     "static/media/BeauAndRu.JPG": "/static/media/BeauAndRu.002b2051b6900cd44ba7.JPG",
@@ -16,14 +16,18 @@
     "static/media/BeauAndHornbill.jpeg": "/static/media/BeauAndHornbill.c713d8dde304fb1ce39a.jpeg",
     "static/media/voxxy-preferences.png": "/static/media/voxxy-preferences.1cdbaee7d75364df7289.png",
     "static/media/voxxy-home-screen.png": "/static/media/voxxy-home-screen.f77db5a02901e75bce7f.png",
+    "static/media/scoopes1.jpg": "/static/media/scoopes1.9a64cb8a8b4716d1f2d2.jpg",
     "static/media/Marmoset.jpeg": "/static/media/Marmoset.819c3b7edde21c0b57ff.jpeg",
+    "static/media/scoopers3.jpg": "/static/media/scoopers3.2c0b79a0a9e91505e17d.jpg",
+    "static/media/scooper4.jpg": "/static/media/scooper4.ea731c11600225128f34.jpg",
+    "static/media/scoopers2.jpg": "/static/media/scoopers2.99e3b5cb52844bf01480.jpg",
     "index.html": "/index.html",
     "main.a6d3e816.css.map": "/static/css/main.a6d3e816.css.map",
-    "main.8ab48ced.js.map": "/static/js/main.8ab48ced.js.map",
+    "main.4d025378.js.map": "/static/js/main.4d025378.js.map",
     "453.506b5fe3.chunk.js.map": "/static/js/453.506b5fe3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a6d3e816.css",
-    "static/js/main.8ab48ced.js"
+    "static/js/main.4d025378.js"
   ]
 }
