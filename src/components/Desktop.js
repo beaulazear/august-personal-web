@@ -109,7 +109,7 @@ const Desktop = () => {
   }, []);
 
   return (
-    <div className="w-screen h-screen bg-desktop-bg overflow-hidden relative">
+    <div className="w-screen h-screen bg-desktop-bg overflow-hidden relative touch-pan-y">
       {/* ASCII Art Decorations */}
       {asciiDecorations.map((dec, i) => (
         <div
@@ -128,7 +128,9 @@ const Desktop = () => {
           <div className="text-base md:text-2xl font-semibold text-terminal-amber mb-6 md:mb-10">
             <span className="text-window-text">$</span> Software Developer • Entrepreneur • Animal Lover
           </div>
-          <AsciiArt type="welcome" className="text-terminal-green opacity-80 text-sm md:text-base" />
+          <div className="flex justify-center">
+            <AsciiArt type="welcome" className="text-terminal-green opacity-80 text-sm md:text-base" />
+          </div>
         </div>
       </div>
 

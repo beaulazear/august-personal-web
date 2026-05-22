@@ -63,17 +63,6 @@ const ContactWindow = () => {
 
   return (
     <div className="space-y-6">
-      {/* Terminal header */}
-      <div className="text-terminal-green text-lg font-semibold">
-        <div className="flex items-center gap-2">
-          <span className="text-terminal-amber">beau@portfolio</span>
-          <span className="text-window-text">:</span>
-          <span className="text-terminal-blue">~/contact</span>
-          <span className="text-window-text">$</span>
-          <span className="ml-2">./send_message.sh</span>
-        </div>
-      </div>
-
       {/* Contact Links */}
       <div className="space-y-3 text-base font-medium">
         <div className="flex items-center gap-2 text-window-text">

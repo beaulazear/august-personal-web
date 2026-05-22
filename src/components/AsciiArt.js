@@ -54,14 +54,14 @@ const AsciiArt = ({ type, className = "" }) => {
 └─────────────────────────────┘
 `,
     welcome: `
-     Click an icon in the dock below
-            to get to know me
+Click an icon in the dock below
+to get to know me
 
-               / \\__
-              (    @\\___
-              /         O
-             /   (_____/
-            /_____/   U
+   / \\__
+  (    @\\___
+  /         O
+ /   (_____/
+/_____/   U
 `,
     code: `
   { }

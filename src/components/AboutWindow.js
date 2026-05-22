@@ -18,17 +18,6 @@ const AboutWindow = () => {
 
   return (
     <div className="space-y-4">
-      {/* Terminal-style intro */}
-      <div className="text-terminal-green text-lg font-semibold">
-        <div className="flex items-center gap-2 mb-4">
-          <span className="text-terminal-amber">beau@portfolio</span>
-          <span className="text-window-text">:</span>
-          <span className="text-terminal-blue">~</span>
-          <span className="text-window-text">$</span>
-          <span className="ml-2">cat intro.txt</span>
-        </div>
-      </div>
-
       {/* Main content */}
       <div className="space-y-4 text-window-text">
         <div>

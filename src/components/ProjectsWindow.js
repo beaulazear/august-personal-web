@@ -9,6 +9,12 @@ import VoxxyRecommendations from '../images/voxxy-recommendations.png';
 import VoxxyMapView from '../images/voxxy-map-view.png';
 import VoxxyCommunityFeed from '../images/voxxy-community-feed.png';
 
+// Import Scoopers screenshots
+import Scoopers1 from '../images/scoopes1.jpg';
+import Scoopers2 from '../images/scoopers2.jpg';
+import Scoopers3 from '../images/scoopers3.jpg';
+import Scoopers4 from '../images/scooper4.jpg';
+
 // Import Frontend Development screenshots
 import Washtenaw from '../images/Washtenaw.png';
 import BeausAnimalCareLanding from '../images/BeausAnimalCareLanding.png';
@@ -173,7 +179,12 @@ const ProjectsWindow = () => {
       links: [
         { label: "Visit Website", url: "https://www.scoopersnyc.com" }
       ],
-      images: []
+      images: [
+        { src: Scoopers1, alt: 'Scoopers app screenshot 1' },
+        { src: Scoopers2, alt: 'Scoopers app screenshot 2' },
+        { src: Scoopers3, alt: 'Scoopers app screenshot 3' },
+        { src: Scoopers4, alt: 'Scoopers app screenshot 4' },
+      ]
     },
     'frontend-dev': {
       id: 'frontend-dev',
@@ -222,19 +233,6 @@ const ProjectsWindow = () => {
 
   return (
     <div className="space-y-4">
-      {/* Terminal header */}
-      <div className="text-terminal-green text-lg font-semibold">
-        <div className="flex items-center gap-2">
-          <span className="text-terminal-amber">beau@portfolio</span>
-          <span className="text-window-text">:</span>
-          <span className="text-terminal-blue">
-            ~/projects{currentProject ? `/${currentProject}` : ''}
-          </span>
-          <span className="text-window-text">$</span>
-          <span className="ml-2">ls -la</span>
-        </div>
-      </div>
-
       {/* Content */}
       {!currentProject ? (
         // Show project folders

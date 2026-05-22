@@ -91,10 +91,6 @@ const ResumeWindow = () => {
     <div className="space-y-6">
       {/* Experience Section */}
       <div>
-        <div className="text-terminal-amber mb-3 flex items-center gap-2 text-lg font-semibold">
-          <span>$</span>
-          <span>cat experience.log</span>
-        </div>
         <div className="pl-4">
           {experiences.map((exp, i) => (
             <ExperienceItem key={i} {...exp} />
