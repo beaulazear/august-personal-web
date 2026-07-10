@@ -101,7 +101,6 @@ const Desktop = () => {
   useEffect(() => {
     // Add some random ASCII art decorations on the desktop
     const decorations = [
-      { type: 'dog', x: 50, y: 50 },
       { type: 'coffee', x: window.innerWidth - 150, y: 100 },
       { type: 'code', x: 100, y: window.innerHeight - 200 },
     ];
@@ -124,12 +123,9 @@ const Desktop = () => {
       {/* Home screen - always visible as wallpaper */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none select-none w-11/12 md:w-auto px-2 md:px-0">
         <div className="text-terminal-green font-mono opacity-90">
-          <div className="text-3xl md:text-6xl font-bold mb-4 md:mb-6">Hello, I'm Beau</div>
-          <div className="text-base md:text-2xl font-semibold text-terminal-amber mb-6 md:mb-10">
-            <span className="text-window-text">$</span> Software Developer • Entrepreneur • Animal Lover
-          </div>
-          <div className="flex justify-center">
-            <AsciiArt type="welcome" className="text-terminal-green opacity-80 text-sm md:text-base" />
+          <div className="text-3xl md:text-6xl font-bold mb-4 md:mb-6">Hi, I'm Beau ☺︎</div>
+          <div className="text-base md:text-2xl font-semibold text-terminal-amber">
+            <span className="text-window-text">$</span> Software Developer • Animal Lover
           </div>
         </div>
       </div>

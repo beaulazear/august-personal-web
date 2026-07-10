@@ -27,6 +27,9 @@ const AboutWindow = () => {
 
         <div className="pl-4 space-y-3 text-base leading-relaxed font-medium">
           <p>
+            <span className="text-terminal-amber font-bold">&gt;</span> Tech Support Specialist at OpenWeb
+          </p>
+          <p>
             <span className="text-terminal-amber font-bold">&gt;</span> Co-Founder of Voxxy AI Inc.
           </p>
           <p>
@@ -44,7 +47,10 @@ const AboutWindow = () => {
           </div>
           <div className="pl-4 space-y-3 text-base leading-relaxed">
             <p>
-              I moved to Brooklyn, NYC in 2016 immediatly following my highschool graduation. I started working young, having three jobs by my senior year. Currently, I am maintaining my own animal care business and working part time as a software developer.
+              I moved to Brooklyn, NYC in 2016 immediately following my high school graduation. I started working young, having three jobs by my senior year. Currently, I work full-time as a Tech Support Specialist at OpenWeb, while maintaining my own animal care business and freelance development work.
+            </p>
+            <p>
+              At OpenWeb, I provide frontline technical support for publishers, debug JavaScript implementations, troubleshoot API integrations, and create internal tools to optimize our team's workflows. I work closely with engineering teams using Salesforce and Jira to manage cases and deliver solutions.
             </p>
             <p>
               My love for animals led me down the zookeeping and animal care route, where I eventually grew and maintained my own animal care business. It was while building a website for that business—using nothing but HTML and CSS in Notepad, that I fell in love with coding.
@@ -56,7 +62,7 @@ const AboutWindow = () => {
               Along the way, I've explored various paths: real estate (licensed agent), modeling (signed to an agency), massage therapy, and roles in hospitality and doggy daycare management. Each experience taught me something new about connecting with people and solving problems creatively.
             </p>
             <p>
-              Today, I bring that same hustle and curiosity to building software that makes people's lives easier.
+              Today, I bring that same hustle and curiosity to my work at OpenWeb and in building software that makes people's lives easier.
             </p>
           </div>
         </div>
@@ -93,6 +99,7 @@ const AboutWindow = () => {
           <div className="pl-4">
             <div className="text-terminal-amber font-semibold text-sm mb-2">Tools & Services</div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-1 text-sm md:text-base font-medium">
+              <div className="text-terminal-blue">• Salesforce & Jira</div>
               <div className="text-terminal-blue">• AI Agents (Claude Code)</div>
               <div className="text-terminal-blue">• SendGrid (email & analytics)</div>
               <div className="text-terminal-blue">• Git & version control</div>

@@ -25,6 +25,18 @@ const ExperienceItem = ({ company, role, period, highlights }) => {
 const ResumeWindow = () => {
   const experiences = [
     {
+      company: "OpenWeb",
+      role: "Tech Support Specialist",
+      period: "May 2026 - Present",
+      highlights: [
+        "Frontline technical support for publishers using OpenWeb's software",
+        "Debugging JavaScript implementations and troubleshooting API integrations",
+        "Creating internal tools to optimize team workflows and improve efficiency",
+        "Working closely with engineering on bug reports and feature requests",
+        "Managing active cases through Salesforce and Jira"
+      ]
+    },
+    {
       company: "Voxxy AI",
       role: "Co-Founder & CTO",
       period: "2024 - Present",
@@ -122,7 +134,7 @@ const ResumeWindow = () => {
           <span>ls skills/</span>
         </div>
         <div className="pl-4 grid grid-cols-1 md:grid-cols-3 gap-1 text-sm md:text-base font-medium">
-          {['React', 'Ruby on Rails', 'React Native', 'TypeScript', 'PostgreSQL', 'AWS', 'Git', 'Node.js', 'Tailwind CSS'].map((skill, i) => (
+          {['React', 'Ruby on Rails', 'React Native', 'TypeScript', 'JavaScript', 'PostgreSQL', 'AWS', 'Git', 'Node.js', 'Tailwind CSS', 'Salesforce', 'Jira'].map((skill, i) => (
             <div key={i} className="text-terminal-blue">• {skill}</div>
           ))}
         </div>
