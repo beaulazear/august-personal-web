@@ -2,18 +2,18 @@ import React from 'react';
 
 const ExperienceItem = ({ company, role, period, highlights, subRole }) => {
   return (
-    <div className="mb-5 pb-5 border-b border-window-border last:border-b-0">
-      <div className="flex items-start justify-between mb-3">
+    <div className="mb-6 pb-6 border-b-2 border-window-border last:border-b-0">
+      <div className="flex items-start justify-between mb-4">
         <div>
-          <div className="text-terminal-green font-bold text-xl">{company}</div>
-          <div className="text-terminal-amber text-base font-semibold">{role}</div>
+          <div className="text-terminal-green font-extrabold text-2xl">{company}</div>
+          <div className="text-terminal-amber text-lg font-bold">{role}</div>
         </div>
-        <div className="text-sm text-gray-400 font-medium">{period}</div>
+        <div className="text-base text-gray-300 font-semibold">{period}</div>
       </div>
-      <ul className="space-y-2 text-base text-window-text">
+      <ul className="space-y-3 text-lg text-window-text font-medium leading-relaxed">
         {highlights.map((item, i) => (
-          <li key={i} className="flex items-start gap-2">
-            <span className="text-terminal-green font-bold">•</span>
+          <li key={i} className="flex items-start gap-3">
+            <span className="text-terminal-green font-extrabold text-xl">•</span>
             <span>{item}</span>
           </li>
         ))}
@@ -21,15 +21,15 @@ const ExperienceItem = ({ company, role, period, highlights, subRole }) => {
 
       {/* Sub-role for OpenWeb */}
       {subRole && (
-        <div className="mt-4 pl-4 border-l-2 border-window-border">
-          <div className="flex items-start justify-between mb-2">
-            <div className="text-terminal-blue text-base font-semibold">{subRole.role}</div>
-            <div className="text-sm text-gray-400 font-medium">{subRole.period}</div>
+        <div className="mt-5 pl-6 border-l-2 border-window-border">
+          <div className="flex items-start justify-between mb-3">
+            <div className="text-terminal-blue text-lg font-bold">{subRole.role}</div>
+            <div className="text-base text-gray-300 font-semibold">{subRole.period}</div>
           </div>
-          <ul className="space-y-2 text-sm text-gray-300">
+          <ul className="space-y-2 text-base text-gray-300 font-medium leading-relaxed">
             {subRole.highlights.map((item, i) => (
-              <li key={i} className="flex items-start gap-2">
-                <span className="text-terminal-blue font-bold">•</span>
+              <li key={i} className="flex items-start gap-3">
+                <span className="text-terminal-blue font-bold text-lg">•</span>
                 <span>{item}</span>
               </li>
             ))}
@@ -126,10 +126,10 @@ const ResumeWindow = () => {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Experience Section */}
       <div>
-        <div className="pl-4">
+        <div className="pl-6">
           {experiences.map((exp, i) => (
             <ExperienceItem key={i} {...exp} />
           ))}
@@ -138,16 +138,16 @@ const ResumeWindow = () => {
 
       {/* Education Section */}
       <div>
-        <div className="text-terminal-amber mb-3 flex items-center gap-2 text-lg font-semibold">
-          <span>$</span>
+        <div className="text-terminal-amber mb-4 flex items-center gap-3 text-xl font-bold">
+          <span className="font-extrabold">$</span>
           <span>cat education.txt</span>
         </div>
-        <div className="pl-4">
+        <div className="pl-6 space-y-4">
           {education.map((edu, i) => (
-            <div key={i} className="mb-2">
-              <div className="text-terminal-green font-bold text-lg">{edu.school}</div>
-              <div className="text-window-text text-base">{edu.degree}</div>
-              <div className="text-sm text-gray-400 font-medium">{edu.period}</div>
+            <div key={i} className="mb-3">
+              <div className="text-terminal-green font-extrabold text-xl">{edu.school}</div>
+              <div className="text-window-text text-lg font-semibold">{edu.degree}</div>
+              <div className="text-base text-gray-300 font-semibold">{edu.period}</div>
             </div>
           ))}
         </div>
@@ -155,34 +155,34 @@ const ResumeWindow = () => {
 
       {/* Skills */}
       <div>
-        <div className="text-terminal-amber mb-3 flex items-center gap-2 text-lg font-semibold">
-          <span>$</span>
+        <div className="text-terminal-amber mb-4 flex items-center gap-3 text-xl font-bold">
+          <span className="font-extrabold">$</span>
           <span>ls skills/</span>
         </div>
-        <div className="pl-4 grid grid-cols-1 md:grid-cols-3 gap-1 text-sm md:text-base font-medium">
+        <div className="pl-6 grid grid-cols-1 md:grid-cols-3 gap-2 text-base md:text-lg font-semibold">
           {['React', 'Ruby on Rails', 'React Native', 'TypeScript', 'JavaScript', 'PostgreSQL', 'AWS', 'Git', 'Node.js', 'Tailwind CSS', 'Salesforce', 'Jira'].map((skill, i) => (
-            <div key={i} className="text-terminal-blue">• {skill}</div>
+            <div key={i} className="text-terminal-blue font-semibold">• {skill}</div>
           ))}
         </div>
       </div>
 
       {/* View Full Resume Link */}
-      <div className="pt-4 border-t border-window-border">
+      <div className="pt-6 border-t-2 border-window-border">
         <a
           href="/beau-lazear-resume_5.html"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-terminal-blue hover:text-terminal-green font-semibold text-base flex items-center gap-2 transition-colors"
+          className="text-terminal-blue hover:text-terminal-green font-bold text-lg flex items-center gap-2 transition-colors"
         >
-          <span>→</span>
+          <span className="text-xl">→</span>
           <span>View Full Resume (opens in new tab)</span>
         </a>
       </div>
 
       {/* Footer */}
-      <div className="pt-4 text-sm text-gray-400 font-medium">
-        <span className="text-terminal-green font-bold">$</span>
-        <span className="ml-2">EOF</span>
+      <div className="pt-4 text-base text-gray-300 font-semibold">
+        <span className="text-terminal-green font-extrabold text-lg">$</span>
+        <span className="ml-3">EOF</span>
       </div>
     </div>
   );

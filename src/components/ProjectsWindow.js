@@ -50,17 +50,48 @@ const ProjectFolderItem = ({ name, description, onClick }) => {
   );
 };
 
-const ImageThumbnail = ({ src, alt, onClick }) => {
+const ImageThumbnail = ({ src, alt, onClick, isMobile }) => {
+  if (isMobile) {
+    return (
+      <div className="flex justify-center">
+        <button
+          onClick={onClick}
+          className="relative hover:scale-105 transition-transform duration-300"
+          style={{ maxWidth: '375px' }}
+        >
+          {/* iPhone Frame */}
+          <div className="relative bg-gray-900 rounded-[3rem] p-3 shadow-2xl border-8 border-gray-800">
+            {/* Notch */}
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-40 h-7 bg-gray-900 rounded-b-3xl z-10"></div>
+
+            {/* Screen */}
+            <div className="relative bg-white rounded-[2.5rem] overflow-hidden">
+              <img
+                src={src}
+                alt={alt}
+                loading="lazy"
+                className="w-full h-auto object-contain"
+              />
+            </div>
+
+            {/* Home indicator */}
+            <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gray-700 rounded-full"></div>
+          </div>
+        </button>
+      </div>
+    );
+  }
+
   return (
     <button
       onClick={onClick}
-      className="border-2 border-window-border rounded-lg overflow-hidden hover:border-terminal-green transition-colors aspect-square bg-window-bg-light"
+      className="border-2 border-window-border rounded-lg overflow-hidden hover:border-terminal-green transition-colors bg-window-bg-light w-full"
     >
       <img
         src={src}
         alt={alt}
         loading="lazy"
-        className="w-full h-full object-cover"
+        className="w-full h-auto object-contain"
       />
     </button>
   );
@@ -129,17 +160,27 @@ const ProjectDetailView = ({ project, onBack }) => {
       {/* Screenshots */}
       {project.images && project.images.length > 0 && (
         <div>
-          <div className="text-terminal-green font-semibold mb-3">Screenshots:</div>
-          <div className="grid grid-cols-3 gap-3">
-            {project.images.map((image, i) => (
-              <ImageThumbnail
-                key={i}
-                src={image.src}
-                alt={image.alt}
-                onClick={() => window.open(image.src, '_blank')}
-              />
-            ))}
+          <div className="text-terminal-green font-bold text-lg mb-4">Screenshots:</div>
+          <div className="flex flex-col gap-6">
+            {project.images.map((image, i) => {
+              // Only apply iPhone frame to BKN mockups and Zwei app
+              const isMobile = (image.src.includes('bkn-') || image.src.includes('zwei')) &&
+                               !image.src.includes('newsletter');
+
+              return (
+                <div key={i} className="space-y-2">
+                  <ImageThumbnail
+                    src={image.src}
+                    alt={image.alt}
+                    onClick={() => window.open(image.src, '_blank')}
+                    isMobile={isMobile}
+                  />
+                  <p className="text-sm text-gray-400 font-medium italic pl-2">{image.alt}</p>
+                </div>
+              );
+            })}
           </div>
+          <p className="text-sm text-gray-400 font-semibold mt-4 text-center">Click images to view full size</p>
         </div>
       )}
     </div>

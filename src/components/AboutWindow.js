@@ -17,35 +17,35 @@ const AboutWindow = () => {
   ];
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       {/* Main content */}
-      <div className="space-y-4 text-window-text">
+      <div className="space-y-6 text-window-text">
         <div>
-          <span className="text-terminal-green font-bold">$</span>
-          <span className="ml-2 text-2xl font-bold">Hello, I'm Beau! 👋</span>
+          <span className="text-terminal-green font-extrabold text-lg">$</span>
+          <span className="ml-3 text-3xl font-extrabold tracking-tight">Hello, I'm Beau! 👋</span>
         </div>
 
-        <div className="pl-4 space-y-3 text-base leading-relaxed font-medium">
+        <div className="pl-6 space-y-4 text-lg leading-relaxed font-semibold">
           <p>
-            <span className="text-terminal-amber font-bold">&gt;</span> Support Engineer at OpenWeb
+            <span className="text-terminal-amber font-extrabold text-xl">&gt;</span> <span className="font-bold">Support Engineer at OpenWeb</span>
           </p>
           <p>
-            <span className="text-terminal-amber font-bold">&gt;</span> Co-Founder of Voxxy AI Inc.
+            <span className="text-terminal-amber font-extrabold text-xl">&gt;</span> <span className="font-bold">Co-Founder of Voxxy AI Inc.</span>
           </p>
           <p>
-            <span className="text-terminal-amber font-bold">&gt;</span> Former Founder of Beau's Animal Care (2020-2026)
+            <span className="text-terminal-amber font-extrabold text-xl">&gt;</span> <span className="font-bold">Former Founder of Beau's Animal Care (2020-2026)</span>
           </p>
           <p>
-            <span className="text-terminal-amber font-bold">&gt;</span> Freelance full-stack developer (React, Rails, React Native)
+            <span className="text-terminal-amber font-extrabold text-xl">&gt;</span> <span className="font-bold">Freelance full-stack developer (React, Rails, React Native)</span>
           </p>
         </div>
 
-        <div className="border-t border-window-border pt-4 mt-6">
-          <div className="text-sm text-gray-400 font-semibold mb-3">
-            <span className="text-terminal-green">$</span>
-            <span className="ml-2">cat about_me.txt</span>
+        <div className="border-t-2 border-window-border pt-6 mt-8">
+          <div className="text-base text-gray-300 font-bold mb-4">
+            <span className="text-terminal-green font-extrabold text-lg">$</span>
+            <span className="ml-3">cat about_me.txt</span>
           </div>
-          <div className="pl-4 space-y-3 text-base leading-relaxed">
+          <div className="pl-6 space-y-4 text-lg leading-relaxed font-medium">
             <p>
               I moved to Brooklyn, NYC in 2016 immediately following my high school graduation. I started working young, having three jobs by my senior year. Currently, I work full-time as a Support Engineer at OpenWeb, where I was promoted within 3 months of joining, while also doing freelance development work and co-founding Voxxy AI.
             </p>
@@ -67,16 +67,16 @@ const AboutWindow = () => {
           </div>
         </div>
 
-        <div className="border-t border-window-border pt-4 mt-6">
-          <div className="text-sm text-gray-400 font-semibold mb-3">
-            <span className="text-terminal-green">$</span>
-            <span className="ml-2">ls skills/</span>
+        <div className="border-t-2 border-window-border pt-6 mt-8">
+          <div className="text-base text-gray-300 font-bold mb-4">
+            <span className="text-terminal-green font-extrabold text-lg">$</span>
+            <span className="ml-3">ls skills/</span>
           </div>
 
           {/* Development */}
-          <div className="pl-4 mb-4">
-            <div className="text-terminal-amber font-semibold text-sm mb-2">Development</div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-1 text-sm md:text-base font-medium">
+          <div className="pl-6 mb-6">
+            <div className="text-terminal-amber font-bold text-lg mb-3">Development</div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-base md:text-lg font-semibold">
               <div className="text-terminal-blue">• React & React Native</div>
               <div className="text-terminal-blue">• Ruby on Rails</div>
               <div className="text-terminal-blue">• TypeScript & JavaScript</div>
@@ -85,9 +85,9 @@ const AboutWindow = () => {
           </div>
 
           {/* Infrastructure & Deployment */}
-          <div className="pl-4 mb-4">
-            <div className="text-terminal-amber font-semibold text-sm mb-2">Infrastructure & Deployment</div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-1 text-sm md:text-base font-medium">
+          <div className="pl-6 mb-6">
+            <div className="text-terminal-amber font-bold text-lg mb-3">Infrastructure & Deployment</div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-base md:text-lg font-semibold">
               <div className="text-terminal-blue">• Render (web services, databases)</div>
               <div className="text-terminal-blue">• AWS</div>
               <div className="text-terminal-blue">• Redis & background jobs</div>
@@ -96,9 +96,9 @@ const AboutWindow = () => {
           </div>
 
           {/* Tools & Services */}
-          <div className="pl-4">
-            <div className="text-terminal-amber font-semibold text-sm mb-2">Tools & Services</div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-1 text-sm md:text-base font-medium">
+          <div className="pl-6">
+            <div className="text-terminal-amber font-bold text-lg mb-3">Tools & Services</div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-base md:text-lg font-semibold">
               <div className="text-terminal-blue">• Salesforce & Jira</div>
               <div className="text-terminal-blue">• AI Agents (Claude Code)</div>
               <div className="text-terminal-blue">• SendGrid (email & analytics)</div>
@@ -109,12 +109,12 @@ const AboutWindow = () => {
         </div>
 
         {/* Photo Gallery */}
-        <div className="border-t border-window-border pt-4 mt-6">
-          <div className="text-sm text-gray-400 font-semibold mb-3">
-            <span className="text-terminal-green">$</span>
-            <span className="ml-2">ls photos/</span>
+        <div className="border-t-2 border-window-border pt-6 mt-8">
+          <div className="text-base text-gray-300 font-bold mb-4">
+            <span className="text-terminal-green font-extrabold text-lg">$</span>
+            <span className="ml-3">ls photos/</span>
           </div>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-4">
             {photos.map((photo, i) => (
               <button
                 key={i}
@@ -130,14 +130,14 @@ const AboutWindow = () => {
               </button>
             ))}
           </div>
-          <div className="text-xs text-gray-500 mt-2 text-center font-medium">
+          <div className="text-sm text-gray-400 mt-3 text-center font-semibold">
             Click photos to view full size
           </div>
         </div>
 
-        <div className="pt-4 text-sm text-gray-400 font-medium">
-          <span className="text-terminal-green font-bold">$</span>
-          <span className="ml-2">echo "Check out my other windows for more!"</span>
+        <div className="pt-6 text-base text-gray-300 font-semibold">
+          <span className="text-terminal-green font-extrabold text-lg">$</span>
+          <span className="ml-3">echo "Check out my other windows for more!"</span>
         </div>
       </div>
     </div>
