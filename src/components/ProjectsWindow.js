@@ -21,6 +21,18 @@ import BeausAnimalCareLanding from '../images/BeausAnimalCareLanding.png';
 import AriaLanding from '../images/AriaLanding.png';
 import FlippingAces from '../images/Aces.png';
 
+// Import BKN GIFs
+import BKNNewsGif from '../images/bkn-news-scroll-mobile.gif';
+import BKNBoxscoreGif from '../images/bkn-boxscore-scroll-mobile.gif';
+
+// Import Newsletter GIFs
+import NewsletterMobileGif from '../images/newsletter-scroll-mobile.gif';
+import NewsletterDesktopGif from '../images/newsletter-scroll-desktop.gif';
+
+// Import LOMC and Zwei GIFs
+import LOMCGif from '../images/lomc-summer-camp.gif';
+import ZweiGif from '../images/zwei-dating-app.gif';
+
 const ProjectFolderItem = ({ name, description, onClick }) => {
   return (
     <button
@@ -189,8 +201,8 @@ const ProjectsWindow = () => {
     'frontend-dev': {
       id: 'frontend-dev',
       name: "Frontend Development",
-      role: "Agency & Independent Work",
-      shortDesc: "WordPress agency + React applications",
+      role: "Agency & Personal Work",
+      shortDesc: "WordPress & React web development",
       description: (
         <div className="space-y-4">
           <div>
@@ -200,23 +212,41 @@ const ProjectsWindow = () => {
             </p>
           </div>
           <div>
-            <div className="text-terminal-green font-semibold mb-2">Independent React Development</div>
+            <div className="text-terminal-green font-semibold mb-2">Personal Projects</div>
             <p className="text-window-text">
-              Building custom React applications for contract jobs, personal portfolios, and client projects. Specializing in modern, responsive web applications with clean UI/UX and maintainable code. Projects include design consultancies, animal care services, and community organizations.
+              Building custom React applications for personal portfolios and projects. Specializing in modern, responsive web applications with clean UI/UX and maintainable code. Projects include design consultancies, animal care services, community organizations, and dating app prototypes.
             </p>
           </div>
         </div>
       ),
-      tech: ["React", "WordPress", "Breakdance", "JavaScript", "HTML/CSS", "Browser DevTools"],
+      tech: ["React", "WordPress", "Breakdance", "JavaScript", "HTML/CSS", "Framer Motion", "Vite"],
       links: [
         { label: "Aria Design", url: "https://www.ariadesignco.com/" },
-        { label: "Beau's Animal Care", url: "https://www.beausanimalcare.com/" }
+        { label: "Beau's Animal Care", url: "https://www.beausanimalcare.com/" },
+        { label: "Zwei Dating Demo", url: "https://beaulazear.github.io/zwei-dating-app" }
       ],
       images: [
+        { src: LOMCGif, alt: 'LOMC Summer Camp - WordPress website with camp registration' },
         { src: FlippingAces, alt: 'Flipping Aces - Restaurant website built with WordPress and Breakdance' },
         { src: AriaLanding, alt: 'Aria Design Consultants - React-based design consultancy website' },
         { src: BeausAnimalCareLanding, alt: "Beau's Animal Care - React-based pet care services landing page" },
         { src: Washtenaw, alt: 'Washtenaw - Community organization website' },
+        { src: ZweiGif, alt: 'Zwei Dating App - Mobile-first React prototype with swipeable cards' },
+      ]
+    },
+    'openweb-mocks': {
+      id: 'openweb-mocks',
+      name: "OpenWeb Platform Mocks",
+      role: "Product Demonstration Materials",
+      shortDesc: "Client demo mockups for OpenWeb",
+      description: "Interactive mockups created for OpenWeb to demonstrate how their comment and engagement platform would integrate into prospective clients' websites. These high-fidelity demos showcase the OpenWeb platform seamlessly embedded within BKN Sports (sports news) and newsletter platforms. Built to help clients visualize the product on their sites before implementation.",
+      tech: ["React", "JavaScript", "OpenWeb Integration", "Responsive Design", "Client Demonstrations"],
+      links: [],
+      images: [
+        { src: BKNNewsGif, alt: 'BKN Sports Mock - News feed with OpenWeb comment integration' },
+        { src: BKNBoxscoreGif, alt: 'BKN Sports Mock - Box scores with OpenWeb engagement features' },
+        { src: NewsletterDesktopGif, alt: 'Newsletter Mock - Desktop view with OpenWeb commenting' },
+        { src: NewsletterMobileGif, alt: 'Newsletter Mock - Mobile-responsive OpenWeb integration' },
       ]
     }
   };

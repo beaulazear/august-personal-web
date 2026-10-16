@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beau Lazear - Resume</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+
+    .resume {
+      max-width: 850px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px 40px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #2c3e50;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
+    }
+
+    .title {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .contact {
+      font-size: 12px;
+      color: #666;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .contact a {
+      color: #2c3e50;
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-size: 16px;
+      color: #2c3e50;
+      margin-bottom: 10px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #ddd;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .one-liner {
+      font-size: 13px;
+      color: #444;
+      line-height: 1.5;
+      margin-bottom: 18px;
+      text-align: left;
+    }
+
+    /* Experience */
+    .job {
+      margin-bottom: 15px;
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+
+    .job-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    .company {
+      font-size: 13px;
+      color: #2c3e50;
+      font-weight: 600;
+    }
+
+    .company-title-line {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .period {
+      font-size: 11px;
+      color: #777;
+      font-style: italic;
+      white-space: nowrap;
+    }
+
+    .job ul {
+      margin-left: 18px;
+      margin-top: 4px;
+    }
+
+    .job li {
+      margin-bottom: 3px;
+      font-size: 12px;
+      color: #444;
+      line-height: 1.4;
+    }
+
+    .role {
+      margin-top: 6px;
+      padding-left: 10px;
+      border-left: 2px solid #e3e7eb;
+    }
+
+    .role-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .additional-experience {
+      font-size: 12px;
+      color: #444;
+      line-height: 1.5;
+    }
+
+    .additional-experience div {
+      margin-bottom: 4px;
+    }
+
+    .additional-experience strong {
+      color: #2c3e50;
+      font-weight: 600;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px 20px;
+    }
+
+    .skill-category h3 {
+      font-size: 12px;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .skill-category ul {
+      list-style: none;
+    }
+
+    .skill-category li {
+      font-size: 11px;
+      color: #555;
+      margin-bottom: 2px;
+      padding-left: 10px;
+      position: relative;
+    }
+
+    .skill-category li:before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #2c3e50;
+    }
+
+    /* Education */
+    .education-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .education-item {
+      margin-bottom: 0;
+    }
+
+    .degree {
+      font-size: 12px;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    .school {
+      font-size: 11px;
+      color: #555;
+      margin-bottom: 2px;
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+
+      .resume {
+        box-shadow: none;
+        padding: 0;
+        max-width: 100%;
+      }
+
+      section {
+        page-break-inside: avoid;
+      }
+
+      .job {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <!-- Header -->
+    <header>
+      <h1>Beau Lazear</h1>
+      <p class="title">Support Engineer • Founder • Animal Lover</p>
+      <div class="contact">
+        <span>Brooklyn, NY</span>
+        <span>•</span>
+        <a href="tel:7186141878">(718) 614-1878</a>
+        <span>•</span>
+        <a href="mailto:beaulazear@gmail.com">beaulazear@gmail.com</a>
+        <span>•</span>
+        <a href="https://linkedin.com/in/beaulazear" target="_blank">linkedin.com/in/beaulazear</a>
+      </div>
+    </header>
+
+    <!-- One-liner -->
+    <div class="one-liner">
+      Support engineer and full-stack developer with 2+ years of experience debugging JavaScript implementations, troubleshooting API integrations, and building internal tools. Former founder who spent 6 years growing a business and owning every client relationship end to end.
+    </div>
+
+    <!-- Professional Experience -->
+    <section>
+      <h2>Professional Experience</h2>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="company">OpenWeb</span>
+          <div class="period">May 2026 - Present</div>
+        </div>
+
+        <div class="role">
+          <div class="role-header">
+            <span class="job-title">Support Engineer</span>
+            <div class="period">Aug 2026 - Present</div>
+          </div>
+          <ul>
+            <li>Promoted to Support Engineer within 3 months after excelling during onboarding</li>
+            <li>Act as the technical bridge between engineering teams and publisher partners, owning bug escalation from triage to resolution</li>
+            <li>Debug JavaScript implementations and troubleshoot API integrations across diverse client environments</li>
+            <li>Develop internal tools to optimize team workflows, improving case resolution efficiency and team productivity</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-header">
+            <span class="job-title">Tech Support Specialist</span>
+            <div class="period">May 2026 - Aug 2026</div>
+          </div>
+          <ul>
+            <li>Provided frontline technical support for publishers using OpenWeb's software, resolving complex integration issues</li>
+            <li>Collaborated with engineering teams on bug reports, feature requests, and product improvements</li>
+            <li>Managed active support cases using Salesforce and Jira, maintaining detailed documentation and SLA compliance</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div class="company-title-line">
+            <span class="company">Beau's Animal Care</span>
+            <span style="color: #999;">|</span>
+            <span class="job-title">Founder &amp; Owner</span>
+          </div>
+          <div class="period">2020 - 2026</div>
+        </div>
+        <ul>
+          <li>Founded and single-handedly grew a pet care business from the ground up to 50+ clients and $80K+ in annual revenue</li>
+          <li>Owned every client relationship end to end, from onboarding and scheduling to ongoing communication and issue resolution, maintaining 100% client satisfaction</li>
+          <li>Ran all business operations independently, including client acquisition, pricing, and day-to-day service delivery</li>
+          <li>Built custom scheduling software to streamline bookings and day-to-day operations</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div class="company-title-line">
+            <span class="company">Catch Drive</span>
+            <span style="color: #999;">|</span>
+            <span class="job-title">Frontend Developer (Part-Time)</span>
+          </div>
+          <div class="period">2024 - Present</div>
+        </div>
+        <ul>
+          <li>Develop client-facing web applications using WordPress, Breakdance, and modern JavaScript frameworks</li>
+          <li>Build responsive interfaces with focus on user experience and cross-browser compatibility</li>
+          <li>Collaborate with design and backend teams to deliver projects on schedule and within scope</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div class="company-title-line">
+            <span class="company">Voxxy AI Inc.</span>
+            <span style="color: #999;">|</span>
+            <span class="job-title">Co-Founder (Part-Time)</span>
+          </div>
+          <div class="period">2024 - Present</div>
+        </div>
+        <ul>
+          <li>Built full-stack application using React.js, Ruby on Rails, and PostgreSQL with vendor workflows and approval systems</li>
+          <li>Set up analytics (Mixpanel) and transactional email (SendGrid); worked across product iterations for events space</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <!-- Additional Experience -->
+    <section>
+      <h2>Additional Experience</h2>
+      <div class="additional-experience">
+        <div><strong>ASPCA Animal Recovery Center</strong> | Lead Veterinary Assistant (2019): Managed daily animal care and health assessments.</div>
+        <div><strong>Wildlife Conservation Society (Prospect Park Zoo)</strong> | Zookeeper (2017-2019): Completed competitive internships leading to full-time hire.</div>
+      </div>
+    </section>
+
+    <!-- Technical Skills -->
+    <section>
+      <h2>Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Languages & Frameworks</h3>
+          <ul>
+            <li>JavaScript / TypeScript</li>
+            <li>React & React Native</li>
+            <li>Ruby on Rails</li>
+            <li>Node.js</li>
+            <li>HTML / CSS</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3>Tools & Platforms</h3>
+          <ul>
+            <li>Salesforce & Jira</li>
+            <li>Git & GitHub</li>
+            <li>PostgreSQL</li>
+            <li>AWS (Certified)</li>
+            <li>Render & Deployment</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3>Core Competencies</h3>
+          <ul>
+            <li>Technical Support</li>
+            <li>API Integration</li>
+            <li>Debugging & Troubleshooting</li>
+            <li>Customer Service</li>
+            <li>Project Management</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education & Certifications -->
+    <section>
+      <h2>Education & Certifications</h2>
+      <div class="education-grid">
+        <div class="education-item">
+          <div class="degree">Software Engineering Certificate</div>
+          <div class="school">Flatiron School • 2023</div>
+        </div>
+        <div class="education-item">
+          <div class="degree">AWS Certified Cloud Practitioner</div>
+          <div class="school">Amazon Web Services • 2024</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Optional: Auto-print dialog on load (commented out by default)
+    // window.onload = () => window.print();
+  </script>
+</body>
+</html>

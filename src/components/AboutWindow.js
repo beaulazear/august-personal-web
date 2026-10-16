@@ -27,13 +27,13 @@ const AboutWindow = () => {
 
         <div className="pl-4 space-y-3 text-base leading-relaxed font-medium">
           <p>
-            <span className="text-terminal-amber font-bold">&gt;</span> Tech Support Specialist at OpenWeb
+            <span className="text-terminal-amber font-bold">&gt;</span> Support Engineer at OpenWeb
           </p>
           <p>
             <span className="text-terminal-amber font-bold">&gt;</span> Co-Founder of Voxxy AI Inc.
           </p>
           <p>
-            <span className="text-terminal-amber font-bold">&gt;</span> Founder of Beau's Animal Care
+            <span className="text-terminal-amber font-bold">&gt;</span> Former Founder of Beau's Animal Care (2020-2026)
           </p>
           <p>
             <span className="text-terminal-amber font-bold">&gt;</span> Freelance full-stack developer (React, Rails, React Native)
@@ -47,13 +47,13 @@ const AboutWindow = () => {
           </div>
           <div className="pl-4 space-y-3 text-base leading-relaxed">
             <p>
-              I moved to Brooklyn, NYC in 2016 immediately following my high school graduation. I started working young, having three jobs by my senior year. Currently, I work full-time as a Tech Support Specialist at OpenWeb, while maintaining my own animal care business and freelance development work.
+              I moved to Brooklyn, NYC in 2016 immediately following my high school graduation. I started working young, having three jobs by my senior year. Currently, I work full-time as a Support Engineer at OpenWeb, where I was promoted within 3 months of joining, while also doing freelance development work and co-founding Voxxy AI.
             </p>
             <p>
-              At OpenWeb, I provide frontline technical support for publishers, debug JavaScript implementations, troubleshoot API integrations, and create internal tools to optimize our team's workflows. I work closely with engineering teams using Salesforce and Jira to manage cases and deliver solutions.
+              At OpenWeb, I act as the technical bridge between engineering teams and publisher partners. I debug JavaScript implementations, troubleshoot API integrations, and develop internal tools to optimize team workflows and improve case resolution efficiency. I work closely with engineering using Salesforce and Jira to escalate bugs from triage to resolution.
             </p>
             <p>
-              My love for animals led me down the zookeeping and animal care route, where I eventually grew and maintained my own animal care business. It was while building a website for that business—using nothing but HTML and CSS in Notepad, that I fell in love with coding.
+              My love for animals led me down the zookeeping and animal care route, where I eventually founded and grew Beau's Animal Care from the ground up to 50+ clients and $80K+ in annual revenue (2020-2026). It was while building a website for that business—using nothing but HTML and CSS in Notepad, that I fell in love with coding.
             </p>
             <p>
               That spark led me to a coding bootcamp, where I gained hands-on experience in both front-end and back-end development. Since then, I've built full-stack applications with React, Rails, and React Native, and co-founded Voxxy AI Inc.

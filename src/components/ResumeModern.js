@@ -23,66 +23,73 @@ const ResumeModern = () => {
   ];
 
   const skills = {
-    "Frontend": ["React", "React Native", "JavaScript", "HTML/CSS", "WordPress", "Breakdance", "Styled Components", "Responsive Design"],
-    "Backend": ["Ruby on Rails", "PostgreSQL", "REST APIs", "JWT Auth", "Active Storage", "Webhook Integrations"],
-    "Cloud & Tools": ["AWS", "Google Cloud", "Git", "SendGrid", "Mixpanel", "CRM Automation"],
-    "Business": ["Team Leadership", "Client Relations", "Project Management", "Problem Solving", "Strategic Thinking"]
+    "Frontend": ["React", "React Native", "JavaScript", "TypeScript", "HTML/CSS", "WordPress", "Breakdance", "Responsive Design"],
+    "Backend": ["Ruby on Rails", "Node.js", "PostgreSQL", "REST APIs", "API Integration", "Debugging"],
+    "Tools & Platforms": ["Salesforce", "Jira", "Git", "GitHub", "AWS", "SendGrid", "Mixpanel"],
+    "Core Competencies": ["Technical Support", "Troubleshooting", "Customer Service", "Project Management", "Client Relations"]
   };
 
   const experience = [
     {
-      title: "Co-Founder & CTO",
+      title: "Support Engineer",
+      company: "OpenWeb",
+      location: "Remote",
+      period: "May 2026 - Present",
+      icon: Zap,
+      color: "from-blue-600 to-cyan-500",
+      description: [
+        "Promoted to Support Engineer within 3 months after excelling during onboarding",
+        "Act as technical bridge between engineering teams and publisher partners, owning bug escalation from triage to resolution",
+        "Debug JavaScript implementations and troubleshoot API integrations across diverse client environments",
+        "Develop internal tools to optimize team workflows, improving case resolution efficiency and team productivity"
+      ],
+      subRole: {
+        title: "Tech Support Specialist",
+        period: "May 2026 - Aug 2026",
+        description: [
+          "Provided frontline technical support for publishers using OpenWeb's software, resolving complex integration issues",
+          "Collaborated with engineering teams on bug reports, feature requests, and product improvements",
+          "Managed active support cases using Salesforce and Jira, maintaining detailed documentation and SLA compliance"
+        ]
+      }
+    },
+    {
+      title: "Co-Founder",
       company: "Voxxy AI",
       location: "Remote",
       period: "2024 - Present",
       icon: Building,
       color: "from-purple-500 to-pink-500",
       description: [
-        "Co-founded a platform company with two products (Voxxy Mobile & Voxxy Presents)",
-        "Built and maintain the backend API infrastructure using Ruby on Rails",
-        "Developed mobile application using React Native for iOS and Android",
-        "Lead community engagement efforts including bank-sponsored local events",
-        "Manage cloud infrastructure on AWS and Google Cloud platforms"
+        "Built full-stack application using React.js, Ruby on Rails, and PostgreSQL with vendor workflows and approval systems",
+        "Set up analytics (Mixpanel) and transactional email (SendGrid); worked across product iterations for events space"
       ]
     },
     {
-      title: "Front End Developer",
-      company: "Catch Drive Solutions",
+      title: "Frontend Developer",
+      company: "Catch Drive",
       location: "Remote",
-      period: "April 2025 - Present",
+      period: "2024 - Present",
       icon: Code,
       color: "from-blue-500 to-cyan-500",
       description: [
-        "Creating responsive, user-friendly interfaces for WordPress-based sites",
-        "Working with Breakdance page builder to implement custom designs",
-        "Collaborating with design team to bring mockups to life",
-        "Ensuring cross-browser compatibility and mobile optimization"
+        "Develop client-facing web applications using WordPress, Breakdance, and modern JavaScript frameworks",
+        "Build responsive interfaces with focus on user experience and cross-browser compatibility",
+        "Collaborate with design and backend teams to deliver projects on schedule and within scope"
       ]
     },
     {
-      title: "Owner & Operator",
+      title: "Founder & Owner",
       company: "Beau's Animal Care",
       location: "Brooklyn, NY",
-      period: "2019 - Present",
+      period: "2020 - 2026",
       icon: PawPrint,
       color: "from-green-500 to-emerald-500",
       description: [
-        "Founded and grew pet care business to serve 50+ regular clients across Brooklyn",
-        "Built custom scheduling and client management app (Pocket Walks) using React and Rails",
-        "Manage all business operations including scheduling, invoicing, and customer relations",
-        "Developed company website and digital presence"
-      ]
-    },
-    {
-      title: "Technical Consultant",
-      company: "Various Clients",
-      location: "Remote",
-      period: "2023 - Present",
-      icon: Briefcase,
-      color: "from-indigo-500 to-purple-500",
-      description: [
-        "Aria Design Co: Built and hosted React-based website on GitHub Pages, optimized SEO, managed social media presence, created new brand graphics, and provide ongoing technical support",
-        "United Advisors: Created workflow automations within their CRM, developed email and SMS templates, connected Google Forms to CRM using custom scripts for automated agent data collection"
+        "Founded and single-handedly grew a pet care business from the ground up to 50+ clients and $80K+ in annual revenue",
+        "Owned every client relationship end to end, from onboarding and scheduling to ongoing communication and issue resolution, maintaining 100% client satisfaction",
+        "Ran all business operations independently, including client acquisition, pricing, and day-to-day service delivery",
+        "Built custom scheduling software to streamline bookings and day-to-day operations"
       ]
     }
   ];
@@ -151,7 +158,7 @@ const ResumeModern = () => {
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-600 font-medium mb-8">
-            Developer • Co-Founder • Problem Solver
+            Support Engineer • Founder • Animal Lover
           </p>
 
           {/* Quick Stats */}
@@ -178,6 +185,15 @@ const ResumeModern = () => {
               <Mail size={18} />
               Contact Me
             </button>
+            <a
+              href="/beau-lazear-resume_5.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white border-2 border-brand-500 text-brand-600 px-6 py-3 rounded-xl font-semibold flex items-center gap-2 hover:shadow-lg hover:scale-105 transition-all duration-300"
+            >
+              <ExternalLink size={18} />
+              View Full Resume
+            </a>
           </div>
         </div>
       </div>
@@ -366,6 +382,26 @@ const ResumeModern = () => {
                           </li>
                         ))}
                       </ul>
+
+                      {/* Sub-role section for OpenWeb */}
+                      {job.subRole && (
+                        <div className="mt-6 pl-4 border-l-2 border-gray-200">
+                          <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
+                            <h4 className="text-base font-semibold text-gray-700">
+                              {job.subRole.title}
+                            </h4>
+                            <p className="text-sm text-gray-500 font-medium">{job.subRole.period}</p>
+                          </div>
+                          <ul className="mt-2 space-y-2">
+                            {job.subRole.description.map((item, i) => (
+                              <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
+                                <CheckCircle className="text-blue-400 flex-shrink-0 mt-0.5" size={16} />
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
                     </div>
                   </div>
                 );
