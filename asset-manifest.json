@@ -1,10 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.296be4b9.css",
-    "main.js": "/static/js/main.5d0f19fd.js",
+    "main.css": "/static/css/main.08839b31.css",
+    "main.js": "/static/js/main.b2b06bb9.js",
     "static/js/453.506b5fe3.chunk.js": "/static/js/453.506b5fe3.chunk.js",
+    "static/media/newsletter-scroll-desktop.gif": "/static/media/newsletter-scroll-desktop.e6152e48ef191a5c3199.gif",
+    "static/media/lomc-summer-camp.gif": "/static/media/lomc-summer-camp.83ea7142b4f7e336f183.gif",
+    "static/media/newsletter-scroll-mobile.gif": "/static/media/newsletter-scroll-mobile.fa8d9c27451efa149a7d.gif",
     "static/media/BeauReykaMangoRu.jpeg": "/static/media/BeauReykaMangoRu.06dafeed414154afc57c.jpeg",
+    "static/media/bkn-news-scroll-mobile.gif": "/static/media/bkn-news-scroll-mobile.11355a98bbc487a329b0.gif",
+    "static/media/bkn-boxscore-scroll-mobile.gif": "/static/media/bkn-boxscore-scroll-mobile.eb5e0b8d983fee7314b9.gif",
     "static/media/BeauAndRu.JPG": "/static/media/BeauAndRu.002b2051b6900cd44ba7.JPG",
+    "static/media/zwei-dating-app.gif": "/static/media/zwei-dating-app.80099e563413ba59bb4d.gif",
     "static/media/Washtenaw.png": "/static/media/Washtenaw.9ab0133ac68615430822.png",
     "static/media/Aces.png": "/static/media/Aces.2416fabf97ecd5ab95cb.png",
     "static/media/AriaLanding.png": "/static/media/AriaLanding.65b9a6dcbc8e32e662e3.png",
@@ -22,12 +28,12 @@
     "static/media/scooper4.jpg": "/static/media/scooper4.ea731c11600225128f34.jpg",
     "static/media/scoopers2.jpg": "/static/media/scoopers2.99e3b5cb52844bf01480.jpg",
     "index.html": "/index.html",
-    "main.296be4b9.css.map": "/static/css/main.296be4b9.css.map",
-    "main.5d0f19fd.js.map": "/static/js/main.5d0f19fd.js.map",
+    "main.08839b31.css.map": "/static/css/main.08839b31.css.map",
+    "main.b2b06bb9.js.map": "/static/js/main.b2b06bb9.js.map",
     "453.506b5fe3.chunk.js.map": "/static/js/453.506b5fe3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.296be4b9.css",
-    "static/js/main.5d0f19fd.js"
+    "static/css/main.08839b31.css",
+    "static/js/main.b2b06bb9.js"
   ]
 }
