@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPA Navigation Demo | Beau Test Site</title>
+
+  <!-- Viafoura meta tags (initial page) -->
+  <meta name="vf:container_id" content="P3001">
+  <meta property="og:url" content="https://www.beaulazear.com/viafoura-demo/spa.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Single-Page Application Navigation Demo">
+  <meta property="og:description" content="Demonstration of dynamic content loading with proper Viafoura context updates.">
+  <meta property="og:image" content="https://picsum.photos/seed/P3001/1200/800">
+
+  <!-- Site assets -->
+  <script src="assets/site.js"></script>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header>
+    <a href="index.html" class="brand">Beau Test Site</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="article.html">Article</a>
+      <a href="live-blog.html">Live Blog</a>
+      <a href="live-qa.html">Live Q&A</a>
+      <a href="live-chat.html">Live Chat</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="spa.html" aria-current="page">SPA Demo</a>
+      <a href="custom-auth.html">Custom Auth</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="info-box">
+      <h2>What this page demonstrates</h2>
+      <ul>
+        <li><strong>SPA navigation pattern</strong> - Dynamic content switching without page reload</li>
+        <li>Proper use of <code>vf.context.update()</code> when changing content</li>
+        <li>History API integration with browser back/forward buttons</li>
+        <li>Optional analytics tracking on content change</li>
+      </ul>
+      <p><strong>Test:</strong> Click the article buttons below to switch content. Notice how the Conversations widget updates to show comments for each article. Use browser back/forward buttons to navigate history.</p>
+      <p><strong>Key point:</strong> Always call <code>vf.context.update()</code> after changing page content in an SPA.</p>
+    </div>
+
+    <div class="spa-controls">
+      <h3>Load Different Articles</h3>
+      <button id="article-1" class="active">Article 1: AI and Society</button>
+      <button id="article-2">Article 2: Sustainable Energy</button>
+      <button id="article-3">Article 3: Future of Work</button>
+
+      <label>
+        <input type="checkbox" id="analytics-toggle" checked>
+        Fire analytics events on navigation (check VF Events debug panel)
+      </label>
+    </div>
+
+    <!-- Article content container -->
+    <div id="article-content">
+      <!-- Content will be dynamically inserted here -->
+    </div>
+
+    <!-- Viafoura Conversations Widget -->
+    <div class="viafoura">
+      <vf-conversations></vf-conversations>
+    </div>
+
+    <!-- Viafoura Tray Trigger -->
+    <div class="viafoura">
+      <vf-tray-trigger floating="true"></vf-tray-trigger>
+    </div>
+  </main>
+
+  <!-- SPA Navigation Script -->
+  <script>
+    (function() {
+      'use strict';
+
+      // Article data
+      const articles = {
+        'article-1': {
+          containerId: 'P3001',
+          title: 'Artificial Intelligence and Its Impact on Modern Society',
+          author: 'Dr. Emily Chen',
+          date: '2026-11-01',
+          readTime: '7 min read',
+          image: 'https://picsum.photos/seed/P3001/1200/800',
+          content: `
+            <p>Artificial intelligence has moved from science fiction to everyday reality, transforming how we work, communicate, and solve complex problems. From personalized recommendations to autonomous vehicles, AI systems are becoming increasingly integrated into the fabric of modern life.</p>
+
+            <p>But with this integration comes important questions about ethics, bias, and the future of human labor. As AI systems become more capable, we must grapple with fundamental questions about privacy, accountability, and the kind of society we want to build.</p>
+
+            <p>Recent advances in large language models, computer vision, and reinforcement learning have accelerated AI capabilities beyond what many experts predicted even five years ago. These tools are now being deployed in healthcare, education, creative industries, and scientific research.</p>
+
+            <p>The challenge ahead is not whether AI will continue to advance—it almost certainly will—but how we choose to develop and deploy these powerful technologies in ways that benefit humanity while mitigating potential harms.</p>
+          `
+        },
+        'article-2': {
+          containerId: 'P3002',
+          title: 'The Global Transition to Sustainable Energy',
+          author: 'James Morrison',
+          date: '2026-10-28',
+          readTime: '6 min read',
+          image: 'https://picsum.photos/seed/P3002/1200/800',
+          content: `
+            <p>The world is undergoing a historic energy transformation. Solar and wind power have become the cheapest sources of electricity in most markets, and battery technology has advanced to the point where renewable energy can be stored and dispatched on demand.</p>
+
+            <p>This transition is being driven by a combination of technological innovation, policy support, and economic necessity. The falling costs of renewable energy and energy storage have made clean energy not just an environmental imperative but an economic opportunity.</p>
+
+            <p>Countries around the world are setting ambitious targets for decarbonization. The European Union aims to be climate neutral by 2050, China has pledged to reach carbon neutrality by 2060, and over 100 countries have set net-zero targets.</p>
+
+            <p>While challenges remain—including grid infrastructure upgrades, energy storage capacity, and the intermittency of renewable sources—the momentum toward sustainable energy appears irreversible. The question is no longer if the transition will happen, but how quickly it can be achieved.</p>
+          `
+        },
+        'article-3': {
+          containerId: 'P3003',
+          title: 'The Future of Work in a Digital Age',
+          author: 'Sarah Williams',
+          date: '2026-10-25',
+          readTime: '8 min read',
+          image: 'https://picsum.photos/seed/P3003/1200/800',
+          content: `
+            <p>The nature of work is changing at an unprecedented pace. Remote work, once considered a perk, has become standard practice for millions of knowledge workers. Digital collaboration tools have made distributed teams not just possible but often preferable to traditional office environments.</p>
+
+            <p>This shift has profound implications for how we think about productivity, work-life balance, and career development. Companies are rethinking everything from performance metrics to organizational structure to accommodate this new reality.</p>
+
+            <p>At the same time, automation and AI are reshaping entire job categories. While some roles are being automated, new categories of work are emerging that didn't exist a decade ago—from AI trainers to remote work consultants to digital wellness coaches.</p>
+
+            <p>The workers and organizations that thrive in this new landscape will be those that embrace continuous learning, adaptability, and a willingness to reimagine what work means in the 21st century. The future of work isn't predetermined—it's being shaped by decisions we make today.</p>
+          `
+        }
+      };
+
+      // Current article ID
+      let currentArticleId = 'article-1';
+
+      // Render article content
+      function renderArticle(articleId) {
+        const article = articles[articleId];
+        const contentContainer = document.getElementById('article-content');
+
+        contentContainer.innerHTML = `
+          <article>
+            <h1>${article.title}</h1>
+
+            <div class="byline">
+              <div class="author">
+                <span>By ${article.author}</span>
+              </div>
+              <time datetime="${article.date}">${new Date(article.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</time>
+              <span>${article.readTime}</span>
+            </div>
+
+            <img src="${article.image}" alt="${article.title}" class="hero-image">
+
+            ${article.content}
+          </article>
+        `;
+      }
+
+      // Update Viafoura context
+      function updateViafouraContext(articleId) {
+        const article = articles[articleId];
+
+        // Queue the context update
+        window.vfQ = window.vfQ || [];
+        window.vfQ.push(function() {
+          // Check if analytics is enabled
+          const analyticsEnabled = document.getElementById('analytics-toggle').checked;
+
+          // Update the page context
+          window.vf.context.update({
+            container_id: article.containerId,
+            url: window.location.href,
+            title: article.title,
+            tags: articleId === 'article-1' ? ['technology', 'AI'] :
+                  articleId === 'article-2' ? ['environment', 'energy'] :
+                  ['business', 'workforce'],
+            section_ids: ['tech-section'],
+            disable_analytics: !analyticsEnabled
+          });
+
+          // Log to debug panel
+          if (window.hlLog) {
+            window.hlLog('SPA Navigation', {
+              article_id: articleId,
+              container_id: article.containerId,
+              title: article.title,
+              analytics_enabled: analyticsEnabled
+            });
+          }
+        });
+      }
+
+      // Handle article navigation
+      function navigateToArticle(articleId, updateHistory) {
+        if (currentArticleId === articleId) return;
+
+        // Update active button
+        document.querySelectorAll('.spa-controls button').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        document.getElementById(articleId).classList.add('active');
+
+        // Render new content
+        renderArticle(articleId);
+
+        // Update Viafoura context
+        updateViafouraContext(articleId);
+
+        // Update browser history
+        if (updateHistory) {
+          const article = articles[articleId];
+          const url = new URL(window.location);
+          url.searchParams.set('article', articleId);
+          window.history.pushState(
+            { articleId: articleId },
+            article.title,
+            url.toString()
+          );
+        }
+
+        currentArticleId = articleId;
+
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Handle button clicks
+      document.querySelectorAll('.spa-controls button').forEach(button => {
+        button.addEventListener('click', function() {
+          navigateToArticle(this.id, true);
+        });
+      });
+
+      // Handle browser back/forward
+      window.addEventListener('popstate', function(event) {
+        if (event.state && event.state.articleId) {
+          navigateToArticle(event.state.articleId, false);
+        }
+      });
+
+      // Initialize on page load
+      document.addEventListener('DOMContentLoaded', function() {
+        // Check URL for initial article
+        const urlParams = new URLSearchParams(window.location.search);
+        const initialArticle = urlParams.get('article') || 'article-1';
+
+        // Render initial article
+        renderArticle(initialArticle);
+
+        // Set initial history state
+        const article = articles[initialArticle];
+        window.history.replaceState(
+          { articleId: initialArticle },
+          article.title,
+          window.location.href
+        );
+      });
+    })();
+  </script>
+
+  <!-- Viafoura SDK -->
+  <script async src="https://cdn.viafoura.net/entry/index.js"></script>
+</body>
+</html>
