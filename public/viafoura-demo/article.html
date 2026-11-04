@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article with Conversations | Beau Test Site</title>
+
+  <!-- Viafoura meta tags -->
+  <meta name="vf:container_id" content="P1001">
+  <meta property="og:url" content="https://www.beaulazear.com/viafoura-demo/article.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Future of Digital Publishing: How Technology is Reshaping Media">
+  <meta property="og:description" content="An in-depth look at how emerging technologies are transforming the publishing industry and reader engagement.">
+  <meta property="og:image" content="https://picsum.photos/seed/P1001/1200/800">
+
+  <!-- Site assets -->
+  <script src="assets/site.js"></script>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header>
+    <a href="index.html" class="brand">Beau Test Site</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="article.html" aria-current="page">Article</a>
+      <a href="live-blog.html">Live Blog</a>
+      <a href="live-qa.html">Live Q&A</a>
+      <a href="live-chat.html">Live Chat</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="spa.html">SPA Demo</a>
+      <a href="custom-auth.html">Custom Auth</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="info-box">
+      <h2>What this page demonstrates</h2>
+      <ul>
+        <li><strong>Conversations widget</strong> - Standard article comments with moderation tools</li>
+        <li><strong>Tray trigger</strong> - Floating action button for notifications and profile</li>
+        <li>Container ID in meta tag: <code>P1001</code></li>
+        <li>Open Graph metadata for social sharing</li>
+      </ul>
+      <p><strong>Test:</strong> Try posting a comment, replying to comments, using reactions, and opening the tray trigger (bottom-right corner).</p>
+    </div>
+
+    <article>
+      <h1>The Future of Digital Publishing: How Technology is Reshaping Media</h1>
+
+      <div class="byline">
+        <div class="author">
+          <span>By Sarah Mitchell</span>
+        </div>
+        <time datetime="2026-11-04">November 4, 2026</time>
+        <span>8 min read</span>
+      </div>
+
+      <img src="https://picsum.photos/seed/P1001/1200/800" alt="Digital publishing technology" class="hero-image">
+
+      <p>The landscape of digital publishing has undergone a seismic shift in recent years. What was once a straightforward process of converting print content to digital formats has evolved into a complex ecosystem of interactive experiences, real-time engagement, and data-driven personalization.</p>
+
+      <p>At the heart of this transformation lies a fundamental question: How do publishers maintain meaningful connections with their audiences in an age of infinite content and fragmented attention spans? The answer, as it turns out, isn't just about creating better content—it's about creating better conversations around that content.</p>
+
+      <p>Modern readers don't just want to consume information; they want to discuss it, debate it, and share it with their communities. This shift has driven publishers to reimagine their platforms not as static destinations but as dynamic spaces for community engagement.</p>
+
+      <p>"The traditional model of publishing was one-way communication," explains Dr. James Chen, a media studies professor at Stanford University. "Today's most successful publishers understand that engagement is a two-way street. They're building platforms that encourage dialogue, not just broadcast."</p>
+
+      <p>This evolution is evident in the tools publishers are adopting. Comment sections have evolved from simple text boxes to sophisticated conversation platforms with moderation tools, threading, reactions, and social features. Live blogging has become essential for covering breaking news and events in real-time, allowing journalists to provide continuous updates while readers engage with developing stories.</p>
+
+      <p>The technology powering these experiences has also matured. Where publishers once had to build and maintain their own engagement infrastructure, specialized platforms now offer turnkey solutions that integrate seamlessly with existing content management systems. This has democratized access to sophisticated engagement tools, allowing publishers of all sizes to compete on a more level playing field.</p>
+
+      <p>Looking ahead, the next frontier appears to be personalization at scale. Machine learning algorithms are beginning to understand not just what content readers prefer, but how they prefer to engage with it. Some readers might want deep, thoughtful discussions, while others prefer quick reactions and social sharing. The challenge for publishers will be serving both audiences simultaneously while maintaining community cohesion.</p>
+
+      <p>As we move further into this digital-first era, one thing is clear: the publishers who thrive will be those who view their platforms not just as distribution channels, but as community spaces where readers can connect, engage, and feel heard.</p>
+    </article>
+
+    <!-- Viafoura Conversations Widget -->
+    <div class="viafoura">
+      <vf-conversations></vf-conversations>
+    </div>
+
+    <!-- Viafoura Tray Trigger -->
+    <div class="viafoura">
+      <vf-tray-trigger floating="true"></vf-tray-trigger>
+    </div>
+  </main>
+
+  <!-- Viafoura SDK -->
+  <script async src="https://cdn.viafoura.net/entry/index.js"></script>
+</body>
+</html>

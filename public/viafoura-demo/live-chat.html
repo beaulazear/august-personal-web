@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Chat | Beau Test Site</title>
+
+  <!-- Viafoura meta tags -->
+  <meta name="vf:container_id" content="P1004">
+  <meta property="og:url" content="https://www.beaulazear.com/viafoura-demo/live-chat.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Game Day Central: Championship Live Chat">
+  <meta property="og:description" content="Join fellow fans for real-time discussion during tonight's big game.">
+  <meta property="og:image" content="https://picsum.photos/seed/P1004/1200/800">
+
+  <!-- Site assets -->
+  <script src="assets/site.js"></script>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header>
+    <a href="index.html" class="brand">Beau Test Site</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="article.html">Article</a>
+      <a href="live-blog.html">Live Blog</a>
+      <a href="live-qa.html">Live Q&A</a>
+      <a href="live-chat.html" aria-current="page">Live Chat</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="spa.html">SPA Demo</a>
+      <a href="custom-auth.html">Custom Auth</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="info-box">
+      <h2>What this page demonstrates</h2>
+      <ul>
+        <li><strong>Live Chat widget</strong> - Real-time messaging for live events</li>
+        <li>Perfect for sports, breaking news, watch parties, and live events</li>
+        <li>Messages appear instantly with auto-scroll to latest</li>
+        <li>Container ID: <code>P1004</code></li>
+      </ul>
+      <p><strong>Test:</strong> Send messages and see them appear in real-time. Open in multiple browser tabs to see live updates.</p>
+      <p><strong>Note:</strong> The official Viafoura docs currently show React syntax for Live Chat. Use the web component syntax shown below instead.</p>
+    </div>
+
+    <article>
+      <h1>Game Day Central: Championship Live Chat</h1>
+
+      <div class="byline">
+        <div class="author">
+          <span>Sports Desk</span>
+        </div>
+        <time datetime="2026-11-04">November 4, 2026</time>
+        <span>Live Event Coverage</span>
+      </div>
+
+      <img src="https://picsum.photos/seed/P1004/1200/800" alt="Championship Game" class="hero-image">
+
+      <p>Welcome to Game Day Central! Join thousands of fans for live chat during tonight's championship game. Share your reactions, predictions, and celebrate (or commiserate) with fellow supporters in real-time.</p>
+
+      <p><strong>Tonight's Matchup:</strong> The Thunderbolts take on the Dynamos in what promises to be an epic showdown. Both teams are coming off impressive playoff runs, and this championship game has all the makings of an instant classic.</p>
+
+      <p>Kickoff is at 8:00 PM ET / 5:00 PM PT. The chat is open now for pre-game discussion!</p>
+
+      <p><strong>House Rules:</strong> Keep it friendly, respect all fans, and remember—it's just a game. Our moderators will remove messages that violate our community guidelines.</p>
+    </article>
+
+    <!-- Viafoura Live Chat Widget -->
+    <article>
+      <h2>Live Game Chat</h2>
+      <p>Join the conversation with fans across the globe:</p>
+    </article>
+
+    <div class="viafoura" id="livechat-wrapper">
+      <vf-livechat></vf-livechat>
+    </div>
+
+    <!-- Viafoura Tray Trigger -->
+    <div class="viafoura">
+      <vf-tray-trigger floating="true"></vf-tray-trigger>
+    </div>
+  </main>
+
+  <!-- Viafoura SDK -->
+  <script async src="https://cdn.viafoura.net/entry/index.js"></script>
+</body>
+</html>

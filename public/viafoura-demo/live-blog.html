@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Blog | Beau Test Site</title>
+
+  <!-- Viafoura meta tags -->
+  <meta name="vf:container_id" content="P1002">
+  <meta property="og:url" content="https://www.beaulazear.com/viafoura-demo/live-blog.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Breaking: Tech Conference 2026 Live Coverage">
+  <meta property="og:description" content="Follow along as we bring you live updates from the biggest tech event of the year.">
+  <meta property="og:image" content="https://picsum.photos/seed/P1002/1200/800">
+
+  <!-- Site assets -->
+  <script src="assets/site.js"></script>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header>
+    <a href="index.html" class="brand">Beau Test Site</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="article.html">Article</a>
+      <a href="live-blog.html" aria-current="page">Live Blog</a>
+      <a href="live-qa.html">Live Q&A</a>
+      <a href="live-chat.html">Live Chat</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="spa.html">SPA Demo</a>
+      <a href="custom-auth.html">Custom Auth</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="info-box">
+      <h2>What this page demonstrates</h2>
+      <ul>
+        <li><strong>Live Blog widget</strong> - Real-time updates with auto-refresh</li>
+        <li>Perfect for breaking news, events, sports, and live coverage</li>
+        <li>Supports rich media, threading, and pinned posts</li>
+        <li>Container ID: <code>P1002</code></li>
+      </ul>
+      <p><strong>Test:</strong> Posts auto-update in real-time. In production, journalists would create posts via the Viafoura CMS or API.</p>
+    </div>
+
+    <article>
+      <h1>Breaking: Tech Conference 2026 Live Coverage</h1>
+
+      <div class="byline">
+        <div class="author">
+          <span>By Tech News Team</span>
+        </div>
+        <time datetime="2026-11-04">November 4, 2026</time>
+        <span>Live Coverage</span>
+      </div>
+
+      <img src="https://picsum.photos/seed/P1002/1200/800" alt="Tech Conference" class="hero-image">
+
+      <p>Welcome to our live coverage of Tech Conference 2026, the industry's premier gathering for innovation, emerging technologies, and digital transformation. Our team is on the ground bringing you real-time updates, breaking announcements, and exclusive interviews.</p>
+
+      <p>This year's conference promises major announcements in artificial intelligence, sustainable technology, and the future of human-computer interaction. Over 50,000 attendees from around the world have gathered to hear from industry leaders, explore cutting-edge demos, and shape the future of technology.</p>
+
+      <p>Follow along below as our journalists provide continuous updates throughout the day. All times are in Pacific Time (PT).</p>
+    </article>
+
+    <!-- Viafoura Live Blog Widget -->
+    <div class="viafoura">
+      <vf-liveblog></vf-liveblog>
+    </div>
+
+    <!-- Viafoura Tray Trigger -->
+    <div class="viafoura">
+      <vf-tray-trigger floating="true"></vf-tray-trigger>
+    </div>
+  </main>
+
+  <!-- Viafoura SDK -->
+  <script async src="https://cdn.viafoura.net/entry/index.js"></script>
+</body>
+</html>

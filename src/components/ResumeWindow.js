@@ -43,14 +43,25 @@ const ExperienceItem = ({ company, role, period, highlights, subRole }) => {
 const ResumeWindow = () => {
   const experiences = [
     {
+      company: "Viafoura",
+      role: "Technical Support Engineer",
+      period: "Oct 2026 - Present",
+      highlights: [
+        "Troubleshoot integration and platform issues for publisher partners using Viafoura's audience engagement platform",
+        "Collaborate with engineering teams to resolve product bugs and ship fixes for media brands",
+        "Document technical knowledge and create internal resources to help the support team scale efficiently",
+        "Work at the intersection of support and engineering, diagnosing technical issues and turning recurring problems into better processes"
+      ]
+    },
+    {
       company: "OpenWeb",
       role: "Support Engineer",
-      period: "May 2026 - Present",
+      period: "May 2026 - Oct 2026",
       highlights: [
         "Promoted to Support Engineer within 3 months after excelling during onboarding",
-        "Act as technical bridge between engineering teams and publisher partners, owning bug escalation from triage to resolution",
-        "Debug JavaScript implementations and troubleshoot API integrations across diverse client environments",
-        "Develop internal tools to optimize team workflows, improving case resolution efficiency and team productivity"
+        "Acted as technical bridge between engineering teams and publisher partners (WSJ, IGN, CNN), owning bug escalation from triage to resolution",
+        "Debugged JavaScript implementations and troubleshot API integrations across diverse client environments",
+        "Developed internal tools to optimize team workflows, improving case resolution efficiency and team productivity"
       ],
       subRole: {
         role: "Tech Support Specialist",

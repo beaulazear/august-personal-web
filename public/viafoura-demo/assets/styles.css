@@ -1,0 +1,333 @@
+/**
+ * Viafoura Demo Site Styles - Minimal
+ * Keep styling minimal to showcase Viafoura products without interference
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: #fff;
+}
+
+/* Minimal header */
+header {
+  background: #1a1a1a;
+  color: white;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #333;
+}
+
+header .brand {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+header nav {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+
+header nav a {
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+header nav a:hover {
+  color: #fff;
+}
+
+header nav a[aria-current="page"] {
+  color: #fff;
+  font-weight: 500;
+}
+
+/* Main content */
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Info box - minimal styling */
+.info-box {
+  background: #f8f9fa;
+  border-left: 3px solid #666;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+
+.info-box h2 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.info-box ul {
+  margin-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.info-box li {
+  margin-bottom: 0.25rem;
+}
+
+.info-box code {
+  background: #e9ecef;
+  padding: 0.1rem 0.3rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85em;
+}
+
+.info-box a {
+  color: #0066cc;
+  word-break: break-word;
+}
+
+/* Article content - very minimal */
+article {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+article h1 {
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+article .byline {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+article .byline .author {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+article .hero-image {
+  width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+}
+
+article p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Viafoura widgets - no custom styling, let Viafoura handle it */
+.viafoura {
+  --reserved-space-top: 60px;
+  margin: 2rem 0;
+}
+
+/* Home page - minimal card styling */
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.article-card {
+  border: 1px solid #e0e0e0;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: border-color 0.2s;
+}
+
+.article-card:hover {
+  border-color: #999;
+}
+
+.article-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.article-card-content {
+  padding: 1rem;
+}
+
+.article-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.article-card p {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.75rem;
+}
+
+.article-card .meta {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+/* SPA controls - minimal */
+.spa-controls {
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border: 1px solid #e0e0e0;
+}
+
+.spa-controls h3 {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.spa-controls button {
+  background: #000;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0.25rem 0.5rem 0.25rem 0;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.spa-controls button:hover {
+  background: #333;
+}
+
+.spa-controls button.active {
+  background: #666;
+}
+
+.spa-controls label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* Custom auth - minimal */
+.auth-demo {
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border: 1px solid #e0e0e0;
+}
+
+.auth-demo button {
+  background: #000;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0.25rem 0.5rem 0.25rem 0;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.auth-demo button:hover {
+  background: #333;
+}
+
+.auth-demo button.danger {
+  background: #c00;
+}
+
+.auth-demo button.danger:hover {
+  background: #900;
+}
+
+/* Dialog - minimal */
+dialog {
+  border: 1px solid #333;
+  padding: 2rem;
+  max-width: 400px;
+}
+
+dialog::backdrop {
+  background: rgba(0,0,0,0.5);
+}
+
+dialog h3 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+dialog label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+dialog input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+dialog button {
+  background: #000;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+dialog button:hover {
+  background: #333;
+}
+
+dialog button.cancel {
+  background: #666;
+}
+
+/* Live chat wrapper - no custom styling */
+#livechat-wrapper {
+  /* Let Viafoura handle all styling */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  header {
+    padding: 1rem;
+  }
+
+  main {
+    padding: 1rem 0.5rem;
+  }
+
+  .article-grid {
+    grid-template-columns: 1fr;
+  }
+}

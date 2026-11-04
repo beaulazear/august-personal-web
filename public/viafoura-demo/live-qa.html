@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Q&A | Beau Test Site</title>
+
+  <!-- Viafoura meta tags -->
+  <meta name="vf:container_id" content="P1003">
+  <meta property="og:url" content="https://www.beaulazear.com/viafoura-demo/live-qa.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Ask the Expert: Climate Change Policy">
+  <meta property="og:description" content="Submit your questions and vote on what you want our expert panel to discuss.">
+  <meta property="og:image" content="https://picsum.photos/seed/P1003/1200/800">
+
+  <!-- Site assets -->
+  <script src="assets/site.js"></script>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header>
+    <a href="index.html" class="brand">Beau Test Site</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="article.html">Article</a>
+      <a href="live-blog.html">Live Blog</a>
+      <a href="live-qa.html" aria-current="page">Live Q&A</a>
+      <a href="live-chat.html">Live Chat</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="spa.html">SPA Demo</a>
+      <a href="custom-auth.html">Custom Auth</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="info-box">
+      <h2>What this page demonstrates</h2>
+      <ul>
+        <li><strong>Live Q&A widget</strong> - Audience-driven Q&A with upvoting</li>
+        <li><strong>Polls widget</strong> - Real-time polling with multiple question types</li>
+        <li><strong>Conversations widget</strong> - Discussion after the Q&A session</li>
+        <li>Page container ID: <code>P1003</code></li>
+        <li>Poll container ID: <code>Ppoll1003</code></li>
+      </ul>
+      <p><strong>Test:</strong> Submit questions, vote on others' questions, participate in the poll, and discuss in comments.</p>
+    </div>
+
+    <article>
+      <h1>Ask the Expert: Climate Change Policy</h1>
+
+      <div class="byline">
+        <div class="author">
+          <span>Hosted by Environmental Policy Team</span>
+        </div>
+        <time datetime="2026-11-04">November 4, 2026</time>
+        <span>Live Event</span>
+      </div>
+
+      <img src="https://picsum.photos/seed/P1003/1200/800" alt="Climate Policy Panel" class="hero-image">
+
+      <p>Join us for an interactive Q&A session with leading climate policy experts. Our distinguished panel includes environmental scientists, policy makers, and industry leaders who are shaping the response to climate change.</p>
+
+      <p>This is your opportunity to ask questions directly and help determine the direction of our discussion. Submit your questions below and vote on questions from other participants. Our moderators will select the most popular and relevant questions for the panel to address.</p>
+
+      <p><strong>Panel Members:</strong></p>
+      <ul>
+        <li>Dr. Maria Santos - Climate Scientist, IPCC Lead Author</li>
+        <li>Hon. David Chen - Former EPA Administrator</li>
+        <li>Jennifer Williams - CEO, Sustainable Energy Coalition</li>
+        <li>Prof. Robert Jackson - Environmental Economics, Yale University</li>
+      </ul>
+
+      <p>The session will begin at 2:00 PM PT. Questions are being collected now!</p>
+    </article>
+
+    <!-- Viafoura Live Q&A Widget -->
+    <article>
+      <h2>Submit Your Questions</h2>
+      <p>What do you want to ask our expert panel? Submit your question below and vote on questions from other participants.</p>
+    </article>
+
+    <div class="viafoura">
+      <vf-qa></vf-qa>
+    </div>
+
+    <!-- Viafoura Polls Widget -->
+    <article>
+      <h2>Quick Poll</h2>
+      <p>Before we begin, we'd like to hear from you:</p>
+    </article>
+
+    <div class="viafoura">
+      <vf-polls container-id="Ppoll1003"></vf-polls>
+    </div>
+
+    <!-- Viafoura Conversations Widget -->
+    <article>
+      <h2>Discussion</h2>
+      <p>Share your thoughts and discuss the Q&A session with other participants:</p>
+    </article>
+
+    <div class="viafoura">
+      <vf-conversations></vf-conversations>
+    </div>
+
+    <!-- Viafoura Tray Trigger -->
+    <div class="viafoura">
+      <vf-tray-trigger floating="true"></vf-tray-trigger>
+    </div>
+  </main>
+
+  <!-- Viafoura SDK -->
+  <script async src="https://cdn.viafoura.net/entry/index.js"></script>
+</body>
+</html>
