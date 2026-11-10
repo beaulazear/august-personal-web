@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polls | Beau Test Site</title>
+
+  <!-- Viafoura meta tags -->
+  <meta name="vf:container_id" content="P1006">
+  <meta property="og:url" content="https://www.beaulazear.com/viafoura-demo/polls.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Implementing Viafoura Polls">
+  <meta property="og:description" content="Learn how to integrate real-time polling and audience surveys into your content.">
+  <meta property="og:image" content="https://picsum.photos/seed/P1006/1200/800">
+
+  <!-- Site assets -->
+  <script src="assets/site.js"></script>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header>
+    <a href="index.html" class="brand">Beau Test Site</a>
+    <nav>
+      <a href="conversations.html">Conversations</a>
+      <a href="live-blog.html">Live Blog</a>
+      <a href="live-qa.html">Live Q&A</a>
+      <a href="live-chat.html">Live Chat</a>
+      <a href="polls.html" aria-current="page">Polls</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="spa.html">SPA Demo</a>
+      <a href="custom-auth.html">Custom Auth</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="info-box">
+      <h2>Viafoura Polls Implementation Guide</h2>
+      <ul>
+        <li><strong>Learn</strong> - Step-by-step instructions for implementing Polls</li>
+        <li><strong>Explore</strong> - Configuration parameters and use cases</li>
+        <li><strong>Demo</strong> - Live working poll below</li>
+        <li><strong>Container ID:</strong> <code>P1006</code></li>
+      </ul>
+      <p><strong>This page demonstrates:</strong> How to add Viafoura's real-time polling platform to gather audience feedback, conduct surveys, and drive engagement.</p>
+    </div>
+
+    <div class="main-content">
+      <article>
+        <h1>Implementing Viafoura Polls</h1>
+
+        <div class="byline">
+          <div class="author">
+            <span>Implementation Guide</span>
+          </div>
+          <time datetime="2026-11-10">November 10, 2026</time>
+          <span>Technical Documentation</span>
+        </div>
+
+        <img src="https://picsum.photos/seed/P1006/1200/800" alt="Viafoura Polls" class="hero-image">
+
+        <h2>What is Viafoura Polls?</h2>
+        <p>Viafoura Polls is a real-time polling widget that enables publishers to gather audience feedback, conduct surveys, and drive engagement. Polls are perfect for audience surveys, reader sentiment checks, product feedback, or event-based voting moments.</p>
+
+        <h2>Key Features</h2>
+        <ul>
+          <li><strong>Real-time results</strong> - Vote counts update instantly as users participate</li>
+          <li><strong>Flexible authentication</strong> - Support for anonymous voting or login-required polls</li>
+          <li><strong>Multiple question types</strong> - Single choice, multiple choice, and more</li>
+          <li><strong>Quiz mode</strong> - Configure polls as quizzes with correct answers (contact CSM to enable)</li>
+          <li><strong>Admin configuration</strong> - Moderators and admins can configure polls directly in the widget</li>
+        </ul>
+
+        <h2>Basic Implementation</h2>
+        <p>The simplest way to add Polls to your page requires just two steps:</p>
+
+        <p><strong>Step 1: Load the Viafoura SDK</strong></p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;script async src="https://cdn.viafoura.net/entry/index.js"&gt;&lt;/script&gt;</code></pre>
+
+        <p><strong>Step 2: Add the widget</strong></p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;div class="viafoura"&gt;
+  &lt;vf-poll&gt;&lt;/vf-poll&gt;
+&lt;/div&gt;</code></pre>
+
+        <h2>Container ID Setup</h2>
+        <p>Polls use container IDs to keep poll data separate. Choose between two approaches:</p>
+
+        <p><strong>Option 1: Article-level container ID (recommended for single polls)</strong></p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;meta name="vf:container_id" content="P1006"&gt;
+
+&lt;div class="viafoura"&gt;
+  &lt;vf-poll&gt;&lt;/vf-poll&gt;
+&lt;/div&gt;</code></pre>
+
+        <p><strong>Option 2: Widget-level container ID (required for multiple polls on one page)</strong></p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;div class="viafoura"&gt;
+  &lt;vf-poll vf-container-id="poll-2026-election"&gt;&lt;/vf-poll&gt;
+&lt;/div&gt;
+
+&lt;div class="viafoura"&gt;
+  &lt;vf-poll vf-container-id="poll-product-feedback"&gt;&lt;/vf-poll&gt;
+&lt;/div&gt;</code></pre>
+
+        <h2>Configuration Parameters</h2>
+        <p>Customize the poll widget with these parameters:</p>
+
+        <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+          <tr style="border-bottom: 2px solid #333;">
+            <th style="text-align: left; padding: 0.5rem;">Parameter</th>
+            <th style="text-align: left; padding: 0.5rem;">Type</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 0.5rem;"><code>vf-container-id</code></td>
+            <td style="padding: 0.5rem;">String</td>
+            <td style="padding: 0.5rem;">Unique identifier for the poll (required for widget-level implementation)</td>
+          </tr>
+        </table>
+
+        <h2>Admin Configuration</h2>
+        <p><strong>Important:</strong> A moderator or admin level user must load the page in order for the Poll to be initiated and configured. Upon authentication, a setup interface appears where you can:</p>
+        <ul>
+          <li>Create poll questions</li>
+          <li>Add answer options</li>
+          <li>Set authentication requirements (anonymous vs. login required)</li>
+          <li>Configure as a quiz with correct answers (requires CSM enablement)</li>
+        </ul>
+
+        <h2>Use Cases</h2>
+        <p>Polls are versatile and can be used for:</p>
+        <ul>
+          <li><strong>Audience surveys</strong> - "Which topic should we cover next?"</li>
+          <li><strong>Reader sentiment</strong> - "Do you support this policy change?"</li>
+          <li><strong>Product feedback</strong> - "Which feature is most important to you?"</li>
+          <li><strong>Event voting</strong> - "Who do you think will win the championship?"</li>
+          <li><strong>Quizzes</strong> - Test reader knowledge with correct/incorrect answers</li>
+        </ul>
+
+        <h2>Authentication Options</h2>
+        <p>Polls support flexible authentication:</p>
+        <ul>
+          <li><strong>Anonymous voting</strong> - Users can vote without logging in (great for maximum participation)</li>
+          <li><strong>Login required</strong> - Users must authenticate before voting (prevents duplicate votes)</li>
+        </ul>
+        <p>Configure these options in the admin setup interface when creating your poll.</p>
+
+        <h2>Best Practices</h2>
+        <ul>
+          <li>Use clear, concise question text</li>
+          <li>Provide balanced answer options</li>
+          <li>Consider whether anonymous voting or login is more appropriate for your use case</li>
+          <li>For multiple polls on one page, use widget-level container IDs</li>
+          <li>Refer to the <a href="https://documentation.viafoura.com/docs/poll-guide" target="_blank" style="color: #1a1a1a; text-decoration: underline;">Polls User Guide</a> for comprehensive setup instructions</li>
+        </ul>
+
+        <h2>Try It Below</h2>
+        <p>The working Poll widget below uses container ID <code>P1006</code>. If you're logged in as an admin or moderator, you can configure the poll. Otherwise, you can participate in voting.</p>
+      </article>
+
+      <!-- Viafoura Poll Widget -->
+      <article>
+        <h2>Live Poll Demo</h2>
+        <p>Participate in the poll below:</p>
+      </article>
+
+      <div class="viafoura">
+        <vf-poll></vf-poll>
+      </div>
+    </div>
+
+    <!-- Viafoura Tray Trigger -->
+    <div class="viafoura">
+      <vf-tray-trigger floating="true"></vf-tray-trigger>
+    </div>
+  </main>
+
+  <!-- Viafoura SDK -->
+  <script async src="https://cdn.viafoura.net/entry/index.js"></script>
+</body>
+</html>
