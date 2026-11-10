@@ -78,9 +78,15 @@
       const timestamp = new Date().toLocaleTimeString();
       const entry = document.createElement('div');
       entry.style.cssText = 'margin-bottom: 4px; padding: 4px; border-bottom: 1px solid #ddd; word-break: break-word;';
-      entry.innerHTML = `<strong>${timestamp}</strong>: ${message}`;
+      // Build with textContent: event payloads contain user-generated content
+      const time = document.createElement('strong');
+      time.textContent = timestamp;
+      entry.append(time, ': ' + message);
       if (data) {
-        entry.innerHTML += `<pre style="margin: 4px 0 0 0; font-size: 10px; background: #e0e0e0; padding: 4px; border-radius: 2px; overflow-x: auto;">${JSON.stringify(data, null, 2)}</pre>`;
+        const pre = document.createElement('pre');
+        pre.style.cssText = 'margin: 4px 0 0 0; font-size: 10px; background: #e0e0e0; padding: 4px; border-radius: 2px; overflow-x: auto;';
+        pre.textContent = JSON.stringify(data, null, 2);
+        entry.appendChild(pre);
       }
       logContainer.appendChild(entry);
       logContainer.scrollTop = logContainer.scrollHeight;
