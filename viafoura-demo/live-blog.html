@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Live Blog | Beau Test Site</title>
+  <title>Viafoura Live Blog | Implementation Guide</title>
 
   <!-- Viafoura meta tags -->
   <meta name="vf:container_id" content="P1002">
   <meta property="og:url" content="https://www.beaulazear.com/viafoura-demo/live-blog.html">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Breaking: Tech Conference 2026 Live Coverage">
-  <meta property="og:description" content="Follow along as we bring you live updates from the biggest tech event of the year.">
+  <meta property="og:title" content="Real-Time Event Coverage with Live Blog">
+  <meta property="og:description" content="Learn how to implement Viafoura's Live Blog widget for breaking news, sporting events, and live coverage.">
   <meta property="og:image" content="https://picsum.photos/seed/P1002/1200/800">
 
   <!-- Site assets -->
@@ -34,39 +34,125 @@
 
   <main>
     <div class="info-box">
-      <h2>What this page demonstrates</h2>
+      <h2>Viafoura Live Blog Implementation Guide</h2>
       <ul>
-        <li><strong>Live Blog widget</strong> - Real-time updates with auto-refresh</li>
-        <li>Perfect for breaking news, events, sports, and live coverage</li>
-        <li>Supports rich media, threading, and pinned posts</li>
-        <li>Container ID: <code>P1002</code></li>
+        <li><strong>Learn</strong> - Step-by-step instructions for implementing Live Blog</li>
+        <li><strong>Explore</strong> - Configuration options and admin requirements</li>
+        <li><strong>Demo</strong> - Live working widget below</li>
+        <li><strong>Container ID:</strong> <code>P1002</code></li>
       </ul>
-      <p><strong>Test:</strong> Posts auto-update in real-time. In production, journalists would create posts via the Viafoura CMS or API.</p>
+      <p><strong>This page demonstrates:</strong> How to add real-time live blogging to your site for breaking news, sporting events, and ongoing coverage.</p>
     </div>
 
-    <article>
-      <h1>Breaking: Tech Conference 2026 Live Coverage</h1>
+    <div class="main-content">
+      <article>
+        <h1>Implementing Viafoura Live Blog</h1>
 
-      <div class="byline">
-        <div class="author">
-          <span>By Tech News Team</span>
+        <div class="byline">
+          <div class="author">
+            <span>Implementation Guide</span>
+          </div>
+          <time datetime="2026-11-04">November 4, 2026</time>
+          <span>Technical Documentation</span>
         </div>
-        <time datetime="2026-11-04">November 4, 2026</time>
-        <span>Live Coverage</span>
+
+        <img src="https://picsum.photos/seed/P1002/1200/800" alt="Viafoura Live Blog" class="hero-image">
+
+        <h2>What is Viafoura Live Blog?</h2>
+        <p>Viafoura Live Blog is a real-time content publishing tool that allows journalists and moderators to provide continuous coverage of unfolding events. Updates appear automatically without requiring page refreshes, fostering two-way audience engagement as stories develop.</p>
+
+        <h2>Key Features</h2>
+        <ul>
+          <li><strong>Real-time updates</strong> - Posts appear instantly without page reload</li>
+          <li><strong>Rich media support</strong> - Embed images, videos, and social media</li>
+          <li><strong>Chronological display</strong> - Latest updates appear at the top</li>
+          <li><strong>Pinned posts</strong> - Highlight important updates or announcements</li>
+          <li><strong>Editor controls</strong> - Moderators can add, edit, and delete posts in real-time</li>
+          <li><strong>Time-stamped entries</strong> - Each post shows when it was published</li>
+        </ul>
+
+        <h2>Ideal Use Cases</h2>
+        <ul>
+          <li><strong>Live sporting events</strong> - Real-time game coverage, play-by-play updates</li>
+          <li><strong>Breaking news</strong> - Ongoing coverage of developing stories</li>
+          <li><strong>Elections</strong> - Live results and analysis as votes are counted</li>
+          <li><strong>Product launches</strong> - Live coverage of announcements and reveals</li>
+          <li><strong>Conferences & events</strong> - Real-time updates from on-site reporters</li>
+        </ul>
+
+        <h2>Basic Implementation</h2>
+        <p>The simplest way to add Live Blog to your page requires just two steps:</p>
+
+        <p><strong>Step 1: Load the Viafoura SDK</strong></p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;script async src="https://cdn.viafoura.net/entry/index.js"&gt;&lt;/script&gt;</code></pre>
+
+        <p><strong>Step 2: Add the widget</strong></p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;div class="viafoura"&gt;
+  &lt;vf-live-blog&gt;&lt;/vf-live-blog&gt;
+&lt;/div&gt;</code></pre>
+
+        <h2>Container ID Setup</h2>
+        <p>Each Live Blog needs a unique container ID to keep content separate. You can set this in two ways:</p>
+
+        <p><strong>Option 1: Meta tag (recommended)</strong></p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;meta name="vf:container_id" content="P1002"&gt;</code></pre>
+
+        <p><strong>Option 2: Widget attribute</strong></p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;vf-live-blog vf-container-id="P1002"&gt;&lt;/vf-live-blog&gt;</code></pre>
+
+        <h2>Admin Configuration Requirements</h2>
+        <p><strong>IMPORTANT:</strong> A moderator or admin level user must load the page in order for the Live Blog to be initiated and configured. This is a one-time setup requirement per container ID.</p>
+
+        <p>Once an admin has initialized the Live Blog:</p>
+        <ul>
+          <li>The widget becomes visible to all users</li>
+          <li>Authorized editors can create, edit, and delete posts</li>
+          <li>Posts appear in real-time to all viewers</li>
+          <li>No page refresh is required to see updates</li>
+        </ul>
+
+        <h2>Reply Feature</h2>
+        <p>Replies are disabled by default in Live Blog. This widget is designed for one-way communication from publishers to audience, rather than threaded discussions. For two-way conversations, consider using the Conversations widget instead.</p>
+
+        <h2>Required: Notification Tray</h2>
+        <p><strong>CRITICAL:</strong> The Live Blog widget requires the On-Site Notification Tray to be implemented on the page. The notification tray provides essential user interactions including login/signup, like, and other action buttons.</p>
+
+        <p>Failing to implement the Notification Tray will result in a broken user experience. Always include:</p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;vf-tray-trigger floating="true"&gt;&lt;/vf-tray-trigger&gt;</code></pre>
+
+        <h2>Creating Live Blog Posts</h2>
+        <p>Live Blog posts can be created through:</p>
+        <ul>
+          <li><strong>Viafoura CMS</strong> - Access the admin interface to add posts with rich formatting</li>
+          <li><strong>Viafoura API</strong> - Programmatically create posts for automated workflows</li>
+          <li><strong>On-page editor</strong> - Moderators can create posts directly on the live page</li>
+        </ul>
+
+        <h2>Best Practices</h2>
+        <ul>
+          <li>Initialize the Live Blog with an admin account before the event begins</li>
+          <li>Use clear, descriptive container IDs (e.g., "election-2026-live", "championship-game-11-04")</li>
+          <li>Pin important updates or announcements to keep them visible</li>
+          <li>Include timestamps for context, especially for long-running coverage</li>
+          <li>Test the widget with sample posts before going live</li>
+          <li>Ensure moderators are trained on the CMS before the event</li>
+        </ul>
+
+        <h2>Performance Considerations</h2>
+        <ul>
+          <li>Live Blog uses efficient WebSocket connections for real-time updates</li>
+          <li>Images and media should be optimized before uploading</li>
+          <li>Consider archiving very long Live Blogs (100+ posts) for performance</li>
+        </ul>
+
+        <h2>Try It Below</h2>
+        <p>The working Live Blog widget below uses container ID <code>P1002</code>. If you're logged in as an admin, you can create test posts to see how the live updates work.</p>
+      </article>
+
+      <!-- Viafoura Live Blog Widget -->
+      <div class="viafoura">
+        <vf-live-blog></vf-live-blog>
       </div>
-
-      <img src="https://picsum.photos/seed/P1002/1200/800" alt="Tech Conference" class="hero-image">
-
-      <p>Welcome to our live coverage of Tech Conference 2026, the industry's premier gathering for innovation, emerging technologies, and digital transformation. Our team is on the ground bringing you real-time updates, breaking announcements, and exclusive interviews.</p>
-
-      <p>This year's conference promises major announcements in artificial intelligence, sustainable technology, and the future of human-computer interaction. Over 50,000 attendees from around the world have gathered to hear from industry leaders, explore cutting-edge demos, and shape the future of technology.</p>
-
-      <p>Follow along below as our journalists provide continuous updates throughout the day. All times are in Pacific Time (PT).</p>
-    </article>
-
-    <!-- Viafoura Live Blog Widget -->
-    <div class="viafoura">
-      <vf-liveblog></vf-liveblog>
     </div>
 
     <!-- Viafoura Tray Trigger -->

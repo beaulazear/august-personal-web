@@ -3,19 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Live Q&A | Beau Test Site</title>
+  <title>Viafoura Live Q&A | Implementation Guide</title>
 
   <!-- Viafoura meta tags -->
   <meta name="vf:container_id" content="P1003">
   <meta property="og:url" content="https://www.beaulazear.com/viafoura-demo/live-qa.html">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Ask the Expert: Climate Change Policy">
-  <meta property="og:description" content="Submit your questions and vote on what you want our expert panel to discuss.">
+  <meta property="og:title" content="Real-Time Audience Q&A Sessions">
+  <meta property="og:description" content="Learn how to implement Viafoura's Live Q&A widget for interviews, town halls, and interactive events.">
   <meta property="og:image" content="https://picsum.photos/seed/P1003/1200/800">
 
   <!-- Site assets -->
   <script src="assets/site.js"></script>
   <link rel="stylesheet" href="assets/styles.css">
+
+  <style>
+    /* Sticky header accommodation for Live Q&A widget */
+    .viafoura {
+      --reserved-space-top: 2rem;
+    }
+
+    @media (max-width: 480px) {
+      .viafoura {
+        --reserved-space-top: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -34,63 +47,153 @@
 
   <main>
     <div class="info-box">
-      <h2>What this page demonstrates</h2>
+      <h2>Viafoura Live Q&A Implementation Guide</h2>
       <ul>
-        <li><strong>Live Q&A widget</strong> - Audience-driven Q&A with upvoting</li>
-        <li><strong>Polls widget</strong> - Real-time polling with multiple question types</li>
-        <li><strong>Conversations widget</strong> - Discussion after the Q&A session</li>
-        <li>Page container ID: <code>P1003</code></li>
-        <li>Poll container ID: <code>Ppoll1003</code></li>
+        <li><strong>Learn</strong> - Step-by-step instructions for implementing Live Q&A</li>
+        <li><strong>Explore</strong> - Configuration parameters and customization options</li>
+        <li><strong>Demo</strong> - Live working widget below</li>
+        <li><strong>Container ID:</strong> <code>P1003</code></li>
       </ul>
-      <p><strong>Test:</strong> Submit questions, vote on others' questions, participate in the poll, and discuss in comments.</p>
+      <p><strong>This page demonstrates:</strong> How to host real-time, moderated Q&A sessions with audience participation, voting, and replies.</p>
     </div>
 
-    <article>
-      <h1>Ask the Expert: Climate Change Policy</h1>
+    <div class="main-content">
+      <article>
+        <h1>Implementing Viafoura Live Q&A</h1>
 
-      <div class="byline">
-        <div class="author">
-          <span>Hosted by Environmental Policy Team</span>
+        <div class="byline">
+          <div class="author">
+            <span>Implementation Guide</span>
+          </div>
+          <time datetime="2026-11-04">November 4, 2026</time>
+          <span>Technical Documentation</span>
         </div>
-        <time datetime="2026-11-04">November 4, 2026</time>
-        <span>Live Event</span>
+
+        <img src="https://picsum.photos/seed/P1003/1200/800" alt="Viafoura Live Q&A" class="hero-image">
+
+        <h2>What is Viafoura Live Q&A?</h2>
+        <p>Viafoura Live Q&A (also called Live Questions) enables you to host real-time, moderated question-and-answer sessions directly on your site. It fosters dynamic, two-way engagement between your audience and featured hosts or experts, with questions appearing instantly without page refreshes.</p>
+
+        <h2>Key Features</h2>
+        <ul>
+          <li><strong>Real-time question submission</strong> - Audience can ask questions instantly</li>
+          <li><strong>Community voting</strong> - Users upvote/downvote questions to surface the best ones</li>
+          <li><strong>Reply functionality</strong> - Hosts and moderators can answer questions directly</li>
+          <li><strong>Threaded discussions</strong> - Follow-up questions and replies create conversations</li>
+          <li><strong>Moderation controls</strong> - Admins can approve, feature, or remove questions</li>
+          <li><strong>Sticky header</strong> - Widget header remains visible when scrolling</li>
+        </ul>
+
+        <h2>Ideal Use Cases</h2>
+        <ul>
+          <li><strong>Expert interviews</strong> - "Ask Me Anything" style sessions</li>
+          <li><strong>Town halls</strong> - Community discussions with leadership</li>
+          <li><strong>Product launches</strong> - Real-time Q&A about new features or products</li>
+          <li><strong>Virtual events</strong> - Audience participation during online conferences</li>
+          <li><strong>Panel discussions</strong> - Let the audience drive the conversation</li>
+        </ul>
+
+        <h2>Basic Implementation</h2>
+        <p>The simplest way to add Live Q&A to your page requires just two steps:</p>
+
+        <p><strong>Step 1: Load the Viafoura SDK</strong></p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;script async src="https://cdn.viafoura.net/entry/index.js"&gt;&lt;/script&gt;</code></pre>
+
+        <p><strong>Step 2: Add the widget</strong></p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;div class="viafoura"&gt;
+  &lt;vf-livequestions&gt;&lt;/vf-livequestions&gt;
+&lt;/div&gt;</code></pre>
+
+        <h2>Container ID Setup</h2>
+        <p>Each Live Q&A needs a unique container ID to keep questions separate. You can set this in two ways:</p>
+
+        <p><strong>Option 1: Meta tag (recommended)</strong></p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;meta name="vf:container_id" content="P1003"&gt;</code></pre>
+
+        <p><strong>Option 2: Widget attribute</strong></p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;vf-livequestions vf-container-id="P1003"&gt;&lt;/vf-livequestions&gt;</code></pre>
+
+        <h2>Title Customization</h2>
+        <p>The Live Q&A header can be customized or hidden using the <code>title</code> parameter:</p>
+
+        <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+          <tr style="border-bottom: 2px solid #333;">
+            <th style="text-align: left; padding: 0.5rem;">Code</th>
+            <th style="text-align: left; padding: 0.5rem;">Result</th>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 0.5rem;"><code>&lt;vf-livequestions&gt;</code></td>
+            <td style="padding: 0.5rem;">Shows "Live Q&A" header (default)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 0.5rem;"><code>&lt;vf-livequestions title=""&gt;</code></td>
+            <td style="padding: 0.5rem;">Hides the header entirely</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 0.5rem;"><code>&lt;vf-livequestions title="AMA"&gt;</code></td>
+            <td style="padding: 0.5rem;">Shows custom "AMA" text</td>
+          </tr>
+        </table>
+
+        <h2>Admin Configuration Requirements</h2>
+        <p><strong>IMPORTANT:</strong> A moderator or admin level user must load the page in order for the Live Q&A to be initialized and configured. This is a one-time setup requirement per container ID.</p>
+
+        <p>Without admin initialization, the widget will not function properly. Make sure an authorized user visits the page before the event begins.</p>
+
+        <h2>Sticky Header Accommodation</h2>
+        <p>The Live Q&A widget includes a sticky header that remains visible when scrolling through questions. If your site uses a sticky header, navigation bar, or other fixed element at the top of the page, you need to define reserved space to prevent overlap:</p>
+
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>.viafoura {
+  --reserved-space-top: 2rem;
+}
+
+/* Mobile adjustment */
+@media (max-width: 480px) {
+  .viafoura {
+    --reserved-space-top: 1rem;
+  }
+}</code></pre>
+
+        <p>Adjust the values to match your site's header height. This ensures the Live Q&A sticky header appears below your navigation.</p>
+
+        <h2>How It Works</h2>
+        <p><strong>For audience members:</strong></p>
+        <ol>
+          <li>Users must be logged in to submit questions (authentication required)</li>
+          <li>Submit a question using the text input</li>
+          <li>Vote on other users' questions with upvote/downvote buttons</li>
+          <li>Questions with more votes rise to the top</li>
+          <li>Reply to answers or other questions to create discussions</li>
+        </ol>
+
+        <p><strong>For moderators/hosts:</strong></p>
+        <ol>
+          <li>View all submitted questions in real-time</li>
+          <li>Answer questions directly in the widget</li>
+          <li>Feature important questions to highlight them</li>
+          <li>Remove inappropriate or duplicate questions</li>
+          <li>Monitor engagement and participation metrics</li>
+        </ol>
+
+        <h2>Best Practices</h2>
+        <ul>
+          <li>Initialize the Live Q&A with an admin account before the event</li>
+          <li>Announce the Q&A session in advance to build audience anticipation</li>
+          <li>Set community guidelines for question submission</li>
+          <li>Have moderators pre-screen questions before hosts see them (optional)</li>
+          <li>Answer top-voted questions first to respect audience priorities</li>
+          <li>Keep a moderator actively monitoring during the session</li>
+          <li>Archive the Q&A session afterward as evergreen content</li>
+        </ul>
+
+        <h2>Try It Below</h2>
+        <p>The working Live Q&A widget below uses container ID <code>P1003</code>. Submit a question, vote on others, and explore the real-time interaction!</p>
+      </article>
+
+      <!-- Viafoura Live Q&A Widget -->
+      <div class="viafoura">
+        <vf-livequestions></vf-livequestions>
       </div>
-
-      <img src="https://picsum.photos/seed/P1003/1200/800" alt="Climate Policy Panel" class="hero-image">
-
-      <p>Join us for an interactive Q&A session with leading climate policy experts. Our distinguished panel includes environmental scientists, policy makers, and industry leaders who are shaping the response to climate change.</p>
-
-      <p>This is your opportunity to ask questions directly and help determine the direction of our discussion. Submit your questions below and vote on questions from other participants. Our moderators will select the most popular and relevant questions for the panel to address.</p>
-
-      <p><strong>Panel Members:</strong></p>
-      <ul>
-        <li>Dr. Maria Santos - Climate Scientist, IPCC Lead Author</li>
-        <li>Hon. David Chen - Former EPA Administrator</li>
-        <li>Jennifer Williams - CEO, Sustainable Energy Coalition</li>
-        <li>Prof. Robert Jackson - Environmental Economics, Yale University</li>
-      </ul>
-
-      <p>The session will begin at 2:00 PM PT. Questions are being collected now!</p>
-    </article>
-
-    <!-- Viafoura Live Q&A Widget -->
-    <article>
-      <h2>Submit Your Questions</h2>
-      <p>What do you want to ask our expert panel? Submit your question below and vote on questions from other participants.</p>
-    </article>
-
-    <div class="viafoura">
-      <vf-livequestions></vf-livequestions>
-    </div>
-
-    <!-- Viafoura Polls Widget -->
-    <article>
-      <h2>Quick Poll</h2>
-      <p>Before we begin, we'd like to hear from you:</p>
-    </article>
-
-    <div class="viafoura">
-      <vf-polls container-id="Ppoll1003"></vf-polls>
     </div>
 
     <!-- Viafoura Tray Trigger -->

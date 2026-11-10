@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Live Chat | Beau Test Site</title>
+  <title>Viafoura Live Chat | Implementation Guide</title>
 
   <!-- Viafoura meta tags -->
   <meta name="vf:container_id" content="P1004">
   <meta property="og:url" content="https://www.beaulazear.com/viafoura-demo/live-chat.html">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Game Day Central: Championship Live Chat">
-  <meta property="og:description" content="Join fellow fans for real-time discussion during tonight's big game.">
+  <meta property="og:title" content="Real-Time Community Chat for Live Events">
+  <meta property="og:description" content="Learn how to implement Viafoura's Live Chat widget for sporting events, breaking news, and watch parties.">
   <meta property="og:image" content="https://picsum.photos/seed/P1004/1200/800">
 
   <!-- Site assets -->
@@ -25,6 +25,7 @@
       <a href="live-blog.html">Live Blog</a>
       <a href="live-qa.html">Live Q&A</a>
       <a href="live-chat.html" aria-current="page">Live Chat</a>
+      <a href="polls.html">Polls</a>
       <a href="reviews.html">Reviews</a>
       <a href="spa.html">SPA Demo</a>
       <a href="custom-auth.html">Custom Auth</a>
@@ -33,47 +34,160 @@
 
   <main>
     <div class="info-box">
-      <h2>What this page demonstrates</h2>
+      <h2>Viafoura Live Chat Implementation Guide</h2>
       <ul>
-        <li><strong>Live Chat widget</strong> - Real-time messaging for live events</li>
-        <li>Perfect for sports, breaking news, watch parties, and live events</li>
-        <li>Messages appear instantly with auto-scroll to latest</li>
-        <li>Container ID: <code>P1004</code></li>
+        <li><strong>Learn</strong> - Step-by-step instructions for implementing Live Chat</li>
+        <li><strong>Explore</strong> - Configuration options and height requirements</li>
+        <li><strong>Demo</strong> - Live working widget below</li>
+        <li><strong>Container ID:</strong> <code>P1004</code></li>
       </ul>
-      <p><strong>Test:</strong> Send messages and see them appear in real-time. Open in multiple browser tabs to see live updates.</p>
-      <p><strong>Note:</strong> The official Viafoura docs currently show React syntax for Live Chat. Use the web component syntax shown below instead.</p>
+      <p><strong>This page demonstrates:</strong> How to add real-time community chat for live events, sports, and watch parties with automated moderation.</p>
     </div>
 
-    <article>
-      <h1>Game Day Central: Championship Live Chat</h1>
+    <div class="main-content">
+      <article>
+        <h1>Implementing Viafoura Live Chat</h1>
 
-      <div class="byline">
-        <div class="author">
-          <span>Sports Desk</span>
+        <div class="byline">
+          <div class="author">
+            <span>Implementation Guide</span>
+          </div>
+          <time datetime="2026-11-04">November 4, 2026</time>
+          <span>Technical Documentation</span>
         </div>
-        <time datetime="2026-11-04">November 4, 2026</time>
-        <span>Live Event Coverage</span>
+
+        <img src="https://picsum.photos/seed/P1004/1200/800" alt="Viafoura Live Chat" class="hero-image">
+
+        <h2>What is Viafoura Live Chat?</h2>
+        <p>Viafoura Live Chat (also called Community Chat) generates excitement and brings communities together for major events by creating dedicated chat windows. It delivers real-time, civil, and highly engaging social chat experiences with automated moderation capabilities.</p>
+
+        <h2>Key Features</h2>
+        <ul>
+          <li><strong>Real-time messaging</strong> - Messages appear instantly as users post them</li>
+          <li><strong>Auto-scroll functionality</strong> - Chat automatically scrolls to show latest messages</li>
+          <li><strong>Automated moderation</strong> - Built-in profanity filtering and spam prevention</li>
+          <li><strong>Fixed height container</strong> - Maintains consistent page layout</li>
+          <li><strong>User authentication</strong> - Requires login to participate in chat</li>
+          <li><strong>Live event optimized</strong> - Designed for high-volume, fast-moving conversations</li>
+        </ul>
+
+        <h2>Ideal Use Cases</h2>
+        <ul>
+          <li><strong>Live sporting events</strong> - Fan chat during games and matches</li>
+          <li><strong>Breaking news</strong> - Real-time discussion of developing stories</li>
+          <li><strong>Watch parties</strong> - Shared viewing experiences for TV shows, award ceremonies</li>
+          <li><strong>Live streams</strong> - Companion chat alongside video content</li>
+          <li><strong>Virtual events</strong> - Participant chat during webinars or conferences</li>
+          <li><strong>Product launches</strong> - Community excitement during announcements</li>
+        </ul>
+
+        <h2>Basic Implementation</h2>
+        <p>The Live Chat widget requires specific HTML structure with a height attribute:</p>
+
+        <p><strong>Step 1: Load the Viafoura SDK</strong></p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;script async src="https://cdn.viafoura.net/entry/index.js"&gt;&lt;/script&gt;</code></pre>
+
+        <p><strong>Step 2: Add the widget with height</strong></p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;div id="livechat-wrapper" style="height: 550px;" class="viafoura"&gt;
+  &lt;vf-livechat&gt;&lt;/vf-livechat&gt;
+&lt;/div&gt;</code></pre>
+
+        <h2>Height Requirement</h2>
+        <p><strong>IMPORTANT:</strong> The height attribute is required and defines the overall height of the chat tool as it will appear on the page. Without a specified height, the widget may not display correctly.</p>
+
+        <p><strong>Recommended heights:</strong></p>
+        <ul>
+          <li><strong>Mobile:</strong> 400px - 500px</li>
+          <li><strong>Desktop:</strong> 550px - 800px</li>
+          <li><strong>Sidebar placement:</strong> 600px - 800px</li>
+        </ul>
+
+        <p>You can use any custom value based on your layout needs, but ensure the height is sufficient for users to read and compose messages comfortably.</p>
+
+        <h2>Container ID Setup</h2>
+        <p>Each Live Chat needs a unique container ID to keep conversations separate. You can set this in two ways:</p>
+
+        <p><strong>Option 1: Meta tag (recommended)</strong></p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;meta name="vf:container_id" content="P1004"&gt;</code></pre>
+
+        <p><strong>Option 2: Widget attribute</strong></p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;div id="livechat-wrapper" style="height: 550px;" class="viafoura"&gt;
+  &lt;vf-livechat vf-container-id="P1004"&gt;&lt;/vf-livechat&gt;
+&lt;/div&gt;</code></pre>
+
+        <h2>Required: Notification Tray</h2>
+        <p><strong>CRITICAL:</strong> The Live Chat widget requires the On-Site Notification Tray to be implemented on the page. The widget includes several call-to-action buttons such as login/signup, post, reply, and others that rely on the notification tray.</p>
+
+        <p>Failing to implement the Notification Tray will result in a broken user experience. Always include:</p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;vf-tray-trigger floating="true"&gt;&lt;/vf-tray-trigger&gt;</code></pre>
+
+        <h2>Live Chat vs. Conversations</h2>
+        <p>Understanding when to use Live Chat versus Conversations:</p>
+
+        <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+          <tr style="border-bottom: 2px solid #333;">
+            <th style="text-align: left; padding: 0.5rem;">Feature</th>
+            <th style="text-align: left; padding: 0.5rem;">Live Chat</th>
+            <th style="text-align: left; padding: 0.5rem;">Conversations</th>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 0.5rem;"><strong>Use case</strong></td>
+            <td style="padding: 0.5rem;">Live events, real-time discussions</td>
+            <td style="padding: 0.5rem;">Article comments, long-form discussion</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 0.5rem;"><strong>Message flow</strong></td>
+            <td style="padding: 0.5rem;">Chronological stream, fast-moving</td>
+            <td style="padding: 0.5rem;">Threaded replies, organized by topic</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 0.5rem;"><strong>Display</strong></td>
+            <td style="padding: 0.5rem;">Fixed height container</td>
+            <td style="padding: 0.5rem;">Variable height based on content</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 0.5rem;"><strong>Lifespan</strong></td>
+            <td style="padding: 0.5rem;">Event duration (hours)</td>
+            <td style="padding: 0.5rem;">Evergreen (days, months, years)</td>
+          </tr>
+        </table>
+
+        <h2>Moderation Features</h2>
+        <p>Live Chat includes automated moderation tools to maintain civil discourse:</p>
+        <ul>
+          <li><strong>Profanity filtering</strong> - Automatically flags or removes inappropriate language</li>
+          <li><strong>Spam detection</strong> - Prevents repetitive or automated messages</li>
+          <li><strong>Rate limiting</strong> - Controls how frequently users can post</li>
+          <li><strong>Manual moderation</strong> - Moderators can remove messages in real-time</li>
+          <li><strong>User blocking</strong> - Ban disruptive users from participating</li>
+        </ul>
+
+        <h2>Best Practices</h2>
+        <ul>
+          <li>Initialize the chat before the event begins to ensure it's working properly</li>
+          <li>Set clear community guidelines visible to participants</li>
+          <li>Have moderators actively monitoring during high-traffic events</li>
+          <li>Test the height on both mobile and desktop to ensure good UX</li>
+          <li>Consider placing chat alongside video content for synchronized experiences</li>
+          <li>Archive or close the chat after the event concludes</li>
+        </ul>
+
+        <h2>Placement Options</h2>
+        <ul>
+          <li><strong>Below content</strong> - Chat appears after article or video player</li>
+          <li><strong>Sidebar</strong> - Chat in right or left rail alongside main content</li>
+          <li><strong>Full-width</strong> - Dedicated chat page for major events</li>
+          <li><strong>Embedded in video player</strong> - Integrated viewing experience</li>
+        </ul>
+
+        <h2>Try It Below</h2>
+        <p>The working Live Chat widget below uses container ID <code>P1004</code>. Log in and send a message to see real-time updates. Try opening this page in multiple browser tabs to see messages appear instantly!</p>
+      </article>
+
+      <!-- Viafoura Live Chat Widget -->
+      <div class="viafoura" id="livechat-wrapper" style="height: 550px;">
+        <vf-livechat></vf-livechat>
       </div>
-
-      <img src="https://picsum.photos/seed/P1004/1200/800" alt="Championship Game" class="hero-image">
-
-      <p>Welcome to Game Day Central! Join thousands of fans for live chat during tonight's championship game. Share your reactions, predictions, and celebrate (or commiserate) with fellow supporters in real-time.</p>
-
-      <p><strong>Tonight's Matchup:</strong> The Thunderbolts take on the Dynamos in what promises to be an epic showdown. Both teams are coming off impressive playoff runs, and this championship game has all the makings of an instant classic.</p>
-
-      <p>Kickoff is at 8:00 PM ET / 5:00 PM PT. The chat is open now for pre-game discussion!</p>
-
-      <p><strong>House Rules:</strong> Keep it friendly, respect all fans, and remember—it's just a game. Our moderators will remove messages that violate our community guidelines.</p>
-    </article>
-
-    <!-- Viafoura Live Chat Widget -->
-    <article>
-      <h2>Live Game Chat</h2>
-      <p>Join the conversation with fans across the globe:</p>
-    </article>
-
-    <div class="viafoura" id="livechat-wrapper">
-      <vf-livechat></vf-livechat>
     </div>
 
     <!-- Viafoura Tray Trigger -->
