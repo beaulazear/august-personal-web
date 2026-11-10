@@ -83,10 +83,10 @@
         <p>The simplest way to add Live Blog to your page requires just two steps:</p>
 
         <p><strong>Step 1: Load the Viafoura SDK</strong></p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;script async src="https://cdn.viafoura.net/entry/index.js"&gt;&lt;/script&gt;</code></pre>
+        <pre><code>&lt;script async src="https://cdn.viafoura.net/entry/index.js"&gt;&lt;/script&gt;</code></pre>
 
         <p><strong>Step 2: Add the widget</strong></p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;div class="viafoura"&gt;
+        <pre><code>&lt;div class="viafoura"&gt;
   &lt;vf-live-blog&gt;&lt;/vf-live-blog&gt;
 &lt;/div&gt;</code></pre>
 
@@ -94,10 +94,10 @@
         <p>Each Live Blog needs a unique container ID to keep content separate. You can set this in two ways:</p>
 
         <p><strong>Option 1: Meta tag (recommended)</strong></p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;meta name="vf:container_id" content="P1002"&gt;</code></pre>
+        <pre><code>&lt;meta name="vf:container_id" content="P1002"&gt;</code></pre>
 
         <p><strong>Option 2: Widget attribute</strong></p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;vf-live-blog vf-container-id="P1002"&gt;&lt;/vf-live-blog&gt;</code></pre>
+        <pre><code>&lt;vf-live-blog vf-container-id="P1002"&gt;&lt;/vf-live-blog&gt;</code></pre>
 
         <h2>Admin Configuration Requirements</h2>
         <p><strong>IMPORTANT:</strong> A moderator or admin level user must load the page in order for the Live Blog to be initiated and configured. This is a one-time setup requirement per container ID.</p>
@@ -117,7 +117,7 @@
         <p><strong>CRITICAL:</strong> The Live Blog widget requires the On-Site Notification Tray to be implemented on the page. The notification tray provides essential user interactions including login/signup, like, and other action buttons.</p>
 
         <p>Failing to implement the Notification Tray will result in a broken user experience. Always include:</p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;vf-tray-trigger floating="true"&gt;&lt;/vf-tray-trigger&gt;</code></pre>
+        <pre><code>&lt;vf-tray-trigger floating="true"&gt;&lt;/vf-tray-trigger&gt;</code></pre>
 
         <h2>Creating Live Blog Posts</h2>
         <p>Live Blog posts can be created through:</p>

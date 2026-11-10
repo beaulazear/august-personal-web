@@ -73,10 +73,10 @@
         <p>The simplest way to add Polls to your page requires just two steps:</p>
 
         <p><strong>Step 1: Load the Viafoura SDK</strong></p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;script async src="https://cdn.viafoura.net/entry/index.js"&gt;&lt;/script&gt;</code></pre>
+        <pre><code>&lt;script async src="https://cdn.viafoura.net/entry/index.js"&gt;&lt;/script&gt;</code></pre>
 
         <p><strong>Step 2: Add the widget</strong></p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;div class="viafoura"&gt;
+        <pre><code>&lt;div class="viafoura"&gt;
   &lt;vf-poll&gt;&lt;/vf-poll&gt;
 &lt;/div&gt;</code></pre>
 
@@ -84,14 +84,14 @@
         <p>Polls use container IDs to keep poll data separate. Choose between two approaches:</p>
 
         <p><strong>Option 1: Article-level container ID (recommended for single polls)</strong></p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;meta name="vf:container_id" content="P1006"&gt;
+        <pre><code>&lt;meta name="vf:container_id" content="P1006"&gt;
 
 &lt;div class="viafoura"&gt;
   &lt;vf-poll&gt;&lt;/vf-poll&gt;
 &lt;/div&gt;</code></pre>
 
         <p><strong>Option 2: Widget-level container ID (required for multiple polls on one page)</strong></p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;div class="viafoura"&gt;
+        <pre><code>&lt;div class="viafoura"&gt;
   &lt;vf-poll vf-container-id="poll-2026-election"&gt;&lt;/vf-poll&gt;
 &lt;/div&gt;
 
@@ -102,16 +102,16 @@
         <h2>Configuration Parameters</h2>
         <p>Customize the poll widget with these parameters:</p>
 
-        <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
-          <tr style="border-bottom: 2px solid #333;">
-            <th style="text-align: left; padding: 0.5rem;">Parameter</th>
-            <th style="text-align: left; padding: 0.5rem;">Type</th>
-            <th style="text-align: left; padding: 0.5rem;">Description</th>
+        <table>
+          <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
           </tr>
-          <tr style="border-bottom: 1px solid #ddd;">
-            <td style="padding: 0.5rem;"><code>vf-container-id</code></td>
-            <td style="padding: 0.5rem;">String</td>
-            <td style="padding: 0.5rem;">Unique identifier for the poll (required for widget-level implementation)</td>
+          <tr>
+            <td><code>vf-container-id</code></td>
+            <td>String</td>
+            <td>Unique identifier for the poll (required for widget-level implementation)</td>
           </tr>
         </table>
 
@@ -148,7 +148,7 @@
           <li>Provide balanced answer options</li>
           <li>Consider whether anonymous voting or login is more appropriate for your use case</li>
           <li>For multiple polls on one page, use widget-level container IDs</li>
-          <li>Refer to the <a href="https://documentation.viafoura.com/docs/poll-guide" target="_blank" style="color: #1a1a1a; text-decoration: underline;">Polls User Guide</a> for comprehensive setup instructions</li>
+          <li>Refer to the <a href="https://documentation.viafoura.com/docs/poll-guide" target="_blank" rel="noopener">Polls User Guide</a> for comprehensive setup instructions</li>
         </ul>
 
         <h2>Try It Below</h2>

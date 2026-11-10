@@ -241,23 +241,43 @@
         }
       });
 
-      // Initialize on page load
-      document.addEventListener('DOMContentLoaded', function() {
-        // Check URL for initial article
+      // Initialize on page load.
+      // This runs synchronously (the script sits after the markup it needs) and,
+      // importantly, BEFORE the async Viafoura SDK tag at the bottom of the page is
+      // parsed. That lets us correct the vf:container_id meta tag for deep links
+      // (e.g. spa.html?article=article-2) so the SDK boots with the right container
+      // instead of loading P3001 and needing a second context update.
+      (function init() {
+        // Check URL for initial article (fall back to article-1 if missing/invalid)
         const urlParams = new URLSearchParams(window.location.search);
-        const initialArticle = urlParams.get('article') || 'article-1';
+        const requested = urlParams.get('article');
+        const initialArticle = articles[requested] ? requested : 'article-1';
+        const article = articles[initialArticle];
+
+        // Point the SDK's initial page context at the deep-linked article
+        const containerMeta = document.querySelector('meta[name="vf:container_id"]');
+        if (containerMeta) containerMeta.content = article.containerId;
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) ogTitle.content = article.title;
+        const ogUrl = document.querySelector('meta[property="og:url"]');
+        if (ogUrl) ogUrl.content = window.location.href;
+
+        // Sync internal state and active button with the URL
+        currentArticleId = initialArticle;
+        document.querySelectorAll('.spa-controls button').forEach(btn => {
+          btn.classList.toggle('active', btn.id === initialArticle);
+        });
 
         // Render initial article
         renderArticle(initialArticle);
 
         // Set initial history state
-        const article = articles[initialArticle];
         window.history.replaceState(
           { articleId: initialArticle },
           article.title,
           window.location.href
         );
-      });
+      })();
     })();
   </script>
 

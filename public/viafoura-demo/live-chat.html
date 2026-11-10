@@ -84,10 +84,10 @@
         <p>The Live Chat widget requires specific HTML structure with a height attribute:</p>
 
         <p><strong>Step 1: Load the Viafoura SDK</strong></p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;script async src="https://cdn.viafoura.net/entry/index.js"&gt;&lt;/script&gt;</code></pre>
+        <pre><code>&lt;script async src="https://cdn.viafoura.net/entry/index.js"&gt;&lt;/script&gt;</code></pre>
 
         <p><strong>Step 2: Add the widget with height</strong></p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;div id="livechat-wrapper" style="height: 550px;" class="viafoura"&gt;
+        <pre><code>&lt;div id="livechat-wrapper" style="height: 550px;" class="viafoura"&gt;
   &lt;vf-livechat&gt;&lt;/vf-livechat&gt;
 &lt;/div&gt;</code></pre>
 
@@ -107,10 +107,10 @@
         <p>Each Live Chat needs a unique container ID to keep conversations separate. You can set this in two ways:</p>
 
         <p><strong>Option 1: Meta tag (recommended)</strong></p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;meta name="vf:container_id" content="P1004"&gt;</code></pre>
+        <pre><code>&lt;meta name="vf:container_id" content="P1004"&gt;</code></pre>
 
         <p><strong>Option 2: Widget attribute</strong></p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;div id="livechat-wrapper" style="height: 550px;" class="viafoura"&gt;
+        <pre><code>&lt;div id="livechat-wrapper" style="height: 550px;" class="viafoura"&gt;
   &lt;vf-livechat vf-container-id="P1004"&gt;&lt;/vf-livechat&gt;
 &lt;/div&gt;</code></pre>
 
@@ -118,36 +118,36 @@
         <p><strong>CRITICAL:</strong> The Live Chat widget requires the On-Site Notification Tray to be implemented on the page. The widget includes several call-to-action buttons such as login/signup, post, reply, and others that rely on the notification tray.</p>
 
         <p>Failing to implement the Notification Tray will result in a broken user experience. Always include:</p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;vf-tray-trigger floating="true"&gt;&lt;/vf-tray-trigger&gt;</code></pre>
+        <pre><code>&lt;vf-tray-trigger floating="true"&gt;&lt;/vf-tray-trigger&gt;</code></pre>
 
         <h2>Live Chat vs. Conversations</h2>
         <p>Understanding when to use Live Chat versus Conversations:</p>
 
-        <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
-          <tr style="border-bottom: 2px solid #333;">
-            <th style="text-align: left; padding: 0.5rem;">Feature</th>
-            <th style="text-align: left; padding: 0.5rem;">Live Chat</th>
-            <th style="text-align: left; padding: 0.5rem;">Conversations</th>
+        <table>
+          <tr>
+            <th>Feature</th>
+            <th>Live Chat</th>
+            <th>Conversations</th>
           </tr>
-          <tr style="border-bottom: 1px solid #ddd;">
-            <td style="padding: 0.5rem;"><strong>Use case</strong></td>
-            <td style="padding: 0.5rem;">Live events, real-time discussions</td>
-            <td style="padding: 0.5rem;">Article comments, long-form discussion</td>
+          <tr>
+            <td><strong>Use case</strong></td>
+            <td>Live events, real-time discussions</td>
+            <td>Article comments, long-form discussion</td>
           </tr>
-          <tr style="border-bottom: 1px solid #ddd;">
-            <td style="padding: 0.5rem;"><strong>Message flow</strong></td>
-            <td style="padding: 0.5rem;">Chronological stream, fast-moving</td>
-            <td style="padding: 0.5rem;">Threaded replies, organized by topic</td>
+          <tr>
+            <td><strong>Message flow</strong></td>
+            <td>Chronological stream, fast-moving</td>
+            <td>Threaded replies, organized by topic</td>
           </tr>
-          <tr style="border-bottom: 1px solid #ddd;">
-            <td style="padding: 0.5rem;"><strong>Display</strong></td>
-            <td style="padding: 0.5rem;">Fixed height container</td>
-            <td style="padding: 0.5rem;">Variable height based on content</td>
+          <tr>
+            <td><strong>Display</strong></td>
+            <td>Fixed height container</td>
+            <td>Variable height based on content</td>
           </tr>
-          <tr style="border-bottom: 1px solid #ddd;">
-            <td style="padding: 0.5rem;"><strong>Lifespan</strong></td>
-            <td style="padding: 0.5rem;">Event duration (hours)</td>
-            <td style="padding: 0.5rem;">Evergreen (days, months, years)</td>
+          <tr>
+            <td><strong>Lifespan</strong></td>
+            <td>Event duration (hours)</td>
+            <td>Evergreen (days, months, years)</td>
           </tr>
         </table>
 

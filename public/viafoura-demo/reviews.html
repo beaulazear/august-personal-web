@@ -86,15 +86,15 @@
         <p>The Ratings & Reviews feature uses two separate widgets that work together:</p>
 
         <p><strong>Step 1: Load the Viafoura SDK</strong></p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;script async src="https://cdn.viafoura.net/entry/index.js"&gt;&lt;/script&gt;</code></pre>
+        <pre><code>&lt;script async src="https://cdn.viafoura.net/entry/index.js"&gt;&lt;/script&gt;</code></pre>
 
         <p><strong>Step 2: Add the Rating Summary widget</strong></p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;div class="viafoura"&gt;
+        <pre><code>&lt;div class="viafoura"&gt;
   &lt;vf-rating&gt;&lt;/vf-rating&gt;
 &lt;/div&gt;</code></pre>
 
         <p><strong>Step 3: Add the Reviews List widget</strong></p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;div class="viafoura"&gt;
+        <pre><code>&lt;div class="viafoura"&gt;
   &lt;vf-livereviews&gt;&lt;/vf-livereviews&gt;
 &lt;/div&gt;</code></pre>
 
@@ -120,44 +120,44 @@
         <p>Each review container needs a unique container ID. You can set this in two ways:</p>
 
         <p><strong>Option 1: Meta tag (recommended)</strong></p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;meta name="vf:container_id" content="P2001"&gt;</code></pre>
+        <pre><code>&lt;meta name="vf:container_id" content="P2001"&gt;</code></pre>
 
         <p><strong>Option 2: Widget attribute</strong></p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;vf-livereviews vf-container-id="P2001"&gt;&lt;/vf-livereviews&gt;</code></pre>
+        <pre><code>&lt;vf-livereviews vf-container-id="P2001"&gt;&lt;/vf-livereviews&gt;</code></pre>
 
         <h2>Configuration Parameters</h2>
         <p>Customize the Reviews widget behavior with these parameters:</p>
 
-        <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
-          <tr style="border-bottom: 2px solid #333;">
-            <th style="text-align: left; padding: 0.5rem;">Parameter</th>
-            <th style="text-align: left; padding: 0.5rem;">Default</th>
-            <th style="text-align: left; padding: 0.5rem;">Description</th>
+        <table>
+          <tr>
+            <th>Parameter</th>
+            <th>Default</th>
+            <th>Description</th>
           </tr>
-          <tr style="border-bottom: 1px solid #ddd;">
-            <td style="padding: 0.5rem;"><code>limit</code></td>
-            <td style="padding: 0.5rem;">10</td>
-            <td style="padding: 0.5rem;">Initial reviews loaded (1-100)</td>
+          <tr>
+            <td><code>limit</code></td>
+            <td>10</td>
+            <td>Initial reviews loaded (1-100)</td>
           </tr>
-          <tr style="border-bottom: 1px solid #ddd;">
-            <td style="padding: 0.5rem;"><code>pagination-limit</code></td>
-            <td style="padding: 0.5rem;">10</td>
-            <td style="padding: 0.5rem;">Reviews per "load more" click (1-100)</td>
+          <tr>
+            <td><code>pagination-limit</code></td>
+            <td>10</td>
+            <td>Reviews per "load more" click (1-100)</td>
           </tr>
-          <tr style="border-bottom: 1px solid #ddd;">
-            <td style="padding: 0.5rem;"><code>reply-limit</code></td>
-            <td style="padding: 0.5rem;">2</td>
-            <td style="padding: 0.5rem;">Initial replies shown per review (0-100)</td>
+          <tr>
+            <td><code>reply-limit</code></td>
+            <td>2</td>
+            <td>Initial replies shown per review (0-100)</td>
           </tr>
-          <tr style="border-bottom: 1px solid #ddd;">
-            <td style="padding: 0.5rem;"><code>pagination-reply-limit</code></td>
-            <td style="padding: 0.5rem;">10</td>
-            <td style="padding: 0.5rem;">Replies per "load more" click (1-100)</td>
+          <tr>
+            <td><code>pagination-reply-limit</code></td>
+            <td>10</td>
+            <td>Replies per "load more" click (1-100)</td>
           </tr>
-          <tr style="border-bottom: 1px solid #ddd;">
-            <td style="padding: 0.5rem;"><code>sort</code></td>
-            <td style="padding: 0.5rem;">most_helpful</td>
-            <td style="padding: 0.5rem;">Default sorting (see sorting options below)</td>
+          <tr>
+            <td><code>sort</code></td>
+            <td>most_helpful</td>
+            <td>Default sorting (see sorting options below)</td>
           </tr>
         </table>
 
@@ -173,7 +173,7 @@
         </ul>
 
         <p><strong>Example with parameters:</strong></p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;vf-livereviews
+        <pre><code>&lt;vf-livereviews
   limit="20"
   pagination-limit="15"
   sort="newest"&gt;
@@ -182,21 +182,21 @@
         <h2>Rating Widget Parameters</h2>
         <p>The Rating Summary widget supports these parameters:</p>
 
-        <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
-          <tr style="border-bottom: 2px solid #333;">
-            <th style="text-align: left; padding: 0.5rem;">Parameter</th>
-            <th style="text-align: left; padding: 0.5rem;">Default</th>
-            <th style="text-align: left; padding: 0.5rem;">Description</th>
+        <table>
+          <tr>
+            <th>Parameter</th>
+            <th>Default</th>
+            <th>Description</th>
           </tr>
-          <tr style="border-bottom: 1px solid #ddd;">
-            <td style="padding: 0.5rem;"><code>vf-container-id</code></td>
-            <td style="padding: 0.5rem;">-</td>
-            <td style="padding: 0.5rem;">Links to specific review container</td>
+          <tr>
+            <td><code>vf-container-id</code></td>
+            <td>-</td>
+            <td>Links to specific review container</td>
           </tr>
-          <tr style="border-bottom: 1px solid #ddd;">
-            <td style="padding: 0.5rem;"><code>show-ratings</code></td>
-            <td style="padding: 0.5rem;">true</td>
-            <td style="padding: 0.5rem;">Controls visibility of rating counts</td>
+          <tr>
+            <td><code>show-ratings</code></td>
+            <td>true</td>
+            <td>Controls visibility of rating counts</td>
           </tr>
         </table>
 
@@ -214,7 +214,7 @@
         <p><strong>CRITICAL:</strong> The Ratings & Reviews widget requires the On-Site Notification Tray to be implemented on the page. The widget includes call-to-action buttons that rely on the notification tray for login/signup, posting, and reply functionality.</p>
 
         <p>Failing to implement the Notification Tray will result in a broken user experience. Always include:</p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;vf-tray-trigger floating="true"&gt;&lt;/vf-tray-trigger&gt;</code></pre>
+        <pre><code>&lt;vf-tray-trigger floating="true"&gt;&lt;/vf-tray-trigger&gt;</code></pre>
 
         <h2>Best Practices</h2>
         <ul>

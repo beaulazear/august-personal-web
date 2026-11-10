@@ -42,65 +42,58 @@
       font-weight: 500;
     }
 
-    /* Side rail tray */
-    .viafoura-sidebar {
+    /*
+     * Side tray layout.
+     * There is a single <vf-conversations> on the page. Toggling the layout only
+     * changes CSS on its wrapper, so the widget is never duplicated or re-mounted.
+     */
+    .comments-panel-header,
+    .tray-toggle-btn,
+    .tray-overlay {
+      display: none;
+    }
+
+    .layout-side-rail .comments-panel {
       position: fixed;
       top: 0;
-      right: -500px;
-      width: 500px;
-      height: 100vh;
-      background: #ffffff;
-      box-shadow: -2px 0 40px rgba(0,0,0,0.1);
-      transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 9999;
-      overflow-y: auto;
-    }
-
-    .layout-side-rail.tray-open .viafoura-sidebar {
       right: 0;
+      width: 500px;
+      max-width: 100%;
+      height: 100vh;
+      overflow-y: auto;
+      background: #fff;
+      box-shadow: -2px 0 40px rgba(0,0,0,0.1);
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 9999;
     }
 
-    .tray-toggle-btn {
-      position: fixed;
-      top: 50%;
-      right: 20px;
-      transform: translateY(-50%);
-      background: #1a1a1a;
-      color: white;
-      border: none;
-      padding: 1.25rem 0.65rem;
-      cursor: pointer;
-      font-size: 0.75rem;
-      border-radius: 6px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-      z-index: 10000;
-      transition: all 0.25s ease;
-      display: none;
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+    .layout-side-rail.tray-open .comments-panel {
+      transform: none;
     }
 
-    .layout-side-rail .tray-toggle-btn {
-      display: block;
+    .layout-side-rail .comments-panel .viafoura {
+      margin: 0;
+      padding: 1.5rem;
     }
 
-    .tray-toggle-btn:hover {
-      background: #000;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    .layout-side-rail .comments-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem;
+      border-bottom: 1px solid #f0f0f0;
+      background: #fafafa;
     }
 
-    .layout-side-rail.tray-open .tray-toggle-btn {
-      opacity: 0;
-      pointer-events: none;
+    .comments-panel-header h3 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1a1a1a;
     }
 
-    .tray-close-btn {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
+    .comments-panel-close {
       background: transparent;
       border: none;
       width: 36px;
@@ -109,64 +102,48 @@
       cursor: pointer;
       font-size: 1.5rem;
       color: #666;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s;
-      z-index: 10;
     }
 
-    .tray-close-btn:hover {
+    .comments-panel-close:hover {
       background: #f5f5f5;
       color: #000;
     }
 
-    .tray-header {
-      padding: 1.5rem 1.5rem 1rem;
-      border-bottom: 1px solid #f0f0f0;
-      background: #fafafa;
-    }
-
-    .tray-header h3 {
-      margin: 0;
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #1a1a1a;
-    }
-
-    .viafoura-sidebar .viafoura {
-      padding: 1.5rem;
-    }
-
-    .tray-overlay {
-      display: none;
+    .layout-side-rail .tray-toggle-btn {
+      display: block;
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0,0,0,0.4);
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      padding: 1.25rem 0.65rem;
+      cursor: pointer;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
       z-index: 9998;
-      opacity: 0;
-      transition: opacity 0.35s ease;
+    }
+
+    .layout-side-rail .tray-toggle-btn:hover {
+      background: #000;
+    }
+
+    .layout-side-rail.tray-open .tray-toggle-btn {
+      display: none;
     }
 
     .layout-side-rail.tray-open .tray-overlay {
       display: block;
-      opacity: 1;
-    }
-
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .viafoura-sidebar {
-        width: 100%;
-        right: -100%;
-      }
-
-      .layout-side-rail.tray-open .tray-toggle-btn {
-        right: calc(100% + 20px);
-      }
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 9998;
     }
   </style>
 </head>
@@ -239,10 +216,10 @@
         <p>The simplest way to add Conversations to your page requires just two steps:</p>
 
         <p><strong>Step 1: Load the Viafoura SDK</strong></p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;script async src="https://cdn.viafoura.net/entry/index.js"&gt;&lt;/script&gt;</code></pre>
+        <pre><code>&lt;script async src="https://cdn.viafoura.net/entry/index.js"&gt;&lt;/script&gt;</code></pre>
 
         <p><strong>Step 2: Add the widget</strong></p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;div class="viafoura"&gt;
+        <pre><code>&lt;div class="viafoura"&gt;
   &lt;vf-conversations&gt;&lt;/vf-conversations&gt;
 &lt;/div&gt;</code></pre>
 
@@ -250,49 +227,49 @@
         <p>Each page needs a unique container ID to keep comments separate. You can set this in two ways:</p>
 
         <p><strong>Option 1: Meta tag (recommended)</strong></p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;meta name="vf:container_id" content="P1001"&gt;</code></pre>
+        <pre><code>&lt;meta name="vf:container_id" content="P1001"&gt;</code></pre>
 
         <p><strong>Option 2: Widget attribute</strong></p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;vf-conversations vf-container-id="P1001"&gt;&lt;/vf-conversations&gt;</code></pre>
+        <pre><code>&lt;vf-conversations vf-container-id="P1001"&gt;&lt;/vf-conversations&gt;</code></pre>
 
         <h2>Configuration Parameters</h2>
         <p>Customize the widget behavior with these parameters:</p>
 
-        <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
-          <tr style="border-bottom: 2px solid #333;">
-            <th style="text-align: left; padding: 0.5rem;">Parameter</th>
-            <th style="text-align: left; padding: 0.5rem;">Default</th>
-            <th style="text-align: left; padding: 0.5rem;">Description</th>
+        <table>
+          <tr>
+            <th>Parameter</th>
+            <th>Default</th>
+            <th>Description</th>
           </tr>
-          <tr style="border-bottom: 1px solid #ddd;">
-            <td style="padding: 0.5rem;"><code>limit</code></td>
-            <td style="padding: 0.5rem;">10</td>
-            <td style="padding: 0.5rem;">Initial comments loaded (1-100)</td>
+          <tr>
+            <td><code>limit</code></td>
+            <td>10</td>
+            <td>Initial comments loaded (1-100)</td>
           </tr>
-          <tr style="border-bottom: 1px solid #ddd;">
-            <td style="padding: 0.5rem;"><code>pagination-limit</code></td>
-            <td style="padding: 0.5rem;">10</td>
-            <td style="padding: 0.5rem;">Comments per page load (1-100)</td>
+          <tr>
+            <td><code>pagination-limit</code></td>
+            <td>10</td>
+            <td>Comments per page load (1-100)</td>
           </tr>
-          <tr style="border-bottom: 1px solid #ddd;">
-            <td style="padding: 0.5rem;"><code>reply-limit</code></td>
-            <td style="padding: 0.5rem;">2</td>
-            <td style="padding: 0.5rem;">Initial replies per comment (0-100)</td>
+          <tr>
+            <td><code>reply-limit</code></td>
+            <td>2</td>
+            <td>Initial replies per comment (0-100)</td>
           </tr>
-          <tr style="border-bottom: 1px solid #ddd;">
-            <td style="padding: 0.5rem;"><code>sort</code></td>
-            <td style="padding: 0.5rem;">newest</td>
-            <td style="padding: 0.5rem;">Comment ordering (newest, oldest, most-liked, most-replied)</td>
+          <tr>
+            <td><code>sort</code></td>
+            <td>newest</td>
+            <td>Comment ordering (newest, oldest, most-liked, most-replied)</td>
           </tr>
-          <tr style="border-bottom: 1px solid #ddd;">
-            <td style="padding: 0.5rem;"><code>initial-height</code></td>
-            <td style="padding: 0.5rem;">null</td>
-            <td style="padding: 0.5rem;">Fixed height in pixels (600px recommended for CLS reduction)</td>
+          <tr>
+            <td><code>initial-height</code></td>
+            <td>null</td>
+            <td>Fixed height in pixels (600px recommended for CLS reduction)</td>
           </tr>
         </table>
 
         <p><strong>Example with parameters:</strong></p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;vf-conversations
+        <pre><code>&lt;vf-conversations
   limit="20"
   reply-limit="5"
   sort="most-liked"
@@ -317,34 +294,28 @@
 
         <h2>Required: Notification Tray</h2>
         <p>Conversations relies on the notification tray for login, replies, and follow actions. Make sure to include:</p>
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;vf-tray-trigger floating="true"&gt;&lt;/vf-tray-trigger&gt;</code></pre>
+        <pre><code>&lt;vf-tray-trigger floating="true"&gt;&lt;/vf-tray-trigger&gt;</code></pre>
 
         <h2>Try It Below</h2>
         <p>The working Conversations widget below uses container ID <code>P1001</code>. Use the customization panel to toggle between layouts and see how the same widget adapts to different page designs.</p>
       </article>
 
-      <!-- Viafoura Conversations Widget (default position) -->
-      <div class="viafoura viafoura-bottom">
-        <vf-conversations></vf-conversations>
-      </div>
+      <!-- Viafoura Conversations Widget: renders below the article by default,
+           or as a slide-in side tray when the layout toggle is on -->
+      <aside class="comments-panel" aria-label="Comments">
+        <div class="comments-panel-header">
+          <h3>Conversations</h3>
+          <button class="comments-panel-close" id="trayCloseBtn" aria-label="Close comments">✕</button>
+        </div>
+        <div class="viafoura">
+          <vf-conversations></vf-conversations>
+        </div>
+      </aside>
     </div>
 
-    <!-- Tray overlay -->
+    <!-- Side tray controls (only visible in side tray layout) -->
+    <button class="tray-toggle-btn" id="trayToggleBtn">Comments</button>
     <div class="tray-overlay" id="trayOverlay"></div>
-
-    <!-- Tray toggle button (floating) -->
-    <button class="tray-toggle-btn" id="trayToggleBtn">COMMENTS</button>
-
-    <!-- Viafoura Conversations Widget (side tray - hidden by default) -->
-    <div class="viafoura-sidebar" style="display: none;">
-      <button class="tray-close-btn" id="trayCloseBtn">✕</button>
-      <div class="tray-header">
-        <h3>Conversations</h3>
-      </div>
-      <div class="viafoura">
-        <vf-conversations></vf-conversations>
-      </div>
-    </div>
 
     <!-- Viafoura Tray Trigger -->
     <div class="viafoura">
@@ -354,48 +325,27 @@
 
   <!-- Layout Toggle Script -->
   <script>
-    const body = document.body;
+    (function() {
+      const body = document.body;
 
-    // Layout toggle
-    const sideRailToggle = document.getElementById('sideRailToggle');
-    const bottomWidget = document.querySelector('.viafoura-bottom');
-    const sidebarWidget = document.querySelector('.viafoura-sidebar');
-    const trayToggleBtn = document.getElementById('trayToggleBtn');
-    const trayCloseBtn = document.getElementById('trayCloseBtn');
-    const trayOverlay = document.getElementById('trayOverlay');
-
-    // Ensure elements exist before adding listeners
-    if (!trayToggleBtn || !trayCloseBtn || !trayOverlay) {
-      console.error('Tray elements not found');
-    }
-
-    sideRailToggle.addEventListener('change', (e) => {
-      if (e.target.checked) {
-        // Enable side tray layout
-        body.classList.add('layout-side-rail');
-        bottomWidget.style.display = 'none';
-        sidebarWidget.style.display = 'block';
-      } else {
-        // Return to default layout
-        body.classList.remove('layout-side-rail');
+      function closeTray() {
         body.classList.remove('tray-open');
-        bottomWidget.style.display = 'block';
-        sidebarWidget.style.display = 'none';
       }
-    });
 
-    // Tray toggle functionality
-    function openTray() {
-      body.classList.add('tray-open');
-    }
+      document.getElementById('sideRailToggle').addEventListener('change', function(e) {
+        body.classList.toggle('layout-side-rail', e.target.checked);
+        if (!e.target.checked) closeTray();
+      });
 
-    function closeTray() {
-      body.classList.remove('tray-open');
-    }
-
-    trayToggleBtn.addEventListener('click', openTray);
-    trayCloseBtn.addEventListener('click', closeTray);
-    trayOverlay.addEventListener('click', closeTray);
+      document.getElementById('trayToggleBtn').addEventListener('click', function() {
+        body.classList.add('tray-open');
+      });
+      document.getElementById('trayCloseBtn').addEventListener('click', closeTray);
+      document.getElementById('trayOverlay').addEventListener('click', closeTray);
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeTray();
+      });
+    })();
   </script>
 
   <!-- Viafoura SDK -->
