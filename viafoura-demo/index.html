@@ -3,162 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home | Beau Test Site</title>
-
-  <!-- Viafoura meta tags (no container_id for home page) -->
-  <meta property="og:url" content="https://www.beaulazear.com/viafoura-demo/index.html">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Beau Test Site - Viafoura Integration Demo">
-  <meta property="og:description" content="Demo site showcasing Viafoura engagement products including Conversations, Live Blog, Live Chat, Ratings & Reviews, and more.">
-  <meta property="og:image" content="https://picsum.photos/seed/home/1200/800">
-
-  <!-- Site assets -->
-  <script src="assets/site.js"></script>
-  <link rel="stylesheet" href="assets/styles.css">
+  <meta http-equiv="refresh" content="0;url=conversations.html">
+  <title>Redirecting...</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background: #fafafa;
+    }
+    .redirect-message {
+      text-align: center;
+    }
+    .redirect-message h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 0.5rem;
+    }
+    .redirect-message p {
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    .redirect-message a {
+      color: #1a1a1a;
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <a href="index.html" class="brand">Beau Test Site</a>
-    <nav>
-      <a href="index.html" aria-current="page">Home</a>
-      <a href="conversations.html">Conversations</a>
-      <a href="live-blog.html">Live Blog</a>
-      <a href="live-qa.html">Live Q&A</a>
-      <a href="live-chat.html">Live Chat</a>
-      <a href="reviews.html">Reviews</a>
-      <a href="spa.html">SPA Demo</a>
-      <a href="custom-auth.html">Custom Auth</a>
-    </nav>
-  </header>
-
-  <main>
-    <div class="info-box">
-      <h2>Welcome to the Viafoura Demo Site</h2>
-      <p>This site demonstrates various Viafoura engagement products integrated into a publisher website. Each page showcases different widgets and use cases.</p>
-      <ul>
-        <li><strong>Trending widget</strong> below shows popular content across your site</li>
-        <li><strong>Article cards</strong> link to demo pages with different Viafoura products</li>
-        <li><strong>Tray trigger</strong> (bottom-right) provides access to notifications and user profile</li>
-      </ul>
-      <p><strong>Start here:</strong> Browse the articles below, or use the navigation menu to explore specific product demos.</p>
-    </div>
-
-    <article>
-      <h1>Explore Our Viafoura Demo Pages</h1>
-      <p>Click any article card below to see different Viafoura products in action. Each page demonstrates specific engagement features and integration patterns.</p>
-    </article>
-
-    <!-- Article cards -->
-    <div class="article-grid">
-      <a href="conversations.html" class="article-card">
-        <img src="https://picsum.photos/seed/P1001/600/400" alt="Conversations">
-        <div class="article-card-content">
-          <h3>Implementing Viafoura Conversations</h3>
-          <p>Learn how to integrate our real-time commenting platform for deep audience engagement.</p>
-          <div class="meta">
-            <span>Conversations</span>
-            <span>•</span>
-            <span>Implementation Guide</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="live-blog.html" class="article-card">
-        <img src="https://picsum.photos/seed/P1002/600/400" alt="Live Blog">
-        <div class="article-card-content">
-          <h3>Breaking: Tech Conference 2026 Live Coverage</h3>
-          <p>Follow along as we bring you live updates from the biggest tech event of the year.</p>
-          <div class="meta">
-            <span>Live Blog</span>
-            <span>•</span>
-            <span>Live Now</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="live-qa.html" class="article-card">
-        <img src="https://picsum.photos/seed/P1003/600/400" alt="Live Q&A">
-        <div class="article-card-content">
-          <h3>Ask the Expert: Climate Change Policy</h3>
-          <p>Submit your questions and vote on what you want our expert panel to discuss.</p>
-          <div class="meta">
-            <span>Live Q&A + Poll</span>
-            <span>•</span>
-            <span>Interactive</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="live-chat.html" class="article-card">
-        <img src="https://picsum.photos/seed/P1004/600/400" alt="Live Chat">
-        <div class="article-card-content">
-          <h3>Game Day Central: Championship Live Chat</h3>
-          <p>Join fellow fans for real-time discussion during tonight's big game.</p>
-          <div class="meta">
-            <span>Live Chat</span>
-            <span>•</span>
-            <span>Event Coverage</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="reviews.html" class="article-card">
-        <img src="https://picsum.photos/seed/P2001/600/400" alt="Reviews">
-        <div class="article-card-content">
-          <h3>Product Review: Latest Smartphone Flagship</h3>
-          <p>Our in-depth analysis plus community ratings and reviews from real users.</p>
-          <div class="meta">
-            <span>Ratings & Reviews</span>
-            <span>•</span>
-            <span>6 min read</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="spa.html" class="article-card">
-        <img src="https://picsum.photos/seed/P3001/600/400" alt="SPA Demo">
-        <div class="article-card-content">
-          <h3>Single-Page Application Navigation</h3>
-          <p>Demonstration of dynamic content loading with proper Viafoura context updates.</p>
-          <div class="meta">
-            <span>Technical Demo</span>
-            <span>•</span>
-            <span>SPA Pattern</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="custom-auth.html" class="article-card">
-        <img src="https://picsum.photos/seed/P1005/600/400" alt="Custom Auth">
-        <div class="article-card-content">
-          <h3>Custom Authentication Integration</h3>
-          <p>How to integrate Viafoura with your existing user authentication system.</p>
-          <div class="meta">
-            <span>Technical Demo</span>
-            <span>•</span>
-            <span>Custom Auth</span>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <!-- Viafoura Trending Widget -->
-    <article>
-      <h2>Trending Content</h2>
-      <p>Popular articles and discussions across Beau Test Site:</p>
-    </article>
-
-    <div class="viafoura">
-      <vf-trending></vf-trending>
-    </div>
-
-    <!-- Viafoura Tray Trigger -->
-    <div class="viafoura">
-      <vf-tray-trigger floating="true"></vf-tray-trigger>
-    </div>
-  </main>
-
-  <!-- Viafoura SDK -->
-  <script async src="https://cdn.viafoura.net/entry/index.js"></script>
+  <div class="redirect-message">
+    <h1>Redirecting to Viafoura Demo...</h1>
+    <p>If you are not redirected automatically, <a href="conversations.html">click here</a>.</p>
+  </div>
+  <script>
+    window.location.href = 'conversations.html';
+  </script>
 </body>
 </html>
