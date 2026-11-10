@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Review | Beau Test Site</title>
+  <title>Viafoura Ratings & Reviews | Implementation Guide</title>
 
   <!-- Viafoura meta tags -->
   <meta name="vf:container_id" content="P2001">
   <meta property="og:url" content="https://www.beaulazear.com/viafoura-demo/reviews.html">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Product Review: Latest Smartphone Flagship">
-  <meta property="og:description" content="Our in-depth analysis plus community ratings and reviews from real users.">
+  <meta property="og:title" content="User Ratings and Reviews Platform">
+  <meta property="og:description" content="Learn how to implement Viafoura's Ratings & Reviews widget for products, services, recipes, and more.">
   <meta property="og:image" content="https://picsum.photos/seed/P2001/1200/800">
 
   <!-- Site assets -->
@@ -21,11 +21,11 @@
   <header>
     <a href="index.html" class="brand">Beau Test Site</a>
     <nav>
-      <a href="index.html">Home</a>
       <a href="conversations.html">Conversations</a>
       <a href="live-blog.html">Live Blog</a>
       <a href="live-qa.html">Live Q&A</a>
       <a href="live-chat.html">Live Chat</a>
+      <a href="polls.html">Polls</a>
       <a href="reviews.html" aria-current="page">Reviews</a>
       <a href="spa.html">SPA Demo</a>
       <a href="custom-auth.html">Custom Auth</a>
@@ -34,86 +34,225 @@
 
   <main>
     <div class="info-box">
-      <h2>What this page demonstrates</h2>
+      <h2>Viafoura Ratings & Reviews Implementation Guide</h2>
       <ul>
-        <li><strong>Ratings & Reviews widget</strong> - User-generated product reviews with star ratings</li>
-        <li>Perfect for product reviews, business listings, entertainment content</li>
-        <li>Includes verified purchase badges, helpful votes, and filtering</li>
-        <li>Container ID: <code>P2001</code></li>
+        <li><strong>Learn</strong> - Step-by-step instructions for implementing Ratings & Reviews</li>
+        <li><strong>Explore</strong> - Configuration parameters and sorting options</li>
+        <li><strong>Demo</strong> - Live working widget below</li>
+        <li><strong>Container ID:</strong> <code>P2001</code></li>
       </ul>
-      <p><strong>Test:</strong> Write a review, rate the product, and mark reviews as helpful.</p>
+      <p><strong>This page demonstrates:</strong> How to add user-generated ratings and reviews with star ratings, helpful voting, and filtering capabilities.</p>
     </div>
 
-    <article>
-      <h1>Product Review: TechNova X1 Pro Smartphone</h1>
+    <div class="main-content">
+      <article>
+        <h1>Implementing Viafoura Ratings & Reviews</h1>
 
-      <div class="byline">
-        <div class="author">
-          <span>By Marcus Rodriguez</span>
+        <div class="byline">
+          <div class="author">
+            <span>Implementation Guide</span>
+          </div>
+          <time datetime="2026-11-04">November 4, 2026</time>
+          <span>Technical Documentation</span>
         </div>
-        <time datetime="2026-11-04">November 4, 2026</time>
-        <span>Product Review</span>
+
+        <img src="https://picsum.photos/seed/P2001/1200/800" alt="Viafoura Ratings & Reviews" class="hero-image">
+
+        <h2>What is Viafoura Ratings & Reviews?</h2>
+        <p>Viafoura Ratings & Reviews empowers your audience to provide feedback on products, services, recipes, and many more topics that foster trust and engagement. The widget visually displays ratings using a 5-star system, along with the numerical average and total number of ratings received.</p>
+
+        <h2>Key Features</h2>
+        <ul>
+          <li><strong>5-star rating system</strong> - Industry-standard star ratings (1-5 stars)</li>
+          <li><strong>Written reviews</strong> - Detailed feedback with text and rich formatting</li>
+          <li><strong>Rating summary</strong> - Average rating and total count display</li>
+          <li><strong>Helpful voting</strong> - Users can mark reviews as helpful</li>
+          <li><strong>Sorting options</strong> - Most helpful, newest, highest rated, and more</li>
+          <li><strong>Reply functionality</strong> - Authors can respond to reviews</li>
+          <li><strong>Verified badges</strong> - Identify verified purchasers (optional)</li>
+          <li><strong>Pagination</strong> - Configurable review loading</li>
+        </ul>
+
+        <h2>Ideal Use Cases</h2>
+        <ul>
+          <li><strong>E-commerce products</strong> - Customer reviews on product pages</li>
+          <li><strong>Recipe sites</strong> - User ratings and cooking feedback</li>
+          <li><strong>Local businesses</strong> - Service provider ratings and testimonials</li>
+          <li><strong>Entertainment content</strong> - Movies, TV shows, books, music reviews</li>
+          <li><strong>Restaurant reviews</strong> - Dining experiences and menu items</li>
+          <li><strong>Travel & hospitality</strong> - Hotel, destination, and tour reviews</li>
+        </ul>
+
+        <h2>Basic Implementation</h2>
+        <p>The Ratings & Reviews feature uses two separate widgets that work together:</p>
+
+        <p><strong>Step 1: Load the Viafoura SDK</strong></p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;script async src="https://cdn.viafoura.net/entry/index.js"&gt;&lt;/script&gt;</code></pre>
+
+        <p><strong>Step 2: Add the Rating Summary widget</strong></p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;div class="viafoura"&gt;
+  &lt;vf-rating&gt;&lt;/vf-rating&gt;
+&lt;/div&gt;</code></pre>
+
+        <p><strong>Step 3: Add the Reviews List widget</strong></p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;div class="viafoura"&gt;
+  &lt;vf-livereviews&gt;&lt;/vf-livereviews&gt;
+&lt;/div&gt;</code></pre>
+
+        <h2>Widget Components Explained</h2>
+        <p><strong>Rating Summary (<code>vf-rating</code>):</strong></p>
+        <ul>
+          <li>Displays the average star rating</li>
+          <li>Shows total number of ratings</li>
+          <li>Provides visual 5-star display</li>
+          <li>Often placed near product title or hero image</li>
+        </ul>
+
+        <p><strong>Review List (<code>vf-livereviews</code>):</strong></p>
+        <ul>
+          <li>Shows individual user reviews with full text</li>
+          <li>Includes star ratings per review</li>
+          <li>Enables sorting and filtering</li>
+          <li>Allows users to submit new reviews</li>
+          <li>Displays helpful vote counts</li>
+        </ul>
+
+        <h2>Container ID Setup</h2>
+        <p>Each review container needs a unique container ID. You can set this in two ways:</p>
+
+        <p><strong>Option 1: Meta tag (recommended)</strong></p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;meta name="vf:container_id" content="P2001"&gt;</code></pre>
+
+        <p><strong>Option 2: Widget attribute</strong></p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;vf-livereviews vf-container-id="P2001"&gt;&lt;/vf-livereviews&gt;</code></pre>
+
+        <h2>Configuration Parameters</h2>
+        <p>Customize the Reviews widget behavior with these parameters:</p>
+
+        <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+          <tr style="border-bottom: 2px solid #333;">
+            <th style="text-align: left; padding: 0.5rem;">Parameter</th>
+            <th style="text-align: left; padding: 0.5rem;">Default</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 0.5rem;"><code>limit</code></td>
+            <td style="padding: 0.5rem;">10</td>
+            <td style="padding: 0.5rem;">Initial reviews loaded (1-100)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 0.5rem;"><code>pagination-limit</code></td>
+            <td style="padding: 0.5rem;">10</td>
+            <td style="padding: 0.5rem;">Reviews per "load more" click (1-100)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 0.5rem;"><code>reply-limit</code></td>
+            <td style="padding: 0.5rem;">2</td>
+            <td style="padding: 0.5rem;">Initial replies shown per review (0-100)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 0.5rem;"><code>pagination-reply-limit</code></td>
+            <td style="padding: 0.5rem;">10</td>
+            <td style="padding: 0.5rem;">Replies per "load more" click (1-100)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 0.5rem;"><code>sort</code></td>
+            <td style="padding: 0.5rem;">most_helpful</td>
+            <td style="padding: 0.5rem;">Default sorting (see sorting options below)</td>
+          </tr>
+        </table>
+
+        <h2>Sorting Options</h2>
+        <p>The <code>sort</code> parameter accepts these values:</p>
+        <ul>
+          <li><code>most_helpful</code> - Reviews with most helpful votes (default)</li>
+          <li><code>newest</code> - Most recently posted reviews first</li>
+          <li><code>oldest</code> - Oldest reviews first</li>
+          <li><code>top_rated</code> - Highest star ratings first</li>
+          <li><code>lowest_rated</code> - Lowest star ratings first</li>
+          <li><code>most_replies</code> - Reviews with most discussion</li>
+        </ul>
+
+        <p><strong>Example with parameters:</strong></p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;vf-livereviews
+  limit="20"
+  pagination-limit="15"
+  sort="newest"&gt;
+&lt;/vf-livereviews&gt;</code></pre>
+
+        <h2>Rating Widget Parameters</h2>
+        <p>The Rating Summary widget supports these parameters:</p>
+
+        <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+          <tr style="border-bottom: 2px solid #333;">
+            <th style="text-align: left; padding: 0.5rem;">Parameter</th>
+            <th style="text-align: left; padding: 0.5rem;">Default</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 0.5rem;"><code>vf-container-id</code></td>
+            <td style="padding: 0.5rem;">-</td>
+            <td style="padding: 0.5rem;">Links to specific review container</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 0.5rem;"><code>show-ratings</code></td>
+            <td style="padding: 0.5rem;">true</td>
+            <td style="padding: 0.5rem;">Controls visibility of rating counts</td>
+          </tr>
+        </table>
+
+        <h2>Reviews Without Ratings</h2>
+        <p>Viafoura supports a "Reviews Without Ratings" feature that allows users to submit written feedback without mandatory star selection. This is a site-level configuration managed through the Admin portal.</p>
+
+        <p>When enabled:</p>
+        <ul>
+          <li>Users can write reviews without selecting stars</li>
+          <li>Unrated reviews are excluded from average calculations</li>
+          <li>Useful for qualitative feedback collection</li>
+        </ul>
+
+        <h2>Required: Notification Tray</h2>
+        <p><strong>CRITICAL:</strong> The Ratings & Reviews widget requires the On-Site Notification Tray to be implemented on the page. The widget includes call-to-action buttons that rely on the notification tray for login/signup, posting, and reply functionality.</p>
+
+        <p>Failing to implement the Notification Tray will result in a broken user experience. Always include:</p>
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;vf-tray-trigger floating="true"&gt;&lt;/vf-tray-trigger&gt;</code></pre>
+
+        <h2>Best Practices</h2>
+        <ul>
+          <li>Place the Rating Summary near the top of the page for visibility</li>
+          <li>Position the Review List below the main content</li>
+          <li>Use "most_helpful" sorting to surface quality reviews</li>
+          <li>Moderate reviews to maintain trust and authenticity</li>
+          <li>Enable verified purchase badges when applicable</li>
+          <li>Respond to negative reviews professionally</li>
+          <li>Encourage satisfied customers to leave reviews</li>
+          <li>Set appropriate pagination limits based on your traffic</li>
+        </ul>
+
+        <h2>SEO Benefits</h2>
+        <p>User-generated reviews provide valuable SEO benefits:</p>
+        <ul>
+          <li>Fresh, regularly updated content</li>
+          <li>Natural keyword usage from real customers</li>
+          <li>Increased time on page</li>
+          <li>Rich snippets with star ratings in search results (when properly configured)</li>
+          <li>Social proof signals for search engines</li>
+        </ul>
+
+        <h2>Try It Below</h2>
+        <p>The working Ratings & Reviews widgets below use container ID <code>P2001</code>. Submit a review, rate the content, and mark reviews as helpful to explore the functionality!</p>
+      </article>
+
+      <!-- Viafoura Ratings & Reviews Widget -->
+      <!-- Rating Summary -->
+      <div class="viafoura">
+        <vf-rating></vf-rating>
       </div>
 
-      <img src="https://picsum.photos/seed/P2001/1200/800" alt="TechNova X1 Pro" class="hero-image">
-
-      <p><strong>Our Verdict:</strong> The TechNova X1 Pro represents a significant leap forward in smartphone technology, delivering exceptional performance, outstanding camera capabilities, and impressive battery life. While the premium price tag may give some buyers pause, the X1 Pro justifies its cost with best-in-class features and build quality.</p>
-
-      <h2>Design and Build Quality</h2>
-      <p>The X1 Pro sports a sleek titanium frame with Gorilla Glass Victus 3 on both front and back. At 7.9mm thick and weighing just 189 grams, it feels premium without being cumbersome. The matte finish resists fingerprints remarkably well, and the IP68 water resistance rating provides peace of mind for everyday use.</p>
-
-      <h2>Display</h2>
-      <p>The 6.7-inch LTPO OLED display is simply stunning. With a 3200 x 1440 resolution, 120Hz adaptive refresh rate, and peak brightness of 2000 nits, content looks crisp and vivid in any lighting condition. The display's color accuracy is excellent, making it ideal for both content consumption and creative work.</p>
-
-      <h2>Performance</h2>
-      <p>Powered by the latest Snapdragon 8 Gen 4 processor paired with 12GB of RAM, the X1 Pro handles everything we threw at it with ease. Gaming performance is exceptional, with sustained high frame rates even in demanding titles. Multitasking is seamless, and apps launch instantaneously.</p>
-
-      <h2>Camera System</h2>
-      <p>The triple camera system is where the X1 Pro truly shines. The main 200MP sensor captures incredible detail, while the 50MP ultrawide and 50MP telephoto (5x optical zoom) lenses provide versatility for any shooting scenario. Night mode performance is outstanding, and computational photography features like AI scene detection work remarkably well without appearing over-processed.</p>
-
-      <h2>Battery Life</h2>
-      <p>The 5000mAh battery easily lasted a full day of heavy use in our testing. With moderate use, we consistently achieved day-and-a-half battery life. The 65W fast charging is impressively quick, reaching 50% in just 20 minutes, and the 15W wireless charging is a convenient option for overnight charging.</p>
-
-      <h2>Software</h2>
-      <p>Running Android 15 with TechNova's clean UI overlay, the software experience is polished and bloat-free. The company has committed to 5 years of OS updates and 6 years of security patches, which should give buyers long-term peace of mind.</p>
-
-      <h2>Pros and Cons</h2>
-      <p><strong>Pros:</strong></p>
-      <ul>
-        <li>Exceptional camera system with versatile shooting modes</li>
-        <li>Premium build quality and design</li>
-        <li>Outstanding display quality</li>
-        <li>Excellent battery life with fast charging</li>
-        <li>Clean software with long-term update commitment</li>
-      </ul>
-
-      <p><strong>Cons:</strong></p>
-      <ul>
-        <li>Premium price point ($1,299)</li>
-        <li>No microSD card slot</li>
-        <li>Charger not included in box</li>
-      </ul>
-
-      <h2>Final Thoughts</h2>
-      <p>The TechNova X1 Pro is an excellent flagship smartphone that excels in all key areas. While it's not cheap, it delivers on its premium promise with top-tier performance, an outstanding camera system, and impressive battery life. If you're in the market for a flagship phone and budget isn't a primary concern, the X1 Pro should be at the top of your list.</p>
-
-      <p><strong>Editor's Rating: 9/10</strong></p>
-    </article>
-
-    <!-- Viafoura Ratings & Reviews Widget -->
-    <article>
-      <h2>Community Reviews</h2>
-      <p>See what other users think about the TechNova X1 Pro and share your own experience:</p>
-    </article>
-
-    <!-- Rating Summary -->
-    <div class="viafoura">
-      <vf-rating></vf-rating>
-    </div>
-
-    <!-- Reviews Interface -->
-    <div class="viafoura">
-      <vf-livereviews></vf-livereviews>
+      <!-- Reviews Interface -->
+      <div class="viafoura">
+        <vf-livereviews></vf-livereviews>
+      </div>
     </div>
 
     <!-- Viafoura Tray Trigger -->
