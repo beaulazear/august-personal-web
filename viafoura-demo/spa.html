@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SPA Navigation Demo | Beau Test Site</title>
+  <title>SPA Navigation Demo | Beau's Viafoura Implementation</title>
 
   <!-- Viafoura meta tags (initial page) -->
   <meta name="vf:container_id" content="P3001">
@@ -22,7 +22,7 @@
 </head>
 <body>
   <header>
-    <a href="index.html" class="brand">Beau Test Site</a>
+    <a href="index.html" class="brand"><img src="assets/viafoura-icon-red.webp" alt="" width="28" height="28">Beau's Viafoura Implementation</a>
     <nav>
       <a href="conversations.html">Conversations</a>
       <a href="live-blog.html">Live Blog</a>
@@ -77,7 +77,6 @@
           author: 'Dr. Emily Chen',
           date: '2026-11-01',
           readTime: '7 min read',
-          image: 'https://picsum.photos/seed/P3001/1200/800',
           content: `
             <p>Artificial intelligence has moved from science fiction to everyday reality, transforming how we work, communicate, and solve complex problems. From personalized recommendations to autonomous vehicles, AI systems are becoming increasingly integrated into the fabric of modern life.</p>
 
@@ -94,7 +93,6 @@
           author: 'James Morrison',
           date: '2026-10-28',
           readTime: '6 min read',
-          image: 'https://picsum.photos/seed/P3002/1200/800',
           content: `
             <p>The world is undergoing a historic energy transformation. Solar and wind power have become the cheapest sources of electricity in most markets, and battery technology has advanced to the point where renewable energy can be stored and dispatched on demand.</p>
 
@@ -111,7 +109,6 @@
           author: 'Sarah Williams',
           date: '2026-10-25',
           readTime: '8 min read',
-          image: 'https://picsum.photos/seed/P3003/1200/800',
           content: `
             <p>The nature of work is changing at an unprecedented pace. Remote work, once considered a perk, has become standard practice for millions of knowledge workers. Digital collaboration tools have made distributed teams not just possible but often preferable to traditional office environments.</p>
 
@@ -144,7 +141,6 @@
               <span>${article.readTime}</span>
             </div>
 
-            <img src="${article.image}" alt="${article.title}" class="hero-image">
 
             ${article.content}
           </article>

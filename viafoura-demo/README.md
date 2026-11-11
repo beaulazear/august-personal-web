@@ -23,7 +23,7 @@ Viafoura widgets only load when:
 
 | Setting | Value | Where it's used |
 |---------|-------|-----------------|
-| Site name | `Beau Test Site` | Header brand on every page |
+| Site name | `Beau's Viafoura Implementation` | Header brand on every page |
 | Approved domain | `www.beaulazear.com` | `og:url` meta tags, `approvedDomain` in `assets/site.js` |
 | Path | `/viafoura-demo/` | `og:url` meta tags |
 | Container ID prefix | `P` | `vf:container_id` meta tags |
