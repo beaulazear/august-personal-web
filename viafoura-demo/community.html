@@ -82,6 +82,11 @@
             <td>Live (topic and author)</td>
           </tr>
           <tr>
+            <td><a href="#engagement-starter">Engagement Starter</a></td>
+            <td><code>vf-conversation-starter</code></td>
+            <td>Live (points to the comments below)</td>
+          </tr>
+          <tr>
             <td><a href="#featured">Editor's Pick &amp; Trusted User</a></td>
             <td>Moderation Console</td>
             <td>Try it on the comments below</td>
@@ -481,6 +486,80 @@
         <p><strong>Sending the notifications.</strong> Following only subscribes the reader. To notify them, the publisher calls the Broadcast Notifications API with a title, description, image and URL, usually from the CMS when an article is published. Viafoura has no screen for sending broadcasts. To avoid duplicate notifications, give each article a single topic.</p>
         <p><strong>Not the same as following a conversation.</strong> The <em>Follow</em> button at the top of the comments subscribes a reader to new comments on that one article. A topic follow subscribes them to new articles.</p>
 
+        <!-- ============================================================ ENGAGEMENT STARTER -->
+        <h2 id="engagement-starter">Engagement Starter</h2>
+        <p>An in-article prompt that pulls readers down into the comments. Place it partway through a story; clicking it scrolls to the Conversations widget. Its message changes with the conversation:</p>
+        <ul>
+          <li><strong>By default</strong> it shows a call to action that follows the comment count: "Be the first to comment" with no comments, "Read the comments" with one to five, and "Read the [count] comments" above that. On a closed conversation it reads "Read the comments", or hides entirely if there are none.</li>
+          <li><strong>A featured or pinned comment</strong> replaces the default text. A pinned comment wins over a featured one, only the most recent is shown, and replies can't be featured.</li>
+          <li><strong>A poll:</strong> moderators and admins see a <em>Create Poll</em> button on the starter. Questions are up to 120 characters, with 2–10 options of up to 100 characters each, and an optional close date. Without one, the poll runs until it is closed by hand.</li>
+        </ul>
+        <p>It only works on a page that also has a Conversations widget.</p>
+      </article>
+
+      <section class="demo" aria-label="Engagement Starter demo">
+        <div class="demo-label">Live demo · links to the conversation at the bottom of this page</div>
+        <div class="viafoura">
+          <vf-conversation-starter
+            target="community-conversations"
+            title="Have your say."
+            description="Leave a comment below and let us know what you think."
+            minimum-comment-count="5">
+          </vf-conversation-starter>
+        </div>
+      </section>
+
+      <article>
+        <pre><code>&lt;!-- In the article --&gt;
+&lt;div class="viafoura"&gt;
+  &lt;vf-conversation-starter
+    target="community-conversations"
+    title="Have your say."
+    description="Leave a comment below and let us know what you think."
+    minimum-comment-count="5"&gt;
+  &lt;/vf-conversation-starter&gt;
+&lt;/div&gt;
+
+&lt;!-- Further down: the target is the id on the Conversations wrapper --&gt;
+&lt;div class="viafoura" id="community-conversations"&gt;
+  &lt;vf-conversations&gt;&lt;/vf-conversations&gt;
+&lt;/div&gt;</code></pre>
+
+        <table>
+          <tr>
+            <th>Attribute</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><code>target</code></td>
+            <td>— (required)</td>
+            <td>The <code>id</code> of the Conversations widget's wrapper, without a <code>#</code>. Must be unique on the page.</td>
+          </tr>
+          <tr>
+            <td><code>title</code></td>
+            <td>Have your say.</td>
+            <td>Heading of the prompt</td>
+          </tr>
+          <tr>
+            <td><code>description</code></td>
+            <td>Leave a comment below and let us know what you think.</td>
+            <td>Text under the heading</td>
+          </tr>
+          <tr>
+            <td><code>minimum-comment-count</code></td>
+            <td>5</td>
+            <td>Comments needed before the count is shown</td>
+          </tr>
+          <tr>
+            <td><code>vf-container-id</code></td>
+            <td>Page meta tag</td>
+            <td>Only needed if the page uses widget-level container IDs</td>
+          </tr>
+        </table>
+        <p><strong>Try it:</strong> as a moderator, pin or feature a comment in the conversation below and the starter will show it. Or create a poll from the starter itself.</p>
+        <p>An ad unit can also run next to the starter, using the publisher's own ad inventory or Viafoura's.</p>
+
         <!-- ============================================================ FEATURED -->
         <h2 id="featured">Editor's Pick &amp; Trusted User</h2>
         <p>These have no markup of their own. They're set by a moderator or admin, and show up inside the Conversations widget:</p>
@@ -511,10 +590,10 @@
         <p>Badges can also be assigned automatically from webhooks, for example after a reader's 100th comment. Viafoura has to switch webhooks on first.</p>
 
         <h2>Try It Below</h2>
-        <p>The conversation below uses this page's container ID, <code>P1007</code>. Use it to test featured comments, trusted users and badges, and to give the trending widget and counts some activity.</p>
+        <p>The conversation below uses this page's container ID, <code>P1007</code>. Use it to test the Engagement Starter, featured and pinned comments, trusted users and badges, and to give the trending widget and counts some activity.</p>
       </article>
 
-      <div class="viafoura">
+      <div class="viafoura" id="community-conversations">
         <vf-conversations limit="10" reply-limit="2" sort="newest" initial-height="600"></vf-conversations>
       </div>
     </div>
