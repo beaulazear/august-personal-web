@@ -142,6 +142,7 @@ article h1 {
 }
 
 article h2 {
+  scroll-margin-top: calc(var(--header-h) + 1.5rem);
   margin: 2.75rem 0 0.75rem;
   font-size: 1.5rem;
   line-height: 1.3;
@@ -249,10 +250,7 @@ article pre code {
 
 /* ------------------------------------------------------------------ Tables */
 article table {
-  display: block;
   width: 100%;
-  max-width: 100%;
-  overflow-x: auto;
   margin: 1rem 0 1.5rem;
   border-collapse: separate;
   border-spacing: 0;
@@ -354,6 +352,133 @@ article td:first-child {
   accent-color: var(--ink);
 }
 
+/* ------------------------------------------------- Live demo cards (community.html) */
+/* Only the card itself is styled; nothing reaches inside Viafoura's widgets. */
+.demo {
+  margin: 0 0 2.5rem;
+  padding: 1.25rem 1.5rem 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.demo .viafoura {
+  margin: 0 0 1.25rem;
+}
+
+.demo .viafoura:last-child {
+  margin-bottom: 0;
+}
+
+.demo-label {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.demo-label code {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.demo-split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.demo-split .viafoura {
+  margin: 0;
+}
+
+/* Comment count cards */
+.count-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+.count-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.count-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+}
+
+.count-card-title {
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.count-card-meta,
+.share-total {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.count-card-meta .viafoura,
+.share-total .viafoura {
+  display: inline-flex;
+  margin: 0;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.share-total {
+  font-size: 1rem;
+}
+
+/* Follow buttons */
+.follow-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.75rem;
+}
+
+.follow-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+
+.follow-name {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.follow-type {
+  margin-bottom: 0.6rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.follow-item .viafoura {
+  margin: 0;
+}
+
 /* -------------------------------------------------------------- Responsive */
 @media (max-width: 768px) {
   body {
@@ -375,5 +500,11 @@ article td:first-child {
 
   .viafoura {
     --reserved-space-top: 104px;
+  }
+
+  /* Wide tables scroll sideways instead of stretching the page */
+  article table {
+    display: block;
+    overflow-x: auto;
   }
 }
