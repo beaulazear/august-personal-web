@@ -39,7 +39,7 @@ Viafoura widgets only load when:
 | `live-chat.html` | `<vf-livechat>` | `P1004` | Wrapper needs an explicit height (550px here) |
 | `polls.html` | `<vf-poll>` | `P1006` | Poll is configured by an admin/moderator on the page |
 | `reviews.html` | `<vf-rating>` + `<vf-livereviews>` | `P2001` | Rating summary + review list |
-| `community.html` | `<vf-conversations-count>`, `<vf-trending-articles>`, share bar, share count, `<vf-topic-follow>`, `<vf-conversations>` | `P1007` (counts use `P1001`, `P3001`–`P3003`) | The Additional Components: counts, trending, sharing, follows, featured comments and badges |
+| `community.html` | `<vf-conversations-count>`, `<vf-trending-articles>`, share bar, share count, `<vf-topic-follow>`, `<vf-conversation-starter>`, `<vf-conversations>` | `P1007` (counts use `P1001`, `P3001`–`P3003`) | The Additional Components: counts, trending, sharing, follows, Engagement Starter, featured comments and badges |
 | `spa.html` | `<vf-conversations>` | `P3001`, `P3002`, `P3003` | Client-side article switching with `vf.context.update()` |
 
 Every page also includes the notification tray trigger and the SDK.
