@@ -17,7 +17,7 @@ body {
 }
 
 /* Minimal header */
-header {
+body > header {
   background: #1a1a1a;
   color: white;
   padding: 1rem 2rem;
@@ -27,7 +27,7 @@ header {
   border-bottom: 1px solid #333;
 }
 
-header .brand {
+body > header .brand {
   font-size: 1.25rem;
   font-weight: 600;
   color: white;
@@ -36,24 +36,24 @@ header .brand {
   margin-bottom: 0.5rem;
 }
 
-header nav {
+body > header nav {
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
   font-size: 0.9rem;
 }
 
-header nav a {
+body > header nav a {
   color: #aaa;
   text-decoration: none;
   transition: color 0.2s;
 }
 
-header nav a:hover {
+body > header nav a:hover {
   color: #fff;
 }
 
-header nav a[aria-current="page"] {
+body > header nav a[aria-current="page"] {
   color: #fff;
   font-weight: 500;
 }
@@ -224,7 +224,7 @@ article td {
 
 /* Responsive */
 @media (max-width: 768px) {
-  header {
+  body > header {
     padding: 1rem;
   }
 
