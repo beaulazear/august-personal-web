@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Tools | Beau's Viafoura Implementation</title>
+
+  <!-- Viafoura meta tags -->
+  <meta name="vf:container_id" content="P1007">
+  <meta property="og:url" content="https://www.beaulazear.com/viafoura-demo/community.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Viafoura Community Tools: Counts, Trending, Sharing, Follows and Badges">
+  <meta property="og:description" content="Every Viafoura additional component, implemented live: comment counts, trending conversations, the social share bar, share count, custom follows, featured comments and badges.">
+  <meta property="og:image" content="https://picsum.photos/seed/P1007/1200/800">
+
+  <!-- Site assets -->
+  <script src="assets/site.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header>
+    <a href="index.html" class="brand"><img src="assets/viafoura-icon-red.webp" alt="" width="28" height="28">Beau's Viafoura Implementation</a>
+    <nav>
+      <a href="conversations.html">Conversations</a>
+      <a href="live-blog.html">Live Blog</a>
+      <a href="live-qa.html">Live Q&A</a>
+      <a href="live-chat.html">Live Chat</a>
+      <a href="polls.html">Polls</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="community.html" aria-current="page">Community Tools</a>
+      <a href="spa.html">SPA Demo</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="main-content">
+      <article>
+        <h1>Viafoura Community Tools</h1>
+
+        <div class="byline">
+          <div class="author">
+            <span>Implementation Guide</span>
+          </div>
+          <time datetime="2026-11-11">November 11, 2026</time>
+          <span>Additional Components</span>
+        </div>
+
+        <p>Beyond the main engagement products, Viafoura ships a set of smaller components that help readers find, share and follow conversations. This page implements each one from the <a href="https://documentation.viafoura.com/docs/community-management" target="_blank" rel="noopener">Additional Components</a> docs, with a live widget, the code behind it and its options.</p>
+
+        <table>
+          <tr>
+            <th>Component</th>
+            <th>Tag</th>
+            <th>On this page</th>
+          </tr>
+          <tr>
+            <td><a href="#comment-count">Comment Count</a></td>
+            <td><code>vf-conversations-count</code></td>
+            <td>Live</td>
+          </tr>
+          <tr>
+            <td><a href="#trending">Trending Conversations</a></td>
+            <td><code>vf-trending-articles</code></td>
+            <td>Live (full and condensed)</td>
+          </tr>
+          <tr>
+            <td><a href="#share-bar">Social Share Bar</a></td>
+            <td><code>data-widget="sharebar"</code></td>
+            <td>Live (three styles)</td>
+          </tr>
+          <tr>
+            <td><a href="#share-count">Share Count</a></td>
+            <td><code>data-widget="sharetotal"</code></td>
+            <td>Live</td>
+          </tr>
+          <tr>
+            <td><a href="#follows">Custom Follows</a></td>
+            <td><code>vf-topic-follow</code></td>
+            <td>Live (topic and author)</td>
+          </tr>
+          <tr>
+            <td><a href="#featured">Editor's Pick &amp; Trusted User</a></td>
+            <td>Moderation Console</td>
+            <td>Try it on the comments below</td>
+          </tr>
+          <tr>
+            <td><a href="#badges">Badges</a></td>
+            <td><code>vf:owner</code> meta tag + API</td>
+            <td>Code only</td>
+          </tr>
+        </table>
+
+        <p>Every widget below sits in its own <code>&lt;div class="viafoura"&gt;</code> wrapper and is loaded by the same SDK script as the rest of the site:</p>
+        <pre><code>&lt;script async src="https://cdn.viafoura.net/entry/index.js"&gt;&lt;/script&gt;</code></pre>
+
+        <!-- ============================================================ COMMENT COUNT -->
+        <h2 id="comment-count">Comment Count</h2>
+        <p>Shows just the number of comments on a conversation. Use it on article cards, home pages and section fronts to point readers toward active discussions. The widget only renders the number, so any icon or label around it is up to you.</p>
+      </article>
+
+      <section class="demo" aria-label="Comment Count demo">
+        <div class="demo-label">Live demo · a listing page</div>
+        <div class="count-cards">
+          <a class="count-card" href="conversations.html">
+            <span class="count-card-title">Implementing Viafoura Conversations</span>
+            <span class="count-card-meta">
+              <span class="viafoura"><vf-conversations-count vf-container-id="P1001"></vf-conversations-count></span>
+              comments
+            </span>
+          </a>
+          <a class="count-card" href="spa.html?article=article-1">
+            <span class="count-card-title">Artificial Intelligence and Its Impact on Modern Society</span>
+            <span class="count-card-meta">
+              <span class="viafoura"><vf-conversations-count vf-container-id="P3001"></vf-conversations-count></span>
+              comments
+            </span>
+          </a>
+          <a class="count-card" href="spa.html?article=article-2">
+            <span class="count-card-title">The Global Transition to Sustainable Energy</span>
+            <span class="count-card-meta">
+              <span class="viafoura"><vf-conversations-count vf-container-id="P3002"></vf-conversations-count></span>
+              comments
+            </span>
+          </a>
+          <a class="count-card" href="spa.html?article=article-3">
+            <span class="count-card-title">The Future of Work in a Digital Age</span>
+            <span class="count-card-meta">
+              <span class="viafoura"><vf-conversations-count vf-container-id="P3003"></vf-conversations-count></span>
+              comments
+            </span>
+          </a>
+        </div>
+      </section>
+
+      <article>
+        <p><strong>On an article page</strong>, leave out the attribute and the count reads the page's <code>vf:container_id</code> meta tag:</p>
+        <pre><code>&lt;div class="viafoura"&gt;
+  &lt;vf-conversations-count&gt;&lt;/vf-conversations-count&gt;
+&lt;/div&gt;</code></pre>
+
+        <p><strong>On a listing page</strong> like the one above, every count needs its own <code>vf-container-id</code>, or they would all show the listing page's count:</p>
+        <pre><code>&lt;div class="viafoura"&gt;
+  &lt;vf-conversations-count vf-container-id="P1001"&gt;&lt;/vf-conversations-count&gt;
+&lt;/div&gt;</code></pre>
+
+        <table>
+          <tr>
+            <th>Attribute</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><code>vf-container-id</code></td>
+            <td>Page meta tag</td>
+            <td>Which conversation to count. Required when a page shows counts for several articles.</td>
+          </tr>
+        </table>
+        <p>For pages with many cards, Viafoura recommends the Bulk Comment Count API, which fetches every count in one request instead of one widget each.</p>
+
+        <!-- ============================================================ TRENDING -->
+        <h2 id="trending">Trending Conversations</h2>
+        <p>A list of the articles with the most comment activity, for recirculation in a sidebar or at the end of a story. It ranks pages by visible comments posted within the trend window, then by total comments, and refreshes about every five minutes. The current page is always left out.</p>
+        <p><strong>It stays empty until other pages have comments.</strong> Post on <a href="conversations.html">Conversations</a> or the <a href="spa.html">SPA articles</a> and it will fill in. Pages with no visible comments are never listed.</p>
+      </article>
+
+      <section class="demo" aria-label="Trending Conversations demo">
+        <div class="demo-label">Live demo · <code>view="full"</code> and <code>view="condensed"</code></div>
+        <div class="demo-split">
+          <div class="viafoura">
+            <vf-trending-articles
+              title="Trending Conversations"
+              limit="5"
+              days-published="30"
+              trend-window="48"
+              sort="comments"
+              view="full">
+            </vf-trending-articles>
+          </div>
+          <div class="viafoura">
+            <vf-trending-articles
+              title="Most Talked About"
+              limit="5"
+              days-published="30"
+              trend-window="48"
+              sort="comments"
+              view="condensed">
+            </vf-trending-articles>
+          </div>
+        </div>
+      </section>
+
+      <article>
+        <pre><code>&lt;div class="viafoura"&gt;
+  &lt;vf-trending-articles
+    title="Trending Conversations"
+    limit="5"
+    days-published="30"
+    trend-window="48"
+    sort="comments"
+    view="full"&gt;
+  &lt;/vf-trending-articles&gt;
+&lt;/div&gt;</code></pre>
+
+        <table>
+          <tr>
+            <th>Attribute</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><code>title</code></td>
+            <td>Trending Articles</td>
+            <td>Heading at the top of the widget</td>
+          </tr>
+          <tr>
+            <td><code>limit</code></td>
+            <td>5</td>
+            <td>Number of articles, 1–100</td>
+          </tr>
+          <tr>
+            <td><code>days-published</code></td>
+            <td>7</td>
+            <td>Maximum article age in days, 1–30 or <code>all</code></td>
+          </tr>
+          <tr>
+            <td><code>trend-window</code></td>
+            <td>3</td>
+            <td>Hours of comment activity to rank by, 1–48</td>
+          </tr>
+          <tr>
+            <td><code>sort</code></td>
+            <td>comments</td>
+            <td>Currently the only option</td>
+          </tr>
+          <tr>
+            <td><code>view</code></td>
+            <td>full</td>
+            <td><code>full</code> or <code>condensed</code></td>
+          </tr>
+          <tr>
+            <td><code>vf-container-id</code></td>
+            <td>Page meta tag</td>
+            <td>The current page, so it's excluded from the list</td>
+          </tr>
+        </table>
+        <p><strong>Images:</strong> each article's thumbnail comes from its <code>og:image</code> (or <code>vf:image</code>) meta tag. Use a 3:2 image, ideally 210×140. That's why every page on this site keeps an <code>og:image</code> tag even though the pages show no images.</p>
+        <p>This demo uses the widest windows (30 days, 48 hours) so a low-traffic test site still has something to show. If fewer than <code>limit</code> stories qualify, Viafoura widens the windows to those maximums anyway.</p>
+
+        <!-- ============================================================ SHARE BAR -->
+        <h2 id="share-bar">Social Share Bar</h2>
+        <p>Share buttons with live share counts. The networks shown, and their order, are set in Viafoura Admin rather than in the markup. The markup controls the look: icon shape, layout, labels and counters.</p>
+      </article>
+
+      <section class="demo" aria-label="Social Share Bar demo">
+        <div class="demo-label">Live demo · circle icons with counters and total</div>
+        <div class="viafoura">
+          <div class="vf-widget vf-share-bar-circle"
+               data-widget="sharebar"
+               data-show-counters="true"
+               data-show-total="true"
+               data-button-view="false">
+          </div>
+        </div>
+
+        <div class="demo-label">Square icons · black and white · borders</div>
+        <div class="viafoura">
+          <div class="vf-widget vf-share-bar-square vf-share-bar-bw vf-share-bar-borders"
+               data-widget="sharebar"
+               data-show-counters="false"
+               data-show-total="true">
+          </div>
+        </div>
+
+        <div class="demo-label">Single share button (<code>data-button-view="true"</code>)</div>
+        <div class="viafoura">
+          <div class="vf-widget vf-share-button-circle"
+               data-widget="sharebar"
+               data-button-view="true">
+          </div>
+        </div>
+      </section>
+
+      <article>
+        <pre><code>&lt;div class="viafoura"&gt;
+  &lt;div class="vf-widget vf-share-bar-circle"
+       data-widget="sharebar"
+       data-show-counters="true"
+       data-show-total="true"
+       data-button-view="false"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+        <table>
+          <tr>
+            <th>Attribute</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><code>data-widget</code></td>
+            <td>—</td>
+            <td>Must be <code>sharebar</code></td>
+          </tr>
+          <tr>
+            <td><code>data-show-total</code></td>
+            <td>true</td>
+            <td>Total share count at the end of the bar, updated live</td>
+          </tr>
+          <tr>
+            <td><code>data-show-counters</code></td>
+            <td>true</td>
+            <td>A count on each network's button, updated live</td>
+          </tr>
+          <tr>
+            <td><code>data-show-labels</code></td>
+            <td>false</td>
+            <td>Network names next to the icons (vertical bars only)</td>
+          </tr>
+          <tr>
+            <td><code>data-button-view</code></td>
+            <td>false</td>
+            <td>One share button that opens the bar as a dropdown, or full screen on touch devices</td>
+          </tr>
+          <tr>
+            <td><code>data-path</code> / <code>data-url</code></td>
+            <td>Current page</td>
+            <td>The page to share. Use one or the other, not both.</td>
+          </tr>
+          <tr>
+            <td><code>data-share-current-page-url</code></td>
+            <td>false</td>
+            <td>Share whatever URL is in the address bar. In a single-page app, call <code>window.vf.context.reset()</code> when the URL changes.</td>
+          </tr>
+        </table>
+
+        <p><strong>Style classes</strong> go on the <code>vf-widget</code> element:</p>
+        <ul>
+          <li>Icon shape, pick one: <code>vf-share-bar-default</code>, <code>vf-share-bar-circle</code> or <code>vf-share-bar-square</code></li>
+          <li><code>vf-share-bar-vertical</code> stacks the buttons vertically</li>
+          <li><code>vf-share-bar-borders</code> adds a border; <code>vf-share-bar-bw</code> makes it black and white</li>
+          <li>With <code>data-button-view="true"</code>, use <code>vf-share-button-default</code>, <code>-circle</code> or <code>-square</code></li>
+          <li>Add <code>inline-block</code> to the <code>viafoura</code> wrapper to sit the bar inline with other content</li>
+        </ul>
+        <p>On screens narrower than 765px, a horizontal bar shows the first three networks and a "show more" button.</p>
+        <p><strong>Heads up:</strong> the docs say this version of the Share Bar will be deprecated in favour of a WCAG 2.2 AA–compliant version, so check the docs before recommending it to a client.</p>
+
+        <!-- ============================================================ SHARE COUNT -->
+        <h2 id="share-count">Share Count</h2>
+        <p>The page's total share count on its own, without the buttons. It reads the same counts as the Share Bar, so set the bar up first. If the bar uses <code>data-path</code> or <code>data-url</code>, the count must use the same value.</p>
+      </article>
+
+      <section class="demo" aria-label="Share Count demo">
+        <div class="demo-label">Live demo · total shares for this page</div>
+        <div class="share-total">
+          <div class="viafoura">
+            <div class="vf-widget vf-quote"
+                 data-widget="sharetotal"
+                 data-realtime="true">
+            </div>
+          </div>
+          <span>shares</span>
+        </div>
+      </section>
+
+      <article>
+        <pre><code>&lt;div class="viafoura"&gt;
+  &lt;div class="vf-widget vf-quote"
+       data-widget="sharetotal"
+       data-realtime="true"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+        <table>
+          <tr>
+            <th>Attribute</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><code>data-path</code></td>
+            <td>Current page</td>
+            <td>Path of the page to count, e.g. <code>/viafoura-demo/community.html</code></td>
+          </tr>
+          <tr>
+            <td><code>data-url</code></td>
+            <td>—</td>
+            <td>Full URL of the page to count</td>
+          </tr>
+          <tr>
+            <td><code>data-realtime</code></td>
+            <td>true</td>
+            <td><code>false</code> loads the count once and doesn't update it live</td>
+          </tr>
+        </table>
+        <p>Share a page with the bar above and watch this number change. The <strong>VF Events</strong> panel (bottom left) also logs <code>sharebar</code> and <code>share-total</code> events.</p>
+
+        <!-- ============================================================ FOLLOWS -->
+        <h2 id="follows">Custom Follows</h2>
+        <p>Follow buttons for a topic or an author. Readers manage what they follow in the <strong>Community</strong> tab of the notification tray, and get a tray notification when the publisher announces new content for that topic.</p>
+      </article>
+
+      <section class="demo" aria-label="Custom Follows demo">
+        <div class="demo-label">Live demo · topic follow and author follow</div>
+        <div class="follow-row">
+          <div class="follow-item">
+            <span class="follow-name">Viafoura Implementation Guides</span>
+            <span class="follow-type">Topic</span>
+            <div class="viafoura">
+              <vf-topic-follow
+                topic-id="vfimplementationguides"
+                topic-name="Viafoura Implementation Guides"
+                topic-type="Topic"
+                show-count="true"
+                minimum-count="0">
+              </vf-topic-follow>
+            </div>
+          </div>
+          <div class="follow-item">
+            <span class="follow-name">Beau Lazear</span>
+            <span class="follow-type">Author</span>
+            <div class="viafoura">
+              <vf-topic-follow
+                topic-id="authorbeaulazear"
+                topic-name="Beau Lazear"
+                topic-type="Author"
+                show-count="true"
+                minimum-count="0">
+              </vf-topic-follow>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <article>
+        <pre><code>&lt;div class="viafoura"&gt;
+  &lt;vf-topic-follow
+    topic-id="authorbeaulazear"
+    topic-name="Beau Lazear"
+    topic-type="Author"
+    show-count="true"
+    minimum-count="0"&gt;
+  &lt;/vf-topic-follow&gt;
+&lt;/div&gt;</code></pre>
+
+        <table>
+          <tr>
+            <th>Attribute</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><code>topic-id</code></td>
+            <td>— (required)</td>
+            <td>Internal ID for the topic. Not shown to readers; avoid special characters.</td>
+          </tr>
+          <tr>
+            <td><code>topic-name</code></td>
+            <td>— (required)</td>
+            <td>Name readers see in the Community tab after following</td>
+          </tr>
+          <tr>
+            <td><code>topic-type</code></td>
+            <td>topic</td>
+            <td>Any label, such as <code>Author</code>. Shown to readers.</td>
+          </tr>
+          <tr>
+            <td><code>show-count</code></td>
+            <td>false</td>
+            <td>Show the follower count on the button</td>
+          </tr>
+          <tr>
+            <td><code>minimum-count</code></td>
+            <td>0</td>
+            <td>Hide the count until it reaches this number</td>
+          </tr>
+        </table>
+
+        <p><strong>Sending the notifications.</strong> Following only subscribes the reader. To notify them, the publisher calls the Broadcast Notifications API with a title, description, image and URL, usually from the CMS when an article is published. Viafoura has no screen for sending broadcasts. To avoid duplicate notifications, give each article a single topic.</p>
+        <p><strong>Not the same as following a conversation.</strong> The <em>Follow</em> button at the top of the comments subscribes a reader to new comments on that one article. A topic follow subscribes them to new articles.</p>
+
+        <!-- ============================================================ FEATURED -->
+        <h2 id="featured">Editor's Pick &amp; Trusted User</h2>
+        <p>These have no markup of their own. They're set by a moderator or admin, and show up inside the Conversations widget:</p>
+        <ul>
+          <li><strong>Featured comment (Editor's Pick):</strong> a moderator marks a standout comment as featured. It gets a <em>Featured Comment</em> badge and appears in the <strong>Featured</strong> tab, which shows top-level comments only, not replies.</li>
+          <li><strong>Trusted user:</strong> gets an icon beside their name, and their comments skip moderation and spam filters.</li>
+        </ul>
+        <p><strong>Try it:</strong> post a comment in the conversation at the bottom of this page, feature it as a moderator, then reload. It should appear in the Featured tab with its badge.</p>
+
+        <!-- ============================================================ BADGES -->
+        <h2 id="badges">Badges</h2>
+        <p>Badges label users in comments. There are four kinds, and only one is set from the page.</p>
+
+        <p><strong>Author badge (page markup).</strong> Tell Viafoura who wrote the article with a meta tag, and that person's comments on it get an Author badge. The value is the author's Viafoura user ID, or a third-party ID with a prefix such as <code>oidc:</code> or <code>cookie:</code>:</p>
+        <pre><code>&lt;meta property="vf:owner" content="viafoura-id:YOUR_USER_ID" /&gt;</code></pre>
+        <ul>
+          <li>Use <code>vf:owner</code> or <code>vf:author</code>, never both.</li>
+          <li>For several authors, add one tag per author.</li>
+        </ul>
+        <p>This page doesn't set one yet, because it needs a real user ID from the site. Add your account's ID and your comments here will show the badge.</p>
+
+        <p><strong>Trusted, Moderator and Custom badges (API).</strong> No page markup. With a client ID and secret from Viafoura:</p>
+        <ol>
+          <li>Get a JWT from the Authorize Client API (it lasts 5 minutes).</li>
+          <li>Create a badge type with a <code>label</code> (internal) and <code>description</code> (shown to readers).</li>
+          <li>Assign it to one user per request, by <code>user_uuid</code> or third-party ID.</li>
+        </ol>
+        <p>Badges can also be assigned automatically from webhooks, for example after a reader's 100th comment. Viafoura has to switch webhooks on first.</p>
+
+        <h2>Try It Below</h2>
+        <p>The conversation below uses this page's container ID, <code>P1007</code>. Use it to test featured comments, trusted users and badges, and to give the trending widget and counts some activity.</p>
+      </article>
+
+      <div class="viafoura">
+        <vf-conversations limit="10" reply-limit="2" sort="newest" initial-height="600"></vf-conversations>
+      </div>
+    </div>
+
+    <!-- Viafoura Tray Trigger -->
+    <div class="viafoura">
+      <vf-tray-trigger floating="true"></vf-tray-trigger>
+    </div>
+  </main>
+
+  <!-- Viafoura SDK -->
+  <script async src="https://cdn.viafoura.net/entry/index.js"></script>
+</body>
+</html>

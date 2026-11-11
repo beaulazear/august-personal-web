@@ -39,6 +39,7 @@ Viafoura widgets only load when:
 | `live-chat.html` | `<vf-livechat>` | `P1004` | Wrapper needs an explicit height (550px here) |
 | `polls.html` | `<vf-poll>` | `P1006` | Poll is configured by an admin/moderator on the page |
 | `reviews.html` | `<vf-rating>` + `<vf-livereviews>` | `P2001` | Rating summary + review list |
+| `community.html` | `<vf-conversations-count>`, `<vf-trending-articles>`, share bar, share count, `<vf-topic-follow>`, `<vf-conversations>` | `P1007` (counts use `P1001`, `P3001`–`P3003`) | The Additional Components: counts, trending, sharing, follows, featured comments and badges |
 | `spa.html` | `<vf-conversations>` | `P3001`, `P3002`, `P3003` | Client-side article switching with `vf.context.update()` |
 
 Every page also includes the notification tray trigger and the SDK.
@@ -57,6 +58,7 @@ viafoura-demo/
 ├── live-chat.html
 ├── polls.html
 ├── reviews.html
+├── community.html
 ├── spa.html
 └── README.md
 ```
@@ -174,7 +176,8 @@ window.vf.$subscribe('comment', 'created', function(data) {
 4. **`live-blog.html`**: publish posts from the Viafoura admin and watch them appear
 5. **`live-chat.html`**: open in two tabs to see messages arrive in real time
 6. **`live-qa.html`**: submit and upvote questions
-7. **`spa.html`**: switch articles, use back/forward, and open a deep link like `spa.html?article=article-3`
+7. **`community.html`**: check counts and trending fill in after commenting elsewhere, share the page, follow the topic and author, feature a comment as a moderator
+8. **`spa.html`**: switch articles, use back/forward, and open a deep link like `spa.html?article=article-3`
 
 ## Notes on the official docs
 
