@@ -171,6 +171,81 @@
         <h2>What is Viafoura Conversations?</h2>
         <p>Viafoura Conversations is a real-time commenting platform designed to enable deep audience engagement with your content and community members. It emphasizes civil discourse through industry-leading moderation tools while maintaining your publisher brand integrity.</p>
 
+        <h2>Start with the Engagement Starter</h2>
+        <p>Most readers never scroll far enough to find the comments. The <strong>Engagement Starter</strong> fixes that: it's a small prompt you place partway through the article that invites readers into the conversation and, when clicked, takes them straight down to it. Because it's built to point at the comments, it only works on a page that also has the Conversations widget, so it's the natural first piece of a Conversations install.</p>
+        <p>The prompt adapts to the conversation on its own:</p>
+        <ul>
+          <li><strong>It follows the comment count.</strong> "Be the first to comment" on a new article, "Read the comments" with one to five, and "Read the [count] comments" above that. On a closed conversation it reads "Read the comments", or hides entirely if there are none.</li>
+          <li><strong>It can show a highlighted comment.</strong> When a moderator pins or features a comment, that comment replaces the default text. A pinned comment wins over a featured one, only the most recent is shown, and replies can't be featured.</li>
+          <li><strong>It can run a poll.</strong> Moderators and admins see a <em>Create Poll</em> button on the starter. Questions are up to 120 characters, with 2–10 options of up to 100 characters each, and an optional close date. Without one, the poll runs until it is closed by hand.</li>
+        </ul>
+        <p>Here it is on this page. Click it and it will take you to the comments at the bottom:</p>
+      </article>
+
+      <section class="demo" aria-label="Engagement Starter demo">
+        <div class="demo-label">Live demo · Engagement Starter</div>
+        <div class="viafoura">
+          <vf-conversation-starter
+            target="conversations-widget"
+            title="Have your say."
+            description="Leave a comment below and let us know what you think."
+            minimum-comment-count="5">
+          </vf-conversation-starter>
+        </div>
+      </section>
+
+      <article>
+        <p><strong>How it's wired up.</strong> The starter's <code>target</code> is the <code>id</code> of the <code>&lt;div class="viafoura"&gt;</code> wrapping the Conversations widget, written without a <code>#</code>. That id must be unique on the page.</p>
+        <pre><code>&lt;!-- In the article --&gt;
+&lt;div class="viafoura"&gt;
+  &lt;vf-conversation-starter
+    target="conversations-widget"
+    title="Have your say."
+    description="Leave a comment below and let us know what you think."
+    minimum-comment-count="5"&gt;
+  &lt;/vf-conversation-starter&gt;
+&lt;/div&gt;
+
+&lt;!-- Further down: the Conversations widget, with the matching id --&gt;
+&lt;div class="viafoura" id="conversations-widget"&gt;
+  &lt;vf-conversations&gt;&lt;/vf-conversations&gt;
+&lt;/div&gt;</code></pre>
+
+        <table>
+          <tr>
+            <th>Attribute</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><code>target</code></td>
+            <td>— (required)</td>
+            <td>The <code>id</code> of the Conversations widget's wrapper</td>
+          </tr>
+          <tr>
+            <td><code>title</code></td>
+            <td>Have your say.</td>
+            <td>Heading of the prompt</td>
+          </tr>
+          <tr>
+            <td><code>description</code></td>
+            <td>Leave a comment below and let us know what you think.</td>
+            <td>Text under the heading</td>
+          </tr>
+          <tr>
+            <td><code>minimum-comment-count</code></td>
+            <td>5</td>
+            <td>Comments needed before the count is shown</td>
+          </tr>
+          <tr>
+            <td><code>vf-container-id</code></td>
+            <td>Page meta tag</td>
+            <td>Only needed if the page uses widget-level container IDs</td>
+          </tr>
+        </table>
+        <p><strong>Try it:</strong> as a moderator, pin or feature a comment in the conversation below and the starter will show it, or create a poll from the starter itself. An ad unit can also run next to the starter, using the publisher's own ad inventory or Viafoura's.</p>
+        <p>With the starter in place, the rest of this guide covers the Conversations widget it leads to.</p>
+
         <h2>Key Features</h2>
         <ul>
           <li><strong>Real-time comment loading</strong> - Comments appear instantly as users post them</li>
@@ -276,7 +351,7 @@
           <h3>Conversations</h3>
           <button class="comments-panel-close" id="trayCloseBtn" aria-label="Close comments">✕</button>
         </div>
-        <div class="viafoura">
+        <div class="viafoura" id="conversations-widget">
           <vf-conversations></vf-conversations>
         </div>
       </aside>
@@ -314,6 +389,15 @@
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') closeTray();
       });
+
+      // In the side tray layout the comments are off screen, so the Engagement
+      // Starter has nothing visible to scroll to. Open the tray when it's clicked.
+      var starter = document.querySelector('vf-conversation-starter');
+      if (starter) {
+        starter.addEventListener('click', function() {
+          if (body.classList.contains('layout-side-rail')) body.classList.add('tray-open');
+        });
+      }
     })();
   </script>
 
