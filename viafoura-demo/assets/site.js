@@ -55,19 +55,19 @@
   function createDebugPanel() {
     // Create panel HTML
     const panel = document.createElement('details');
-    panel.style.cssText = 'position: fixed; bottom: 20px; left: 20px; z-index: 9999; background: #fff; border: 2px solid #333; border-radius: 4px; max-width: 400px; max-height: 500px; overflow: auto; font-family: monospace; font-size: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);';
+    panel.style.cssText = 'position: fixed; bottom: 20px; left: 20px; z-index: 9999; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; max-width: min(400px, calc(100vw - 40px)); max-height: 500px; overflow: auto; font-family: "JetBrains Mono", ui-monospace, Menlo, monospace; font-size: 12px; color: #334155; box-shadow: 0 10px 30px rgba(15,23,42,0.12);';
 
     panel.innerHTML = `
-      <summary style="padding: 8px 12px; cursor: pointer; background: #333; color: #fff; font-weight: bold; position: sticky; top: 0;">
+      <summary style="padding: 10px 14px; cursor: pointer; background: #0f172a; color: #fff; font-family: Inter, -apple-system, sans-serif; font-weight: 600; font-size: 13px; position: sticky; top: 0;">
         VF Events
       </summary>
       <div style="padding: 8px;">
         <div style="margin-bottom: 8px;">
-          <button id="vf-log-page" style="margin-right: 4px; padding: 4px 8px; font-size: 11px;">Log Page</button>
-          <button id="vf-log-user" style="margin-right: 4px; padding: 4px 8px; font-size: 11px;">Log User</button>
-          <button id="vf-clear-log" style="padding: 4px 8px; font-size: 11px;">Clear</button>
+          <button id="vf-log-page" style="margin-right: 4px; padding: 4px 10px; font-size: 11px; border: 1px solid #e2e8f0; border-radius: 999px; background: #fff; cursor: pointer;">Log Page</button>
+          <button id="vf-log-user" style="margin-right: 4px; padding: 4px 10px; font-size: 11px; border: 1px solid #e2e8f0; border-radius: 999px; background: #fff; cursor: pointer;">Log User</button>
+          <button id="vf-clear-log" style="padding: 4px 10px; font-size: 11px; border: 1px solid #e2e8f0; border-radius: 999px; background: #fff; cursor: pointer;">Clear</button>
         </div>
-        <div id="vf-event-log" style="background: #f5f5f5; padding: 8px; border-radius: 3px; min-height: 100px; max-height: 350px; overflow-y: auto;"></div>
+        <div id="vf-event-log" style="background: #f8fafc; padding: 8px; border-radius: 8px; min-height: 100px; max-height: 350px; overflow-y: auto;"></div>
       </div>
     `;
 
@@ -77,14 +77,14 @@
     function log(message, data) {
       const timestamp = new Date().toLocaleTimeString();
       const entry = document.createElement('div');
-      entry.style.cssText = 'margin-bottom: 4px; padding: 4px; border-bottom: 1px solid #ddd; word-break: break-word;';
+      entry.style.cssText = 'margin-bottom: 4px; padding: 4px; border-bottom: 1px solid #e2e8f0; word-break: break-word;';
       // Build with textContent: event payloads contain user-generated content
       const time = document.createElement('strong');
       time.textContent = timestamp;
       entry.append(time, ': ' + message);
       if (data) {
         const pre = document.createElement('pre');
-        pre.style.cssText = 'margin: 4px 0 0 0; font-size: 10px; background: #e0e0e0; padding: 4px; border-radius: 2px; overflow-x: auto;';
+        pre.style.cssText = 'margin: 4px 0 0 0; font-size: 10px; background: #f1f5f9; padding: 6px; border-radius: 6px; overflow-x: auto;';
         pre.textContent = JSON.stringify(data, null, 2);
         entry.appendChild(pre);
       }

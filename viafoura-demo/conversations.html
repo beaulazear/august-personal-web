@@ -15,33 +15,12 @@
 
   <!-- Site assets -->
   <script src="assets/site.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=JetBrains+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="assets/styles.css">
 
   <style>
-    /* Customization panel */
-    .customization-panel {
-      background: #f8f9fa;
-      border: 2px solid #333;
-      padding: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .customization-panel h3 {
-      margin: 0 0 1rem 0;
-      font-size: 1rem;
-      font-weight: 600;
-    }
-
-
-    .layout-toggle label {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      cursor: pointer;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-
     /*
      * Side tray layout.
      * There is a single <vf-conversations> on the page. Toggling the layout only
@@ -82,15 +61,15 @@
       align-items: center;
       justify-content: space-between;
       padding: 1.5rem;
-      border-bottom: 1px solid #f0f0f0;
-      background: #fafafa;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
     }
 
     .comments-panel-header h3 {
       margin: 0;
       font-size: 1.25rem;
       font-weight: 600;
-      color: #1a1a1a;
+      color: var(--ink);
     }
 
     .comments-panel-close {
@@ -115,7 +94,7 @@
       top: 50%;
       right: 20px;
       transform: translateY(-50%);
-      background: #1a1a1a;
+      background: var(--ink);
       color: #fff;
       border: none;
       padding: 1.25rem 0.65rem;
@@ -162,25 +141,15 @@
   </header>
 
   <main>
-    <div class="info-box">
-      <h2>Viafoura Conversations Implementation Guide</h2>
-      <ul>
-        <li><strong>Learn</strong> - Step-by-step instructions for implementing Conversations</li>
-        <li><strong>Explore</strong> - Configuration parameters and customization options</li>
-        <li><strong>Demo</strong> - Live working widget below with layout toggle feature</li>
-        <li><strong>Container ID:</strong> <code>P1001</code></li>
-      </ul>
-      <p><strong>This page demonstrates:</strong> How to add Viafoura's real-time commenting platform to your site, including code examples, best practices, and layout flexibility.</p>
-    </div>
 
     <!-- Customization Controls -->
     <div class="customization-panel">
-      <h3>🎨 Customize Conversations Widget</h3>
+      <h3>Customize the widget</h3>
 
       <div class="layout-toggle">
         <label>
           <input type="checkbox" id="sideRailToggle">
-          <span><strong>Enable Collapsible Side Tray</strong> (like notifications)</span>
+          <span><strong>Collapsible side tray</strong>: comments slide in from the right, like notifications</span>
         </label>
       </div>
     </div>
