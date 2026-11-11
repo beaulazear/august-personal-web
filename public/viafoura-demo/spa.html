@@ -15,6 +15,9 @@
 
   <!-- Site assets -->
   <script src="assets/site.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=JetBrains+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
@@ -32,17 +35,6 @@
   </header>
 
   <main>
-    <div class="info-box">
-      <h2>What this page demonstrates</h2>
-      <ul>
-        <li><strong>SPA navigation pattern</strong> - Dynamic content switching without page reload</li>
-        <li>Proper use of <code>vf.context.update()</code> when changing content</li>
-        <li>History API integration with browser back/forward buttons</li>
-        <li>Optional analytics tracking on content change</li>
-      </ul>
-      <p><strong>Test:</strong> Click the article buttons below to switch content. Notice how the Conversations widget updates to show comments for each article. Use browser back/forward buttons to navigate history.</p>
-      <p><strong>Key point:</strong> Always call <code>vf.context.update()</code> after changing page content in an SPA.</p>
-    </div>
 
     <div class="spa-controls">
       <h3>Load Different Articles</h3>
