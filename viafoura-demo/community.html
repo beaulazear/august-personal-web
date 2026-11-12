@@ -10,10 +10,15 @@
   <meta property="og:url" content="https://www.beaulazear.com/viafoura-demo/community.html">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Viafoura Community Tools: Counts, Trending, Sharing, Follows and Badges">
-  <meta property="og:description" content="Every Viafoura additional component, implemented live: comment counts, trending conversations, the social share bar, share count, custom follows, featured comments and badges.">
-  <meta property="og:image" content="https://picsum.photos/seed/P1007/1200/800">
+  <meta property="og:description" content="Every Viafoura additional component, implemented live: comment counts, trending conversations, the social share bar, share count, custom follows, the notification bell, a standalone ad, featured comments and badges.">
+  <meta property="og:image" content="https://www.beaulazear.com/viafoura-demo/assets/share-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
 
   <!-- Site assets -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <script src="assets/site.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,8 +68,8 @@
           </tr>
           <tr>
             <td><a href="#trending">Trending Conversations</a></td>
-            <td><code>vf-trending-articles</code></td>
-            <td>Live (full and condensed)</td>
+            <td><code>vf-trending-articles</code>, <code>vf-content-recirculation</code></td>
+            <td>Live (vertical full, vertical condensed, carousel)</td>
           </tr>
           <tr>
             <td><a href="#share-bar">Social Share Bar</a></td>
@@ -79,7 +84,17 @@
           <tr>
             <td><a href="#follows">Custom Follows</a></td>
             <td><code>vf-topic-follow</code></td>
-            <td>Live (topic and author)</td>
+            <td>Live (plain button and with follower count)</td>
+          </tr>
+          <tr>
+            <td><a href="#bell">Notification Bell</a></td>
+            <td><code>vf-tray-trigger</code></td>
+            <td>Live (inline and floating)</td>
+          </tr>
+          <tr>
+            <td><a href="#standalone-ad">Standalone Ad</a></td>
+            <td><code>vf-standalone-ad</code></td>
+            <td>Live</td>
           </tr>
           <tr>
             <td><a href="#featured">Editor's Pick &amp; Trusted User</a></td>
@@ -162,12 +177,12 @@
 
         <!-- ============================================================ TRENDING -->
         <h2 id="trending">Trending Conversations</h2>
-        <p>A list of the articles with the most comment activity, for recirculation in a sidebar or at the end of a story. It ranks pages by visible comments posted within the trend window, then by total comments, and refreshes about every five minutes. The current page is always left out.</p>
+        <p>A list of the articles with the most comment activity, for recirculation in a sidebar or at the end of a story. It ranks pages by visible comments posted within the trend window, then by total comments, and refreshes about every five minutes. The current page is always left out. It comes in two layouts: a <strong>vertical list</strong> (<code>vf-trending-articles</code>, with a full and a condensed view) and a horizontal <strong>carousel</strong> (<code>vf-content-recirculation</code>), which also has an ad position.</p>
         <p><strong>It stays empty until other pages have comments.</strong> Post on <a href="conversations.html">Conversations</a> or the <a href="spa.html">SPA articles</a> and it will fill in. Pages with no visible comments are never listed.</p>
       </article>
 
       <section class="demo" aria-label="Trending Conversations demo">
-        <div class="demo-label">Live demo · <code>view="full"</code> and <code>view="condensed"</code></div>
+        <div class="demo-label">Live demo · vertical, <code>view="full"</code> and <code>view="condensed"</code></div>
         <div class="demo-split">
           <div class="viafoura">
             <vf-trending-articles
@@ -192,6 +207,19 @@
         </div>
       </section>
 
+      <section class="demo" aria-label="Trending Conversations carousel demo">
+        <div class="demo-label">Live demo · carousel, <code>vf-content-recirculation</code></div>
+        <div class="viafoura">
+          <vf-content-recirculation
+            title="Trending Conversations"
+            limit="5"
+            days-published="30"
+            trend-window="48"
+            sort="comments">
+          </vf-content-recirculation>
+        </div>
+      </section>
+
       <article>
         <pre><code>&lt;div class="viafoura"&gt;
   &lt;vf-trending-articles
@@ -202,6 +230,17 @@
     sort="comments"
     view="full"&gt;
   &lt;/vf-trending-articles&gt;
+&lt;/div&gt;
+
+&lt;!-- Carousel: same attributes, no view --&gt;
+&lt;div class="viafoura"&gt;
+  &lt;vf-content-recirculation
+    title="Trending Conversations"
+    limit="5"
+    days-published="30"
+    trend-window="48"
+    sort="comments"&gt;
+  &lt;/vf-content-recirculation&gt;
 &lt;/div&gt;</code></pre>
 
         <table>
@@ -223,7 +262,7 @@
           <tr>
             <td><code>days-published</code></td>
             <td>7</td>
-            <td>Maximum article age in days, 1–30 or <code>all</code></td>
+            <td>Maximum article age in days, 1–30 (<code>all</code> also works on the vertical list)</td>
           </tr>
           <tr>
             <td><code>trend-window</code></td>
@@ -238,7 +277,7 @@
           <tr>
             <td><code>view</code></td>
             <td>full</td>
-            <td><code>full</code> or <code>condensed</code></td>
+            <td><code>full</code> or <code>condensed</code> (vertical list only)</td>
           </tr>
           <tr>
             <td><code>vf-container-id</code></td>
@@ -248,6 +287,7 @@
         </table>
         <p><strong>Images:</strong> each article's thumbnail comes from its <code>og:image</code> (or <code>vf:image</code>) meta tag. Use a 3:2 image, ideally 210×140. That's why every page on this site keeps an <code>og:image</code> tag even though the pages show no images.</p>
         <p>This demo uses the widest windows (30 days, 48 hours) so a low-traffic test site still has something to show. If fewer than <code>limit</code> stories qualify, Viafoura widens the windows to those maximums anyway.</p>
+        <p><strong>Carousel ad.</strong> Once Viafoura switches ads on for Trending, the carousel fires <code>requestContentRecirculationAd</code> for a 300×250 slot. This page fills it with the site's shared Google Ad Manager handler; the setup is under <a href="conversations.html#ads">Ads in Conversations</a>.</p>
 
         <!-- ============================================================ SHARE BAR -->
         <h2 id="share-bar">Social Share Bar</h2>
@@ -403,7 +443,7 @@
       </article>
 
       <section class="demo" aria-label="Custom Follows demo">
-        <div class="demo-label">Live demo · topic follow and author follow</div>
+        <div class="demo-label">Live demo · plain button (topic) and with follower count (author)</div>
         <div class="follow-row">
           <div class="follow-item">
             <span class="follow-name">Viafoura Implementation Guides</span>
@@ -412,9 +452,7 @@
               <vf-topic-follow
                 topic-id="vfimplementationguides"
                 topic-name="Viafoura Implementation Guides"
-                topic-type="Topic"
-                show-count="true"
-                minimum-count="0">
+                topic-type="Topic">
               </vf-topic-follow>
             </div>
           </div>
@@ -478,8 +516,50 @@
           </tr>
         </table>
 
+        <p>The button has two views: the plain <em>Follow</em> button (the default, as on the topic above) and the button with a follower count (<code>show-count="true"</code>, as on the author). With <code>minimum-count</code>, the count stays hidden until enough people follow, so a new topic doesn't show "0 followers".</p>
         <p><strong>Sending the notifications.</strong> Following only subscribes the reader. To notify them, the publisher calls the Broadcast Notifications API with a title, description, image and URL, usually from the CMS when an article is published. Viafoura has no screen for sending broadcasts. To avoid duplicate notifications, give each article a single topic.</p>
         <p><strong>Not the same as following a conversation.</strong> The <em>Follow</em> button at the top of the comments subscribes a reader to new comments on that one article. A topic follow subscribes them to new articles.</p>
+
+        <!-- ============================================================ BELL -->
+        <h2 id="bell">Notification Bell</h2>
+        <p>The bell opens the notification tray, where readers log in, see replies and manage what they follow. A badge on its corner counts unseen notifications and clears when the tray opens. It has two views: <strong>inline</strong>, placed in the page like any element (in a site header, for example), and <strong>floating</strong>, pinned to the bottom-right of the screen. A page can have any number of bells, and if there are none, the Conversations widget adds one to itself.</p>
+      </article>
+
+      <section class="demo" aria-label="Notification Bell demo">
+        <div class="demo-label">Live demo · inline bell (the floating one is at the bottom-right of this page)</div>
+        <div class="viafoura">
+          <vf-tray-trigger></vf-tray-trigger>
+        </div>
+      </section>
+
+      <article>
+        <pre><code>&lt;!-- Inline: sits where you put it --&gt;
+&lt;div class="viafoura"&gt;
+  &lt;vf-tray-trigger&gt;&lt;/vf-tray-trigger&gt;
+&lt;/div&gt;
+
+&lt;!-- Floating: pinned to the bottom-right corner --&gt;
+&lt;div class="viafoura"&gt;
+  &lt;vf-tray-trigger floating="true"&gt;&lt;/vf-tray-trigger&gt;
+&lt;/div&gt;</code></pre>
+
+        <!-- ============================================================ STANDALONE AD -->
+        <h2 id="standalone-ad">Standalone Ad</h2>
+        <p>An ad unit on its own, for a spot on the page with no other Viafoura product. It uses the same settings and layout as the trending carousel, takes no attributes, and fires <code>requestStandaloneAd</code> for a 300×250 slot, which this page fills through Google Ad Manager. Viafoura support has to switch it on for the site first; until then the space stays empty.</p>
+      </article>
+
+      <section class="demo" aria-label="Standalone Ad demo">
+        <div class="demo-label">Live demo · standalone ad</div>
+        <div class="viafoura">
+          <vf-standalone-ad></vf-standalone-ad>
+        </div>
+      </section>
+
+      <article>
+        <pre><code>&lt;div class="viafoura"&gt;
+  &lt;vf-standalone-ad&gt;&lt;/vf-standalone-ad&gt;
+&lt;/div&gt;</code></pre>
+        <p>The handler, the other ad events and how to turn ads on are covered in <a href="conversations.html#ads">Ads in Conversations</a>.</p>
 
         <!-- ============================================================ FEATURED -->
         <h2 id="featured">Editor's Pick &amp; Trusted User</h2>
@@ -524,6 +604,9 @@
       <vf-tray-trigger floating="true"></vf-tray-trigger>
     </div>
   </main>
+
+  <!-- Viafoura Integrated Ads (Google Ad Manager) -->
+  <script src="assets/ads.js"></script>
 
   <!-- Viafoura SDK -->
   <script async src="https://cdn.viafoura.net/entry/index.js"></script>
