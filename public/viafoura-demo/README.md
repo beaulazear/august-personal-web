@@ -40,7 +40,7 @@ Viafoura widgets only load when:
 | `polls.html` | `<vf-poll>` | `P1006` | Poll is configured by an admin/moderator on the page |
 | `reviews.html` | `<vf-rating>` + `<vf-livereviews>` | `P2001` | Rating summary + review list |
 | `community.html` | `<vf-conversations-count>`, `<vf-trending-articles>`, `<vf-content-recirculation>`, share bar, share count, `<vf-topic-follow>`, `<vf-tray-trigger>`, `<vf-standalone-ad>`, `<vf-conversations>` | `P1007` (counts use `P1001`, `P3001`–`P3003`) | The Additional Components, with every view of each: counts, trending (vertical and carousel), sharing, follows, the bell, a standalone ad, featured comments and badges |
-| `spa.html` | `<vf-conversations>` | `P3001`, `P3002`, `P3003` | Client-side article switching with `vf.context.update()` |
+| `spa.html` | `<vf-conversations>` | `P3001`, `P3002`, `P3003` | Client-side article switching: update meta tags, then `vf.context.reset()` |
 
 Every page also includes the notification tray trigger and the SDK.
 
@@ -132,22 +132,21 @@ These are the tags used on the live pages:
 
 ## SPA integration pattern
 
-When content changes without a full page reload, update the Viafoura context:
+When content changes without a full page reload ([Single Page App Setup](https://documentation.viafoura.com/docs/single-page-app-setup)): load the new content and URL, update the meta tags, then reset the widgets. There is no `vf.context.update()`; widgets only pick up a new container ID through `reset()` (or `teardown()` + `setup()`).
 
 ```javascript
+history.pushState({}, '', newUrl);
+document.querySelector('meta[name="vf:container_id"]').content = 'NEW_CONTAINER_ID';
+document.querySelector('meta[property="og:url"]').content = window.location.href;
+document.querySelector('meta[property="og:title"]').content = 'New Article Title';
+
 window.vfQ = window.vfQ || [];
 window.vfQ.push(function() {
-  window.vf.context.update({
-    container_id: 'NEW_CONTAINER_ID',
-    url: window.location.href,
-    title: 'New Article Title',
-    tags: ['tag1', 'tag2'],
-    section_ids: ['section-id']
-  });
+  window.vf.context.reset(); // returns a promise
 });
 ```
 
-`spa.html` also handles deep links (`spa.html?article=article-2`): before the SDK script is parsed, it rewrites the `vf:container_id`, `og:title` and `og:url` meta tags to match the article in the URL, so the SDK boots with the right container. Back/forward navigation is handled with `pushState` / `popstate`.
+`spa.html` also handles deep links (`spa.html?article=article-2`): before the SDK script is parsed, it rewrites the `vf:container_id`, `og:title`, `og:url` and `og:image` meta tags to match the article in the URL, so the SDK boots with the right container. Back/forward navigation is handled with `pushState` / `popstate`.
 
 ## Debug tools
 

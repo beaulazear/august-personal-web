@@ -10,7 +10,7 @@
   <meta property="og:url" content="https://www.beaulazear.com/viafoura-demo/spa.html">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Single-Page Application Navigation Demo">
-  <meta property="og:description" content="Demonstration of dynamic content loading with proper Viafoura context updates.">
+  <meta property="og:description" content="Demonstration of dynamic content loading with Viafoura widgets reset on each navigation.">
   <meta property="og:image" content="https://www.beaulazear.com/viafoura-demo/assets/images/spa-ai.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="800">
@@ -48,10 +48,7 @@
       <button id="article-2">Article 2: Sustainable Energy</button>
       <button id="article-3">Article 3: Future of Work</button>
 
-      <label>
-        <input type="checkbox" id="analytics-toggle" checked>
-        Fire analytics events on navigation (check VF Events debug panel)
-      </label>
+      <p>Each article has its own container ID (P3001–P3003). Switch articles and the comments below reload for that article without a page refresh. The <strong>VF Events</strong> panel logs each reset.</p>
     </div>
 
     <!-- Article content container -->
@@ -157,79 +154,72 @@
         `;
       }
 
-      // Update Viafoura context
-      function updateViafouraContext(articleId) {
-        const article = articles[articleId];
+      // Point the page metadata at an article. Viafoura reads these tags on page
+      // load and again on every vf.context.reset(), so they must be correct
+      // before the reset runs.
+      function setPageMeta(article) {
+        document.querySelector('meta[name="vf:container_id"]').content = article.containerId;
+        document.querySelector('meta[property="og:title"]').content = article.title;
+        document.querySelector('meta[property="og:url"]').content = window.location.href;
+        // og:image must be an absolute URL (it is also the trending thumbnail)
+        document.querySelector('meta[property="og:image"]').content =
+          new URL(article.image, window.location.href).href;
+        document.title = article.title + " | Beau's Viafoura Implementation";
+      }
 
-        // Queue the context update
+      // Reset the Viafoura widgets so they reload from the new metadata.
+      // reset() runs teardown() then setup(): it sends attention time for the
+      // old article, destroys the widgets, re-reads the meta tags, rebuilds the
+      // widgets and fires page analytics for the new article.
+      // Resets are chained so quick clicks can't overlap one another.
+      let resetChain = Promise.resolve();
+      function resetViafoura(articleId) {
+        const article = articles[articleId];
         window.vfQ = window.vfQ || [];
         window.vfQ.push(function() {
-          // Check if analytics is enabled
-          const analyticsEnabled = document.getElementById('analytics-toggle').checked;
-
-          // Update the page context
-          window.vf.context.update({
-            container_id: article.containerId,
-            url: window.location.href,
-            title: article.title,
-            tags: articleId === 'article-1' ? ['technology', 'AI'] :
-                  articleId === 'article-2' ? ['environment', 'energy'] :
-                  ['business', 'workforce'],
-            section_ids: ['tech-section'],
-            disable_analytics: !analyticsEnabled
-          });
-
-          // Log to debug panel
-          if (window.hlLog) {
-            window.hlLog('SPA Navigation', {
-              article_id: articleId,
-              container_id: article.containerId,
-              title: article.title,
-              analytics_enabled: analyticsEnabled
+          resetChain = resetChain
+            .then(function() { return window.vf.context.reset(); })
+            .then(function() {
+              if (window.hlLog) {
+                window.hlLog('SPA navigation: vf.context.reset() done', {
+                  article_id: articleId,
+                  container_id: article.containerId,
+                  url: window.location.href
+                });
+              }
+            })
+            .catch(function(err) {
+              if (window.hlLog) window.hlLog('SPA navigation: reset failed', { error: String(err) });
             });
-          }
         });
       }
 
-      function setOgImage(url) {
-        const ogImage = document.querySelector('meta[property="og:image"]');
-        if (ogImage) ogImage.content = new URL(url, window.location.href).href; // og:image must be absolute
-      }
-
-      // Handle article navigation
+      // Handle article navigation, in the order the Viafoura SPA docs require:
+      // 1. load the new page (content + URL), 2. update the metadata, 3. reset.
       function navigateToArticle(articleId, updateHistory) {
         if (currentArticleId === articleId) return;
+        const article = articles[articleId];
 
         // Update active button
         document.querySelectorAll('.spa-controls button').forEach(btn => {
-          btn.classList.remove('active');
+          btn.classList.toggle('active', btn.id === articleId);
         });
-        document.getElementById(articleId).classList.add('active');
 
-        // Render new content
+        // 1. Render the new content and update the URL
         renderArticle(articleId);
-
-        // Keep the og:image meta tag in step with the article (trending thumbnails)
-        setOgImage(articles[articleId].image);
-
-        // Update Viafoura context
-        updateViafouraContext(articleId);
-
-        // Update browser history
         if (updateHistory) {
-          const article = articles[articleId];
           const url = new URL(window.location);
           url.searchParams.set('article', articleId);
-          window.history.pushState(
-            { articleId: articleId },
-            article.title,
-            url.toString()
-          );
+          window.history.pushState({ articleId: articleId }, article.title, url.toString());
         }
 
-        currentArticleId = articleId;
+        // 2. Update the page metadata (container ID first and foremost)
+        setPageMeta(article);
 
-        // Scroll to top
+        // 3. Reset the widgets so Conversations loads the new container
+        resetViafoura(articleId);
+
+        currentArticleId = articleId;
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
@@ -260,14 +250,9 @@
         const initialArticle = articles[requested] ? requested : 'article-1';
         const article = articles[initialArticle];
 
-        // Point the SDK's initial page context at the deep-linked article
-        const containerMeta = document.querySelector('meta[name="vf:container_id"]');
-        if (containerMeta) containerMeta.content = article.containerId;
-        const ogTitle = document.querySelector('meta[property="og:title"]');
-        if (ogTitle) ogTitle.content = article.title;
-        const ogUrl = document.querySelector('meta[property="og:url"]');
-        if (ogUrl) ogUrl.content = window.location.href;
-        setOgImage(article.image);
+        // Point the SDK's initial page context at the deep-linked article.
+        // No reset needed here: the SDK hasn't loaded yet, so it reads these.
+        setPageMeta(article);
 
         // Sync internal state and active button with the URL
         currentArticleId = initialArticle;
