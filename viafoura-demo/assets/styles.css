@@ -345,6 +345,12 @@ article td:first-child {
   color: #fff;
 }
 
+.spa-controls p {
+  margin: 0.75rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
 .spa-controls label,
 .layout-toggle label {
   display: flex;
