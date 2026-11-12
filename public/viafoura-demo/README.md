@@ -33,13 +33,13 @@ Viafoura widgets only load when:
 | Page | Widget(s) | Container ID | Notes |
 |------|-----------|--------------|-------|
 | `index.html` | none | none | Redirects to `conversations.html` |
-| `conversations.html` | `<vf-conversation-starter>` + `<vf-conversations>` | `P1001` | Toggle between below-article and slide-in side-tray layouts |
+| `conversations.html` | `<vf-conversation-starter>` + `<vf-conversations>` | `P1001` | Toggle between below-article and slide-in side-tray layouts; ads in comments and beside the starter |
 | `live-blog.html` | `<vf-live-blog>` | `P1002` | Posts are created in the Viafoura admin / API |
 | `live-qa.html` | `<vf-livequestions>` | `P1003` | `title` attribute controls the header |
 | `live-chat.html` | `<vf-livechat>` | `P1004` | Wrapper needs an explicit height (550px here) |
 | `polls.html` | `<vf-poll>` | `P1006` | Poll is configured by an admin/moderator on the page |
 | `reviews.html` | `<vf-rating>` + `<vf-livereviews>` | `P2001` | Rating summary + review list |
-| `community.html` | `<vf-conversations-count>`, `<vf-trending-articles>`, share bar, share count, `<vf-topic-follow>`, `<vf-conversations>` | `P1007` (counts use `P1001`, `P3001`–`P3003`) | The Additional Components: counts, trending, sharing, follows, featured comments and badges |
+| `community.html` | `<vf-conversations-count>`, `<vf-trending-articles>`, `<vf-content-recirculation>`, share bar, share count, `<vf-topic-follow>`, `<vf-tray-trigger>`, `<vf-standalone-ad>`, `<vf-conversations>` | `P1007` (counts use `P1001`, `P3001`–`P3003`) | The Additional Components, with every view of each: counts, trending (vertical and carousel), sharing, follows, the bell, a standalone ad, featured comments and badges |
 | `spa.html` | `<vf-conversations>` | `P3001`, `P3002`, `P3003` | Client-side article switching with `vf.context.update()` |
 
 Every page also includes the notification tray trigger and the SDK.
@@ -50,6 +50,8 @@ Every page also includes the notification tray trigger and the SDK.
 viafoura-demo/
 ├── assets/
 │   ├── site.js                 # Helper: og:url fallback, domain check banner, VF Events debug panel
+│   ├── ads.js                  # Integrated Ads: GPT setup + handlers for every vf-ads event (Google sample ad unit)
+│   ├── favicon.png, apple-touch-icon.png, share-image.jpg   # Icons and og:image, from viafoura-icon-red.webp
 │   └── styles.css              # Minimal site styles
 ├── index.html                  # Redirect to conversations.html
 ├── conversations.html
@@ -168,9 +170,13 @@ window.vf.$subscribe('comment', 'created', function(data) {
 });
 ```
 
+## Ads
+
+`assets/ads.js` is loaded on `conversations.html`, `live-blog.html` and `community.html`. It subscribes to `requestCommentAd`, `requestConversationStarter`, `requestLiveblogAd`, `requestContentRecirculationAd` and `requestStandaloneAd`, and fills each slot with Google's public sample ad unit (`/6355419/Travel/Europe`, 300x250). No ads appear until Viafoura support turns ads on for each widget on this site and sets the provider to **Google Tag**. Swap `AD_UNIT` for a real network code and ad unit path in production.
+
 ## Suggested testing order
 
-1. **`conversations.html`**: post, reply, react; try the side-tray layout toggle
+1. **`conversations.html`**: post, reply, react; try the side-tray layout toggle; with ads on, check the VF Events panel for `Ad requested` / `Ad rendered`
 2. **`reviews.html`**: rate, write a review, mark reviews helpful
 3. **`polls.html`**: vote (or configure the poll as admin/moderator)
 4. **`live-blog.html`**: publish posts from the Viafoura admin and watch them appear

@@ -11,9 +11,14 @@
   <meta property="og:type" content="article">
   <meta property="og:title" content="Real-Time Event Coverage with Live Blog">
   <meta property="og:description" content="Learn how to implement Viafoura's Live Blog widget for breaking news, sporting events, and live coverage.">
-  <meta property="og:image" content="https://picsum.photos/seed/P1002/1200/800">
+  <meta property="og:image" content="https://www.beaulazear.com/viafoura-demo/assets/share-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
 
   <!-- Site assets -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <script src="assets/site.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -137,6 +142,14 @@
           <li>Consider archiving very long Live Blogs (100+ posts) for performance</li>
         </ul>
 
+        <h2>Ads Between Posts</h2>
+        <p>Live Blog has ad positions between posts that work the same way as ads in Conversations: when a position is ready, the widget fires <code>requestLiveblogAd</code> with the <code>id</code> of an empty element, and the publisher's ad code fills it. This page subscribes to that event with the same Google Ad Manager handler as the rest of the site:</p>
+        <pre><code>window.vfQ = window.vfQ || [];
+window.vfQ.push(function () {
+  window.vf.$subscribe('vf-ads', 'requestLiveblogAd', generateAd);
+});</code></pre>
+        <p>Viafoura support has to switch ads on for the Live Blog widget first. The full setup (loading GPT, the handler, frequency settings) is under <a href="conversations.html#ads">Ads in Conversations</a>.</p>
+
         <h2>Try It Below</h2>
         <p>The working Live Blog widget below uses container ID <code>P1002</code>. If you're logged in as an admin, you can create test posts to see how the live updates work.</p>
       </article>
@@ -152,6 +165,9 @@
       <vf-tray-trigger floating="true"></vf-tray-trigger>
     </div>
   </main>
+
+  <!-- Viafoura Integrated Ads (Google Ad Manager) -->
+  <script src="assets/ads.js"></script>
 
   <!-- Viafoura SDK -->
   <script async src="https://cdn.viafoura.net/entry/index.js"></script>

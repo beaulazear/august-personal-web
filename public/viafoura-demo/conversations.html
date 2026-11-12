@@ -11,9 +11,14 @@
   <meta property="og:type" content="article">
   <meta property="og:title" content="The Future of Digital Publishing: How Technology is Reshaping Media">
   <meta property="og:description" content="An in-depth look at how emerging technologies are transforming the publishing industry and reader engagement.">
-  <meta property="og:image" content="https://picsum.photos/seed/P1001/1200/800">
+  <meta property="og:image" content="https://www.beaulazear.com/viafoura-demo/assets/share-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
 
   <!-- Site assets -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <script src="assets/site.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -178,6 +183,7 @@
           <li><strong>It follows the comment count.</strong> "Be the first to comment" on a new article, "Read the comments" with one to five, and "Read the [count] comments" above that. On a closed conversation it reads "Read the comments", or hides entirely if there are none.</li>
           <li><strong>It can show a highlighted comment.</strong> When a moderator pins or features a comment, that comment replaces the default text. A pinned comment wins over a featured one, only the most recent is shown, and replies can't be featured.</li>
           <li><strong>It can run a poll.</strong> Moderators and admins see a <em>Create Poll</em> button on the starter. Questions are up to 120 characters, with 2–10 options of up to 100 characters each, and an optional close date. Without one, the poll runs until it is closed by hand.</li>
+          <li><strong>It can carry an ad.</strong> A 300×250 ad unit can run next to the starter, from the publisher's own ad server or Viafoura's inventory. This page fills it through Google Ad Manager; see <a href="#ads">Ads in Conversations</a> below.</li>
         </ul>
         <p>Here it is on this page. Click it and it will take you to the comments at the bottom:</p>
       </article>
@@ -243,7 +249,7 @@
             <td>Only needed if the page uses widget-level container IDs</td>
           </tr>
         </table>
-        <p><strong>Try it:</strong> as a moderator, pin or feature a comment in the conversation below and the starter will show it, or create a poll from the starter itself. An ad unit can also run next to the starter, using the publisher's own ad inventory or Viafoura's.</p>
+        <p><strong>Try it:</strong> as a moderator, pin or feature a comment in the conversation below and the starter will show it, or create a poll from the starter itself.</p>
         <p>With the starter in place, the rest of this guide covers the Conversations widget it leads to.</p>
 
         <h2>Key Features</h2>
@@ -340,6 +346,98 @@
         <p>Conversations relies on the notification tray for login, replies, and follow actions. Make sure to include:</p>
         <pre><code>&lt;vf-tray-trigger floating="true"&gt;&lt;/vf-tray-trigger&gt;</code></pre>
 
+        <h2 id="ads">Ads in Conversations</h2>
+        <p>Conversations and the Engagement Starter both have built-in ad positions: between comments, inside reply threads, in the footer of the comment list, and beside the starter. Viafoura doesn't serve these ads itself. When a position is ready, the widget fires an event with the <code>id</code> of an empty element, and the publisher's code puts an ad there. That means any ad server works, and the publisher keeps the revenue. This page runs both, so scroll the comments below and you'll see ads appear between them.</p>
+
+        <p><strong>Step 1: Load Google Publisher Tag.</strong> <code>disableInitialLoad()</code> stops GPT fetching anything until a widget asks for an ad.</p>
+        <pre><code>&lt;script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  window.googletag = window.googletag || { cmd: [] };
+  googletag.cmd.push(function () {
+    googletag.pubads().enableSingleRequest();
+    googletag.pubads().disableInitialLoad();
+    googletag.enableServices();
+  });
+&lt;/script&gt;</code></pre>
+
+        <p><strong>Step 2: Write a handler.</strong> It receives the slot's element id, defines a GPT slot on it and fetches the ad:</p>
+        <pre><code>function generateAd(slotName) {
+  googletag.cmd.push(function () {
+    // Clear any old slot that used the same element
+    var stale = googletag.pubads().getSlots()
+      .filter(function (s) { return s.getSlotElementId() === slotName; });
+    googletag.destroySlots(stale);
+
+    var slot = googletag.defineSlot('/1234/your/ad-unit', [300, 250], slotName)
+      .addService(googletag.pubads());
+    googletag.display(slotName);
+    googletag.pubads().refresh([slot]);
+  });
+}</code></pre>
+
+        <p><strong>Step 3: Subscribe to the Viafoura events.</strong></p>
+        <pre><code>window.vfQ = window.vfQ || [];
+window.vfQ.push(function () {
+  window.vf.$subscribe('vf-ads', 'requestCommentAd', generateAd);
+  window.vf.$subscribe('vf-ads', 'requestConversationStarter', generateAd);
+});</code></pre>
+
+        <table>
+          <tr>
+            <th>Event</th>
+            <th>Product</th>
+            <th>Ad size</th>
+          </tr>
+          <tr>
+            <td><code>requestCommentAd</code></td>
+            <td>Conversations (comments, replies, footer)</td>
+            <td>Any; use a size mapping per device</td>
+          </tr>
+          <tr>
+            <td><code>requestConversationStarter</code></td>
+            <td>Engagement Starter</td>
+            <td>300×250</td>
+          </tr>
+          <tr>
+            <td><code>requestLiveblogAd</code></td>
+            <td>Live Blog</td>
+            <td>Same as Conversations</td>
+          </tr>
+          <tr>
+            <td><code>requestContentRecirculationAd</code></td>
+            <td>Trending Conversations</td>
+            <td>300×250</td>
+          </tr>
+          <tr>
+            <td><code>requestStandaloneAd</code></td>
+            <td>Standalone Ad widget</td>
+            <td>300×250</td>
+          </tr>
+        </table>
+        <p>This site's version of the script is <code>assets/ads.js</code>, shared by every page with an ad position. It uses Google's public sample ad unit, which serves test creatives, and logs each request and render to the <strong>VF Events</strong> panel. A real install swaps in the publisher's own network code and ad unit path.</p>
+
+        <p><strong>Switching ads on.</strong> The markup isn't enough. Viafoura support turns ads on for each widget (Conversations, Engagement Starter, Live Blog, Trending, Standalone) and sets the provider:</p>
+        <ul>
+          <li><strong>Google Tag:</strong> the widget shows a slot only after Google Ad Manager reports an ad rendered in it, so empty slots stay hidden.</li>
+          <li><strong>Custom:</strong> for any other ad server. The slot is shown as soon as it's requested, filled or not.</li>
+        </ul>
+
+        <p><strong>How often ads appear.</strong> In the Advertising page of Viafoura Admin:</p>
+        <ul>
+          <li><strong>First promo position, Promo interval, Promo interval for replies.</strong> Where the first ad goes and how many comments sit between ads. Viafoura recommends 1-6-6.</li>
+          <li><strong>Threshold.</strong> How far ahead of the viewport a slot starts loading. The default is 90px.</li>
+        </ul>
+
+        <p><strong>Ads in replies.</strong> Viafoura has to switch these on. To stop ads stacking up, the reply interval adjusts itself:</p>
+        <ul>
+          <li>If the parent comment, or the comment after it, already has an ad, the reply interval doubles for that thread.</li>
+          <li>If the last reply lands on an interval, it only gets an ad when another comment follows.</li>
+          <li>If the last comment in the list has an ad, the footer ad is skipped.</li>
+        </ul>
+
+        <p><strong>Turning ads off on one page.</strong> Add <code>&lt;meta property="vf:ads-disabled"&gt;</code> at page load (it can't be changed afterwards, even by a context reset), and hide the positions with <code>.vf3-conversations-list__promo { display: none; }</code>.</p>
+        <p><strong>If ads look cropped</strong>, look for a global <code>iframe { max-width: 100%; }</code> rule, often from a CSS reset, and scope it to your own iframes instead.</p>
+
         <h2>Try It Below</h2>
         <p>The working Conversations widget below uses container ID <code>P1001</code>. Use the customization panel to toggle between layouts and see how the same widget adapts to different page designs.</p>
       </article>
@@ -400,6 +498,9 @@
       }
     })();
   </script>
+
+  <!-- Viafoura Integrated Ads (Google Ad Manager) -->
+  <script src="assets/ads.js"></script>
 
   <!-- Viafoura SDK -->
   <script async src="https://cdn.viafoura.net/entry/index.js"></script>
