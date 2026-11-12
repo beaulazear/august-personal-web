@@ -51,6 +51,53 @@
       <p>Each article has its own container ID (P3001–P3003). Switch articles and the comments below reload for that article without a page refresh. The <strong>VF Events</strong> panel logs each reset.</p>
     </div>
 
+    <!-- How this differs from a regular implementation -->
+    <article class="spa-explainer">
+      <h2>How this differs from a regular implementation</h2>
+      <p>The widget markup is the same as on any other page: one <code>&lt;vf-conversations&gt;</code>, with the container ID in the <code>vf:container_id</code> meta tag. The difference is when Viafoura reads it. Viafoura reads the page's meta tags once, when the SDK starts. On a normal site every article is a full page load, so that happens on its own. In a single-page app the page never reloads, so after each navigation we have to update the tags ourselves and tell Viafoura to start again.</p>
+      <table>
+        <tr>
+          <th></th>
+          <th>Regular page</th>
+          <th>This SPA</th>
+        </tr>
+        <tr>
+          <td>Meta tags</td>
+          <td>Written once in the HTML</td>
+          <td>Rewritten with JavaScript on every navigation</td>
+        </tr>
+        <tr>
+          <td>Loading a new article</td>
+          <td>The browser loads a new page and Viafoura starts fresh</td>
+          <td>We call <code>vf.context.reset()</code></td>
+        </tr>
+        <tr>
+          <td>Page views and attention time</td>
+          <td>Sent automatically on each page load</td>
+          <td>Sent by <code>reset()</code>: attention time for the old article, a page view for the new one</td>
+        </tr>
+        <tr>
+          <td>Direct links</td>
+          <td>Each URL is its own page</td>
+          <td><code>?article=</code> sets the tags before the SDK loads, so no reset is needed</td>
+        </tr>
+      </table>
+      <p>Each navigation runs three steps, in this order:</p>
+      <pre><code>// 1. Load the new page: content and URL
+history.pushState({}, '', '?article=article-2');
+
+// 2. Point the meta tags at the new article
+document.querySelector('meta[name="vf:container_id"]').content = 'P3002';
+document.querySelector('meta[property="og:url"]').content = location.href;
+document.querySelector('meta[property="og:title"]').content = 'New title';
+
+// 3. Rebuild the widgets from the new tags
+window.vfQ.push(function () {
+  window.vf.context.reset();
+});</code></pre>
+      <p>The order matters: if <code>reset()</code> runs before the tags change, the widgets reload the old conversation. See Viafoura's <a href="https://documentation.viafoura.com/docs/single-page-app-setup" target="_blank" rel="noopener">Single Page App Setup</a> docs.</p>
+    </article>
+
     <!-- Article content container -->
     <div id="article-content">
       <!-- Content will be dynamically inserted here -->

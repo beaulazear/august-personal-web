@@ -302,6 +302,26 @@ article td:first-child {
   margin: 2rem 0;
 }
 
+/* Fix for a Viafoura bug, applied only inside .share-icon-fix so the
+   Community page can show the button with and without it.
+   Viafoura's single share button (data-button-view="true") with the circle or
+   square style draws its icon low in the shape: its CSS gives the glyph
+   line-height .72, but these styles shrink the glyph to 18-20px. Centering
+   with flexbox fixes it. The extra "body" in the selector raises specificity,
+   because Viafoura's stylesheets load after this one. */
+body .share-icon-fix .vf-share-button.vf-share-button-circle .vf-share-button-icon,
+body .share-icon-fix .vf-share-button.vf-share-button-square .vf-share-button-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+body .share-icon-fix .vf-share-button.vf-share-button-circle .vf-share-button-icon::before,
+body .share-icon-fix .vf-share-button.vf-share-button-square .vf-share-button-icon::before {
+  line-height: 1;
+}
+
 /* ----------------------------------------------------- Demo control panels */
 .customization-panel,
 .spa-controls {
@@ -411,6 +431,26 @@ article td:first-child {
 
 .demo-split .viafoura {
   margin: 0;
+}
+
+/* Share button, with and without the icon fix */
+.share-compare figure {
+  margin: 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.share-compare figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.share-compare figcaption strong {
+  color: var(--ink);
 }
 
 /* Comment count cards */
