@@ -183,6 +183,18 @@ article .byline .author {
   color: var(--ink);
 }
 
+/* Hero image: 3:2, the same image as the page's og:image */
+article .hero {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  margin: 0 0 2rem;
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
 article p {
   margin: 0 0 1.25rem;
 }

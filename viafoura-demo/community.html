@@ -11,9 +11,9 @@
   <meta property="og:type" content="article">
   <meta property="og:title" content="Viafoura Community Tools: Counts, Trending, Sharing, Follows and Badges">
   <meta property="og:description" content="Every Viafoura additional component, implemented live: comment counts, trending conversations, the social share bar, share count, custom follows, the notification bell, a standalone ad, featured comments and badges.">
-  <meta property="og:image" content="https://www.beaulazear.com/viafoura-demo/assets/share-image.jpg">
+  <meta property="og:image" content="https://picsum.photos/seed/P1007/1200/800">
   <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:image:height" content="800">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Site assets -->
@@ -52,6 +52,8 @@
           <time datetime="2026-11-11">November 11, 2026</time>
           <span>Additional Components</span>
         </div>
+
+        <img class="hero" src="https://picsum.photos/seed/P1007/1200/800" alt="" width="1200" height="800">
 
         <p>Beyond the main engagement products, Viafoura ships a set of smaller components that help readers find, share and follow conversations. This page implements each one from the <a href="https://documentation.viafoura.com/docs/community-management" target="_blank" rel="noopener">Additional Components</a> docs, with a live widget, the code behind it and its options.</p>
 
@@ -285,7 +287,7 @@
             <td>The current page, so it's excluded from the list</td>
           </tr>
         </table>
-        <p><strong>Images:</strong> each article's thumbnail comes from its <code>og:image</code> (or <code>vf:image</code>) meta tag. Use a 3:2 image, ideally 210×140. That's why every page on this site keeps an <code>og:image</code> tag even though the pages show no images.</p>
+        <p><strong>Images:</strong> each article's thumbnail comes from its <code>og:image</code> (or <code>vf:image</code>) meta tag. Use a 3:2 image, ideally 210×140. The image doesn't have to appear on the page itself, but every article with a conversation on this site shows its <code>og:image</code> as a hero image, so the trending cards match the articles they link to.</p>
         <p>This demo uses the widest windows (30 days, 48 hours) so a low-traffic test site still has something to show. If fewer than <code>limit</code> stories qualify, Viafoura widens the windows to those maximums anyway.</p>
         <p><strong>Carousel ad.</strong> Once Viafoura switches ads on for Trending, the carousel fires <code>requestContentRecirculationAd</code> for a 300×250 slot. This page fills it with the site's shared Google Ad Manager handler; the setup is under <a href="conversations.html#ads">Ads in Conversations</a>.</p>
 
