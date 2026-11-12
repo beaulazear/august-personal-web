@@ -317,11 +317,25 @@
         </div>
 
         <div class="demo-label">Single share button (<code>data-button-view="true"</code>)</div>
-        <div class="viafoura">
-          <div class="vf-widget vf-share-button-circle"
-               data-widget="sharebar"
-               data-button-view="true">
-          </div>
+        <div class="demo-split share-compare">
+          <figure>
+            <div class="viafoura">
+              <div class="vf-widget vf-share-button-circle"
+                   data-widget="sharebar"
+                   data-button-view="true">
+              </div>
+            </div>
+            <figcaption><strong>Viafoura's CSS only.</strong> The icon sits low in the circle.</figcaption>
+          </figure>
+          <figure>
+            <div class="viafoura share-icon-fix">
+              <div class="vf-widget vf-share-button-circle"
+                   data-widget="sharebar"
+                   data-button-view="true">
+              </div>
+            </div>
+            <figcaption><strong>With our CSS fix.</strong> The icon is centered.</figcaption>
+          </figure>
         </div>
       </section>
 
@@ -387,6 +401,19 @@
           <li>Add <code>inline-block</code> to the <code>viafoura</code> wrapper to sit the bar inline with other content</li>
         </ul>
         <p>On screens narrower than 765px, a horizontal bar shows the first three networks and a "show more" button.</p>
+        <p><strong>Known issue: the single button's icon sits low.</strong> The demo above shows it twice. With <code>vf-share-button-circle</code> or <code>-square</code>, Viafoura's CSS sets the glyph's <code>line-height</code> to <code>.72</code>, a value tuned for a 28px glyph, then shrinks the glyph to 18–20px, so it drops below center. This page fixes it by centering the glyph with flexbox. The extra <code>body</code> in the selector is needed because Viafoura's stylesheets load after the site's:</p>
+        <pre><code>body .viafoura .vf-share-button.vf-share-button-circle .vf-share-button-icon,
+body .viafoura .vf-share-button.vf-share-button-square .vf-share-button-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+body .viafoura .vf-share-button.vf-share-button-circle .vf-share-button-icon::before,
+body .viafoura .vf-share-button.vf-share-button-square .vf-share-button-icon::before {
+  line-height: 1;
+}</code></pre>
+        <p>On this page the rule is scoped to a <code>share-icon-fix</code> class on the second button's wrapper, so the first can show the bug.</p>
         <p><strong>Heads up:</strong> the docs say this version of the Share Bar will be deprecated in favour of a WCAG 2.2 AA–compliant version, so check the docs before recommending it to a client.</p>
 
         <!-- ============================================================ SHARE COUNT -->
