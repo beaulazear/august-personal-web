@@ -11,7 +11,7 @@
   <meta property="og:type" content="article">
   <meta property="og:title" content="Single-Page Application Navigation Demo">
   <meta property="og:description" content="Demonstration of dynamic content loading with proper Viafoura context updates.">
-  <meta property="og:image" content="https://picsum.photos/seed/P3001/1200/800">
+  <meta property="og:image" content="https://www.beaulazear.com/viafoura-demo/assets/images/spa-ai.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="800">
   <meta name="twitter:card" content="summary_large_image">
@@ -79,7 +79,7 @@
       const articles = {
         'article-1': {
           containerId: 'P3001',
-          image: 'https://picsum.photos/seed/P3001/1200/800',
+          image: 'assets/images/spa-ai.jpg',
           title: 'Artificial Intelligence and Its Impact on Modern Society',
           author: 'Dr. Emily Chen',
           date: '2026-11-01',
@@ -96,7 +96,7 @@
         },
         'article-2': {
           containerId: 'P3002',
-          image: 'https://picsum.photos/seed/P3002/1200/800',
+          image: 'assets/images/spa-energy.jpg',
           title: 'The Global Transition to Sustainable Energy',
           author: 'James Morrison',
           date: '2026-10-28',
@@ -113,7 +113,7 @@
         },
         'article-3': {
           containerId: 'P3003',
-          image: 'https://picsum.photos/seed/P3003/1200/800',
+          image: 'assets/images/spa-work.jpg',
           title: 'The Future of Work in a Digital Age',
           author: 'Sarah Williams',
           date: '2026-10-25',
@@ -193,7 +193,7 @@
 
       function setOgImage(url) {
         const ogImage = document.querySelector('meta[property="og:image"]');
-        if (ogImage) ogImage.content = url;
+        if (ogImage) ogImage.content = new URL(url, window.location.href).href; // og:image must be absolute
       }
 
       // Handle article navigation

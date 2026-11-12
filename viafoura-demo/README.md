@@ -52,6 +52,7 @@ viafoura-demo/
 │   ├── site.js                 # Helper: og:url fallback, domain check banner, VF Events debug panel
 │   ├── ads.js                  # Integrated Ads: GPT setup + handlers for every vf-ads event (Google sample ad unit)
 │   ├── favicon.png, apple-touch-icon.png, share-image.jpg   # Icons and og:image, from viafoura-icon-red.webp
+│   ├── images/                 # Hero + og:image photos (Unsplash) for the pages with conversations
 │   └── styles.css              # Minimal site styles
 ├── index.html                  # Redirect to conversations.html
 ├── conversations.html
