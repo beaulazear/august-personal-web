@@ -19,3 +19,56 @@
     @apply transition-colors duration-200;
   }
 }
+
+/* Floating Viafoura link (top right of the desktop) */
+.vf-float {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 50;
+  display: block;
+  width: 64px;
+  height: 64px;
+  animation: vf-bob 4s ease-in-out infinite;
+}
+.vf-float img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.35));
+  transition: transform 0.35s cubic-bezier(.34, 1.56, .64, 1), filter 0.35s ease;
+}
+.vf-float:hover img,
+.vf-float:focus-visible img {
+  transform: scale(1.15) rotate(-8deg);
+  filter: drop-shadow(0 0 18px rgba(255, 70, 70, 0.75)) drop-shadow(0 14px 18px rgba(0, 0, 0, 0.4));
+}
+.vf-float:focus-visible { outline: 2px solid currentColor; outline-offset: 6px; border-radius: 50%; }
+.vf-float-label {
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 12px);
+  transform: translate(8px, -50%);
+  white-space: nowrap;
+  font-size: 0.8rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.vf-float:hover .vf-float-label,
+.vf-float:focus-visible .vf-float-label { opacity: 1; transform: translate(0, -50%); }
+@keyframes vf-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@media (max-width: 767px) {
+  .vf-float { width: 48px; height: 48px; top: 1rem; right: 1rem; }
+  .vf-float-label { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vf-float { animation: none; }
+}

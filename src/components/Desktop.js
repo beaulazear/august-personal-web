@@ -101,7 +101,7 @@ const Desktop = () => {
   useEffect(() => {
     // Add some random ASCII art decorations on the desktop
     const decorations = [
-      { type: 'coffee', x: window.innerWidth - 150, y: 100 },
+      { type: 'coffee', x: window.innerWidth - 150, y: 140 },
       { type: 'code', x: 100, y: window.innerHeight - 200 },
     ];
     setAsciiDecorations(decorations);
@@ -129,6 +129,16 @@ const Desktop = () => {
           </div>
         </div>
       </div>
+
+      {/* Floating Viafoura link */}
+      <a
+        href="/viafoura-demo/conversations.html"
+        className="vf-float"
+        aria-label="Beau's Viafoura Implementation"
+      >
+        <img src="/viafoura-demo/assets/viafoura-icon-red.webp" alt="" />
+        <span className="vf-float-label">Beau's Viafoura Implementation</span>
+      </a>
 
       {/* Windows */}
       {windows.map((windowConfig) => {
