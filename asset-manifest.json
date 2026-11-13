@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.bd64a68c.css",
-    "main.js": "/static/js/main.4eaa1ffe.js",
+    "main.css": "/static/css/main.a0f3846f.css",
+    "main.js": "/static/js/main.a9dfef20.js",
     "static/js/453.506b5fe3.chunk.js": "/static/js/453.506b5fe3.chunk.js",
     "static/media/newsletter-scroll-desktop.gif": "/static/media/newsletter-scroll-desktop.e6152e48ef191a5c3199.gif",
     "static/media/lomc-summer-camp.gif": "/static/media/lomc-summer-camp.83ea7142b4f7e336f183.gif",
@@ -28,12 +28,12 @@
     "static/media/scooper4.jpg": "/static/media/scooper4.ea731c11600225128f34.jpg",
     "static/media/scoopers2.jpg": "/static/media/scoopers2.99e3b5cb52844bf01480.jpg",
     "index.html": "/index.html",
-    "main.bd64a68c.css.map": "/static/css/main.bd64a68c.css.map",
-    "main.4eaa1ffe.js.map": "/static/js/main.4eaa1ffe.js.map",
+    "main.a0f3846f.css.map": "/static/css/main.a0f3846f.css.map",
+    "main.a9dfef20.js.map": "/static/js/main.a9dfef20.js.map",
     "453.506b5fe3.chunk.js.map": "/static/js/453.506b5fe3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bd64a68c.css",
-    "static/js/main.4eaa1ffe.js"
+    "static/css/main.a0f3846f.css",
+    "static/js/main.a9dfef20.js"
   ]
 }
