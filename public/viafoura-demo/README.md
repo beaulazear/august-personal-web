@@ -33,7 +33,7 @@ Viafoura widgets only load when:
 | Page | Widget(s) | Container ID | Notes |
 |------|-----------|--------------|-------|
 | `index.html` | none | none | Redirects to `conversations.html` |
-| `conversations.html` | `<vf-conversation-starter>` + `<vf-conversations>` | `P1001` | Toggle between below-article and slide-in side-tray layouts; ads in comments and beside the starter |
+| `conversations.html` | `<vf-conversation-starter>` + `<vf-conversations>` | `P1001` | Toggle between below-article and slide-in side-tray layouts, and dark mode; ads in comments and beside the starter |
 | `live-blog.html` | `<vf-live-blog>` | `P1002` | Posts are created in the Viafoura admin / API |
 | `live-qa.html` | `<vf-livequestions>` | `P1003` | `title` attribute controls the header |
 | `live-chat.html` | `<vf-livechat>` | `P1004` | Wrapper needs an explicit height (550px here) |
@@ -50,6 +50,7 @@ Every page also includes the notification tray trigger and the SDK.
 viafoura-demo/
 ├── assets/
 │   ├── site.js                 # Helper: og:url fallback, domain check banner, VF Events debug panel
+│   ├── dark-mode.css           # Dark theme: site colors + Viafoura's documented overrides, all under html.dark
 │   ├── ads.js                  # Integrated Ads: GPT setup + handlers for every vf-ads event (Google sample ad unit)
 │   ├── favicon.png, apple-touch-icon.png, share-image.jpg   # Icons and og:image, from viafoura-icon-red.webp
 │   ├── images/                 # Hero + og:image photos (Unsplash) for the pages with conversations
@@ -169,6 +170,10 @@ window.vf.$subscribe('comment', 'created', function(data) {
   console.log('Comment created:', data);
 });
 ```
+
+## Dark mode
+
+Viafoura has no built-in theme switch; per the [Dark Mode docs](https://documentation.viafoura.com/docs/dark-mode) the publisher overrides the widget CSS variables (`--background-color`, `--accent-color`, the `--*-text-*` colors, …) on `.viafoura` / `.vf3-comments` and pairs that with its own dark site theme. `assets/dark-mode.css` holds both, scoped to `html.dark`. On `conversations.html` the **Dark mode** checkbox toggles that class and saves it in `localStorage`; an inline script in `<head>` re-applies it before first paint. Add the stylesheet and that script to any other page to give it the same toggle.
 
 ## Ads
 

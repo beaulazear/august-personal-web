@@ -1,0 +1,158 @@
+/**
+ * Dark mode
+ *
+ * Everything here is scoped to html.dark, so the page and the Viafoura widgets
+ * only go dark when the toggle adds that class. Viafoura doesn't switch themes
+ * itself: per https://documentation.viafoura.com/docs/dark-mode, the publisher
+ * pairs its own dark site theme with CSS overrides for the widgets.
+ *
+ * Part 1: the site's dark theme (our own tokens and surfaces).
+ * Part 2: Viafoura's documented dark mode overrides, unchanged apart from the
+ *         html.dark prefix.
+ */
+
+/* ------------------------------------------------- Part 1: site dark theme */
+html.dark {
+  color-scheme: dark;
+
+  /* Built around Viafoura's dark background (#2a262b) so the widgets blend in */
+  --ink: #ffffff;
+  --text: #ddd8de;
+  --muted: #a7a1a9;
+  --line: #48424a;
+  --surface: #332e34;
+  --accent: #4da3ff;
+  --accent-soft: #1d2a3a;
+}
+
+html.dark body {
+  background: #2a262b;
+}
+
+html.dark body > header {
+  background: rgba(42, 38, 43, 0.85);
+}
+
+html.dark body > header nav a[aria-current="page"] {
+  background: #3d373f;
+}
+
+html.dark article .byline > * + *::before,
+html.dark article li::marker {
+  color: #6f6872;
+}
+
+html.dark article :not(pre) > code {
+  background: #3d373f;
+}
+
+html.dark article pre {
+  background: #1c191d;
+  border: 1px solid var(--line);
+}
+
+html.dark .demo,
+html.dark .share-compare figure,
+html.dark .spa-controls button {
+  background: var(--surface);
+}
+
+html.dark .layout-toggle input[type="checkbox"] {
+  accent-color: var(--accent);
+}
+
+/* Side tray layout on conversations.html */
+html.dark .layout-side-rail .comments-panel,
+html.dark .layout-side-rail .comments-panel-header {
+  background: #2a262b;
+}
+
+html.dark .layout-side-rail .comments-panel {
+  box-shadow: -2px 0 40px rgba(0, 0, 0, 0.5);
+}
+
+html.dark .comments-panel-close {
+  color: var(--muted);
+}
+
+html.dark .comments-panel-close:hover {
+  background: #3d373f;
+  color: #fff;
+}
+
+html.dark .layout-side-rail .tray-toggle-btn {
+  background: #1d8eff;
+}
+
+html.dark .layout-side-rail .tray-toggle-btn:hover {
+  background: #007fff;
+}
+
+/* --------------------------- Part 2: Viafoura dark mode (from the docs) */
+html.dark .viafoura,
+html.dark .vf3-comments {
+  --background-color: #2a262b !important;
+  --light-text-on-background-color: #fff !important;
+  --dark-text-on-background-color: #fff !important;
+  --light-text-on-default-color: #fff !important;
+  --dark-text-on-default-color: #fff !important;
+  --secondary-text-color: #fff !important;
+  --text-on-accent-color: #fff !important;
+  --default-color: #434343;
+  --primary-color-20: #434343;
+  --primary-color-10: #434343;
+  --accent-color-light: #2792fe !important;
+  --accent-color: #1d8eff !important;
+  --accent-color-dark: #007fff !important;
+}
+
+html.dark .viafoura h2,
+html.dark .viafoura h3 {
+  color: #fff;
+}
+
+html.dark .viafoura .vf-community-content .vf-tabbed-subnav .vf-tabbed-nav {
+  background-color: #2a262b;
+}
+
+html.dark .viafoura .vf-conversation-starter_content {
+  background-color: #43392d !important;
+}
+
+html.dark .viafoura .vf-conversation-starter_text,
+html.dark .vf-secondary-text-colour,
+html.dark .vf-primary-colour {
+  color: #fff !important;
+}
+
+html.dark .viafoura .vf-livechat__header {
+  border-color: #525252;
+}
+
+html.dark .viafoura .vf-tray {
+  color: #fff !important;
+}
+
+html.dark .viafoura .vf-icon-button .vf-icon-svg {
+  fill: #fff !important;
+}
+
+html.dark .viafoura svg {
+  fill: #fff !important;
+}
+
+html.dark .viafoura .vf-comments-count {
+  color: #fff !important;
+}
+
+html.dark .vf-topic-follow-button {
+  background-color: #1d8eff !important;
+  border-color: #007fff !important;
+  color: #fff !important;
+}
+
+html.dark .vf-tabbed-nav__tabs .vf-active .vf-nav-label,
+html.dark .viafoura .vf-nav-button:hover .vf-nav-label,
+html.dark .viafoura .vf-label {
+  color: #fff !important;
+}
