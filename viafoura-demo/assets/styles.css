@@ -114,6 +114,33 @@ body > header nav a[aria-current="page"] {
   font-weight: 600;
 }
 
+/* Dark mode toggle (added to the header by assets/site.js) */
+body > header nav {
+  margin-left: auto;
+}
+
+body > header .theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+body > header .theme-toggle:hover {
+  background: var(--surface);
+}
+
 /* -------------------------------------------------------------------- Main */
 main {
   max-width: calc(var(--column) + 2rem);
@@ -548,6 +575,12 @@ body .share-icon-fix .vf-share-button.vf-share-button-square .vf-share-button-ic
     align-items: flex-start;
     gap: 0.4rem;
     padding: 0.75rem 1rem 0.5rem;
+  }
+
+  body > header .theme-toggle {
+    position: absolute;
+    top: 0.7rem;
+    right: 1rem;
   }
 
   body > header nav {
