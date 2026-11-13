@@ -169,7 +169,46 @@
     });
   }
 
+  // 4. Dark mode toggle (styles in assets/dark-mode.css, all scoped to html.dark)
+  function setupThemeToggle() {
+    var KEY = 'vf-demo-theme';
+    var root = document.documentElement;
+
+    // Apply the saved theme now, while <head> is still parsing, so a dark
+    // page never flashes white on load.
+    try {
+      if (localStorage.getItem(KEY) === 'dark') root.classList.add('dark');
+    } catch (e) {}
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var header = document.querySelector('body > header');
+      if (!header) return;
+
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'theme-toggle';
+
+      function render() {
+        var dark = root.classList.contains('dark');
+        button.setAttribute('aria-pressed', String(dark));
+        button.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+        button.title = dark ? 'Light mode' : 'Dark mode';
+        button.innerHTML = '<span aria-hidden="true">' + (dark ? '\u2600\uFE0E' : '\u263E\uFE0E') + '</span>';
+      }
+
+      button.addEventListener('click', function() {
+        var dark = root.classList.toggle('dark');
+        try { localStorage.setItem(KEY, dark ? 'dark' : 'light'); } catch (e) {}
+        render();
+      });
+
+      render();
+      header.appendChild(button);
+    });
+  }
+
   // Run on script load
+  setupThemeToggle();
   ensureOgUrl();
   checkHost();
   createDebugPanel();

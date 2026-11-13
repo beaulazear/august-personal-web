@@ -33,7 +33,7 @@ Viafoura widgets only load when:
 | Page | Widget(s) | Container ID | Notes |
 |------|-----------|--------------|-------|
 | `index.html` | none | none | Redirects to `conversations.html` |
-| `conversations.html` | `<vf-conversation-starter>` + `<vf-conversations>` | `P1001` | Toggle between below-article and slide-in side-tray layouts, and dark mode; ads in comments and beside the starter |
+| `conversations.html` | `<vf-conversation-starter>` + `<vf-conversations>` | `P1001` | Toggle between below-article and slide-in side-tray layouts; dark mode guide section; ads in comments and beside the starter |
 | `live-blog.html` | `<vf-live-blog>` | `P1002` | Posts are created in the Viafoura admin / API |
 | `live-qa.html` | `<vf-livequestions>` | `P1003` | `title` attribute controls the header |
 | `live-chat.html` | `<vf-livechat>` | `P1004` | Wrapper needs an explicit height (550px here) |
@@ -42,14 +42,14 @@ Viafoura widgets only load when:
 | `community.html` | `<vf-conversations-count>`, `<vf-trending-articles>`, `<vf-content-recirculation>`, share bar, share count, `<vf-topic-follow>`, `<vf-tray-trigger>`, `<vf-standalone-ad>`, `<vf-conversations>` | `P1007` (counts use `P1001`, `P3001`–`P3003`) | The Additional Components, with every view of each: counts, trending (vertical and carousel), sharing, follows, the bell, a standalone ad, featured comments and badges |
 | `spa.html` | `<vf-conversations>` | `P3001`, `P3002`, `P3003` | Client-side article switching: update meta tags, then `vf.context.reset()` |
 
-Every page also includes the notification tray trigger and the SDK.
+Every page also includes the notification tray trigger, the SDK and the dark mode toggle in the header.
 
 ## File structure
 
 ```
 viafoura-demo/
 ├── assets/
-│   ├── site.js                 # Helper: og:url fallback, domain check banner, VF Events debug panel
+│   ├── site.js                 # Helper: og:url fallback, domain check banner, dark mode toggle, VF Events debug panel
 │   ├── dark-mode.css           # Dark theme: site colors + Viafoura's documented overrides, all under html.dark
 │   ├── ads.js                  # Integrated Ads: GPT setup + handlers for every vf-ads event (Google sample ad unit)
 │   ├── favicon.png, apple-touch-icon.png, share-image.jpg   # Icons and og:image, from viafoura-icon-red.webp
@@ -173,7 +173,7 @@ window.vf.$subscribe('comment', 'created', function(data) {
 
 ## Dark mode
 
-Viafoura has no built-in theme switch; per the [Dark Mode docs](https://documentation.viafoura.com/docs/dark-mode) the publisher overrides the widget CSS variables (`--background-color`, `--accent-color`, the `--*-text-*` colors, …) on `.viafoura` / `.vf3-comments` and pairs that with its own dark site theme. `assets/dark-mode.css` holds both, scoped to `html.dark`. On `conversations.html` the **Dark mode** checkbox toggles that class and saves it in `localStorage`; an inline script in `<head>` re-applies it before first paint. Add the stylesheet and that script to any other page to give it the same toggle.
+Viafoura has no built-in theme switch; per the [Dark Mode docs](https://documentation.viafoura.com/docs/dark-mode) the publisher overrides the widget CSS variables (`--background-color`, `--accent-color`, the `--*-text-*` colors, …) on `.viafoura` / `.vf3-comments` and pairs that with its own dark site theme. `assets/dark-mode.css` holds both, scoped to `html.dark`. Every page links the stylesheet, and `assets/site.js` adds a sun/moon button to the right of the header that toggles the class and saves the choice in `localStorage` (`vf-demo-theme`), so it carries across pages. Because `site.js` runs in `<head>`, the saved theme is applied before first paint.
 
 ## Ads
 
