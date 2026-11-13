@@ -24,6 +24,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=JetBrains+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/dark-mode.css">
+  <script>
+    // Apply the saved theme before first paint so the page doesn't flash light.
+    try { if (localStorage.getItem('vf-demo-theme') === 'dark') document.documentElement.classList.add('dark'); } catch (e) {}
+  </script>
 
   <style>
     /*
@@ -156,6 +161,10 @@
         <label>
           <input type="checkbox" id="sideRailToggle">
           <span><strong>Collapsible side tray</strong>: comments slide in from the right, like notifications</span>
+        </label>
+        <label>
+          <input type="checkbox" id="darkModeToggle">
+          <span><strong>Dark mode</strong>: the page and every Viafoura widget switch to the dark theme</span>
         </label>
       </div>
     </div>
@@ -336,6 +345,35 @@
         </ul>
         <p>Both layouts use the same widget code - only the CSS positioning changes. This demonstrates Viafoura's flexibility in adapting to different publisher designs.</p>
 
+        <h2 id="dark-mode">Dark Mode</h2>
+        <p>Viafoura doesn't have a dark mode switch of its own. The widgets are themed with CSS variables, so <a href="https://documentation.viafoura.com/docs/dark-mode">dark mode</a> is a set of CSS overrides that the publisher loads alongside its own dark site theme. Switching between the two themes is up to the site.</p>
+        <p>The core of it is overriding the widget's color variables on <code>.viafoura</code> and <code>.vf3-comments</code>:</p>
+        <pre><code>.viafoura,
+.vf3-comments {
+  --background-color: #2a262b !important;
+  --light-text-on-background-color: #fff !important;
+  --dark-text-on-background-color: #fff !important;
+  --light-text-on-default-color: #fff !important;
+  --dark-text-on-default-color: #fff !important;
+  --secondary-text-color: #fff !important;
+  --text-on-accent-color: #fff !important;
+  --default-color: #434343;
+  --primary-color-20: #434343;
+  --primary-color-10: #434343;
+  --accent-color-light: #2792fe !important;
+  --accent-color: #1d8eff !important;
+  --accent-color-dark: #007fff !important;
+}</code></pre>
+        <p>A few extra rules cover the parts that don't read from those variables: headings, icons (<code>svg { fill: #fff }</code>), the Engagement Starter background, comment counts, tab labels and the topic follow button.</p>
+        <p><strong>How this page does it.</strong> All of those rules live in <code>assets/dark-mode.css</code>, prefixed with <code>html.dark</code>. The Dark mode checkbox in the panel at the top adds or removes that class, and the choice is saved in <code>localStorage</code>. A small inline script in the <code>&lt;head&gt;</code> re-applies it before the page paints, so a dark page never flashes white on reload:</p>
+        <pre><code>&lt;link rel="stylesheet" href="assets/dark-mode.css"&gt;
+&lt;script&gt;
+  if (localStorage.getItem('vf-demo-theme') === 'dark') {
+    document.documentElement.classList.add('dark');
+  }
+&lt;/script&gt;</code></pre>
+        <p>Because it's only CSS, the widgets switch instantly: nothing is reloaded and no Viafoura call is needed. To follow the reader's system setting instead of a toggle, put the same rules inside <code>@media (prefers-color-scheme: dark)</code>.</p>
+
         <h2>Performance Best Practices</h2>
         <ul>
           <li>Set <code>initial-height="600"</code> to reduce Cumulative Layout Shift (CLS)</li>
@@ -441,7 +479,7 @@ window.vfQ.push(function () {
         <p><strong>If ads look cropped</strong>, look for a global <code>iframe { max-width: 100%; }</code> rule, often from a CSS reset, and scope it to your own iframes instead.</p>
 
         <h2>Try It Below</h2>
-        <p>The working Conversations widget below uses container ID <code>P1001</code>. Use the customization panel to toggle between layouts and see how the same widget adapts to different page designs.</p>
+        <p>The working Conversations widget below uses container ID <code>P1001</code>. Use the customization panel at the top to switch layouts or turn on dark mode and see how the same widget adapts.</p>
       </article>
 
       <!-- Viafoura Conversations Widget: renders below the article by default,
@@ -479,6 +517,15 @@ window.vfQ.push(function () {
       document.getElementById('sideRailToggle').addEventListener('change', function(e) {
         body.classList.toggle('layout-side-rail', e.target.checked);
         if (!e.target.checked) closeTray();
+      });
+
+      // Dark mode: toggle html.dark (assets/dark-mode.css does the rest) and remember it.
+      var root = document.documentElement;
+      var darkToggle = document.getElementById('darkModeToggle');
+      darkToggle.checked = root.classList.contains('dark');
+      darkToggle.addEventListener('change', function(e) {
+        root.classList.toggle('dark', e.target.checked);
+        try { localStorage.setItem('vf-demo-theme', e.target.checked ? 'dark' : 'light'); } catch (err) {}
       });
 
       document.getElementById('trayToggleBtn').addEventListener('click', function() {
