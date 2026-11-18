@@ -151,12 +151,16 @@
 /* --------------------------------------------------------------------------
    5. Custom badges
    Badges inherit the accent colour by default. Give each custom badge its
-   own colour with .vf-custom-badge--{label}. "premium" is an example label
-   for Independent Premium subscribers; create it with the Badges API and
-   rename here to match.
+   own colour with .vf-custom-badge--{label}. The Independent's members carry
+   the custom badge label "subscriber" (displayed text "member"), shown here
+   in the Independent Premium burgundy. Viafoura uppercases badge text by
+   default; capitalize matches the Independent's "Member" style.
    -------------------------------------------------------------------------- */
-.viafoura .vf-badge.vf-custom-badge--premium {
+.viafoura .vf-badge.vf-custom-badge--subscriber {
   background-color: #76071f;
+  border-radius: 4px;
+  padding: 2px 4px;
+  text-transform: capitalize;
 }
 
 

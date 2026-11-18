@@ -11,7 +11,7 @@ A copy of a current independent.co.uk article page (Nov 2026 design) with **Viaf
 | Masthead, nav, article header, hero, sidebar | Rebuilt from the live article "Is the AI bubble going to burst?" (6 Nov 2026). Logo SVGs taken from the live page; article images are hotlinked from `static.the-independent.com`. Indy Sans/Serif are swapped for Source Sans 3 / Source Serif 4. |
 | Byline **Comments** button | Links to `#comments-area` and shows `<vf-conversations-count>`, matching the live site. |
 | "Join our commenting forum" box | Sits directly above the comments, as on the live page. |
-| Conversations | The Independent's live markup: `#comments-area` anchor, then `.viafoura#viafoura-conversation-id` containing `vf-tray-trigger` + `vf-tray vf-feature-unity="true"` + `<vf-conversations limit="10">`, in a 600px box with a fade and **Show more**. |
+| Conversations | The Independent's live markup: `#comments-area` anchor, then `.viafoura#viafoura-conversation-id` containing `vf-tray-trigger` + `vf-tray vf-feature-unity="true"` + `<vf-conversations limit="10">`, inside `#comments`, which Taboola's expandable box collapses to 600px with a white fade, **Read More Comments** and **Collapse Comments** (`tbl-collapsed`/`tbl-expanded`; CSS copied from what Taboola injects on independent.co.uk). |
 | Widget styling | Three switchable variants; see **Styling variants** below. |
 
 ## Styling variants
@@ -32,7 +32,7 @@ The recommended CSS, mapped to the docs:
 - **Background colour islands**: the comment list on their `#f7f7f7` wash, with dropdowns and tooltips kept white
 - **Default avatar colours**: all 16 slots mapped to the Independent palette
 - **Title weight**: `.viafoura .vf-heading-text { font-weight: 700; }`. Viafoura has no font-weight variable, so this one rule targets a single class (the same one the Independent styles today). It follows the best-practice rules but isn't a documented variable, so re-check it after major widget releases
-- **Custom badges**: an example `.vf-custom-badge--premium` for Independent Premium subscribers
+- **Custom badges**: `.vf-custom-badge--subscriber` in Premium burgundy (`#76071f`), matching the Independent's live member badge (label `subscriber`, displayed text "member")
 
 Things left out on purpose, per Viafoura's best practices: `!important`, tag selectors, `display:none` on widget elements, and replacing the "Conversations" heading text. Viafoura also recommends placing `<vf-tray>` directly in `<body>`. The Independent nests it in the comments wrapper, and this mock keeps their markup.
 
