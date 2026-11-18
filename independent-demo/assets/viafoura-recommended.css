@@ -13,10 +13,11 @@
      Font sizes ............... https://documentation.viafoura.com/docs/custom-font-size-overrides
      Custom badges ............ https://documentation.viafoura.com/docs/custom-colour-overrides#custom-css-classes
 
-   Everything here is a CSS variable or a documented class, except one
-   single-class rule for the title weight (section 6). There are no deep
-   selectors into widget internals, no display:none, and no !important, which
-   Viafoura's best-practice guidance asks publishers to avoid.
+   Everything here is a CSS variable or a documented class, except two small
+   class rules: badge spacing (section 5) and the title weight (section 6).
+   There are no deep selectors into widget internals, no display:none, and
+   no !important, which Viafoura's best-practice guidance asks publishers to
+   avoid.
 
    Colour values are taken from independent.co.uk's own stylesheet.
    ========================================================================== */
@@ -167,6 +168,18 @@
   border-radius: 4px;
   padding: 2px 4px;
   text-transform: capitalize;
+}
+
+/* Badge spacing. Viafoura spaces every item in the name row with two
+   stacked rules (margin-right: 3px on each item, plus margin-left: 12px on
+   each item after the first), so badges sit 15px from the name and from each
+   other. This pulls the moderator / trusted-user icons and custom badges in
+   to 6px so they read as part of the name. The timestamp keeps its spacing. */
+.viafoura .vf-post-details > .vf-icon.vf-user-badge__moderator-badge,
+.viafoura .vf-post-details > .vf-icon.vf-user-badge__trusted-user-badge,
+.viafoura .vf-post-details > .vf-badge.vf-custom-badge {
+  margin-left: 6px;
+  margin-right: 0;
 }
 
 
