@@ -442,11 +442,16 @@
     }
 
     /* No ads on this mock. The vf:ads-disabled meta tag stops ads loading, but the
-       widget still renders the empty position wrappers between comments. Viafoura's
-       "Disable Ads on a Page" docs pair the meta tag with this rule, the one documented
-       case where display:none on a widget element is expected.
+       widget still renders the ad position between comments, and Viafoura's own CSS
+       reserves min-height: 331px for it (room for a 300x250 + label, to avoid layout
+       shift). With the Google Tag provider the ad inside stays hidden until GAM reports
+       a render, which never happens here, so the reserved space shows as a blank gap.
+       Viafoura's docs say to hide .vf3-conversations-list__promo, but their selector
+       (.viafoura .vf3-conversations-list__promo[data-v-…], specificity 0,3,0, loaded
+       after this stylesheet) beats the bare class from the docs. Scoping to the
+       wrapper's id wins without !important.
        https://documentation.viafoura.com/docs/ads-in-conversations */
-    .vf3-conversations-list__promo { display: none; }
+    #viafoura-conversation-id .vf3-conversations-list__promo { display: none; }
 
     /* Notification bell: fixed bottom-right, as on the live site */
     .indy-tray {
