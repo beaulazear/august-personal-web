@@ -10,6 +10,8 @@
        The Independent sets the ID on the widget itself (vf-container-id="3080465");
        this mock uses the page meta tag, which works the same way. -->
   <meta name="vf:container_id" content="P4001">
+  <!-- No ads on this mock: switches off Viafoura's in-conversation ad positions for this page -->
+  <meta property="vf:ads-disabled">
   <meta property="og:url" content="https://www.beaulazear.com/independent-demo/index.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="The Independent">
@@ -392,25 +394,6 @@
     }
     .forum-cta a svg { width: 12px; height: 12px; }
 
-    /* Taboola-style recirculation (static, as in the OpenWeb mock) */
-    .recirc { margin-bottom: 36px; }
-    .recirc__head {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      border-bottom: 2px solid var(--indy-ink);
-      padding-bottom: 6px;
-      margin-bottom: 4px;
-    }
-    .recirc__head h3 { font-size: 18px; font-weight: 800; letter-spacing: -0.01em; }
-    .recirc__head span { font-size: 11px; color: var(--indy-mid); }
-    .recirc ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; column-gap: 24px; }
-    .recirc li { border-bottom: 1px solid var(--indy-line); padding: 12px 0; }
-    .recirc li a { text-decoration: none; display: block; }
-    .recirc__title { font-size: 16px; font-weight: 700; line-height: 1.25; }
-    .recirc li a:hover .recirc__title { color: var(--indy-red); }
-    .recirc__src { display: block; font-size: 12px; color: var(--indy-mid); margin-top: 4px; }
-    .recirc li.is-sponsored .recirc__title { color: var(--indy-gray); }
 
     /* =====================================================
        VIAFOURA CONVERSATIONS, laid out the way the Independent does it:
@@ -466,28 +449,6 @@
       z-index: 1000000;
     }
 
-    /* Static ad creative dropped into Viafoura's comment ad positions (assets/static-ads.js) */
-    .indy-comment-ad {
-      padding: 16px 15px 18px;
-      background: #fff;
-      border-top: 1px solid var(--indy-line);
-      border-bottom: 1px solid var(--indy-line);
-      list-style: none;
-    }
-    .indy-comment-ad__label {
-      font-size: 11px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--indy-mid);
-      margin-bottom: 8px;
-      font-family: var(--indy-sans);
-    }
-    .indy-comment-ad img {
-      width: 100%;
-      max-width: 610px;
-      height: auto;
-      border: 1px solid var(--indy-line);
-    }
 
     /* =====================================================
        SIDEBAR
@@ -613,7 +574,6 @@
       .forum-cta { grid-template-columns: 40px 1fr; }
       .forum-cta img { width: 40px; height: 40px; }
       .forum-cta a { grid-column: 1 / -1; justify-self: start; }
-      .recirc ul { grid-template-columns: 1fr; }
       .demo-bar__brand, .style-switch__label, .demo-bar__css, .demo-bar__controls > a[href="#comments-area"] { display: none; }
       .demo-bar .wrap { justify-content: center; }
       .style-switch button { padding: 5px 10px; }
@@ -767,16 +727,6 @@
           </a>
         </div>
 
-        <!-- Taboola below-article unit 1 (static stand-in) -->
-        <section class="recirc" aria-label="Recommended">
-          <div class="recirc__head"><h3>Recommended</h3><span>Sponsored links by Taboola</span></div>
-          <ul>
-            <li><a href="#"><span class="recirc__title">Apple makes change to how Macs work to stop AI taking over computers</span><span class="recirc__src">The Independent</span></a></li>
-            <li><a href="#"><span class="recirc__title">Countdown to Grand Theft Auto VI begins – here’s everything you need to know</span><span class="recirc__src">The Independent</span></a></li>
-            <li class="is-sponsored"><a href="#"><span class="recirc__title">Empty Maui Vacation Rentals For Cheap (Take A Look)</span><span class="recirc__src">SearchResultOffers | Search Ads</span></a></li>
-            <li class="is-sponsored"><a href="#"><span class="recirc__title">Last-Minute Miami Beach Rentals (View Deals)</span><span class="recirc__src">SearchResultOffers | Search Ads</span></a></li>
-          </ul>
-        </section>
 
         <!-- =================================================
              VIAFOURA CONVERSATIONS (mirrors independent.co.uk markup)
@@ -886,8 +836,6 @@
     })();
   </script>
 
-  <!-- Static ad creatives in Viafoura's comment ad positions -->
-  <script src="assets/static-ads.js"></script>
 
   <!-- Viafoura SDK -->
   <script async src="https://cdn.viafoura.net/entry/index.js"></script>

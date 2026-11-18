@@ -10,10 +10,9 @@ A copy of a current independent.co.uk article page (Nov 2026 design) with **Viaf
 |------|-------|
 | Masthead, nav, article header, hero, sidebar | Rebuilt from the live article "Is the AI bubble going to burst?" (6 Nov 2026). Logo SVGs taken from the live page; article images are hotlinked from `static.the-independent.com`. Indy Sans/Serif are swapped for Source Sans 3 / Source Serif 4. |
 | Byline **Comments** button | Links to `#comments-area` and shows `<vf-conversations-count>`, matching the live site. |
-| "Join our commenting forum" box and the static Taboola "Recommended" block | Same order as the live page: forum prompt, Taboola, then comments. |
+| "Join our commenting forum" box | Sits directly above the comments, as on the live page. |
 | Conversations | The Independent's live markup: `#comments-area` anchor, then `.viafoura#viafoura-conversation-id` containing `vf-tray-trigger` + `vf-tray vf-feature-unity="true"` + `<vf-conversations limit="10">`, in a 600px box with a fade and **Show more**. |
 | Widget styling | Three switchable variants; see **Styling variants** below. |
-| Ads in comments | `assets/static-ads.js` fills `vf-ads` / `requestCommentAd` slots with the Dogs Trust creative. If no slot is showing about 4s after comments load, it inserts the creative after the 3rd comment so the demo always shows one. |
 
 ## Styling variants
 
@@ -46,10 +45,5 @@ Things left out on purpose, per Viafoura's best practices: `!important`, tag sel
 
 The widgets don't load on `localhost` or `file://`. Locally you'll see the layout and a loading skeleton where the comments go.
 
-## Ads: provider setting
-
-To have Viafoura's own ad positions show our creatives, Viafoura support needs to switch ads on for Conversations and set the provider to **Custom**. With **Google Tag**, a slot only appears once Google Ad Manager reports a render, so static creatives never show and the fallback insert is used instead. The provider is set per site, so it also affects `/viafoura-demo/conversations.html`, which fills slots through GAM.
-
-To add or rotate creatives, add entries to `CREATIVES` in `assets/static-ads.js`.
 
 The page has `noindex` set and a demo bar and footer saying it's a mock and not affiliated with The Independent.
