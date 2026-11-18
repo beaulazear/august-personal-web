@@ -13,7 +13,8 @@
      Font sizes ............... https://documentation.viafoura.com/docs/custom-font-size-overrides
      Custom badges ............ https://documentation.viafoura.com/docs/custom-colour-overrides#custom-css-classes
 
-   Everything here is a CSS variable or a documented class. There are no deep
+   Everything here is a CSS variable or a documented class, except one
+   single-class rule for the title weight (section 6). There are no deep
    selectors into widget internals, no display:none, and no !important, which
    Viafoura's best-practice guidance asks publishers to avoid.
 
@@ -156,4 +157,18 @@
    -------------------------------------------------------------------------- */
 .viafoura .vf-badge.vf-custom-badge--premium {
   background-color: #76071f;
+}
+
+
+/* --------------------------------------------------------------------------
+   6. Conversation title weight (light-touch class rule)
+   Viafoura has no font-weight variable (only --primary-font and the size
+   variables), so this is the one rule that targets a widget class directly.
+   It follows Viafoura's best-practice guidance (single class, no tag selector,
+   no !important), and .vf-heading-text is the same class independent.co.uk
+   styles today. It is not a documented variable, so re-check it after major
+   widget releases.
+   -------------------------------------------------------------------------- */
+.viafoura .vf-heading-text {
+  font-weight: 700;
 }
