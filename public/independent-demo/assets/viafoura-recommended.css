@@ -1,0 +1,159 @@
+/* ==========================================================================
+   Viafoura × The Independent: recommended styling
+   --------------------------------------------------------------------------
+   Brings Viafoura's widgets in line with independent.co.uk using only the
+   customization points Viafoura documents and supports, so it keeps working
+   as the widgets are updated:
+
+     CSS customizations ....... https://documentation.viafoura.com/docs/css-customizations
+     Colour overrides ......... https://documentation.viafoura.com/docs/custom-colour-overrides
+     Background colours ....... https://documentation.viafoura.com/docs/custom-background-colours
+     Default avatar colours ... https://documentation.viafoura.com/docs/custom-default-avatar-colours
+     Font family .............. https://documentation.viafoura.com/docs/custom-font-family-overrides
+     Font sizes ............... https://documentation.viafoura.com/docs/custom-font-size-overrides
+     Custom badges ............ https://documentation.viafoura.com/docs/custom-colour-overrides#custom-css-classes
+
+   Everything here is a CSS variable or a documented class. There are no deep
+   selectors into widget internals, no display:none, and no !important, which
+   Viafoura's best-practice guidance asks publishers to avoid.
+
+   Colour values are taken from independent.co.uk's own stylesheet.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. Typography
+   One font is used for all widget text. On independent.co.uk this resolves to
+   Indy Sans; the fallbacks cover pages (like this mock) without it. The font
+   should ship 300, 400, 500 and 700 weights with italics.
+   Sizes are multiples of 10px (1.6 = 16px), matched to the Independent's
+   comment styles: 24px section heading, 16px comment text.
+   -------------------------------------------------------------------------- */
+.viafoura {
+  --primary-font: 'Indy Sans', 'Indy Sans Fallback', 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+
+  --x-large-font: 2.4;   /* h1: widget heading           (default 32px) */
+  --large-font:   2.0;   /* h2: section headings         (default 20px) */
+  --medium-font:  1.6;   /* p:  comment text             (default 15px) */
+  --body-font:    1.6;   /* deprecated, keep in step with --medium-font  */
+  --small-font:   1.3;   /* secondary: names, timestamps (default 12px) */
+  --x-small-font: 1.1;   /* labels                       (default 10px) */
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Brand colours
+   Accent = Independent red (#eb1426), replacing Viafoura blue on buttons,
+   links, active tabs and focus states. Each palette keeps its dark/regular/
+   light steps so Viafoura's built-in contrast pairings still hold.
+   -------------------------------------------------------------------------- */
+.viafoura {
+  /* Accent: Independent red */
+  --accent-color-dark:      #a20021;
+  --accent-color-semi-dark: #c8101f;
+  --accent-color:           #eb1426;
+  --accent-color-light:     #ef3f4e;
+  --accent-color-90:        rgba(235, 20, 38, 0.9);
+  --accent-color-10:        rgba(235, 20, 38, 0.1);
+  --accent-color-05:        rgba(235, 20, 38, 0.05);
+  --text-on-accent-color:   #fff;
+
+  /* Text on white: the Independent's ink and secondary grey */
+  --dark-text-on-default-color:  #222;
+  --light-text-on-default-color: #646464;
+
+  /* Neutrals: borders, dividers and hover fills from the site's grey ramp */
+  --primary-color-100: #222;
+  --primary-color-75:  rgba(34, 34, 34, 0.75);
+  --primary-color-60:  rgba(34, 34, 34, 0.6);
+  --primary-color-30:  rgba(34, 34, 34, 0.3);
+  --primary-color-20:  rgba(34, 34, 34, 0.2);
+  --primary-color-15:  rgba(34, 34, 34, 0.15);
+  --primary-color-10:  rgba(34, 34, 34, 0.1);
+  --primary-color-04:  rgba(34, 34, 34, 0.04);
+  --primary-color-02:  rgba(34, 34, 34, 0.02);
+
+  /* @mentions: the Independent's link blue */
+  --mention-color-dark:  #005c97;
+  --mention-color:       #276fbf;
+  --mention-color-light: #4f8fd6;
+  --text-on-mention-color: #fff;
+
+  /* Status colours from the site palette */
+  --success-color-dark:      #0f5c16;
+  --success-color-semi-dark: #126d1a;
+  --success-color:           #157f1f;
+  --success-color-light:     #2fa33a;
+
+  --error-color-dark:      #5e0518;
+  --error-color-semi-dark: #76071f;
+  --error-color:           #a20021;
+  --error-color-light:     #d1475f;
+  --error-color-20:        rgba(162, 0, 33, 0.2);
+  --error-color-05:        rgba(162, 0, 33, 0.05);
+  --error-color-0:         rgba(162, 0, 33, 0);
+
+  /* Editor's Pick: the Independent's Premium maroon, so featured comments
+     read as an editorial choice rather than a red alert */
+  --editors-pick-color: #76071f;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Background colour islands
+   The comment list sits on the Independent's light grey (#f7f7f7), the same
+   wash used for photo captions and the "Join our commenting forum" box.
+   Dropdowns and tooltips are their own island and stay white so they lift
+   off the grey.
+   -------------------------------------------------------------------------- */
+.vf3-comments {
+  --background-color: #f7f7f7;
+  --dark-text-on-background-color: #222;
+  --light-text-on-background-color: #646464;
+}
+
+.vf-dropdown::before,
+.vf-dropdown-wrapper {
+  --background-color: #fff;
+  --dark-text-on-background-color: #222;
+  --light-text-on-background-color: #646464;
+}
+
+
+/* --------------------------------------------------------------------------
+   4. Default avatars
+   Readers without a photo get an initials avatar on a two-colour gradient
+   picked from 16 slots. Mapping the slots to the Independent's palette keeps
+   the comment list on-brand instead of rainbow-coloured. All are dark enough
+   for white initials.
+   -------------------------------------------------------------------------- */
+.viafoura .vf-default-avatar {
+  --default-avatar-color-0:  #eb1426;
+  --default-avatar-color-1:  #a20021;
+  --default-avatar-color-2:  #76071f;
+  --default-avatar-color-3:  #ac2a2c;
+  --default-avatar-color-4:  #9c4043;
+  --default-avatar-color-5:  #5e0518;
+  --default-avatar-color-6:  #386366;
+  --default-avatar-color-7:  #337e81;
+  --default-avatar-color-8:  #005c97;
+  --default-avatar-color-9:  #276fbf;
+  --default-avatar-color-10: #444fcc;
+  --default-avatar-color-11: #157f1f;
+  --default-avatar-color-12: #353533;
+  --default-avatar-color-13: #646464;
+  --default-avatar-color-14: #222;
+  --default-avatar-color-15: #4a4a48;
+}
+
+
+/* --------------------------------------------------------------------------
+   5. Custom badges
+   Badges inherit the accent colour by default. Give each custom badge its
+   own colour with .vf-custom-badge--{label}. "premium" is an example label
+   for Independent Premium subscribers; create it with the Badges API and
+   rename here to match.
+   -------------------------------------------------------------------------- */
+.viafoura .vf-badge.vf-custom-badge--premium {
+  background-color: #76071f;
+}
