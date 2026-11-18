@@ -31,6 +31,7 @@ The recommended CSS, mapped to the docs:
 - **Colour overrides**: Independent red (`#eb1426`) as the accent; their ink and greys for text and neutrals; their link blue for @mentions; site green and maroon for success and error; Premium maroon for Editor's Pick
 - **Background colour islands**: the comment list on their `#f7f7f7` wash, with dropdowns and tooltips kept white
 - **Default avatar colours**: all 16 slots mapped to the Independent palette
+- **Title weight**: `.viafoura .vf-heading-text { font-weight: 700; }`. Viafoura has no font-weight variable, so this one rule targets a single class (the same one the Independent styles today). It follows the best-practice rules but isn't a documented variable, so re-check it after major widget releases
 - **Custom badges**: an example `.vf-custom-badge--premium` for Independent Premium subscribers
 
 Things left out on purpose, per Viafoura's best practices: `!important`, tag selectors, `display:none` on widget elements, and replacing the "Conversations" heading text. Viafoura also recommends placing `<vf-tray>` directly in `<body>`. The Independent nests it in the comments wrapper, and this mock keeps their markup.
