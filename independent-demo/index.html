@@ -441,6 +441,13 @@
       cursor: pointer;
     }
 
+    /* No ads on this mock. The vf:ads-disabled meta tag stops ads loading, but the
+       widget still renders the empty position wrappers between comments. Viafoura's
+       "Disable Ads on a Page" docs pair the meta tag with this rule, the one documented
+       case where display:none on a widget element is expected.
+       https://documentation.viafoura.com/docs/ads-in-conversations */
+    .vf3-conversations-list__promo { display: none; }
+
     /* Notification bell: fixed bottom-right, as on the live site */
     .indy-tray {
       position: fixed;
