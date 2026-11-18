@@ -32,7 +32,7 @@ The recommended CSS, mapped to the docs:
 - **Background colour islands**: the comment list on their `#f7f7f7` wash, with dropdowns and tooltips kept white
 - **Default avatar colours**: all 16 slots mapped to the Independent palette
 - **Title weight**: `.viafoura .vf-heading-text { font-weight: 700; }`. Viafoura has no font-weight variable, so this one rule targets a single class (the same one the Independent styles today). It follows the best-practice rules but isn't a documented variable, so re-check it after major widget releases
-- **Custom badges**: `.vf-custom-badge--subscriber` in Premium burgundy (`#76071f`), matching the Independent's live member badge (label `subscriber`, displayed text "member")
+- **Custom badges**: `.vf-custom-badge--member` (demo account label) and `.vf-custom-badge--subscriber` (the label independent.co.uk uses, displayed as "member") in Premium burgundy `#76071f` with 4px corners and capitalised text, matching their live badge. Uses one extra class (`.vf-custom-badge`) because the documented selector ties Viafoura's own badge rule and loses.
 
 Things left out on purpose, per Viafoura's best practices: `!important`, tag selectors, `display:none` on widget elements, and replacing the "Conversations" heading text. Viafoura also recommends placing `<vf-tray>` directly in `<body>`. The Independent nests it in the comments wrapper, and this mock keeps their markup.
 

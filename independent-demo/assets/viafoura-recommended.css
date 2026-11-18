@@ -151,12 +151,18 @@
 /* --------------------------------------------------------------------------
    5. Custom badges
    Badges inherit the accent colour by default. Give each custom badge its
-   own colour with .vf-custom-badge--{label}. The Independent's members carry
-   the custom badge label "subscriber" (displayed text "member"), shown here
-   in the Independent Premium burgundy. Viafoura uppercases badge text by
-   default; capitalize matches the Independent's "Member" style.
+   own look with .vf-custom-badge--{label}. Shown here: the Independent's
+   member badge in Independent Premium burgundy, with their 4px corners and
+   "Member" capitalisation (Viafoura uppercases badge text by default).
+     - "member" is the label on the Viafoura demo account
+     - "subscriber" is the label independent.co.uk uses in production
+       (its displayed text is "member")
+   The extra .vf-custom-badge class is needed: Viafoura's own badge styles
+   have the same specificity as the documented .viafoura .vf-badge.{class}
+   selector and load later, so the documented form loses the tie.
    -------------------------------------------------------------------------- */
-.viafoura .vf-badge.vf-custom-badge--subscriber {
+.viafoura .vf-badge.vf-custom-badge.vf-custom-badge--member,
+.viafoura .vf-badge.vf-custom-badge.vf-custom-badge--subscriber {
   background-color: #76071f;
   border-radius: 4px;
   padding: 2px 4px;
