@@ -9,6 +9,9 @@
  * Part 1: the site's dark theme (our own tokens and surfaces).
  * Part 2: Viafoura's documented dark mode overrides, unchanged apart from the
  *         html.dark prefix.
+ * Part 3: the updated docs variables (TRI-6932), used instead of Part 2's
+ *         variable block when the header's "Docs CSS" switch is on Updated
+ *         (html.vf-docs-updated), to compare the two recipes side by side.
  */
 
 /* ------------------------------------------------- Part 1: site dark theme */
@@ -89,8 +92,8 @@ html.dark .layout-side-rail .tray-toggle-btn:hover {
 }
 
 /* --------------------------- Part 2: Viafoura dark mode (from the docs) */
-html.dark .viafoura,
-html.dark .vf3-comments {
+html.dark:not(.vf-docs-updated) .viafoura,
+html.dark:not(.vf-docs-updated) .vf3-comments {
   --background-color: #2a262b !important;
   --light-text-on-background-color: #fff !important;
   --dark-text-on-background-color: #fff !important;
@@ -155,4 +158,40 @@ html.dark .vf-tabbed-nav__tabs .vf-active .vf-nav-label,
 html.dark .viafoura .vf-nav-button:hover .vf-nav-label,
 html.dark .viafoura .vf-label {
   color: #fff !important;
+}
+
+/* ------------------- Part 3: updated docs variables (TRI-6932, proposed) */
+/* Replaces Part 2's variable block only; every other Part 2 rule still applies.
+   Same values as the Viafoura library's dark palette: one #2a262b surface,
+   muted text at white 80%, a white alpha ramp for the primary tints, and no
+   accent override (the publisher's brand colour stays the same in both themes). */
+html.dark.vf-docs-updated .viafoura,
+html.dark.vf-docs-updated .vf3-comments {
+  --background-color: #2a262b !important;
+  --default-color: #2a262b !important;
+  --light-text-on-background-color: rgba(255, 255, 255, 0.8) !important;
+  --dark-text-on-background-color: #fff !important;
+  --light-text-on-default-color: rgba(255, 255, 255, 0.8) !important;
+  --dark-text-on-default-color: #fff !important;
+  --secondary-text-color: rgba(255, 255, 255, 0.8) !important;
+  --text-on-accent-color: #fff !important;
+  --surface-sunken: #201d21 !important;
+  --shadow-color: rgba(0, 0, 0, 0.35) !important;
+  --primary-color-75: rgba(255, 255, 255, 0.92) !important;
+  --primary-color-60: rgba(255, 255, 255, 0.8) !important;
+  --primary-color-50: rgba(255, 255, 255, 0.71) !important;
+  --primary-color-30: rgba(255, 255, 255, 0.5) !important;
+  --primary-color-20: rgba(255, 255, 255, 0.38) !important;
+  --primary-color-15: rgba(255, 255, 255, 0.3) !important;
+  --primary-color-10: rgba(255, 255, 255, 0.22) !important;
+  --primary-color-08: rgba(255, 255, 255, 0.12) !important;
+  --primary-color-04: rgba(255, 255, 255, 0.12) !important;
+  --primary-color-02: rgba(255, 255, 255, 0.08) !important;
+  --text-on-primary-color: #2a262b !important;
+}
+
+/* The floating bell sits on --primary-color-75 (near-white in dark mode), so
+   its icon follows --text-on-primary-color instead of the all-white svg rule. */
+html.dark.vf-docs-updated .vf-tray-trigger--floating svg {
+  fill: currentColor !important;
 }

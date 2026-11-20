@@ -176,8 +176,14 @@
 
     // Apply the saved theme now, while <head> is still parsing, so a dark
     // page never flashes white on load.
+    // Which docs dark-mode CSS to use: the current docs page, or the updated
+    // version proposed in TRI-6932 (styles in dark-mode.css, Part 3).
+    var DOCS_KEY = 'vf-demo-docs-css';
+    var DOCS_CLASS = 'vf-docs-updated';
+
     try {
       if (localStorage.getItem(KEY) === 'dark') root.classList.add('dark');
+      if (localStorage.getItem(DOCS_KEY) === 'updated') root.classList.add(DOCS_CLASS);
     } catch (e) {}
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -196,14 +202,37 @@
         button.innerHTML = '<span aria-hidden="true">' + (dark ? '\u2600\uFE0E' : '\u263E\uFE0E') + '</span>';
       }
 
+      // Docs CSS switch, shown only in dark mode: flips between the two recipes.
+      // It floats at the bottom of the screen so the header keeps its room.
+      var docsButton = document.createElement('button');
+      docsButton.type = 'button';
+      docsButton.className = 'docs-css-toggle';
+
+      function renderDocs() {
+        var updated = root.classList.contains(DOCS_CLASS);
+        docsButton.hidden = !root.classList.contains('dark');
+        docsButton.setAttribute('aria-pressed', String(updated));
+        docsButton.title = 'Switch the Viafoura dark mode CSS between the current docs and the updated version';
+        docsButton.textContent = 'Docs CSS: ' + (updated ? 'Updated' : 'Current');
+      }
+
+      docsButton.addEventListener('click', function() {
+        var updated = root.classList.toggle(DOCS_CLASS);
+        try { localStorage.setItem(DOCS_KEY, updated ? 'updated' : 'current'); } catch (e) {}
+        renderDocs();
+      });
+
       button.addEventListener('click', function() {
         var dark = root.classList.toggle('dark');
         try { localStorage.setItem(KEY, dark ? 'dark' : 'light'); } catch (e) {}
         render();
+        renderDocs();
       });
 
       render();
+      renderDocs();
       header.appendChild(button);
+      document.body.appendChild(docsButton);
     });
   }
 

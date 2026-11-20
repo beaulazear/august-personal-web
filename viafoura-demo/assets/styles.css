@@ -141,6 +141,36 @@ body > header .theme-toggle:hover {
   background: var(--surface);
 }
 
+/* Dark mode only: switch between the current and updated docs CSS (TRI-6932).
+   Floats bottom centre, between the VF Events panel and the notification bell. */
+.docs-css-toggle {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  z-index: 9998;
+  transform: translateX(-50%);
+  height: 40px;
+  padding: 0 1rem;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.docs-css-toggle[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.docs-css-toggle[hidden] {
+  display: none;
+}
+
 /* -------------------------------------------------------------------- Main */
 main {
   max-width: calc(var(--column) + 2rem);
@@ -575,6 +605,13 @@ body .share-icon-fix .vf-share-button.vf-share-button-square .vf-share-button-ic
     align-items: flex-start;
     gap: 0.4rem;
     padding: 0.75rem 1rem 0.5rem;
+  }
+
+  /* Stack the docs switch above the VF Events button on small screens */
+  .docs-css-toggle {
+    bottom: 72px;
+    left: 20px;
+    transform: none;
   }
 
   body > header .theme-toggle {
