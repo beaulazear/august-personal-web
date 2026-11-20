@@ -475,6 +475,17 @@ body .share-icon-fix .vf-share-button.vf-share-button-square .vf-share-button-ic
   color: var(--muted);
 }
 
+/* A known issue noted beside a demo (all-products.html) */
+.known-issue {
+  margin: 0 0 1rem;
+  padding: 0.6rem 0.8rem;
+  border-left: 3px solid #e0a100;
+  border-radius: var(--radius-sm);
+  background: rgba(224, 161, 0, 0.1);
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
 .demo-label code {
   text-transform: none;
   letter-spacing: 0;

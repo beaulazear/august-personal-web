@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Viafoura Products | Implementation Guide</title>
+
+  <!-- Viafoura meta tags. Each widget below names its own container with
+       vf-container-id, so it shows the same content as its own page. -->
+  <meta name="vf:container_id" content="P1008">
+  <meta property="og:url" content="https://www.beaulazear.com/viafoura-demo/all-products.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Every Viafoura Product on One Page">
+  <meta property="og:description" content="Every Viafoura widget on one page, to compare themes such as dark mode at a glance.">
+  <meta property="og:image" content="https://www.beaulazear.com/viafoura-demo/assets/share-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Site assets -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <script src="assets/site.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/dark-mode.css">
+
+  <style>
+    /* In dark mode the cards use the page colour, as on a publisher's page, so
+       any widget whose background doesn't match the page stands out. */
+    html.dark .demo {
+      background: #2a262b;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="https://www.beaulazear.com/" class="brand" title="Back to beaulazear.com"><img src="assets/viafoura-icon-red.webp" alt="" width="28" height="28">Beau's Viafoura Implementation</a>
+    <nav>
+      <a href="all-products.html" aria-current="page">All Products</a>
+      <a href="conversations.html">Conversations</a>
+      <a href="live-blog.html">Live Blog</a>
+      <a href="live-qa.html">Live Q&A</a>
+      <a href="live-chat.html">Live Chat</a>
+      <a href="polls.html">Polls</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="community.html">Community Tools</a>
+      <a href="spa.html">SPA Demo</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="main-content">
+      <article>
+        <h1>All Products</h1>
+
+        <div class="byline">
+          <div class="author">
+            <span>Implementation Guide</span>
+          </div>
+          <time datetime="2026-11-20">November 20, 2026</time>
+          <span>Theme check</span>
+        </div>
+
+        <p>Every Viafoura widget on one page, so a theme can be checked across all of them at once. Each widget uses the same container as its own page, so it shows the same content.</p>
+        <p><strong>Comparing dark mode.</strong> Turn on dark mode with the moon at the top right. A <em>Docs CSS</em> switch then appears at the bottom of the screen. It flips between the <a href="https://documentation.viafoura.com/docs/dark-mode">current dark mode docs</a> and the updated version, so the two can be compared on every widget.</p>
+      </article>
+
+      <section class="demo" aria-label="Engagement Starter and Conversations">
+        <div class="demo-label">Engagement Starter · Conversations <code>P1001</code></div>
+        <div class="viafoura">
+          <vf-conversation-starter
+            vf-container-id="P1001"
+            target="all-products-conversations"
+            title="Have your say."
+            description="Leave a comment below and let us know what you think."
+            minimum-comment-count="5">
+          </vf-conversation-starter>
+        </div>
+        <div class="viafoura" id="all-products-conversations">
+          <vf-conversations vf-container-id="P1001"></vf-conversations>
+        </div>
+      </section>
+
+      <section class="demo" aria-label="Live Blog">
+        <div class="demo-label">Live Blog <code>P1002</code></div>
+        <div class="viafoura">
+          <vf-live-blog vf-container-id="P1002"></vf-live-blog>
+        </div>
+      </section>
+
+      <section class="demo" aria-label="Live Q&A">
+        <div class="demo-label">Live Q&A <code>P1003</code></div>
+        <p class="known-issue"><strong>Known issue, not part of the docs update:</strong> in dark mode the purple <em>Announcement</em> label is hard to read on its purple background. It looks the same with both docs CSS versions, so it needs a widget fix.</p>
+        <div class="viafoura">
+          <vf-livequestions vf-container-id="P1003"></vf-livequestions>
+        </div>
+      </section>
+
+      <section class="demo" aria-label="Live Chat">
+        <div class="demo-label">Live Chat <code>P1004</code></div>
+        <div class="viafoura" style="height: 550px;">
+          <vf-livechat vf-container-id="P1004"></vf-livechat>
+        </div>
+      </section>
+
+      <section class="demo" aria-label="Poll">
+        <div class="demo-label">Poll <code>P1006</code></div>
+        <div class="viafoura">
+          <vf-poll vf-container-id="P1006"></vf-poll>
+        </div>
+      </section>
+
+      <section class="demo" aria-label="Ratings and Reviews">
+        <div class="demo-label">Ratings &amp; Reviews <code>P2001</code></div>
+        <p class="known-issue"><strong>Known issue, not part of the docs update:</strong> in dark mode the rating summary (&ldquo;3 based on 1 rating&rdquo;, the vote counts) stays dark grey and the rating bars stay light grey. The widget hard-codes those two colors (<code>#505050</code>, <code>#DEDEDE</code>), so no docs CSS can reach them.</p>
+        <div class="viafoura">
+          <vf-rating vf-container-id="P2001"></vf-rating>
+        </div>
+        <div class="viafoura">
+          <vf-livereviews vf-container-id="P2001"></vf-livereviews>
+        </div>
+      </section>
+
+      <section class="demo" aria-label="Trending Conversations">
+        <div class="demo-label">Trending Conversations</div>
+        <div class="viafoura">
+          <vf-trending-articles></vf-trending-articles>
+        </div>
+      </section>
+    </div>
+
+    <!-- Viafoura Tray Trigger -->
+    <div class="viafoura">
+      <vf-tray-trigger floating="true"></vf-tray-trigger>
+    </div>
+  </main>
+
+  <!-- Viafoura SDK -->
+  <script async src="https://cdn.viafoura.net/entry/index.js"></script>
+</body>
+</html>

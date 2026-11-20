@@ -33,6 +33,7 @@ Viafoura widgets only load when:
 | Page | Widget(s) | Container ID | Notes |
 |------|-----------|--------------|-------|
 | `index.html` | none | none | Redirects to `conversations.html` |
+| `all-products.html` | every widget above, one after another | each widget names its own page's container with `vf-container-id` (page meta `P1008`) | One page to check a theme across every product; notes the dark mode issues the docs CSS can't fix |
 | `conversations.html` | `<vf-conversation-starter>` + `<vf-conversations>` | `P1001` | Toggle between below-article and slide-in side-tray layouts; dark mode guide section; ads in comments and beside the starter |
 | `live-blog.html` | `<vf-live-blog>` | `P1002` | Posts are created in the Viafoura admin / API |
 | `live-qa.html` | `<vf-livequestions>` | `P1003` | `title` attribute controls the header |
@@ -174,6 +175,8 @@ window.vf.$subscribe('comment', 'created', function(data) {
 ## Dark mode
 
 Viafoura has no built-in theme switch; per the [Dark Mode docs](https://documentation.viafoura.com/docs/dark-mode) the publisher overrides the widget CSS variables (`--background-color`, `--accent-color`, the `--*-text-*` colors, …) on `.viafoura` / `.vf3-comments` and pairs that with its own dark site theme. `assets/dark-mode.css` holds both, scoped to `html.dark`. Every page links the stylesheet, and `assets/site.js` adds a sun/moon button to the right of the header that toggles the class and saves the choice in `localStorage` (`vf-demo-theme`), so it carries across pages. Because `site.js` runs in `<head>`, the saved theme is applied before first paint.
+
+In dark mode a **Docs CSS** switch appears at the bottom of the screen. It flips the widget variables between the current docs recipe (`dark-mode.css` Part 2) and the updated version proposed in TRI-6932 (Part 3), and saves the choice (`vf-demo-docs-css`). Use it on `all-products.html` to compare every widget at once.
 
 ## Ads
 
