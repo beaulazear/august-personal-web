@@ -187,11 +187,15 @@ html.dark.vf-docs-updated .vf3-comments {
   --primary-color-08: rgba(255, 255, 255, 0.12) !important;
   --primary-color-04: rgba(255, 255, 255, 0.12) !important;
   --primary-color-02: rgba(255, 255, 255, 0.08) !important;
-  --text-on-primary-color: #2a262b !important;
 }
 
 /* The floating bell sits on --primary-color-75 (near-white in dark mode), so
-   its icon follows --text-on-primary-color instead of the all-white svg rule. */
-html.dark.vf-docs-updated .vf-tray-trigger--floating svg {
+   it gets a dark icon. Scoped to the bell: other widgets use
+   --text-on-primary-color on coloured backgrounds (avatars, badges, chips). */
+html.dark.vf-docs-updated .vf-tray-trigger.vf-tray-trigger--floating {
+  --text-on-primary-color: #2a262b !important;
+}
+
+html.dark.vf-docs-updated .vf-tray-trigger.vf-tray-trigger--floating svg {
   fill: currentColor !important;
 }
