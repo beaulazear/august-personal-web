@@ -199,3 +199,15 @@ html.dark.vf-docs-updated .vf-tray-trigger.vf-tray-trigger--floating {
 html.dark.vf-docs-updated .vf-tray-trigger.vf-tray-trigger--floating svg {
   fill: currentColor !important;
 }
+
+/* Selected filter chips (Live Q&A's All / Answered tabs) also sit on
+   --primary-color-60 (white 80% in dark mode), so their label and check icon
+   need the same dark on-primary colour. Scoped to the selected chip for the
+   same reason as the bell. */
+html.dark.vf-docs-updated .viafoura .vf-chip__primary--selected {
+  --text-on-primary-color: #2a262b !important;
+}
+
+html.dark.vf-docs-updated .viafoura .vf-chip__primary--selected svg {
+  fill: currentColor !important;
+}
